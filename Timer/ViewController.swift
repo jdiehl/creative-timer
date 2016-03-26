@@ -10,16 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	@IBOutlet weak var timerView: TimerView!
+	
+	var timer: Timer = Timer(total: 5)
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+		
+		// set up timer
+		timerView.total = timer.total
+		timer.onTick = { value in
+			self.timerView.value = value
+		}
+
+		// start timer
+		timer.start()
 	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
-
+	
 }
 

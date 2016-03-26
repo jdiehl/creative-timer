@@ -12,6 +12,8 @@
 		2DEFB30C1CA6E40100E4AA77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30A1CA6E40100E4AA77 /* Main.storyboard */; };
 		2DEFB30E1CA6E40100E4AA77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30D1CA6E40100E4AA77 /* Assets.xcassets */; };
 		2DEFB3111CA6E40100E4AA77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30F1CA6E40100E4AA77 /* LaunchScreen.storyboard */; };
+		2DEFB3191CA6E41600E4AA77 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB3181CA6E41600E4AA77 /* TimerView.swift */; };
+		2DEFB31D1CA6ECD400E4AA77 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB31C1CA6ECD400E4AA77 /* Timer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		2DEFB30D1CA6E40100E4AA77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DEFB3101CA6E40100E4AA77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DEFB3121CA6E40100E4AA77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DEFB3181CA6E41600E4AA77 /* TimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		2DEFB31C1CA6ECD400E4AA77 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */,
 				2DEFB3081CA6E40100E4AA77 /* ViewController.swift */,
+				2DEFB31C1CA6ECD400E4AA77 /* Timer.swift */,
+				2DEFB3181CA6E41600E4AA77 /* TimerView.swift */,
 				2DEFB30A1CA6E40100E4AA77 /* Main.storyboard */,
 				2DEFB30D1CA6E40100E4AA77 /* Assets.xcassets */,
 				2DEFB30F1CA6E40100E4AA77 /* LaunchScreen.storyboard */,
@@ -135,8 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DEFB3191CA6E41600E4AA77 /* TimerView.swift in Sources */,
 				2DEFB3091CA6E40100E4AA77 /* ViewController.swift in Sources */,
 				2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */,
+				2DEFB31D1CA6ECD400E4AA77 /* Timer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

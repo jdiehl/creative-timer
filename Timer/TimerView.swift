@@ -22,7 +22,7 @@ class TimerView: UIView {
 	
 	private let shapeLayer: CAShapeLayer = CAShapeLayer()
 	private let textLayer: CATextLayer = CATextLayer()
-	private let textFont = UIFont.boldSystemFontOfSize(22)
+	private let textFont = UIFont.boldSystemFontOfSize(44)
 	
 	override func awakeFromNib() {
 		let contentScale = UIScreen.mainScreen().scale
@@ -50,7 +50,7 @@ class TimerView: UIView {
 		
 		// construct the path
 		let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-		path.addArcWithCenter(center, radius: 30, startAngle: endAngle, endAngle: startAngle, clockwise: false)
+		path.addArcWithCenter(center, radius: textFont.pointSize * 1.5, startAngle: endAngle, endAngle: startAngle, clockwise: false)
 		
 		// update the shapelayer
 		shapeLayer.fillColor = color.CGColor

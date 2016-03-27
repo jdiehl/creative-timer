@@ -59,7 +59,7 @@ class ViewController: UIViewController {
 		updatePlayPauseButton()
 	}
 
-	@IBAction func settings(sender: AnyObject) {
+	@IBAction func settings(sender: UIView) {
 		let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
 		alert.addAction(UIAlertAction(title: "5 minutes", style: .Default, handler: { style in
 			self.setTotal(5*60)
@@ -73,6 +73,8 @@ class ViewController: UIViewController {
 		alert.addAction(UIAlertAction(title: "20 minutes", style: .Default, handler: { style in
 			self.setTotal(20*60)
 		}))
+		alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+		alert.popoverPresentationController?.sourceView = sender
 		self.presentViewController(alert, animated: true, completion: nil)
 	}
 }

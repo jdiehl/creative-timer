@@ -11,8 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
 	@IBOutlet weak var timerView: TimerView!
+	@IBOutlet weak var playPauseButton: UIButton!
 	
-	var timer: Timer = Timer(total: 5)
+	var timer = Timer(total: 5)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -21,11 +22,37 @@ class ViewController: UIViewController {
 		timerView.total = timer.total
 		timer.onTick = { value in
 			self.timerView.value = value
+			
+			// reset the view if we have reached the total value
+			if (value == self.timer.total) {
+				self.reset(nil)
+			}
 		}
-
-		// start timer
-		timer.start()
 	}
 	
+	func updatePlayPauseButton() {
+		let imageName = timer.running ? "PauseButton" : "PlayButton"
+		let image = UIImage(named: imageName)
+		playPauseButton.setImage(image, forState: .Normal)
+	}
+	
+	@IBAction func reset(sender: AnyObject?) {
+		timer.reset()
+		self.timerView.value = self.timer.value
+		updatePlayPauseButton()
+	}
+
+	@IBAction func playPause(sender: AnyObject) {
+		if (timer.running) {
+			timer.stop()
+		} else {
+			timer.start()
+		}
+		updatePlayPauseButton()
+	}
+
+	@IBAction func settings(sender: AnyObject) {
+		// todo
+	}
 }
 

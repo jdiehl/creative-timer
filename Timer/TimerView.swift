@@ -46,7 +46,7 @@ class TimerView: UIView {
 		let center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
 		let radius = min(self.bounds.size.width, self.bounds.size.height) / 2;
 		let startAngle = CGFloat(-M_PI_2)
-		let endAngle = startAngle + 2 * CGFloat(M_PI) / CGFloat(total) * CGFloat(value);
+		let endAngle = startAngle + 2 * CGFloat(M_PI) / CGFloat(total) * CGFloat(value == 0 ? total : value);
 		
 		// construct the path
 		let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)

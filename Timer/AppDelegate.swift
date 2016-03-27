@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
+		// defaults
+		NSUserDefaults().registerDefaults(["total" : 5*60])
+		
 		// register for local notifications
 		let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
 		application.registerUserNotificationSettings(settings)

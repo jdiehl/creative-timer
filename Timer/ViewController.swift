@@ -29,7 +29,6 @@ class ViewController: UIViewController {
 		
 		// on time change
 		timer.onTimeChange = { time in
-			NSLog("\(time)")
 			self.timerView.value = time
 		}
 		

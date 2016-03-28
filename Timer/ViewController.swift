@@ -16,15 +16,15 @@ func formatTime(time: Int) -> String {
 	return "\(time)\""
 }
 
-class ViewController: UIViewController, UICollectionViewDataSource {
+class ViewController: UIViewController {
 
 	@IBOutlet weak var progressView: CircularProgressView!
 	@IBOutlet weak var playPauseButton: UIButton!
-	@IBOutlet weak var runsView: UICollectionView!
+	@IBOutlet weak var runsView: UIView!
 	
 	let timer = Timer()
 	let presetManager = PresetManager()
-	
+	var runViews: [CircularProgressView] = []
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -38,28 +38,64 @@ class ViewController: UIViewController, UICollectionViewDataSource {
 		
 		// on time change
 		timer.onTimeChange = { currentTime in
-			if currentTime == 0 {
-				self.progressView.progress = 1.0
-				self.progressView.title = formatTime(self.timer.time)
-			} else {
-				self.progressView.progress = Float(currentTime) / Float(self.timer.time)
-				self.progressView.title = formatTime(currentTime)
+			let progress = Float(currentTime) / Float(self.timer.time)
+			if self.runViews.count > self.timer.currentRun {
+				self.runViews[self.timer.currentRun].progress = progress
+			}
+			self.progressView.progress = progress
+			self.progressView.title = formatTime(self.timer.time - currentTime)
+		}
+		
+		// on run change
+		timer.onRunChange = { currentRun in
+			for (i, runView) in self.runViews.enumerate() {
+				runView.progress = i < currentRun ? 1 : 0
 			}
 		}
-
-		// apply the preset
-		applyPreset(presetManager.activePreset)
 
 		// configure the progress view
 		progressView.font = UIFont.boldSystemFontOfSize(44)
 		progressView.innerRadius = 66
-		progressView.progress = 1
-		progressView.title = formatTime(self.timer.time)
+
+		// apply the preset
+		applyPreset(presetManager.activePreset)
+	}
+	
+	override func viewWillLayoutSubviews() {
+		setupRunViews()
+	}
+	
+	func setupRunViews() {
+		for runView in runViews {
+			runView.removeFromSuperview()
+		}
+		runViews.removeAll()
+		
+		// do not show the runs unless there are at least 2
+		if timer.runs < 2 {
+			return
+		}
+
+		// arrange the views
+		let width = self.runsView.bounds.size.width
+		let	distance = min(50, (width + 5) / 8)
+		let offset = (width - (distance * CGFloat(timer.runs) - 5)) / 2
+		for run in 1...timer.runs {
+			let i = CGFloat(run - 1)
+			let frame = CGRectMake(offset + distance * i, 0, distance - 5, distance - 5)
+			let runView = CircularProgressView(frame: frame)
+			runView.innerRadius = Float(distance) / 2 - 5
+			runView.title = "\(run)"
+			self.runsView.addSubview(runView)
+			runViews.append(runView)
+		}
 	}
 	
 	func applyPreset(preset: Preset) {
 		timer.time = preset.time
 		timer.runs = preset.runs
+		progressView.title = formatTime(self.timer.time)
+		setupRunViews()
 		reset()
 	}
 	
@@ -88,18 +124,5 @@ class ViewController: UIViewController, UICollectionViewDataSource {
 		self.presentViewController(alert, animated: true, completion: nil)
 	}
 	
-	// UICollectionViewDataSource
-	
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return timer.runs > 1 ? timer.runs : 0
-	}
-	
-	// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let view = self.runsView.dequeueReusableCellWithReuseIdentifier("run", forIndexPath: indexPath) as! RunViewCell
-		view.run = indexPath.row + 1
-		return view
-	}
-
 }
 

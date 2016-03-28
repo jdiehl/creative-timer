@@ -80,8 +80,8 @@ class Timer: NSObject {
 	
 	func reset() {
 		stop()
-		currentTime = 0
 		currentRun = 0
+		currentTime = 0
 	}
 	
 	deinit {
@@ -95,7 +95,7 @@ class Timer: NSObject {
 				UIApplication.sharedApplication().cancelLocalNotification(notification)
 			}
 		}
-		notifications = []
+		notifications.removeAll()
 	}
 	
 	private func scheduleNotifications() {

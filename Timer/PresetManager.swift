@@ -23,7 +23,6 @@ class PresetManager: NSObject {
 
 	var activePreset: Preset {
 		get {
-			return Preset(title: "test", time: 3, runs: 3)
 			let info = NSUserDefaults().objectForKey("activePreset") as! [String: AnyObject]
 			return Preset(info: info)
 		}
@@ -38,7 +37,8 @@ class PresetManager: NSObject {
 			["title": "5 minutes",  "time": 5*60,  "runs": 1],
 			["title": "10 minutes", "time": 10*60, "runs": 1],
 			["title": "15 minutes", "time": 15*60, "runs": 1],
-			["title": "20 minutes", "time": 20*60, "runs": 1]
+			["title": "20 minutes", "time": 20*60, "runs": 1],
+			["title": "Crazy Eight", "time": 40, "runs": 8]
 		]
 
 		NSUserDefaults().registerDefaults([

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kn2-8D-1IX" customClass="TimerView" customModule="Timer" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kn2-8D-1IX" customClass="CircularProgressView" customModule="Timer" customModuleProvider="target">
                                 <rect key="frame" x="20" y="78" width="560" height="462"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -114,8 +114,8 @@
                     </view>
                     <connections>
                         <outlet property="playPauseButton" destination="EtF-hL-Jsw" id="7mF-O7-wiH"/>
+                        <outlet property="progressView" destination="kn2-8D-1IX" id="mo9-8d-pHN"/>
                         <outlet property="runsView" destination="VOD-1r-OCa" id="4Kz-mi-W1B"/>
-                        <outlet property="timerView" destination="kn2-8D-1IX" id="OuM-56-VKo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

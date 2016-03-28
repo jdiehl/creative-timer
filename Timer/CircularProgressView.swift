@@ -8,21 +8,26 @@
 
 import UIKit
 
-class TimerView: UIView {
+class CircularProgressView: UIView {
 	
-	var total: Int = 60 {
-		didSet { setNeedsLayout() }
+	var title: String = "" {
+		didSet { updateTitle() }
 	}
-	var value: Int = 0 {
-		didSet { setNeedsLayout() }
+	var font: UIFont = UIFont.systemFontOfSize(14) {
+		didSet { updateTitle() }
+	}
+	var progress: Float = 0 {
+		didSet { updateProgress() }
+	}
+	var innerRadius: Float = 21 {
+		didSet { updateProgress() }
 	}
 	var color: UIColor = UIColor.redColor() {
-		didSet { setNeedsLayout() }
+		didSet { updateProgress() }
 	}
 	
 	private let shapeLayer: CAShapeLayer = CAShapeLayer()
 	private let textLayer: CATextLayer = CATextLayer()
-	private let textFont = UIFont.boldSystemFontOfSize(44)
 	
 	override func awakeFromNib() {
 		let contentScale = UIScreen.mainScreen().scale
@@ -33,35 +38,38 @@ class TimerView: UIView {
 
 		// set up text layer
 		textLayer.contentsScale = contentScale
-		textLayer.font = textFont
-		textLayer.fontSize = textFont.pointSize
 		textLayer.foregroundColor = UIColor.blackColor().CGColor
 		textLayer.backgroundColor = UIColor.whiteColor().CGColor
 		layer.addSublayer(textLayer)
 	}
 	
-	override func layoutSubviews() {
-
-		// compute the require points
+	private func updateProgress() {
 		let center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
 		let radius = min(self.bounds.size.width, self.bounds.size.height) / 2;
 		let startAngle = CGFloat(-M_PI_2)
-		let endAngle = startAngle + 2 * CGFloat(M_PI) / CGFloat(total) * CGFloat(value == 0 ? total : value);
+		let endAngle = startAngle + 2 * CGFloat(M_PI) * CGFloat(progress);
 		
 		// construct the path
 		let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-		path.addArcWithCenter(center, radius: textFont.pointSize * 1.5, startAngle: endAngle, endAngle: startAngle, clockwise: false)
+		path.addArcWithCenter(center, radius: CGFloat(innerRadius), startAngle: endAngle, endAngle: startAngle, clockwise: false)
 		
 		// update the shapelayer
 		shapeLayer.fillColor = color.CGColor
 		shapeLayer.path = path.CGPath
-		
-		// set label
-		let remainingTime = value < total ? total - value : total
-		let text: NSString = remainingTime < 60 ? "\(remainingTime)\"" : "\(remainingTime / 60)'"
-		let textSize = text.sizeWithAttributes([NSFontAttributeName: textFont])
-		textLayer.frame = CGRectMake(center.x - textSize.width / 2, center.y - textSize.height / 2, textSize.width, textSize.height)
-		textLayer.string = text
+	}
+	
+	private func updateTitle() {
+		let center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
+		let size = title.sizeWithAttributes([NSFontAttributeName: font])
+		textLayer.font = font
+		textLayer.fontSize = font.pointSize
+		textLayer.frame = CGRectMake(center.x - size.width / 2, center.y - size.height / 2, size.width, size.height)
+		textLayer.string = title
+	}
+	
+	override func layoutSubviews() {
+		updateProgress()
+		updateTitle()
 	}
 
 }

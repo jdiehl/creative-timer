@@ -8,14 +8,23 @@
 
 import UIKit
 
+// helper
+func formatTime(time: Int) -> String {
+	if (time > 60) {
+		return "\(time / 60)'"
+	}
+	return "\(time)\""
+}
+
 class ViewController: UIViewController, UICollectionViewDataSource {
 
-	@IBOutlet weak var timerView: TimerView!
+	@IBOutlet weak var progressView: CircularProgressView!
 	@IBOutlet weak var playPauseButton: UIButton!
 	@IBOutlet weak var runsView: UICollectionView!
 	
-	let presetManager = PresetManager()
 	let timer = Timer()
+	let presetManager = PresetManager()
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -28,18 +37,29 @@ class ViewController: UIViewController, UICollectionViewDataSource {
 		}
 		
 		// on time change
-		timer.onTimeChange = { time in
-			self.timerView.value = time
+		timer.onTimeChange = { currentTime in
+			if currentTime == 0 {
+				self.progressView.progress = 1.0
+				self.progressView.title = formatTime(self.timer.time)
+			} else {
+				self.progressView.progress = Float(currentTime) / Float(self.timer.time)
+				self.progressView.title = formatTime(currentTime)
+			}
 		}
 
 		// apply the preset
 		applyPreset(presetManager.activePreset)
+
+		// configure the progress view
+		progressView.font = UIFont.boldSystemFontOfSize(44)
+		progressView.innerRadius = 66
+		progressView.progress = 1
+		progressView.title = formatTime(self.timer.time)
 	}
 	
 	func applyPreset(preset: Preset) {
 		timer.time = preset.time
 		timer.runs = preset.runs
-		timerView.total = timer.time
 		reset()
 	}
 	

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DEA8A1A1CA904FF00BDF955 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA8A191CA904FF00BDF955 /* Preset.swift */; };
+		2DEA8A1C1CA90A2700BDF955 /* PresetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA8A1B1CA90A2700BDF955 /* PresetManager.swift */; };
 		2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */; };
 		2DEFB3091CA6E40100E4AA77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB3081CA6E40100E4AA77 /* ViewController.swift */; };
 		2DEFB30C1CA6E40100E4AA77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30A1CA6E40100E4AA77 /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DEA8A191CA904FF00BDF955 /* Preset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
+		2DEA8A1B1CA90A2700BDF955 /* PresetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetManager.swift; sourceTree = "<group>"; };
 		2DEFB3031CA6E40000E4AA77 /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DEFB3081CA6E40100E4AA77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 			children = (
 				2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */,
 				2DEFB3081CA6E40100E4AA77 /* ViewController.swift */,
+				2DEA8A191CA904FF00BDF955 /* Preset.swift */,
+				2DEA8A1B1CA90A2700BDF955 /* PresetManager.swift */,
 				2DEFB31C1CA6ECD400E4AA77 /* Timer.swift */,
 				2DEFB3181CA6E41600E4AA77 /* TimerView.swift */,
 				2DEFB30A1CA6E40100E4AA77 /* Main.storyboard */,
@@ -143,6 +149,8 @@
 			files = (
 				2DEFB3191CA6E41600E4AA77 /* TimerView.swift in Sources */,
 				2DEFB3091CA6E40100E4AA77 /* ViewController.swift in Sources */,
+				2DEA8A1C1CA90A2700BDF955 /* PresetManager.swift in Sources */,
+				2DEA8A1A1CA904FF00BDF955 /* Preset.swift in Sources */,
 				2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */,
 				2DEFB31D1CA6ECD400E4AA77 /* Timer.swift in Sources */,
 			);
@@ -300,6 +308,7 @@
 				2DEFB3171CA6E40100E4AA77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

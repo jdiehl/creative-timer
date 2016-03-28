@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2DEA8A1A1CA904FF00BDF955 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA8A191CA904FF00BDF955 /* Preset.swift */; };
-		2DEA8A1C1CA90A2700BDF955 /* PresetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA8A1B1CA90A2700BDF955 /* PresetManager.swift */; };
+		2DEA8A1E1CA9365700BDF955 /* RunViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA8A1D1CA9365700BDF955 /* RunViewCell.swift */; };
 		2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */; };
 		2DEFB3091CA6E40100E4AA77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB3081CA6E40100E4AA77 /* ViewController.swift */; };
 		2DEFB30C1CA6E40100E4AA77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30A1CA6E40100E4AA77 /* Main.storyboard */; };
@@ -20,7 +20,7 @@
 
 /* Begin PBXFileReference section */
 		2DEA8A191CA904FF00BDF955 /* Preset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
-		2DEA8A1B1CA90A2700BDF955 /* PresetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetManager.swift; sourceTree = "<group>"; };
+		2DEA8A1D1CA9365700BDF955 /* RunViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunViewCell.swift; sourceTree = "<group>"; };
 		2DEFB3031CA6E40000E4AA77 /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DEFB3081CA6E40100E4AA77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +43,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DEA8A1F1CA938CA00BDF955 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2DEA8A191CA904FF00BDF955 /* Preset.swift */,
+				2DEFB31C1CA6ECD400E4AA77 /* Timer.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2DEA8A201CA938D200BDF955 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2DEA8A1D1CA9365700BDF955 /* RunViewCell.swift */,
+				2DEFB3181CA6E41600E4AA77 /* TimerView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2DEA8A211CA938D700BDF955 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */,
+				2DEFB3081CA6E40100E4AA77 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		2DEFB2FA1CA6E40000E4AA77 = {
 			isa = PBXGroup;
 			children = (
@@ -62,12 +89,9 @@
 		2DEFB3051CA6E40100E4AA77 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
-				2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */,
-				2DEFB3081CA6E40100E4AA77 /* ViewController.swift */,
-				2DEA8A191CA904FF00BDF955 /* Preset.swift */,
-				2DEA8A1B1CA90A2700BDF955 /* PresetManager.swift */,
-				2DEFB31C1CA6ECD400E4AA77 /* Timer.swift */,
-				2DEFB3181CA6E41600E4AA77 /* TimerView.swift */,
+				2DEA8A1F1CA938CA00BDF955 /* Model */,
+				2DEA8A201CA938D200BDF955 /* View */,
+				2DEA8A211CA938D700BDF955 /* Controller */,
 				2DEFB30A1CA6E40100E4AA77 /* Main.storyboard */,
 				2DEFB30D1CA6E40100E4AA77 /* Assets.xcassets */,
 				2DEFB30F1CA6E40100E4AA77 /* LaunchScreen.storyboard */,
@@ -149,10 +173,10 @@
 			files = (
 				2DEFB3191CA6E41600E4AA77 /* TimerView.swift in Sources */,
 				2DEFB3091CA6E40100E4AA77 /* ViewController.swift in Sources */,
-				2DEA8A1C1CA90A2700BDF955 /* PresetManager.swift in Sources */,
 				2DEA8A1A1CA904FF00BDF955 /* Preset.swift in Sources */,
 				2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */,
 				2DEFB31D1CA6ECD400E4AA77 /* Timer.swift in Sources */,
+				2DEA8A1E1CA9365700BDF955 /* RunViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

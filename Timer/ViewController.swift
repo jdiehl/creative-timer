@@ -8,17 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDataSource {
 
 	@IBOutlet weak var timerView: TimerView!
 	@IBOutlet weak var playPauseButton: UIButton!
+	@IBOutlet weak var runsView: UICollectionView!
 	
 	let presetManager = PresetManager()
 	let timer = Timer()
 	
-	private var myContext = 0
-	
 	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		// play/pause icon
 		timer.onStartStop = { running in
@@ -31,8 +31,8 @@ class ViewController: UIViewController {
 		timer.onTimeChange = { time in
 			self.timerView.value = time
 		}
-		
-		super.viewDidLoad()
+
+		// apply the preset
 		applyPreset(presetManager.activePreset)
 	}
 	
@@ -67,5 +67,19 @@ class ViewController: UIViewController {
 		alert.popoverPresentationController?.sourceView = sender
 		self.presentViewController(alert, animated: true, completion: nil)
 	}
+	
+	// UICollectionViewDataSource
+	
+	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return timer.runs > 1 ? timer.runs : 0
+	}
+	
+	// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+		let view = self.runsView.dequeueReusableCellWithReuseIdentifier("run", forIndexPath: indexPath) as! RunViewCell
+		view.run = indexPath.row + 1
+		return view
+	}
+
 }
 

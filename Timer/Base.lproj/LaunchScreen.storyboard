@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,8 +16,49 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ran-pY-ou8">
+                                <rect key="frame" x="278" y="548" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="MIC-RS-k5R"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="OeO-2c-kKn"/>
+                                    <constraint firstAttribute="height" constant="44" id="bn3-5h-eKl"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="xQz-Ml-yRi"/>
+                                </constraints>
+                                <state key="normal" image="PlayButton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gzs-XZ-VKp">
+                                <rect key="frame" x="330" y="548" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JD8-bH-Mv0"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="JEM-lY-du9"/>
+                                    <constraint firstAttribute="width" constant="44" id="fVT-o4-NGJ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="gES-3b-OgC"/>
+                                </constraints>
+                                <state key="normal" image="SettingsButton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Y1-Ex-gU1">
+                                <rect key="frame" x="226" y="548" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="CV0-bD-vkO"/>
+                                    <constraint firstAttribute="height" constant="44" id="dnh-W9-C2v"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="jSz-44-zw3"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="mh9-Uy-0Ox"/>
+                                </constraints>
+                                <state key="normal" image="ResetButton"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gzs-XZ-VKp" firstAttribute="leading" secondItem="Ran-pY-ou8" secondAttribute="trailing" constant="8" id="1ff-R0-0qd"/>
+                            <constraint firstItem="Ran-pY-ou8" firstAttribute="leading" secondItem="0Y1-Ex-gU1" secondAttribute="trailing" constant="8" id="Gek-hA-7ae"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Gzs-XZ-VKp" secondAttribute="bottom" constant="8" id="KuO-9o-yL1"/>
+                            <constraint firstItem="Ran-pY-ou8" firstAttribute="leading" secondItem="0Y1-Ex-gU1" secondAttribute="trailing" constant="8" id="X4a-P6-9EI"/>
+                            <constraint firstItem="Ran-pY-ou8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dtN-Wa-1rM"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Ran-pY-ou8" secondAttribute="bottom" constant="8" id="hSX-lA-j44"/>
+                            <constraint firstItem="Gzs-XZ-VKp" firstAttribute="leading" secondItem="Ran-pY-ou8" secondAttribute="trailing" constant="8" id="xW1-t4-4u7"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="0Y1-Ex-gU1" secondAttribute="bottom" constant="8" id="yK0-CK-Dh7"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +66,9 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="PlayButton" width="12" height="14"/>
+        <image name="ResetButton" width="13" height="14"/>
+        <image name="SettingsButton" width="13" height="14"/>
+    </resources>
 </document>

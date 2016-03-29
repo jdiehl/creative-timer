@@ -121,6 +121,7 @@ class ViewController: UIViewController {
 		}
 		alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
 		alert.popoverPresentationController?.sourceView = sender
+		alert.popoverPresentationController?.sourceRect = sender.bounds
 		self.presentViewController(alert, animated: true, completion: nil)
 	}
 	

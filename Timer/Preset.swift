@@ -17,12 +17,14 @@ class Preset: NSObject {
 		self.title = title
 		self.time = time
 		self.runs = runs
+		super.init()
 	}
 	
 	init(info: [String: AnyObject]) {
 		self.title = String(info["title"]!)
 		self.time = Int(info["time"] as! NSNumber)
 		self.runs = Int(info["runs"] as! NSNumber)
+		super.init()
 	}
 	
 	func info() -> [String: AnyObject] {

@@ -10,6 +10,24 @@ import UIKit
 
 class PresetManager: NSObject {
 	
+	static let sharedManager = PresetManager()
+	
+	static func registerDefaults() {
+		let defaultPresets = [
+			["title": "5 minutes",  "time": 5*60,  "runs": 1],
+			["title": "10 minutes", "time": 10*60, "runs": 1],
+			["title": "15 minutes", "time": 15*60, "runs": 1],
+			["title": "20 minutes", "time": 20*60, "runs": 1],
+			["title": "Crazy Eight", "time": 40, "runs": 8]
+		]
+		NSUserDefaults().registerDefaults([
+			"presets": defaultPresets,
+			"activePreset": defaultPresets[0]
+		])
+	}
+	
+	var onChange: ((Preset) -> Void)?
+	
 	var presets: [Preset] {
 		get {
 			let infos = NSUserDefaults().objectForKey("presets") as! [[String: AnyObject]]
@@ -29,25 +47,8 @@ class PresetManager: NSObject {
 		set {
 			let info = newValue.info()
 			NSUserDefaults().setObject(info, forKey: "activePreset")
+			onChange?(newValue)
 		}
 	}
-	
-	override init() {
-		let defaultPresets = [
-			["title": "5 minutes",  "time": 5*60,  "runs": 1],
-			["title": "10 minutes", "time": 10*60, "runs": 1],
-			["title": "15 minutes", "time": 15*60, "runs": 1],
-			["title": "20 minutes", "time": 20*60, "runs": 1],
-			["title": "Crazy Eight", "time": 40, "runs": 8]
-		]
-
-		NSUserDefaults().registerDefaults([
-			"presets": defaultPresets,
-			"activePreset": defaultPresets[0]
-		])
-
-		super.init()
-	}
-	
 
 }

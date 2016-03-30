@@ -18,7 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// register for local notifications
 		let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
 		application.registerUserNotificationSettings(settings)
-		
+
+		// register default presets
+		PresetManager.registerDefaults()
+
 		return true
 	}
 

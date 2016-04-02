@@ -12,7 +12,32 @@ class PresetManager: NSObject {
 	
 	static let sharedManager = PresetManager()
 	
-	static func registerDefaults() {
+	var onChange: ((Preset) -> Void)?
+
+	private let defaults = NSUserDefaults()
+	private var _activePreset: Preset
+	
+	var presets: [Preset]
+
+	// set active preset
+	var activePreset: Preset {
+		get {
+			return _activePreset
+		}
+		set {
+			_activePreset = newValue
+			defaults.setObject(_activePreset.info(), forKey: "activePreset")
+			onChange?(_activePreset)
+		}
+	}
+	
+	func savePresets() {
+		defaults.setObject(presets.map { $0.info() }, forKey: "presets")
+	}
+	
+	override init() {
+		
+		// register defaults
 		let defaultPresets = [
 			["title": "5 minutes",  "time": 5*60,  "runs": 1],
 			["title": "10 minutes", "time": 10*60, "runs": 1],
@@ -24,31 +49,14 @@ class PresetManager: NSObject {
 			"presets": defaultPresets,
 			"activePreset": defaultPresets[0]
 		])
-	}
-	
-	var onChange: ((Preset) -> Void)?
-	
-	var presets: [Preset] {
-		get {
-			let infos = NSUserDefaults().objectForKey("presets") as! [[String: AnyObject]]
-			return infos.map { Preset(info: $0) }
-		}
-		set {
-			let infos = newValue.map { $0.info() }
-			NSUserDefaults().setObject(infos, forKey: "presets")
-		}
-	}
+		
+		// load presets
+		let infos = defaults.objectForKey("presets") as! [[String: AnyObject]]
+		presets = infos.map { Preset(info: $0) }
 
-	var activePreset: Preset {
-		get {
-			let info = NSUserDefaults().objectForKey("activePreset") as! [String: AnyObject]
-			return Preset(info: info)
-		}
-		set {
-			let info = newValue.info()
-			NSUserDefaults().setObject(info, forKey: "activePreset")
-			onChange?(newValue)
-		}
+		// load active preset
+		let info = defaults.objectForKey("activePreset") as! [String: AnyObject]
+		_activePreset = Preset(info: info)
 	}
 
 }

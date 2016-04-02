@@ -20,8 +20,8 @@ func timeFromComponents(minutes: Int, seconds: Int) -> (Int) {
 
 class PresetViewController: UIViewController, UITextFieldDelegate {
 	
+	private var presetManager = PresetManager.sharedManager
 	var preset: Preset?
-	var presetManager = PresetManager.sharedManager
 	
 	@IBOutlet weak var titleInput: UITextField!
 	@IBOutlet weak var minInput: UITextField!
@@ -29,6 +29,7 @@ class PresetViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var runsInput: UITextField!
 	
 	func done() {
+		view.endEditing(true)
 		presetManager.activePreset = preset!
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
@@ -56,6 +57,19 @@ class PresetViewController: UIViewController, UITextFieldDelegate {
 		self.title = "Edit Preset"
 		
 		update()
+	}
+	
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		view.endEditing(true)
+
+		// update presets
+		if presetManager.presets.contains(preset!) {
+			presetManager.savePresets()
+		} else if preset!.title != "" {
+			presetManager.presets.append(preset!)
+			presetManager.savePresets()
+		}
 	}
 	
     // MARK: - UITextFieldDelegate

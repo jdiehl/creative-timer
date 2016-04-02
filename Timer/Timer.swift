@@ -44,6 +44,19 @@ class Timer: NSObject {
 	
 	private var notifications: [UILocalNotification] = []
 	
+	func suggestTitle() -> String {
+		let minutes = time / 60
+		let seconds = time - minutes * 60
+		if (seconds == 0) {
+			return minutes == 1 ? "1 minute" : "\(minutes) minutes"
+		}
+		if (minutes == 0) {
+			return seconds == 1 ? "1 second" : "\(seconds) seconds"
+		}
+		let secString = (seconds < 10 ? "0" : "") + "\(seconds)"
+		return "\(minutes):\(secString)"
+	}
+	
 	func start() {
 		stop()
 		
@@ -103,8 +116,12 @@ class Timer: NSObject {
 		for i in 1...runs {
 			let ts = i * time - startTime
 			if ts > 0 {
+				var text = "\(suggestTitle()) have passed"
+				if (runs > 1) {
+					text += " (\(i)/\(runs))"
+				}
 				let notification = UILocalNotification()
-				notification.alertBody = "Time expired"
+				notification.alertBody = text
 				notification.alertAction = "view"
 				notification.soundName = UILocalNotificationDefaultSoundName
 				notification.fireDate = startTS?.dateByAddingTimeInterval(NSTimeInterval(ts))

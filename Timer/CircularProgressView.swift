@@ -19,7 +19,7 @@ class CircularProgressView: UIView {
 	var progress: Float = 0 {
 		didSet { updateProgress() }
 	}
-	var innerRadius: Float = 21 {
+	var innerRadius: Float = 18 {
 		didSet { setNeedsLayout() }
 	}
 

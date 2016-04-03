@@ -18,7 +18,7 @@ func formatTime(time: Int) -> String {
 
 class TimerViewController: UIViewController {
 
-	@IBOutlet weak var runsView: UIView!
+	@IBOutlet weak var runsView: RunsView!
 	@IBOutlet weak var progressView: CircularProgressView!
 	@IBOutlet weak var resetButton: UIButton!
 	@IBOutlet weak var playPauseButton: UIButton!
@@ -26,7 +26,6 @@ class TimerViewController: UIViewController {
 	
 	let timer = Timer()
 	let presetManager = PresetManager.sharedManager
-	var runViews: [CircularProgressView] = []
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -46,8 +45,8 @@ class TimerViewController: UIViewController {
 		// on time change
 		timer.onTimeChange = { currentTime in
 			let progress = Float(currentTime) / Float(self.timer.time)
-			if self.runViews.count > self.timer.currentRun {
-				self.runViews[self.timer.currentRun].progress = progress
+			if self.runsView.runViews.count > self.timer.currentRun {
+				self.runsView.runViews[self.timer.currentRun].progress = progress
 			}
 			self.progressView.progress = progress
 			self.progressView.title = formatTime(self.timer.time - currentTime)
@@ -55,7 +54,7 @@ class TimerViewController: UIViewController {
 		
 		// on run change
 		timer.onRunChange = { currentRun in
-			for (i, runView) in self.runViews.enumerate() {
+			for (i, runView) in self.runsView.runViews.enumerate() {
 				runView.progress = i < currentRun ? 1 : 0
 			}
 		}
@@ -68,41 +67,11 @@ class TimerViewController: UIViewController {
 		applyPreset(presetManager.activePreset)
 	}
 	
-	override func viewWillLayoutSubviews() {
-		setupRunViews()
-	}
-	
-	func setupRunViews() {
-		for runView in runViews {
-			runView.removeFromSuperview()
-		}
-		runViews.removeAll()
-		
-		// do not show the runs unless there are at least 2
-		if timer.runs < 2 {
-			return
-		}
-
-		// arrange the views
-		let width = self.runsView.bounds.size.width
-		let	distance = min(50, (width + 5) / 8)
-		let offset = (width - (distance * CGFloat(timer.runs) - 5)) / 2
-		for run in 1...timer.runs {
-			let i = CGFloat(run - 1)
-			let frame = CGRectMake(offset + distance * i, 0, distance - 5, distance - 5)
-			let runView = CircularProgressView(frame: frame)
-			runView.innerRadius = Float(distance) / 2 - 5
-			runView.title = "\(run)"
-			self.runsView.addSubview(runView)
-			runViews.append(runView)
-		}
-	}
-	
 	func applyPreset(preset: Preset) {
 		timer.time = preset.time
 		timer.runs = preset.runs
-		progressView.title = formatTime(self.timer.time)
-		setupRunViews()
+		progressView.title = formatTime(timer.time)
+		runsView.setRunsFromTimer(timer)
 		reset()
 	}
 	

@@ -73,7 +73,7 @@ class PresetTableViewController: UITableViewController {
     }
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		if indexPath.section == 1 {
+		if indexPath.section == 1 && indexPath.row < presetManager.presets.count {
 			presetManager.activePreset = presetManager.presets[indexPath.row]
 			return self.dismissViewControllerAnimated(true, completion: nil)
 		}

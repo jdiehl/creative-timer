@@ -13,6 +13,10 @@ class Preset: NSObject {
 	var time: Int
 	var runs: Int
 	
+	override var description: String {
+		return "<Preset id=\(unsafeAddressOf(self)) title=\(title) time=\(time) runs=\(runs)>"
+	}
+	
 	init(title: String, time: Int, runs: Int) {
 		self.title = title
 		self.time = time

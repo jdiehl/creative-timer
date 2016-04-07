@@ -64,7 +64,6 @@ class Timer: NSObject {
 		UIApplication.sharedApplication().idleTimerDisabled = true
 		
 		// remember the starting value and timestamp as basis for computing the current value
-		currentTime = 35
 		startTime = currentTime + currentRun * time
 		startTS = NSDate()
 		

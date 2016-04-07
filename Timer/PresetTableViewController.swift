@@ -12,8 +12,13 @@ class PresetTableViewController: UITableViewController {
 	
 	let presetManager = PresetManager.sharedManager
 	
+	// soundsEnabled
+	@IBAction func onToggleSoundsEnabled(sender: UISwitch) {
+		presetManager.soundsEnabled = sender.on;
+	}
+	
 	// on cancel
-	func cancel() {
+	func done() {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 	
@@ -21,10 +26,10 @@ class PresetTableViewController: UITableViewController {
         super.viewDidLoad()
 		
 		// cancel button
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancel))
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(done))
 		
 		// title
-		self.title = "Presets"
+		self.title = "Settings"
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -42,11 +47,23 @@ class PresetTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return section == 0 ? presetManager.presets.count : 1
+		return section == 0 ? 1 : presetManager.presets.count + 1
     }
-
+	
+	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return section == 0 ? nil : "Presets"
+	}
+	
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
+			let cell = tableView.dequeueReusableCellWithIdentifier("soundCell", forIndexPath: indexPath)
+			cell.contentView.subviews.forEach({ (view) in
+				if view.isKindOfClass(UISwitch) {
+					(view as! UISwitch).on = presetManager.soundsEnabled
+				}
+			})
+		}
+		if indexPath.section == 1 && indexPath.row < presetManager.presets.count {
 			let cell = tableView.dequeueReusableCellWithIdentifier("presetCell", forIndexPath: indexPath)
 			let preset = presetManager.presets[indexPath.row] as Preset
 			cell.textLabel!.text = preset.title
@@ -56,7 +73,7 @@ class PresetTableViewController: UITableViewController {
     }
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		if indexPath.section == 0 {
+		if indexPath.section == 1 {
 			presetManager.activePreset = presetManager.presets[indexPath.row]
 			return self.dismissViewControllerAnimated(true, completion: nil)
 		}
@@ -64,7 +81,7 @@ class PresetTableViewController: UITableViewController {
 	
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return indexPath.section == 0
+        return indexPath.section == 1 && indexPath.row < presetManager.presets.count
     }
 
     // Override to support editing the table view.
@@ -89,7 +106,7 @@ class PresetTableViewController: UITableViewController {
 
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-		return indexPath.section == 0
+		return indexPath.section == 1 && indexPath.row < presetManager.presets.count
     }
 
     // MARK: - Navigation

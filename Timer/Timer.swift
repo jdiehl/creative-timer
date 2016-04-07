@@ -64,6 +64,7 @@ class Timer: NSObject {
 		UIApplication.sharedApplication().idleTimerDisabled = true
 		
 		// remember the starting value and timestamp as basis for computing the current value
+		currentTime = 35
 		startTime = currentTime + currentRun * time
 		startTS = NSDate()
 		
@@ -136,15 +137,15 @@ class Timer: NSObject {
 		let passedTime = startTime - Int(startTS!.timeIntervalSinceNow)
 		
 		// determine the current run
-		currentRun = min(runs, passedTime / time)
+		let run = min(runs, passedTime / time)
 		
-		// if we exceeded the number of runs we planned, we are done
-		if (currentRun >= runs) {
-			return reset()
+		// update the current run and time
+		if (run < runs) {
+			currentRun = run
+			currentTime = passedTime - currentRun * time
+		} else {
+			reset()
 		}
-		
-		// update the current time
-		currentTime = passedTime - currentRun * time
 	}
 
 }

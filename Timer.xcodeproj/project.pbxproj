@@ -24,6 +24,7 @@
 /* Begin PBXFileReference section */
 		2D3BB6F91CAC36CC008320FA /* PresetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetTableViewController.swift; sourceTree = "<group>"; };
 		2D3BB6FB1CAC36D7008320FA /* PresetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
+		2DA969581CB6D85800C0171E /* Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Timer.entitlements; sourceTree = "<group>"; };
 		2DBD43741CB18B9800431BAA /* RunsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunsView.swift; sourceTree = "<group>"; };
 		2DEA8A191CA904FF00BDF955 /* Preset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
 		2DEA8A221CA93C3900BDF955 /* PresetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetManager.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		2DEFB3051CA6E40100E4AA77 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				2DA969581CB6D85800C0171E /* Timer.entitlements */,
 				2DEA8A1F1CA938CA00BDF955 /* Model */,
 				2DEA8A201CA938D200BDF955 /* View */,
 				2DEA8A211CA938D700BDF955 /* Controller */,
@@ -142,6 +144,11 @@
 					2DEFB3021CA6E40000E4AA77 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = K8AJZV2G24;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

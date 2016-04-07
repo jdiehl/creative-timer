@@ -16,8 +16,19 @@ class PresetManager: NSObject {
 
 	private let defaults = NSUserDefaults()
 	private var _activePreset: Preset
+	private var _soundsEnabled: Bool
 	
 	var presets: [Preset]
+	
+	var soundsEnabled: Bool {
+		get {
+			return _soundsEnabled
+		}
+		set {
+			_soundsEnabled = newValue
+			defaults.setBool(_soundsEnabled, forKey: "soundsEnabled")
+		}
+	}
 
 	// set active preset
 	var activePreset: Preset {
@@ -46,9 +57,13 @@ class PresetManager: NSObject {
 			["title": "Crazy Eight", "time": 40, "runs": 8]
 		]
 		NSUserDefaults().registerDefaults([
+			"soundsEnabled": true,
 			"presets": defaultPresets,
 			"activePreset": defaultPresets[0]
 		])
+		
+		// load sounds enabled
+		_soundsEnabled = defaults.boolForKey("soundsEnabled")
 		
 		// load presets
 		let infos = defaults.objectForKey("presets") as! [[String: AnyObject]]

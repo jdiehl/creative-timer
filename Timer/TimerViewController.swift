@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 // helper
 func formatTime(time: Int) -> String {
@@ -56,6 +57,9 @@ class TimerViewController: UIViewController {
 		timer.onRunChange = { currentRun in
 			for (i, runView) in self.runsView.runViews.enumerate() {
 				runView.progress = i < currentRun ? 1 : 0
+			}
+			if self.presetManager.soundsEnabled {
+				AudioServicesPlaySystemSound(1013);
 			}
 		}
 

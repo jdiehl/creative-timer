@@ -26,9 +26,15 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="xQz-Ml-yRi"/>
                                 </constraints>
                                 <state key="normal" image="PlayButton"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OeO-2c-kKn"/>
+                                        <exclude reference="xQz-Ml-yRi"/>
+                                    </mask>
+                                </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gzs-XZ-VKp">
-                                <rect key="frame" x="330" y="548" width="44" height="44"/>
+                                <rect key="frame" x="386" y="548" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="JD8-bH-Mv0"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="JEM-lY-du9"/>
@@ -36,9 +42,15 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="gES-3b-OgC"/>
                                 </constraints>
                                 <state key="normal" image="SettingsButton"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="JEM-lY-du9"/>
+                                        <exclude reference="gES-3b-OgC"/>
+                                    </mask>
+                                </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Y1-Ex-gU1">
-                                <rect key="frame" x="226" y="548" width="44" height="44"/>
+                                <rect key="frame" x="170" y="548" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="CV0-bD-vkO"/>
                                     <constraint firstAttribute="height" constant="44" id="dnh-W9-C2v"/>
@@ -46,17 +58,21 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="mh9-Uy-0Ox"/>
                                 </constraints>
                                 <state key="normal" image="ResetButton"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="jSz-44-zw3"/>
+                                        <exclude reference="mh9-Uy-0Ox"/>
+                                    </mask>
+                                </variation>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Gzs-XZ-VKp" firstAttribute="leading" secondItem="Ran-pY-ou8" secondAttribute="trailing" constant="8" id="1ff-R0-0qd"/>
-                            <constraint firstItem="Ran-pY-ou8" firstAttribute="leading" secondItem="0Y1-Ex-gU1" secondAttribute="trailing" constant="8" id="Gek-hA-7ae"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Gzs-XZ-VKp" secondAttribute="bottom" constant="8" id="KuO-9o-yL1"/>
-                            <constraint firstItem="Ran-pY-ou8" firstAttribute="leading" secondItem="0Y1-Ex-gU1" secondAttribute="trailing" constant="8" id="X4a-P6-9EI"/>
+                            <constraint firstItem="Ran-pY-ou8" firstAttribute="leading" secondItem="0Y1-Ex-gU1" secondAttribute="trailing" constant="64" id="X4a-P6-9EI"/>
                             <constraint firstItem="Ran-pY-ou8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dtN-Wa-1rM"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Ran-pY-ou8" secondAttribute="bottom" constant="8" id="hSX-lA-j44"/>
-                            <constraint firstItem="Gzs-XZ-VKp" firstAttribute="leading" secondItem="Ran-pY-ou8" secondAttribute="trailing" constant="8" id="xW1-t4-4u7"/>
+                            <constraint firstItem="Gzs-XZ-VKp" firstAttribute="leading" secondItem="Ran-pY-ou8" secondAttribute="trailing" constant="64" id="xW1-t4-4u7"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="0Y1-Ex-gU1" secondAttribute="bottom" constant="8" id="yK0-CK-Dh7"/>
                         </constraints>
                     </view>
@@ -67,8 +83,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="PlayButton" width="12" height="14"/>
-        <image name="ResetButton" width="13" height="14"/>
-        <image name="SettingsButton" width="13" height="14"/>
+        <image name="PlayButton" width="18" height="20"/>
+        <image name="ResetButton" width="19" height="20"/>
+        <image name="SettingsButton" width="19" height="20"/>
     </resources>
 </document>

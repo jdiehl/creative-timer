@@ -88,7 +88,7 @@ class PresetViewController: UIViewController, UITextFieldDelegate {
 			preset!.time = timeFromComponents(Int(minInput.text!)!, seconds: seconds)
 			break
 		case runsInput:
-			preset!.runs = min(max(Int(runsInput.text!)!, 1), 8)
+			preset!.runs = min(max(Int(runsInput.text!)!, 1), 16)
 			break
 		default:
 			break

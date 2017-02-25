@@ -33,6 +33,7 @@ class TimerViewController: UIViewController {
 	let timer = Timer()
 	let presetManager = PresetManager.sharedManager
     var doneTimer: Foundation.Timer?
+    var done = false
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -43,6 +44,9 @@ class TimerViewController: UIViewController {
 		}
 		
         timer.onDone = {
+            if self.presetManager.soundsEnabled {
+                AudioServicesPlaySystemSound(1013);
+            }
             self.setPlayPause(state: .play)
             self.showTimerDone()
         }
@@ -84,11 +88,18 @@ class TimerViewController: UIViewController {
 	}
 	
 	@IBAction func reset(_ sender: AnyObject? = nil) {
+        if (done) {
+            done = false
+            timeDoneFinished()
+        }
         setPlayPause(state: .play)
         timer.reset()
 	}
 
 	@IBAction func playPause(_ sender: AnyObject) {
+        if (done) {
+            reset()
+        }
 		if (timer.running) {
 			timer.stop()
             UIApplication.shared.isIdleTimerDisabled = false
@@ -127,6 +138,7 @@ class TimerViewController: UIViewController {
     }
     
     fileprivate func showTimerDone() {
+        done = true
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut, .repeat, .autoreverse, .allowUserInteraction], animations: { self.progressView.alpha = 0.0 }, completion: nil)
         doneTimer?.invalidate()
         doneTimer = Foundation.Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(timeDoneFinished), userInfo: nil, repeats: false)
@@ -136,6 +148,7 @@ class TimerViewController: UIViewController {
         self.progressView.layer.removeAllAnimations()
         self.progressView.alpha = 1.0
         UIApplication.shared.isIdleTimerDisabled = false
+        doneTimer?.invalidate()
         doneTimer = nil
     }
     

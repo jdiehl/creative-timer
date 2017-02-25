@@ -39,10 +39,13 @@ class RunsView: UIView {
 	override func layoutSubviews() {
 		let runs = runViews.count
 		let width = bounds.size.width
-		let	distance = min(50, (width + 5) / 8)
-		let offset = (width - (distance * CGFloat(runs) - 5)) / 2
+        let maxCols = width > 400.0 ? 16 : 8
+		let	distance = min(50, (width + 5) / CGFloat(maxCols))
+		let offset = (width - (distance * CGFloat(min(runs, maxCols)) - 5)) / 2
 		for (i, runView) in runViews.enumerated() {
-			runView.frame = CGRect(x: offset + distance * CGFloat(i), y: 0, width: distance - 5, height: distance - 5)
+            let row = i / maxCols
+            let col = i % maxCols
+			runView.frame = CGRect(x: offset + distance * CGFloat(col), y: CGFloat(row) * distance, width: distance - 5, height: distance - 5)
 //			runView.innerRadius = Float(distance) / 2 - 5
 		}
 	}

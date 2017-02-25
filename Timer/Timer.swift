@@ -12,21 +12,21 @@ class Timer: NSObject {
 	
 	var time: Int = 300
 	var runs: Int = 1
-	private (set) var currentTime: Int = 0 {
+	fileprivate (set) var currentTime: Int = 0 {
 		didSet {
 			if oldValue != currentTime {
 				onTimeChange?(currentTime)
 			}
 		}
 	}
-	private (set) var currentRun: Int = 0 {
+	fileprivate (set) var currentRun: Int = 0 {
 		didSet {
 			if oldValue != currentRun {
 				onRunChange?(currentRun)
 			}
 		}
 	}
-	private (set) var running: Bool = false {
+	fileprivate (set) var running: Bool = false {
 		didSet {
 			if oldValue != running {
 				onStartStop?(running)
@@ -38,11 +38,12 @@ class Timer: NSObject {
 	var onRunChange: ((Int) -> Void)?
 	var onStartStop: ((Bool) -> Void)?
 	
-	private var startTime = 0
-	private var startTS: NSDate?
-	private var timer: NSTimer?
+	fileprivate var startTime = 0
+	fileprivate var startTS: Date?
+	fileprivate var timer: Foundation.Timer?
+    fileprivate var idleTimer: Foundation.Timer?
 	
-	private var notifications: [UILocalNotification] = []
+	fileprivate var notifications: [UILocalNotification] = []
 	
 	func suggestTitle() -> String {
 		let minutes = time / 60
@@ -58,17 +59,17 @@ class Timer: NSObject {
 	}
 	
 	func start() {
-		stop()
+        cleanup()
 		
 		// disable the idle screen while the timer is running
-		UIApplication.sharedApplication().idleTimerDisabled = true
+		UIApplication.shared.isIdleTimerDisabled = true
 		
 		// remember the starting value and timestamp as basis for computing the current value
 		startTime = currentTime + currentRun * time
-		startTS = NSDate()
+		startTS = Date()
 		
 		// start the timer
-		timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
+		timer = Foundation.Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
 		
 		// schedule a local notification
 		scheduleNotifications()
@@ -77,41 +78,53 @@ class Timer: NSObject {
 	}
 	
 	func stop() {
-		
-		// cancel a scheduled notification
-		cancelNotifications()
-		
-		// stop the timer
-		timer?.invalidate()
-		timer = nil
-		
-		// re-enable the idle screen timer
-		UIApplication.sharedApplication().idleTimerDisabled = false
-		
-		running = false
-	}
+        cleanup()
+
+        // re-enable the idle screen timer after 5 seconds
+        idleTimer = Foundation.Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(enableIdleTimer), userInfo: nil, repeats: false)
+    }
 	
 	func reset() {
-		stop()
+		cleanup()
 		currentRun = 0
 		currentTime = 0
-	}
+
+        // re-enable the idle screen timer after 5 seconds
+        idleTimer = Foundation.Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(enableIdleTimer), userInfo: nil, repeats: false)
+    }
 	
 	deinit {
-		stop()
+        cleanup()
+        UIApplication.shared.isIdleTimerDisabled = false
 	}
+    
+    fileprivate func cleanup() {
+
+        // cancel a scheduled notification
+        cancelNotifications()
+
+        // stop the timer
+        timer?.invalidate()
+        timer = nil
+
+        // stop the idle timer
+        idleTimer?.invalidate()
+        idleTimer = nil
+
+        running = false
+    }
 	
-	private func cancelNotifications() {
+	fileprivate func cancelNotifications() {
 		for notification in notifications {
 			// only cancel the notification if it hasn't fired
 			if notification.fireDate!.timeIntervalSinceNow > 0 {
-				UIApplication.sharedApplication().cancelLocalNotification(notification)
+				UIApplication.shared.cancelLocalNotification(notification)
 			}
 		}
 		notifications.removeAll()
 	}
 	
-	private func scheduleNotifications() {
+	fileprivate func scheduleNotifications() {
 		cancelNotifications()
 		for i in 1...runs {
 			let ts = i * time - startTime
@@ -124,14 +137,14 @@ class Timer: NSObject {
 				notification.alertBody = text
 				notification.alertAction = "view"
 				notification.soundName = UILocalNotificationDefaultSoundName
-				notification.fireDate = startTS?.dateByAddingTimeInterval(NSTimeInterval(ts))
-				UIApplication.sharedApplication().scheduleLocalNotification(notification)
+				notification.fireDate = startTS?.addingTimeInterval(TimeInterval(ts))
+				UIApplication.shared.scheduleLocalNotification(notification)
 				notifications.append(notification)
 			}
 		}
 	}
 	
-	@objc private func tick() {
+	@objc fileprivate func tick() {
 		// determine the passed time from the stored timestamp and startTime
 		let passedTime = startTime - Int(startTS!.timeIntervalSinceNow)
 		
@@ -146,5 +159,11 @@ class Timer: NSObject {
 			reset()
 		}
 	}
+    
+    @objc fileprivate func enableIdleTimer() {
+        print("TIMER DISABLE")
+        UIApplication.shared.isIdleTimerDisabled = false
+        idleTimer = nil
+    }
 
 }

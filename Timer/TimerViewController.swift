@@ -10,7 +10,7 @@ import UIKit
 import AudioToolbox
 
 // helper
-func formatTime(time: Int) -> String {
+func formatTime(_ time: Int) -> String {
 	if (time > 60) {
 		return "\(time / 60)'"
 	}
@@ -40,7 +40,7 @@ class TimerViewController: UIViewController {
 		timer.onStartStop = { running in
 			let imageName = running ? "PauseButton" : "PlayButton"
 			let image = UIImage(named: imageName)
-			self.playPauseButton.setImage(image, forState: .Normal)
+			self.playPauseButton.setImage(image, for: UIControlState())
 		}
 		
 		// on time change
@@ -55,7 +55,7 @@ class TimerViewController: UIViewController {
 		
 		// on run change
 		timer.onRunChange = { currentRun in
-			for (i, runView) in self.runsView.runViews.enumerate() {
+			for (i, runView) in self.runsView.runViews.enumerated() {
 				runView.progress = i < currentRun ? 1 : 0
 			}
 			if self.presetManager.soundsEnabled {
@@ -64,14 +64,14 @@ class TimerViewController: UIViewController {
 		}
 
 		// configure the progress view
-		progressView.font = UIFont.boldSystemFontOfSize(44)
+		progressView.font = UIFont.boldSystemFont(ofSize: 44)
 		progressView.innerRadius = 66
 
 		// apply the preset
 		applyPreset(presetManager.activePreset)
 	}
 	
-	func applyPreset(preset: Preset) {
+	func applyPreset(_ preset: Preset) {
 		timer.time = preset.time
 		timer.runs = preset.runs
 		progressView.title = formatTime(timer.time)
@@ -79,11 +79,11 @@ class TimerViewController: UIViewController {
 		reset()
 	}
 	
-	@IBAction func reset(sender: AnyObject? = nil) {
+	@IBAction func reset(_ sender: AnyObject? = nil) {
 		timer.reset()
 	}
 
-	@IBAction func playPause(sender: AnyObject) {
+	@IBAction func playPause(_ sender: AnyObject) {
 		if (timer.running) {
 			timer.stop()
 		} else {
@@ -91,14 +91,14 @@ class TimerViewController: UIViewController {
 		}
 	}
 
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		let navigationController = segue.destinationViewController as! UINavigationController
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		let navigationController = segue.destination as! UINavigationController
 		let viewController = navigationController.viewControllers[0] as! PresetTableViewController
 		viewController.popoverPresentationController?.sourceRect = resetButton.bounds
 	}
 	
-	@IBAction func settings(sender: UIView) {
-		self.performSegueWithIdentifier("showPresets", sender: sender)
+	@IBAction func settings(_ sender: UIView) {
+		self.performSegue(withIdentifier: "showPresets", sender: sender)
 //		let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
 //		for preset in presetManager.presets {
 //			alert.addAction(UIAlertAction(title: String(preset.title), style: .Default, handler: { style in

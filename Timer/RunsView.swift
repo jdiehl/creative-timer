@@ -12,7 +12,7 @@ class RunsView: UIView {
 	
 	var runViews: [CircularProgressView] = []
 	
-	func setRunsFromTimer(timer: Timer) {
+	func setRunsFromTimer(_ timer: Timer) {
 		
 		// remove previous views
 		for runView in runViews {
@@ -27,7 +27,7 @@ class RunsView: UIView {
 		
 		// add new views
 		for run in 1...timer.runs {
-			let runView = CircularProgressView(frame: CGRectZero)
+			let runView = CircularProgressView(frame: CGRect.zero)
 			runView.title = "\(run)"
 			self.addSubview(runView)
 			runViews.append(runView)
@@ -41,8 +41,8 @@ class RunsView: UIView {
 		let width = bounds.size.width
 		let	distance = min(50, (width + 5) / 8)
 		let offset = (width - (distance * CGFloat(runs) - 5)) / 2
-		for (i, runView) in runViews.enumerate() {
-			runView.frame = CGRectMake(offset + distance * CGFloat(i), 0, distance - 5, distance - 5)
+		for (i, runView) in runViews.enumerated() {
+			runView.frame = CGRect(x: offset + distance * CGFloat(i), y: 0, width: distance - 5, height: distance - 5)
 //			runView.innerRadius = Float(distance) / 2 - 5
 		}
 	}

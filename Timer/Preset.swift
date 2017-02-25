@@ -14,7 +14,7 @@ class Preset: NSObject {
 	var runs: Int
 	
 	override var description: String {
-		return "<Preset id=\(unsafeAddressOf(self)) title=\(title) time=\(time) runs=\(runs)>"
+		return "<Preset id=\(Unmanaged.passUnretained(self).toOpaque()) title=\(title) time=\(time) runs=\(runs)>"
 	}
 	
 	init(title: String, time: Int, runs: Int) {
@@ -25,7 +25,7 @@ class Preset: NSObject {
 	}
 	
 	init(info: [String: AnyObject]) {
-		self.title = String(info["title"]!)
+		self.title = String(describing: info["title"]!)
 		self.time = Int(info["time"] as! NSNumber)
 		self.runs = Int(info["runs"] as! NSNumber)
 		super.init()
@@ -33,9 +33,9 @@ class Preset: NSObject {
 	
 	func info() -> [String: AnyObject] {
 		return [
-			"title": self.title,
-			"time": NSNumber(int: Int32(self.time)),
-			"runs": NSNumber(int: Int32(self.runs))
+			"title": self.title as AnyObject,
+			"time": NSNumber(value: Int32(self.time) as Int32),
+			"runs": NSNumber(value: Int32(self.runs) as Int32)
 			
 		]
 	}

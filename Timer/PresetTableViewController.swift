@@ -13,108 +13,108 @@ class PresetTableViewController: UITableViewController {
 	let presetManager = PresetManager.sharedManager
 	
 	// soundsEnabled
-	@IBAction func onToggleSoundsEnabled(sender: UISwitch) {
-		presetManager.soundsEnabled = sender.on;
+	@IBAction func onToggleSoundsEnabled(_ sender: UISwitch) {
+		presetManager.soundsEnabled = sender.isOn;
 	}
 	
 	// on cancel
 	func done() {
-		self.dismissViewControllerAnimated(true, completion: nil)
+		self.dismiss(animated: true, completion: nil)
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		// cancel button
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(done))
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
 		
 		// title
 		self.title = "Settings"
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 	
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		tableView.reloadData()
 	}
 
     // MARK: - Table view data source
 	
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return section == 0 ? 1 : presetManager.presets.count + 1
     }
 	
-	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		return section == 0 ? nil : "Presets"
 	}
 	
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
-			let cell = tableView.dequeueReusableCellWithIdentifier("soundCell", forIndexPath: indexPath)
+			let cell = tableView.dequeueReusableCell(withIdentifier: "soundCell", for: indexPath)
 			cell.contentView.subviews.forEach({ (view) in
-				if view.isKindOfClass(UISwitch) {
-					(view as! UISwitch).on = presetManager.soundsEnabled
+				if view.isKind(of: UISwitch.self) {
+					(view as! UISwitch).isOn = presetManager.soundsEnabled
 				}
 			})
 		}
 		if indexPath.section == 1 && indexPath.row < presetManager.presets.count {
-			let cell = tableView.dequeueReusableCellWithIdentifier("presetCell", forIndexPath: indexPath)
+			let cell = tableView.dequeueReusableCell(withIdentifier: "presetCell", for: indexPath)
 			let preset = presetManager.presets[indexPath.row] as Preset
 			cell.textLabel!.text = preset.title
 			return cell
 		}
-		return tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath)
+		return tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath)
     }
 	
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if indexPath.section == 1 && indexPath.row < presetManager.presets.count {
 			presetManager.activePreset = presetManager.presets[indexPath.row]
-			return self.dismissViewControllerAnimated(true, completion: nil)
+			return self.dismiss(animated: true, completion: nil)
 		}
 	}
 	
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section == 1 && indexPath.row < presetManager.presets.count
     }
 
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-			presetManager.presets.removeAtIndex(indexPath.row)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+			presetManager.presets.remove(at: indexPath.row)
 			presetManager.savePresets()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 	
 	// allow deletion and insertion
-	override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-		return .Delete
+	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+		return .delete
 	}
 
     // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-		presetManager.presets.insert(presetManager.presets.removeAtIndex(fromIndexPath.row), atIndex:toIndexPath.row)
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
+		presetManager.presets.insert(presetManager.presets.remove(at: fromIndexPath.row), at:toIndexPath.row)
 		presetManager.savePresets()
     }
 
     // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
 		return indexPath.section == 1 && indexPath.row < presetManager.presets.count
     }
 
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "editPreset" {
-			let viewController = segue.destinationViewController as! PresetViewController
-			viewController.preset = presetManager.presets[self.tableView.indexPathForCell(sender! as! UITableViewCell)!.row]
+			let viewController = segue.destination as! PresetViewController
+			viewController.preset = presetManager.presets[self.tableView.indexPath(for: sender! as! UITableViewCell)!.row]
 		}
     }
 

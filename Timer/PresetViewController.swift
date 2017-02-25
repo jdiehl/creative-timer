@@ -8,19 +8,19 @@
 
 import UIKit
 
-func timeToComponents(time: Int) -> (Int, Int) {
+func timeToComponents(_ time: Int) -> (Int, Int) {
 	let minutes = time / 60
 	let seconds = time - minutes * 60
 	return (minutes, seconds)
 }
 
-func timeFromComponents(minutes: Int, seconds: Int) -> (Int) {
+func timeFromComponents(_ minutes: Int, seconds: Int) -> (Int) {
 	return minutes * 60 + seconds
 }
 
 class PresetViewController: UIViewController, UITextFieldDelegate {
 	
-	private var presetManager = PresetManager.sharedManager
+	fileprivate var presetManager = PresetManager.sharedManager
 	var preset: Preset?
 	
 	@IBOutlet weak var titleInput: UITextField!
@@ -31,7 +31,7 @@ class PresetViewController: UIViewController, UITextFieldDelegate {
 	func done() {
 		view.endEditing(true)
 		presetManager.activePreset = preset!
-		self.dismissViewControllerAnimated(true, completion: nil)
+		self.dismiss(animated: true, completion: nil)
 	}
 	
 	func update() {
@@ -51,7 +51,7 @@ class PresetViewController: UIViewController, UITextFieldDelegate {
 		}
 		
 		// ok button
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(done))
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
 		
 		// title
 		self.title = "Edit Preset"
@@ -59,7 +59,7 @@ class PresetViewController: UIViewController, UITextFieldDelegate {
 		update()
 	}
 	
-	override func viewWillDisappear(animated: Bool) {
+	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		view.endEditing(true)
 
@@ -74,7 +74,7 @@ class PresetViewController: UIViewController, UITextFieldDelegate {
 	
     // MARK: - UITextFieldDelegate
 	
-	func textFieldDidEndEditing(textField: UITextField) {
+	func textFieldDidEndEditing(_ textField: UITextField) {
 		switch textField {
 		case titleInput:
 			preset!.title = titleInput.text!

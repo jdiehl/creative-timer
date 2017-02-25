@@ -17,6 +17,11 @@ func formatTime(_ time: Int) -> String {
 	return "\(time)\""
 }
 
+enum PlayPauseState: String {
+    case play = "PlayButton"
+    case pause = "PauseButton"
+}
+
 class TimerViewController: UIViewController {
 
 	@IBOutlet weak var runsView: RunsView!
@@ -27,7 +32,8 @@ class TimerViewController: UIViewController {
 	
 	let timer = Timer()
 	let presetManager = PresetManager.sharedManager
-	
+    var doneTimer: Foundation.Timer?
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -36,12 +42,10 @@ class TimerViewController: UIViewController {
 			self.applyPreset(preset)
 		}
 		
-		// play/pause icon
-		timer.onStartStop = { running in
-			let imageName = running ? "PauseButton" : "PlayButton"
-			let image = UIImage(named: imageName)
-			self.playPauseButton.setImage(image, for: UIControlState())
-		}
+        timer.onDone = {
+            self.setPlayPause(state: .play)
+            self.showTimerDone()
+        }
 		
 		// on time change
 		timer.onTimeChange = { currentTime in
@@ -80,14 +84,19 @@ class TimerViewController: UIViewController {
 	}
 	
 	@IBAction func reset(_ sender: AnyObject? = nil) {
-		timer.reset()
+        setPlayPause(state: .play)
+        timer.reset()
 	}
 
 	@IBAction func playPause(_ sender: AnyObject) {
 		if (timer.running) {
 			timer.stop()
+            UIApplication.shared.isIdleTimerDisabled = false
+            setPlayPause(state: .play)
 		} else {
 			timer.start()
+            UIApplication.shared.isIdleTimerDisabled = true
+            setPlayPause(state: .pause)
 		}
 	}
 
@@ -112,5 +121,23 @@ class TimerViewController: UIViewController {
 //		self.presentViewController(alert, animated: true, completion: nil)
 	}
 	
+    fileprivate func setPlayPause(state: PlayPauseState) {
+        let image = UIImage(named: state.rawValue)
+        self.playPauseButton.setImage(image, for: UIControlState())
+    }
+    
+    fileprivate func showTimerDone() {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut, .repeat, .autoreverse, .allowUserInteraction], animations: { self.progressView.alpha = 0.0 }, completion: nil)
+        doneTimer?.invalidate()
+        doneTimer = Foundation.Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(timeDoneFinished), userInfo: nil, repeats: false)
+    }
+    
+    @objc fileprivate func timeDoneFinished() {
+        self.progressView.layer.removeAllAnimations()
+        self.progressView.alpha = 1.0
+        UIApplication.shared.isIdleTimerDisabled = false
+        doneTimer = nil
+    }
+    
 }
 

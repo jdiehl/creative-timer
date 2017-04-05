@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D3BB6FA1CAC36CC008320FA /* PresetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BB6F91CAC36CC008320FA /* PresetTableViewController.swift */; };
 		2D3BB6FC1CAC36D7008320FA /* PresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BB6FB1CAC36D7008320FA /* PresetViewController.swift */; };
+		2DA20B371E94D38E000B7E45 /* TimeSetGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA20B361E94D38E000B7E45 /* TimeSetGestureRecognizer.swift */; };
 		2DBD43751CB18B9800431BAA /* RunsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD43741CB18B9800431BAA /* RunsView.swift */; };
 		2DEA8A1A1CA904FF00BDF955 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA8A191CA904FF00BDF955 /* Preset.swift */; };
 		2DEA8A231CA93C3900BDF955 /* PresetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA8A221CA93C3900BDF955 /* PresetManager.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		2D3BB6F91CAC36CC008320FA /* PresetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetTableViewController.swift; sourceTree = "<group>"; };
 		2D3BB6FB1CAC36D7008320FA /* PresetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
+		2DA20B361E94D38E000B7E45 /* TimeSetGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSetGestureRecognizer.swift; sourceTree = "<group>"; };
 		2DA969581CB6D85800C0171E /* Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Timer.entitlements; sourceTree = "<group>"; };
 		2DBD43741CB18B9800431BAA /* RunsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunsView.swift; sourceTree = "<group>"; };
 		2DEA8A191CA904FF00BDF955 /* Preset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
@@ -50,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DA20B351E94D347000B7E45 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2DA20B361E94D38E000B7E45 /* TimeSetGestureRecognizer.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		2DEA8A1F1CA938CA00BDF955 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				2DA969581CB6D85800C0171E /* Timer.entitlements */,
+				2DA20B351E94D347000B7E45 /* Util */,
 				2DEA8A1F1CA938CA00BDF955 /* Model */,
 				2DEA8A201CA938D200BDF955 /* View */,
 				2DEA8A211CA938D700BDF955 /* Controller */,
@@ -198,6 +209,7 @@
 				2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */,
 				2DEFB31D1CA6ECD400E4AA77 /* Timer.swift in Sources */,
 				2D3BB6FC1CAC36D7008320FA /* PresetViewController.swift in Sources */,
+				2DA20B371E94D38E000B7E45 /* TimeSetGestureRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = K8AJZV2G24;
 				INFOPLIST_FILE = Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -335,6 +348,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = K8AJZV2G24;
 				INFOPLIST_FILE = Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

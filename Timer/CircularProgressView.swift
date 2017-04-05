@@ -59,7 +59,7 @@ class CircularProgressView: UIView {
 	
 	// update the ring layer
 	fileprivate func updateRing() {
-		let PI2 = 2 * CGFloat(M_PI)
+		let PI2 = 2 * CGFloat(Double.pi)
 		let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
 		let radius = min(self.bounds.size.width, self.bounds.size.height) / 2;
 		
@@ -72,10 +72,10 @@ class CircularProgressView: UIView {
 	
 	// update the progress layer
 	fileprivate func updateProgress() {
-		let PI2 = 2 * CGFloat(M_PI)
+		let PI2 = 2 * CGFloat(Double.pi)
 		let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
 		let radius = min(self.bounds.size.width, self.bounds.size.height) / 2;
-		let startAngle = CGFloat(-M_PI_2)
+		let startAngle = CGFloat(-Double.pi) / 2.0
 		let endAngle = startAngle + PI2 * CGFloat(progress);
 		
 		// render the progress path

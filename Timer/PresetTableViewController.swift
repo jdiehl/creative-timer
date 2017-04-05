@@ -21,9 +21,9 @@ class PresetTableViewController: UITableViewController {
 	func done() {
 		self.dismiss(animated: true, completion: nil)
 	}
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
 		
 		// cancel button
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
@@ -31,9 +31,9 @@ class PresetTableViewController: UITableViewController {
 		// title
 		self.title = "Settings"
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    self.navigationItem.rightBarButtonItem = self.editButtonItem
+  }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)

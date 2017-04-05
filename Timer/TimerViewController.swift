@@ -32,9 +32,16 @@ class TimerViewController: UIViewController {
 	
 	let timer = Timer()
 	let presetManager = PresetManager.sharedManager
-    var doneTimer: Foundation.Timer?
-    var done = false
+  var doneTimer: Foundation.Timer?
+  var done = false
+  var timeSetGestureRecognizer: TimeSetGestureRecognizer?
     
+  func setTime() {
+    let angle = self.timeSetGestureRecognizer?.angle!
+    timer.currgentTime = Int(round(CGFloat(self.timer.time) * angle!))
+    
+  }
+  
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -43,13 +50,13 @@ class TimerViewController: UIViewController {
 			self.applyPreset(preset)
 		}
 		
-        timer.onDone = {
-            if self.presetManager.soundsEnabled {
-                AudioServicesPlaySystemSound(1013);
-            }
-            self.setPlayPause(state: .play)
-            self.showTimerDone()
+    timer.onDone = {
+        if self.presetManager.soundsEnabled {
+            AudioServicesPlaySystemSound(1013);
         }
+        self.setPlayPause(state: .play)
+        self.showTimerDone()
+    }
 		
 		// on time change
 		timer.onTimeChange = { currentTime in
@@ -77,6 +84,10 @@ class TimerViewController: UIViewController {
 
 		// apply the preset
 		applyPreset(presetManager.activePreset)
+    
+    // install set time gesture recognizer
+    self.timeSetGestureRecognizer = TimeSetGestureRecognizer(target: self, action: #selector(setTime))
+    self.progressView.addGestureRecognizer(self.timeSetGestureRecognizer!)
 	}
 	
 	func applyPreset(_ preset: Preset) {

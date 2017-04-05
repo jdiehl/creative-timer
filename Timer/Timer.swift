@@ -12,7 +12,7 @@ class Timer: NSObject {
 	
 	var time: Int = 300
 	var runs: Int = 1
-	fileprivate (set) var currentTime: Int = 0 {
+	var currentTime: Int = 0 {
 		didSet {
 			if oldValue != currentTime {
 				onTimeChange?(currentTime)

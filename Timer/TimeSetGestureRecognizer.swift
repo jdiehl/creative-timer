@@ -26,7 +26,10 @@ class TimeSetGestureRecognizer: UIGestureRecognizer {
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
     if touches.count == 1 || self.view != nil {
       let touch = touches.first!
-      self.angle = ComputeAngle(point: touch.location(in: self.view!), center: self.view!.center)
+      let view = self.view!
+      let point = touch.location(in: view)
+      let center = CGPoint(x: view.bounds.width / 2, y: view.bounds.height / 2)
+      self.angle = ComputeAngle(point: point, center: center)
       self.state = .began
     }
   }

@@ -38,7 +38,7 @@ class TimerViewController: UIViewController {
     
   func setTime() {
     let angle = self.timeSetGestureRecognizer?.angle!
-    timer.currgentTime = Int(round(CGFloat(self.timer.time) * angle!))
+    timer.currentTime = Int(round(CGFloat(self.timer.time) * angle!))
     
   }
   

@@ -37,8 +37,9 @@ class TimerViewController: UIViewController {
   var timeSetGestureRecognizer: TimeSetGestureRecognizer?
     
   func setTime() {
-    let angle = self.timeSetGestureRecognizer?.angle!
-    timer.currentTime = Int(round(CGFloat(self.timer.time) * angle!))
+    if let angle = self.timeSetGestureRecognizer?.angle {
+      timer.currentTime = Int(round(CGFloat(self.timer.time) * angle))
+    }
     
   }
   
@@ -87,6 +88,17 @@ class TimerViewController: UIViewController {
     
     // install set time gesture recognizer
     self.timeSetGestureRecognizer = TimeSetGestureRecognizer(target: self, action: #selector(setTime))
+    
+    var shouldResume = false
+    self.timeSetGestureRecognizer!.onStart = {
+      shouldResume = self.timer.running
+      self.pause()
+    }
+    self.timeSetGestureRecognizer!.onFinish = {
+      if shouldResume {
+        self.play()
+      }
+    }
     self.progressView.addGestureRecognizer(self.timeSetGestureRecognizer!)
 	}
 	
@@ -99,26 +111,34 @@ class TimerViewController: UIViewController {
 	}
 	
 	@IBAction func reset(_ sender: AnyObject? = nil) {
-        if (done) {
-            done = false
-            timeDoneFinished()
-        }
-        setPlayPause(state: .play)
-        timer.reset()
+    if (done) {
+      done = false
+      timeDoneFinished()
+    }
+    setPlayPause(state: .play)
+    timer.reset()
 	}
+  
+  func pause() {
+    timer.stop()
+    UIApplication.shared.isIdleTimerDisabled = false
+    setPlayPause(state: .play)
+  }
+  
+  func play() {
+    timer.start()
+    UIApplication.shared.isIdleTimerDisabled = true
+    setPlayPause(state: .pause)
+  }
 
 	@IBAction func playPause(_ sender: AnyObject) {
-        if (done) {
-            reset()
-        }
+    if (done) {
+      reset()
+    }
 		if (timer.running) {
-			timer.stop()
-            UIApplication.shared.isIdleTimerDisabled = false
-            setPlayPause(state: .play)
+      self.pause()
 		} else {
-			timer.start()
-            UIApplication.shared.isIdleTimerDisabled = true
-            setPlayPause(state: .pause)
+      self.play()
 		}
 	}
 

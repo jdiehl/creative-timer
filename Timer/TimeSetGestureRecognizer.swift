@@ -19,8 +19,17 @@ class TimeSetGestureRecognizer: UIGestureRecognizer {
   
   var angle: CGFloat?
   
+  var onStart: (() -> Void)?
+  var onFinish: (() -> Void)?
+  
   override init(target: Any?, action: Selector?) {
     super.init(target: target, action: action)
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+    if touches.count == 1 {
+      self.onStart?()
+    }
   }
   
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
@@ -35,10 +44,9 @@ class TimeSetGestureRecognizer: UIGestureRecognizer {
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
-    if (self.state == .began) {
-      self.angle = nil
-      self.state = .ended
-    }
+    self.angle = nil
+    self.state = .ended
+    self.onFinish?()
   }
   
 }

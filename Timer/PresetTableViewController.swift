@@ -18,7 +18,7 @@ class PresetTableViewController: UITableViewController {
 	}
 	
 	// on cancel
-	func done() {
+	@objc func done() {
 		self.dismiss(animated: true, completion: nil)
 	}
   
@@ -62,6 +62,7 @@ class PresetTableViewController: UITableViewController {
 					(view as! UISwitch).isOn = presetManager.soundsEnabled
 				}
 			})
+      return cell
 		}
 		if indexPath.section == 1 && indexPath.row < presetManager.presets.count {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "presetCell", for: indexPath)

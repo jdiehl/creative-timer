@@ -26,8 +26,8 @@ class Preset: NSObject {
 	
 	init(info: [String: AnyObject]) {
 		self.title = String(describing: info["title"]!)
-		self.time = Int(info["time"] as! NSNumber)
-		self.runs = Int(info["runs"] as! NSNumber)
+        self.time = Int(truncating: info["time"] as! NSNumber)
+        self.runs = Int(truncating: info["runs"] as! NSNumber)
 		super.init()
 	}
 	

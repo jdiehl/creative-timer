@@ -96,7 +96,7 @@ class CircularProgressView: UIView {
 	// update the title layer
 	fileprivate func updateTitle() {
 		let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-		let size = title.size(attributes: [NSFontAttributeName: font])
+		let size = title.size(withAttributes: [NSAttributedStringKey.font: font])
 		textLayer.font = font
 		textLayer.fontSize = font.pointSize
 		textLayer.foregroundColor = textColor.cgColor

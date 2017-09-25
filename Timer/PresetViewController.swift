@@ -28,7 +28,7 @@ class PresetViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var secInput: UITextField!
 	@IBOutlet weak var runsInput: UITextField!
 	
-	func done() {
+	@objc func done() {
 		view.endEditing(true)
 		presetManager.activePreset = preset!
 		self.dismiss(animated: true, completion: nil)

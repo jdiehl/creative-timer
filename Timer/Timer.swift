@@ -52,7 +52,7 @@ class Timer: NSObject {
 	}
 	
 	func start() {
-        stop()
+    stop()
 		
 		// disable the idle screen while the timer is running
 		UIApplication.shared.isIdleTimerDisabled = true
@@ -71,24 +71,24 @@ class Timer: NSObject {
 	}
 	
 	func stop() {
-        running = false
+    running = false
 
-        // cancel a scheduled notification
-        cancelNotifications()
-        
-        // stop the timer
-        timer?.invalidate()
-        timer = nil
-    }
+    // cancel a scheduled notification
+    cancelNotifications()
+  
+    // stop the timer
+    timer?.invalidate()
+    timer = nil
+  }
 	
 	func reset() {
 		stop()
 		currentRun = 0
 		currentTime = 0
-    }
+  }
 	
 	deinit {
-        stop()
+    stop()
 	}
     
 	fileprivate func cancelNotifications() {
@@ -133,9 +133,9 @@ class Timer: NSObject {
 			currentRun = run
 			currentTime = passedTime - currentRun * time
 		} else {
-            currentTime = time
-            stop()
-            onDone?()
+      currentTime = time
+      stop()
+      onDone?()
 		}
 	}
 

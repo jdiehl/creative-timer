@@ -10,11 +10,12 @@ import UIKit
 import AudioToolbox
 
 // helper
-func formatTime(_ time: Int) -> String {
-	if (time > 60) {
-		return "\(time / 60)'"
+func formatTime(_ seconds: Int) -> String {
+	if (seconds > 60) {
+    let minutes = (seconds - 1) / 60 + 1
+		return "\(minutes)'"
 	}
-	return "\(time)\""
+	return "\(seconds)\""
 }
 
 enum PlayPauseState: String {
@@ -36,9 +37,10 @@ class TimerViewController: UIViewController {
   var done = false
   var timeSetGestureRecognizer: TimeSetGestureRecognizer?
     
-  func setTime() {
+  @objc func setTime() {
     if let angle = self.timeSetGestureRecognizer?.angle {
       timer.currentTime = Int(round(CGFloat(self.timer.time) * angle))
+      done = false
     }
     
   }
@@ -52,11 +54,11 @@ class TimerViewController: UIViewController {
 		}
 		
     timer.onDone = {
-        if self.presetManager.soundsEnabled {
-            AudioServicesPlaySystemSound(1013);
-        }
-        self.setPlayPause(state: .play)
-        self.showTimerDone()
+      if self.presetManager.soundsEnabled {
+        AudioServicesPlaySystemSound(1013);
+      }
+      self.setPlayPause(state: .play)
+      self.showTimerDone()
     }
 		
 		// on time change

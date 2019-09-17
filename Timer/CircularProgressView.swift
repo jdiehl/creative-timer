@@ -23,16 +23,6 @@ class CircularProgressView: UIView {
 		didSet { setNeedsLayout() }
 	}
 
-	var color: UIColor = UIColor.red {
-		didSet { updateProgress() }
-	}
-	var ringColor: UIColor = UIColor(white: 0.9, alpha: 1) {
-		didSet { updateProgress() }
-	}
-	var textColor: UIColor = UIColor.black {
-		didSet { updateTitle() }
-	}
-	
 	// background layer
 	lazy fileprivate var ringLayer: CAShapeLayer = {
 		let ringLayer = CAShapeLayer()
@@ -63,6 +53,14 @@ class CircularProgressView: UIView {
 		let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
 		let radius = min(self.bounds.size.width, self.bounds.size.height) / 2;
 		
+		// color
+		var ringColor: UIColor
+		if #available(iOS 13, *) {
+			ringColor = UIColor.systemGray6
+		} else {
+			ringColor = UIColor(white: 0.9, alpha: 1)
+		}
+		
 		// render the background path
 		let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: PI2, clockwise: true)
 		path.addArc(withCenter: center, radius: CGFloat(innerRadius), startAngle: PI2, endAngle: 0, clockwise: false)
@@ -81,7 +79,7 @@ class CircularProgressView: UIView {
 		// render the progress path
 		let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
 		path.addArc(withCenter: center, radius: CGFloat(innerRadius), startAngle: endAngle, endAngle: startAngle, clockwise: false)
-		progressLayer.fillColor = color.cgColor
+		progressLayer.fillColor = UIColor.systemRed.cgColor
 
 		// animate (not working)
 //		let morph = CABasicAnimation(keyPath:"path")
@@ -96,7 +94,16 @@ class CircularProgressView: UIView {
 	// update the title layer
 	fileprivate func updateTitle() {
 		let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-		let size = title.size(withAttributes: [NSAttributedStringKey.font: font])
+		let size = title.size(withAttributes: [NSAttributedString.Key.font: font])
+		
+		// color
+		var textColor: UIColor
+		if #available(iOS 13, *) {
+			textColor = UIColor.label
+		} else {
+			textColor = UIColor.black
+		}
+		
 		textLayer.font = font
 		textLayer.fontSize = font.pointSize
 		textLayer.foregroundColor = textColor.cgColor

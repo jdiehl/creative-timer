@@ -167,7 +167,7 @@ class TimerViewController: UIViewController {
 	
     fileprivate func setPlayPause(state: PlayPauseState) {
         let image = UIImage(named: state.rawValue)
-        self.playPauseButton.setImage(image, for: UIControlState())
+        self.playPauseButton.setImage(image, for: UIControl.State())
     }
     
     fileprivate func showTimerDone() {

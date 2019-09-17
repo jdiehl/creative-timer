@@ -13,11 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
 		// register for local notifications
-		let settings = UIUserNotificationSettings(types: .alert, categories: nil)
-		application.registerUserNotificationSettings(settings)
+		UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+		 (granted, error) in
+			// Parse errors and track state
+		}
 
 		return true
 	}

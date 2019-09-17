@@ -36,8 +36,6 @@ class Timer: NSObject {
 	fileprivate var startTS: Date?
 	fileprivate var timer: Foundation.Timer?
 	
-	fileprivate var notifications: [UILocalNotification] = []
-	
 	func suggestTitle() -> String {
 		let minutes = time / 60
 		let seconds = time - minutes * 60
@@ -92,13 +90,7 @@ class Timer: NSObject {
 	}
     
 	fileprivate func cancelNotifications() {
-		for notification in notifications {
-			// only cancel the notification if it hasn't fired
-			if notification.fireDate!.timeIntervalSinceNow > 0 {
-				UIApplication.shared.cancelLocalNotification(notification)
-			}
-		}
-		notifications.removeAll()
+		UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
 	}
 	
 	fileprivate func scheduleNotifications() {
@@ -110,13 +102,17 @@ class Timer: NSObject {
 				if (runs > 1) {
 					text += " (\(i)/\(runs))"
 				}
-				let notification = UILocalNotification()
-				notification.alertBody = text
-				notification.alertAction = "view"
-				notification.soundName = UILocalNotificationDefaultSoundName
-				notification.fireDate = startTS?.addingTimeInterval(TimeInterval(ts))
-				UIApplication.shared.scheduleLocalNotification(notification)
-				notifications.append(notification)
+				let identifier = "run-\(i)"
+				let triggerDate = startTS!.addingTimeInterval(TimeInterval(ts))
+				let triggerDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: triggerDate)
+				let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
+				let content = UNMutableNotificationContent()
+				content.body = text
+				content.sound = UNNotificationSound.default
+				let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+				UNUserNotificationCenter.current().add(request) { (error) in
+					// check error
+				}
 			}
 		}
 	}

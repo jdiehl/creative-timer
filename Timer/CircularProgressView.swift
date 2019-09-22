@@ -34,6 +34,7 @@ class CircularProgressView: UIView {
 	// progress layer
 	lazy fileprivate var progressLayer: CAShapeLayer = {
 		let progressLayer = CAShapeLayer()
+    progressLayer.opacity = 1
 		progressLayer.contentsScale = UIScreen.main.scale
 		self.layer.addSublayer(progressLayer)
 		return progressLayer
@@ -87,7 +88,6 @@ class CircularProgressView: UIView {
 //		morph.fromValue = self.progressLayer.path
 //		morph.toValue = path.CGPath
 //		progressLayer.addAnimation(morph, forKey: "morph")
-		
 		progressLayer.path = path.cgPath
 	}
 	

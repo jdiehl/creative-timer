@@ -9,6 +9,13 @@
 import UIKit
 
 class CircularProgressView: UIView {
+  
+  static func create(superview: UIView, title: String) -> CircularProgressView {
+    let view = CircularProgressView(frame: CGRect.zero)
+    view.title = title
+    superview.addSubview(view)
+    return view
+  }
 	
 	var title: String = "" {
 		didSet { updateTitle() }

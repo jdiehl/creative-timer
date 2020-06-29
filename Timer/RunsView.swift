@@ -23,7 +23,7 @@ class RunsView: UIView {
     guard timer.runs > 1 else { return }
 		
 		// add run views
-    runViews = (1...timer.runs).map { CircularProgressView.create(superview: self, title: "\($0)") }
+    runViews = (1...timer.runs).map { CircularProgressView.create(title: "\($0)", addToSuperview: self) }
 
     // refresh layout
 		setNeedsLayout()

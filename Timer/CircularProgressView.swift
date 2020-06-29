@@ -10,7 +10,7 @@ import UIKit
 
 class CircularProgressView: UIView {
   
-  static func create(superview: UIView, title: String) -> CircularProgressView {
+  static func create(title: String, addToSuperview superview: UIView) -> CircularProgressView {
     let view = CircularProgressView(frame: CGRect.zero)
     view.title = title
     superview.addSubview(view)

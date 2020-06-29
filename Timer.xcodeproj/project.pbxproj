@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D3BB6FA1CAC36CC008320FA /* PresetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BB6F91CAC36CC008320FA /* PresetTableViewController.swift */; };
 		2D3BB6FC1CAC36D7008320FA /* PresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BB6FB1CAC36D7008320FA /* PresetViewController.swift */; };
+		2D7C25AF24AA7A940092F896 /* helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7C25AE24AA7A940092F896 /* helpers.swift */; };
 		2DA20B371E94D38E000B7E45 /* TimeSetGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA20B361E94D38E000B7E45 /* TimeSetGestureRecognizer.swift */; };
 		2DBD43751CB18B9800431BAA /* RunsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD43741CB18B9800431BAA /* RunsView.swift */; };
 		2DEA8A1A1CA904FF00BDF955 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA8A191CA904FF00BDF955 /* Preset.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		2D3BB6F91CAC36CC008320FA /* PresetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetTableViewController.swift; sourceTree = "<group>"; };
 		2D3BB6FB1CAC36D7008320FA /* PresetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
+		2D7C25AE24AA7A940092F896 /* helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helpers.swift; sourceTree = "<group>"; };
 		2DA20B361E94D38E000B7E45 /* TimeSetGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSetGestureRecognizer.swift; sourceTree = "<group>"; };
 		2DA969581CB6D85800C0171E /* Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Timer.entitlements; sourceTree = "<group>"; };
 		2DBD43741CB18B9800431BAA /* RunsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunsView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				2DA20B361E94D38E000B7E45 /* TimeSetGestureRecognizer.swift */,
+				2D7C25AE24AA7A940092F896 /* helpers.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DBD43751CB18B9800431BAA /* RunsView.swift in Sources */,
+				2D7C25AF24AA7A940092F896 /* helpers.swift in Sources */,
 				2DEFB3191CA6E41600E4AA77 /* CircularProgressView.swift in Sources */,
 				2DEFB3091CA6E40100E4AA77 /* TimerViewController.swift in Sources */,
 				2DEA8A1A1CA904FF00BDF955 /* Preset.swift in Sources */,

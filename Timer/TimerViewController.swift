@@ -8,20 +8,7 @@
 
 import UIKit
 import AudioToolbox
-
-// helper
-func formatTime(_ seconds: Int) -> String {
-	if (seconds > 60) {
-    let minutes = (seconds - 1) / 60 + 1
-		return "\(minutes)'"
-	}
-	return "\(seconds)\""
-}
-
-enum PlayPauseState: String {
-    case play = "PlayButton"
-    case pause = "PauseButton"
-}
+import AVFoundation
 
 class TimerViewController: UIViewController {
 
@@ -30,24 +17,24 @@ class TimerViewController: UIViewController {
 	@IBOutlet weak var resetButton: UIButton!
 	@IBOutlet weak var playPauseButton: UIButton!
 	@IBOutlet weak var presetsButton: UIButton!
-	
-	let timer = Timer()
+
+  let timer = Timer()
 	let presetManager = PresetManager.sharedManager
   var doneTimer: Foundation.Timer?
   var done = false
   var timeSetGestureRecognizer: TimeSetGestureRecognizer?
-    
+  let synth = AVSpeechSynthesizer()
+
   @objc func setTime() {
     if let angle = self.timeSetGestureRecognizer?.angle {
       timer.currentTime = Int(round(CGFloat(self.timer.time) * angle))
       done = false
     }
-    
   }
   
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+    
 		// preset change
 		presetManager.onChange = { preset in
 			self.applyPreset(preset)
@@ -113,6 +100,8 @@ class TimerViewController: UIViewController {
 	}
 	
 	@IBAction func reset(_ sender: AnyObject? = nil) {
+    self.speak("Stop")
+
     if (done) {
       done = false
       timeDoneFinished()
@@ -122,12 +111,16 @@ class TimerViewController: UIViewController {
 	}
   
   func pause() {
+    self.speak("Pause")
+
     timer.stop()
     UIApplication.shared.isIdleTimerDisabled = false
     setPlayPause(state: .play)
   }
   
   func play() {
+    self.speak("Go")
+    
     timer.start()
     UIApplication.shared.isIdleTimerDisabled = true
     setPlayPause(state: .pause)
@@ -165,17 +158,21 @@ class TimerViewController: UIViewController {
 //		self.presentViewController(alert, animated: true, completion: nil)
 	}
 	
-    fileprivate func setPlayPause(state: PlayPauseState) {
-        let image = UIImage(named: state.rawValue)
-        self.playPauseButton.setImage(image, for: UIControl.State())
-    }
-    
-    fileprivate func showTimerDone() {
-        done = true
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut, .repeat, .autoreverse, .allowUserInteraction], animations: { self.progressView.alpha = 0.0 }, completion: nil)
-        doneTimer?.invalidate()
-        doneTimer = Foundation.Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(timeDoneFinished), userInfo: nil, repeats: false)
-    }
+  fileprivate func setPlayPause(state: PlayPauseState) {
+      let image = UIImage(named: state.rawValue)
+      self.playPauseButton.setImage(image, for: UIControl.State())
+  }
+  
+  fileprivate func showTimerDone() {
+      done = true
+      UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut, .repeat, .autoreverse, .allowUserInteraction], animations: { self.progressView.alpha = 0.0 }, completion: nil)
+      doneTimer?.invalidate()
+      doneTimer = Foundation.Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(timeDoneFinished), userInfo: nil, repeats: false)
+  }
+
+  fileprivate func speak(_ text: String) {
+    self.synth.speak(AVSpeechUtterance(string: text))
+  }
     
     @objc fileprivate func timeDoneFinished() {
         self.progressView.layer.removeAllAnimations()

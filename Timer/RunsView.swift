@@ -10,29 +10,27 @@ import UIKit
 
 class RunsView: UIView {
 	
-	var runViews: [CircularProgressView] = []
+	var runViews = [CircularProgressView]()
 	
+  // create the run views
 	func setRunsFromTimer(_ timer: Timer) {
 		
 		// remove previous views
-		for runView in runViews {
-			runView.removeFromSuperview()
-		}
-		runViews.removeAll()
+    runViews.forEach { view in view.removeFromSuperview() }
+    runViews = []
 		
-		// do not show the runs unless there are at least 2
-		if timer.runs < 2 {
-			return
-		}
+		// do not show the runs unless there are more than one
+    guard timer.runs > 1 else { return }
 		
 		// add new views
-		for run in 1...timer.runs {
+    runViews = (1...timer.runs).map { run in
 			let runView = CircularProgressView(frame: CGRect.zero)
 			runView.title = "\(run)"
 			self.addSubview(runView)
-			runViews.append(runView)
+			return runView
 		}
-		
+
+    // refresh layout
 		setNeedsLayout()
 	}
 

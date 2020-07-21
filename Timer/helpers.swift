@@ -17,16 +17,3 @@ func timeToComponents(_ time: Int) -> (Int, Int) {
 func timeFromComponents(_ minutes: Int, seconds: Int) -> (Int) {
   return minutes * 60 + seconds
 }
-
-func formatTime(_ seconds: Int) -> String {
-  if (seconds > 60) {
-    let minutes = (seconds - 1) / 60 + 1
-    return "\(minutes)'"
-  }
-  return "\(seconds)\""
-}
-
-enum PlayPauseState: String {
-    case play = "PlayButton"
-    case pause = "PauseButton"
-}

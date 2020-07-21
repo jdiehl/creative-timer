@@ -8,6 +8,16 @@
 
 import UIKit
 
+func timeToComponents(_ time: Int) -> (Int, Int) {
+  let minutes = time / 60
+  let seconds = time - minutes * 60
+  return (minutes, seconds)
+}
+
+func timeFromComponents(_ minutes: Int, seconds: Int) -> (Int) {
+  return minutes * 60 + seconds
+}
+
 class PresetViewController: UIViewController, UITextFieldDelegate {
 	
 	fileprivate var presetManager = PresetManager.sharedManager

@@ -9,24 +9,15 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-func ComputeAngle(point: CGPoint, center: CGPoint) -> CGFloat {
-  let p = CGPoint(x: point.x - center.x, y: point.y - center.y)
-  let a = atan2(p.x, p.y)
-  return 0.5 - a / CGFloat(Double.pi) / 2.0
-}
-
-class TimeSetGestureRecognizer: UIGestureRecognizer {
+class AngleGestureRecognizer: UIGestureRecognizer {
   
   var angle: CGFloat?
-  var prevAngle: CGFloat?
   
   var onStart: (() -> Void)?
   var onFinish: (() -> Void)?
   
-  override init(target: Any?, action: Selector?) {
-    super.init(target: target, action: action)
-  }
-  
+  private var prevAngle: CGFloat?
+
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
     if touches.count == 1 {
       self.onStart?()
@@ -40,7 +31,7 @@ class TimeSetGestureRecognizer: UIGestureRecognizer {
       let view = self.view!
       let point = touch.location(in: view)
       let center = CGPoint(x: view.bounds.width / 2, y: view.bounds.height / 2)
-      let newAngle = ComputeAngle(point: point, center: center)
+      let newAngle = center.angle(target: point)
       
       // let the angle stick to the 0% / 100% mark
       if let prevAngle = self.prevAngle {

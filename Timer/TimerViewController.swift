@@ -7,180 +7,92 @@
 //
 
 import UIKit
-import AudioToolbox
-import AVFoundation
 
-class TimerViewController: UIViewController {
+class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDelegate {
 
-	@IBOutlet weak var runsView: RunsView!
-	@IBOutlet weak var progressView: CircularProgressView!
-	@IBOutlet weak var resetButton: UIButton!
-	@IBOutlet weak var playPauseButton: UIButton!
-	@IBOutlet weak var presetsButton: UIButton!
+	@IBOutlet weak var headerView: UIView!
+	@IBOutlet weak var progressView: UIView!
+  @IBOutlet weak var stepsView: UIView!
+  @IBOutlet weak var controlsView: UIView!
 
-  let timer = Timer()
-	let presetManager = PresetManager.sharedManager
-  var doneTimer: Foundation.Timer?
-  var done = false
-  var timeSetGestureRecognizer: TimeSetGestureRecognizer?
-  let synth = AVSpeechSynthesizer()
+  let runner = ProgramRunner.shared
+  
+  lazy var headerViewController: HeaderViewController = instantiateChild(identifier: "Header")
+  lazy var progressViewController: ProgressViewController = instantiateChild(identifier: "TimeProgress")
+  lazy var stepsViewController: StepsViewController = instantiateChild(identifier: "Steps")
+  lazy var controlsViewController: ControlsViewController = instantiateChild(identifier: "Controls")
 
-  @objc func setTime() {
-    if let angle = self.timeSetGestureRecognizer?.angle {
-      timer.currentTime = Int(round(CGFloat(self.timer.time) * angle))
-      done = false
-    }
+  private var blinkAnimation: BlinkAnimation?
+
+  // MARK: - ProgramManagerDelegate
+  
+  func managerChangedProgram(programManager: ProgramManager) {
+    runner.program = programManager.activeProgram
   }
+  
+  // MARK: - ControlsDelegate
+
+  func onSettings() {
+    performSegue(withIdentifier: "showPresets", sender: self)
+  }
+  
+  // MARK: - UIViewController
   
 	override func viewDidLoad() {
 		super.viewDidLoad()
+    setupViewControllers()
+    setupEvents()
+    updateColors()
+    runner.program = ProgramManager.shared.activeProgram
+	}
+	
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let navigationController = segue.destination as! UINavigationController
+    let viewController = navigationController.viewControllers[0] as! PresetTableViewController
+    viewController.popoverPresentationController?.sourceRect = controlsViewController.resetButton.bounds
+  }
+  
+  // position child view controllers
+  private func setupViewControllers() {
+    headerViewController.embedIn(view: headerView)
+    progressViewController.embedIn(view: progressView)
+    controlsViewController.embedIn(view: controlsView)
+    stepsViewController.embedIn(view: stepsView)
+    controlsViewController.delegate = self
+  }
+  
+  // set up event handlers
+  private func setupEvents() {
     
-		// preset change
-		presetManager.onChange = { preset in
-			self.applyPreset(preset)
-		}
-		
-    timer.onDone = {
-      if self.presetManager.soundsEnabled {
-        AudioServicesPlaySystemSound(1013);
-      }
-      self.setPlayPause(state: .play)
-      self.showTimerDone()
+    // runner started
+    runner.on(.started) {
+      self.blinkAnimation?.cancel()
+      UIApplication.shared.isIdleTimerDisabled = true
     }
-		
-		// on time change
-		timer.onTimeChange = { currentTime in
-			let progress = Float(currentTime) / Float(self.timer.time)
-			if self.runsView.runViews.count > self.timer.currentRun {
-				self.runsView.runViews[self.timer.currentRun].progress = progress
-			}
-			self.progressView.progress = progress
-			self.progressView.title = formatTime(self.timer.time - currentTime)
-		}
-		
-		// on run change
-		timer.onRunChange = { currentRun in
-			for (i, runView) in self.runsView.runViews.enumerated() {
-				runView.progress = i < currentRun ? 1 : 0
-			}
-			if self.presetManager.soundsEnabled {
-				AudioServicesPlaySystemSound(1013);
-			}
-		}
-
-		// configure the progress view
-		progressView.font = UIFont.boldSystemFont(ofSize: 44)
-		progressView.innerRadius = 66
-
-		// apply the preset
-		applyPreset(presetManager.activePreset)
     
-    // install set time gesture recognizer
-    self.timeSetGestureRecognizer = TimeSetGestureRecognizer(target: self, action: #selector(setTime))
-    
-    var shouldResume = false
-    self.timeSetGestureRecognizer!.onStart = {
-      shouldResume = self.timer.running
-      self.pause()
+    // runner stopped
+    runner.on(.stopped) {
+      UIApplication.shared.isIdleTimerDisabled = false
     }
-    self.timeSetGestureRecognizer!.onFinish = {
-      if shouldResume {
-        self.play()
+    
+    // runner reset
+    runner.on(.set) {
+      self.blinkAnimation?.cancel()
+    }
+    
+    // runner finished
+    runner.on(.finished) {
+      self.blinkAnimation = BlinkAnimation(view: self.progressView) { canceled in
+        if !canceled { UIApplication.shared.isIdleTimerDisabled = false }
+        self.blinkAnimation = nil
       }
     }
-    self.progressView.addGestureRecognizer(self.timeSetGestureRecognizer!)
-	}
-	
-	func applyPreset(_ preset: Preset) {
-		timer.time = preset.time
-		timer.runs = preset.runs
-		progressView.title = formatTime(timer.time)
-		runsView.setRunsFromTimer(timer)
-		reset()
-	}
-	
-	@IBAction func reset(_ sender: AnyObject? = nil) {
-    self.speak("Stop")
 
-    if (done) {
-      done = false
-      timeDoneFinished()
-    }
-    setPlayPause(state: .play)
-    timer.reset()
-	}
-  
-  func pause() {
-    self.speak("Pause")
-
-    timer.stop()
-    UIApplication.shared.isIdleTimerDisabled = false
-    setPlayPause(state: .play)
+    TintManager.shared.on(.tintChanged) { self.updateColors() }
   }
   
-  func play() {
-    self.speak("Go")
-    
-    timer.start()
-    UIApplication.shared.isIdleTimerDisabled = true
-    setPlayPause(state: .pause)
-  }
-
-	@IBAction func playPause(_ sender: AnyObject) {
-    if (done) {
-      reset()
-    }
-		if (timer.running) {
-      self.pause()
-		} else {
-      self.play()
-		}
-	}
-
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		let navigationController = segue.destination as! UINavigationController
-		let viewController = navigationController.viewControllers[0] as! PresetTableViewController
-		viewController.popoverPresentationController?.sourceRect = resetButton.bounds
-	}
-	
-	@IBAction func settings(_ sender: UIView) {
-		self.performSegue(withIdentifier: "showPresets", sender: sender)
-//		let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-//		for preset in presetManager.presets {
-//			alert.addAction(UIAlertAction(title: String(preset.title), style: .Default, handler: { style in
-//				self.presetManager.activePreset = preset
-//				self.applyPreset(preset)
-//			}))
-//		}
-//		alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-//		alert.popoverPresentationController?.sourceView = sender
-//		alert.popoverPresentationController?.sourceRect = sender.bounds
-//		self.presentViewController(alert, animated: true, completion: nil)
-	}
-	
-  fileprivate func setPlayPause(state: PlayPauseState) {
-      let image = UIImage(named: state.rawValue)
-      self.playPauseButton.setImage(image, for: UIControl.State())
+  private func updateColors() {
+    self.view.backgroundColor = TintManager.shared.backgroundColor
   }
   
-  fileprivate func showTimerDone() {
-      done = true
-      UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut, .repeat, .autoreverse, .allowUserInteraction], animations: { self.progressView.alpha = 0.0 }, completion: nil)
-      doneTimer?.invalidate()
-      doneTimer = Foundation.Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(timeDoneFinished), userInfo: nil, repeats: false)
-  }
-
-  fileprivate func speak(_ text: String) {
-    self.synth.speak(AVSpeechUtterance(string: text))
-  }
-    
-    @objc fileprivate func timeDoneFinished() {
-        self.progressView.layer.removeAllAnimations()
-        self.progressView.alpha = 1.0
-        UIApplication.shared.isIdleTimerDisabled = false
-        doneTimer?.invalidate()
-        doneTimer = nil
-    }
-    
 }
-

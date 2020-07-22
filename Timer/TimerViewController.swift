@@ -21,8 +21,7 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
   lazy var progressViewController: ProgressViewController = instantiateChild(identifier: "TimeProgress")
   lazy var stepsViewController: StepsViewController = instantiateChild(identifier: "Steps")
   lazy var controlsViewController: ControlsViewController = instantiateChild(identifier: "Controls")
-
-  private var blinkAnimation: BlinkAnimation?
+  lazy var flashViewController: FlashViewController = FlashViewController()
 
   // MARK: - ProgramManagerDelegate
   
@@ -54,6 +53,8 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
   
   // position child view controllers
   private func setupViewControllers() {
+    addChild(flashViewController)
+    flashViewController.embedIn(view: view)
     headerViewController.embedIn(view: headerView)
     progressViewController.embedIn(view: progressView)
     controlsViewController.embedIn(view: controlsView)
@@ -66,7 +67,6 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
     
     // runner started
     runner.on(.started) {
-      self.blinkAnimation?.cancel()
       UIApplication.shared.isIdleTimerDisabled = true
     }
     
@@ -75,16 +75,15 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
       UIApplication.shared.isIdleTimerDisabled = false
     }
     
-    // runner reset
-    runner.on(.set) {
-      self.blinkAnimation?.cancel()
+    // runner step
+    runner.on(.stepChanged) {
+      if self.runner.running { self.flashViewController.blink() }
     }
     
     // runner finished
     runner.on(.finished) {
-      self.blinkAnimation = BlinkAnimation(view: self.progressView) { canceled in
-        if !canceled { UIApplication.shared.isIdleTimerDisabled = false }
-        self.blinkAnimation = nil
+      self.flashViewController.flash() { success in
+        UIApplication.shared.isIdleTimerDisabled = false
       }
     }
 

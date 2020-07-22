@@ -47,12 +47,12 @@ class StepsViewController: UIViewController, StepsViewDelegate {
   private func updateSteps() {
     guard let program = runner.program else { return }
     totalTimeLabel.text = Duration(seconds: program.totalLength).toString()
-    stepsView.steps = program.steps
+    stepsView.program = program
   }
   
   private func updateProgress() {
     currentTimeLabel.text = Duration(seconds: runner.totalTime).toString()
-    stepsView.progress = StepProgress(step: runner.index.step, progress: runner.stepProgress)
+    stepsView.index = runner.index
   }
   
   private func updateColor() {

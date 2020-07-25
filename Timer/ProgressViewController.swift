@@ -29,7 +29,7 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
   
   private func update() {
     progressView.progress = runner.stepProgress
-    progressLabel.text = Duration(seconds: runner.stepTime).toString()
+    progressLabel.text = runner.stepTime.toTimeString()
   }
   
   // MARK: - ProgressViewDelegate

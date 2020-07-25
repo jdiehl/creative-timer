@@ -18,12 +18,12 @@
 		2D3BB6FA1CAC36CC008320FA /* ProgramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BB6F91CAC36CC008320FA /* ProgramTableViewController.swift */; };
 		2D3BB6FC1CAC36D7008320FA /* EditProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BB6FB1CAC36D7008320FA /* EditProgramViewController.swift */; };
 		2D6192F524C0BB2C00F7DC1E /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6192F424C0BB2C00F7DC1E /* ProgressViewController.swift */; };
-		2D6192F724C180A000F7DC1E /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6192F624C180A000F7DC1E /* Duration.swift */; };
 		2D71C45B24C34222003288DE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D71C45A24C34222003288DE /* Colors.xcassets */; };
 		2D71C46024C34B51003288DE /* FontAwesome in Frameworks */ = {isa = PBXBuildFile; productRef = 2D71C45F24C34B51003288DE /* FontAwesome */; };
 		2D71C47024C3762A003288DE /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D71C46B24C37576003288DE /* Font Awesome 5 Free-Solid-900.otf */; };
 		2D99B88324BF925F009BE18E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D99B87F24BF6A7F009BE18E /* ProgressView.swift */; };
 		2DB7034524CC85BB008FC7DF /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034424CC85BB008FC7DF /* ProgramCell.swift */; };
+		2DB7034724CC9087008FC7DF /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034624CC9087008FC7DF /* IntExtension.swift */; };
 		2DBACDE624C1D855006F167F /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBACDE524C1D855006F167F /* HeaderViewController.swift */; };
 		2DD4178224C42E6E00981C09 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178124C42E6E00981C09 /* StepsView.swift */; };
 		2DD4178424C4330200981C09 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178324C4330200981C09 /* StepsViewController.swift */; };
@@ -51,13 +51,13 @@
 		2D3BB6F91CAC36CC008320FA /* ProgramTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramTableViewController.swift; sourceTree = "<group>"; };
 		2D3BB6FB1CAC36D7008320FA /* EditProgramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProgramViewController.swift; sourceTree = "<group>"; };
 		2D6192F424C0BB2C00F7DC1E /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
-		2D6192F624C180A000F7DC1E /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		2D71C45A24C34222003288DE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		2D71C46B24C37576003288DE /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
 		2D71C46D24C37619003288DE /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Free-Regular-400.otf"; path = "../../../../Library/Developer/Xcode/DerivedData/Timer-grixyhhnuokdzjaavlzoatrbidak/SourcePackages/checkouts/FontAwesome.swift/FontAwesome/Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		2D99B87F24BF6A7F009BE18E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		2DA969581CB6D85800C0171E /* Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Timer.entitlements; sourceTree = "<group>"; };
 		2DB7034424CC85BB008FC7DF /* ProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
+		2DB7034624CC9087008FC7DF /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		2DBACDE524C1D855006F167F /* HeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
 		2DD4178124C42E6E00981C09 /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		2DD4178324C4330200981C09 /* StepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +105,7 @@
 				2D292F2924BCB292008B10E6 /* UIViewControllerExtension.swift */,
 				2DD4178524C47FD400981C09 /* CALayerExtension.swift */,
 				2DD4178724C4CA2B00981C09 /* CGPointExtension.swift */,
+				2DB7034624CC9087008FC7DF /* IntExtension.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -112,7 +113,6 @@
 		2DEA8A1F1CA938CA00BDF955 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2D6192F624C180A000F7DC1E /* Duration.swift */,
 				2D138E4724BA1292008A269A /* Program.swift */,
 				2D138E5024BB18E6008A269A /* ProgramManager.swift */,
 				2D138E4924BA1403008A269A /* ProgramRunner.swift */,
@@ -271,6 +271,7 @@
 				2DD4178A24C5786300981C09 /* EventEmitter.swift in Sources */,
 				2D6192F524C0BB2C00F7DC1E /* ProgressViewController.swift in Sources */,
 				2DD4178224C42E6E00981C09 /* StepsView.swift in Sources */,
+				2DB7034724CC9087008FC7DF /* IntExtension.swift in Sources */,
 				2D138E5124BB18E6008A269A /* ProgramManager.swift in Sources */,
 				2DB7034524CC85BB008FC7DF /* ProgramCell.swift in Sources */,
 				2D292F2A24BCB292008B10E6 /* UIViewControllerExtension.swift in Sources */,
@@ -282,7 +283,6 @@
 				2D138E4A24BA1403008A269A /* ProgramRunner.swift in Sources */,
 				2D138E4F24BAFC28008A269A /* NotificationScheduler.swift in Sources */,
 				2D99B88324BF925F009BE18E /* ProgressView.swift in Sources */,
-				2D6192F724C180A000F7DC1E /* Duration.swift in Sources */,
 				2DF2171B24C6D0C700E0230A /* TintManager.swift in Sources */,
 				2D3BB6FA1CAC36CC008320FA /* ProgramTableViewController.swift in Sources */,
 				2D138E5724BC3D63008A269A /* ControlsViewControler.swift in Sources */,

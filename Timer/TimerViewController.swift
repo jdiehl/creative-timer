@@ -16,6 +16,7 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
   @IBOutlet weak var controlsView: UIView!
 
   let runner = ProgramRunner.shared
+  let programManager = ProgramManager.shared
   
   lazy var headerViewController: HeaderViewController = instantiateChild(identifier: "Header")
   lazy var progressViewController: ProgressViewController = instantiateChild(identifier: "TimeProgress")
@@ -32,7 +33,7 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
   // MARK: - ControlsDelegate
 
   func onSettings() {
-    performSegue(withIdentifier: "showPresets", sender: self)
+    performSegue(withIdentifier: "showPrograms", sender: self)
   }
   
   // MARK: - UIViewController
@@ -43,11 +44,12 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
     TintManager.shared.on(.tintChanged) { self.updateColors() }
     updateColors()
     runner.program = ProgramManager.shared.activeProgram
+    programManager.delegate = self
 	}
 	
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     let navigationController = segue.destination as! UINavigationController
-    let viewController = navigationController.viewControllers[0] as! PresetTableViewController
+    let viewController = navigationController.viewControllers[0] as! ProgramTableViewController
     viewController.popoverPresentationController?.sourceRect = controlsViewController.resetButton.bounds
   }
   

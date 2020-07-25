@@ -15,7 +15,7 @@
         <!--Controls View Controller-->
         <scene sceneID="rpY-rk-faw">
             <objects>
-                <viewController storyboardIdentifier="Controls" id="5nJ-tj-nF6" customClass="ControlsViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Controls" id="5nJ-tj-nF6" customClass="ControlsViewController" customModule="CusTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dKU-3d-yXQ"/>
                         <viewControllerLayoutGuide type="bottom" id="iTk-ed-6xQ"/>
@@ -92,7 +92,7 @@
         <!--Timer View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TimerViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TimerViewController" customModule="CusTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -112,7 +112,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kn2-8D-1IX">
-                                        <rect key="frame" x="0.0" y="159" width="343" height="334"/>
+                                        <rect key="frame" x="0.0" y="181.5" width="343" height="267"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="kn2-8D-1IX" secondAttribute="height" multiplier="1:1" id="8V3-hi-wT8"/>
@@ -120,7 +120,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nva-V0-OoA">
-                                        <rect key="frame" x="0.0" y="512" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="489.5" width="343" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="JFt-tg-nOa"/>
                                         </constraints>
@@ -148,105 +148,41 @@
                         <outlet property="headerView" destination="kPh-94-pGm" id="bT0-9G-qd5"/>
                         <outlet property="progressView" destination="kn2-8D-1IX" id="mo9-8d-pHN"/>
                         <outlet property="stepsView" destination="Nva-V0-OoA" id="sTQ-Vb-AE5"/>
-                        <segue destination="35z-2a-7gw" kind="presentation" identifier="showPresets" id="82B-SC-Wde"/>
+                        <segue destination="35z-2a-7gw" kind="presentation" identifier="showPrograms" id="82B-SC-Wde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="255.19999999999999" y="408.84557721139436"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Timers-->
         <scene sceneID="O3S-4Z-83T">
             <objects>
-                <tableViewController id="Nsr-nE-eW4" customClass="PresetTableViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Nsr-nE-eW4" customClass="ProgramTableViewController" customModule="CusTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nW1-qj-mGa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="presetCell" textLabel="hSz-8v-UKz" style="IBUITableViewCellStyleDefault" id="bt0-rI-1d5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="programCell" id="bt0-rI-1d5" customClass="ProgramCell" customModule="CusTimer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bt0-rI-1d5" id="GKL-Hw-2Fw">
-                                    <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hSz-8v-UKz">
-                                            <rect key="frame" x="16" y="0.0" width="311" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact">
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            </variation>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="hxa-C5-fw0" kind="show" identifier="editPreset" trigger="accessoryAction" id="iiR-to-wmf"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="customCell" textLabel="FsZ-NE-hNj" style="IBUITableViewCellStyleDefault" id="pHL-tQ-HfM">
-                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pHL-tQ-HfM" id="cwE-sB-ISx">
-                                    <rect key="frame" x="0.0" y="0.0" width="348" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Custom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FsZ-NE-hNj">
-                                            <rect key="frame" x="16" y="0.0" width="324" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact">
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            </variation>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="hxa-C5-fw0" kind="show" identifier="showPreset" id="Fa5-YP-iSR"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="soundCell" id="Lq1-Te-xfF">
-                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lq1-Te-xfF" id="ikO-Zb-4P4">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Sounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vkk-V2-Vn6">
-                                            <rect key="frame" x="16" y="11.5" width="286" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYd-KA-Hn7">
+                                            <rect key="frame" x="16" y="12" width="343" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lGD-4D-yQ7">
-                                            <rect key="frame" x="310" y="6.5" width="51" height="31"/>
-                                            <connections>
-                                                <action selector="onToggleSoundsEnabled:" destination="Nsr-nE-eW4" eventType="valueChanged" id="6Bb-mO-eNf"/>
-                                            </connections>
-                                        </switch>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Vkk-V2-Vn6" firstAttribute="leading" secondItem="ikO-Zb-4P4" secondAttribute="leadingMargin" id="AoD-eA-Uv9"/>
-                                        <constraint firstItem="Vkk-V2-Vn6" firstAttribute="centerY" secondItem="lGD-4D-yQ7" secondAttribute="centerY" id="EJn-Qx-8Hs"/>
-                                        <constraint firstItem="lGD-4D-yQ7" firstAttribute="trailing" secondItem="ikO-Zb-4P4" secondAttribute="trailingMargin" id="J7v-wE-hE4"/>
-                                        <constraint firstItem="lGD-4D-yQ7" firstAttribute="leading" secondItem="Vkk-V2-Vn6" secondAttribute="trailing" constant="8" id="oyL-0M-jII"/>
-                                        <constraint firstItem="Vkk-V2-Vn6" firstAttribute="centerY" secondItem="ikO-Zb-4P4" secondAttribute="centerY" id="zQY-3T-EBt"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="subviews">
-                                            <exclude reference="Vkk-V2-Vn6"/>
-                                            <exclude reference="lGD-4D-yQ7"/>
-                                        </mask>
-                                    </variation>
-                                    <variation key="widthClass=compact">
-                                        <mask key="subviews">
-                                            <include reference="Vkk-V2-Vn6"/>
-                                            <include reference="lGD-4D-yQ7"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleLabel" destination="FYd-KA-Hn7" id="9fm-xf-pWN"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -254,16 +190,19 @@
                             <outlet property="delegate" destination="Nsr-nE-eW4" id="AGn-SH-b36"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Hlg-Ie-AyM"/>
+                    <navigationItem key="navigationItem" title="Timers" id="Hlg-Ie-AyM"/>
+                    <connections>
+                        <segue destination="hxa-C5-fw0" kind="show" identifier="editProgram" id="U91-kv-apD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0h-sW-gOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1620" y="408.84557721139436"/>
         </scene>
-        <!--Preset View Controller-->
+        <!--Edit Timer-->
         <scene sceneID="YNh-rW-dlK">
             <objects>
-                <viewController id="hxa-C5-fw0" customClass="PresetViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Edit Timer" id="hxa-C5-fw0" customClass="EditProgramViewController" customModule="CusTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CDk-qj-0i5"/>
                         <viewControllerLayoutGuide type="bottom" id="oGH-ph-ViE"/>
@@ -526,7 +465,7 @@
         <!--Progress View Controller-->
         <scene sceneID="vaT-6J-cc9">
             <objects>
-                <viewController storyboardIdentifier="TimeProgress" id="J2U-zO-y6V" customClass="ProgressViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimeProgress" id="J2U-zO-y6V" customClass="ProgressViewController" customModule="CusTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7fc-M7-ecM"/>
                         <viewControllerLayoutGuide type="bottom" id="mFC-df-HBz"/>
@@ -535,7 +474,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iqZ-mZ-m7G" customClass="ProgressView" customModule="Timer" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iqZ-mZ-m7G" customClass="ProgressView" customModule="CusTimer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
@@ -576,7 +515,7 @@
         <!--Header View Controller-->
         <scene sceneID="efS-w7-dz9">
             <objects>
-                <viewController storyboardIdentifier="Header" id="DJW-zc-6kb" customClass="HeaderViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Header" id="DJW-zc-6kb" customClass="HeaderViewController" customModule="CusTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iyT-vf-2yW"/>
                         <viewControllerLayoutGuide type="bottom" id="lm3-cg-XBV"/>
@@ -629,7 +568,7 @@ Lines</string>
         <!--Steps View Controller-->
         <scene sceneID="ARo-v9-72Z">
             <objects>
-                <viewController storyboardIdentifier="Steps" id="lfJ-ba-HWg" customClass="StepsViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Steps" id="lfJ-ba-HWg" customClass="StepsViewController" customModule="CusTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="brn-a8-71i"/>
                         <viewControllerLayoutGuide type="bottom" id="kID-Nc-uVN"/>
@@ -656,7 +595,7 @@ Lines</string>
                                 <color key="textColor" name="Crimson"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQF-sc-cqi" customClass="StepsView" customModule="Timer" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQF-sc-cqi" customClass="StepsView" customModule="CusTimer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24" width="375" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -692,9 +631,6 @@ Lines</string>
             <point key="canvasLocation" x="2316" y="809.59520239880067"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Fa5-YP-iSR"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="Crimson">
             <color red="0.83499997854232788" green="0.16500000655651093" blue="0.16500000655651093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

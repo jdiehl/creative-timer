@@ -36,6 +36,7 @@ class ControlsViewController: UIViewController {
   }
 
   @IBAction func onSettings(_ sender: UIView) {
+    if runner.running { runner.stop() }
     delegate?.onSettings()
   }
 

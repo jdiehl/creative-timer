@@ -44,7 +44,17 @@ class ProgramManager {
 //    Program.Step(title: "rock 'n' roll - nudel im rainbow hinterm ruecken oeffnen und schliessen", length: 30),
 //    Program.Step(title: "regular jogging - nudel als paddel im wechsel", length: 30)
   ]) {
-    didSet { delegate?.managerChangedProgram(programManager: self) }
+    didSet {
+      delegate?.managerChangedProgram(programManager: self)
+      
+    }
   }
+  
+  lazy var localPrograms = [
+    activeProgram,
+    Program(title: "Test 1", repetitions: 1, steps: [
+      Program.Step(title: "1 Minute", length: 60),
+    ])
+  ]
   
 }

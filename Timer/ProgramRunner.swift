@@ -24,9 +24,8 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   // the program to run
   var program: Program? {
     didSet {
-      stop()
-      emit(.programChanged)
       reset()
+      emit(.programChanged)
     }
   }
   
@@ -91,20 +90,9 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   // start the runner
   func start() {
     guard !running else { return }
-    guard let program = self.program else { return }
+    guard program != nil else { return }
     running = true
-    let startTime = totalTime
-    timer = SecondsTimer() { passedTime in
-      if let index = program.indexForTime(startTime + passedTime) {
-        self.index = index
-        self.emit(.tick)
-      } else {
-        self.index = Program.Index(step: self.index.step, time: self.stepLength)
-        self.emit(.tick)
-        self.stop()
-        self.emit(.finished)
-      }
-    }
+    timer = SecondsTimer(startTime: totalTime) { self.onTick($0) }
     emit(.started)
   }
   
@@ -115,6 +103,18 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
     timer = nil
     running = false
     emit(.stopped)
+  }
+  
+  private func onTick(_ passedTime: Int) {
+    if let index = program!.indexForTime(passedTime) {
+      self.index = index
+      emit(.tick)
+    } else {
+      index = Program.Index(step: self.index.step, time: self.stepLength)
+      emit(.tick)
+      stop()
+      emit(.finished)
+    }
   }
   
 }

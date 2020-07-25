@@ -12,10 +12,10 @@ class SecondsTimer {
   
   private var timer: Foundation.Timer?
   
-  init(handler: @escaping ((Int) -> Void)) {
+  init(startTime: Int, handler: @escaping ((Int) -> Void)) {
     let date = Date()
     timer = Foundation.Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-      handler(-Int(date.timeIntervalSinceNow))
+      handler(startTime - Int(date.timeIntervalSinceNow))
     }
   }
   

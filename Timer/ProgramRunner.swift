@@ -34,7 +34,6 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   private(set) var index = Program.Index(step: 0, time: 0) {
     didSet {
       if index.step != oldValue.step {
-        if let step = step { Announcer.shared.announce(step: step) }
         emit(.stepChanged)
       }
       emit(.tick)

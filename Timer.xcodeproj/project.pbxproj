@@ -36,8 +36,7 @@
 		2DEFB30C1CA6E40100E4AA77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30A1CA6E40100E4AA77 /* Main.storyboard */; };
 		2DEFB30E1CA6E40100E4AA77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30D1CA6E40100E4AA77 /* Assets.xcassets */; };
 		2DEFB3111CA6E40100E4AA77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30F1CA6E40100E4AA77 /* LaunchScreen.storyboard */; };
-		2DF0B8FD24C745A20062694B /* Announcer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B8FC24C745A20062694B /* Announcer.swift */; };
-		2DF0B8FF24C8208B0062694B /* FlashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B8FE24C8208B0062694B /* FlashViewController.swift */; };
+		2DF0B8FF24C8208B0062694B /* AnnouncerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B8FE24C8208B0062694B /* AnnouncerViewController.swift */; };
 		2DF2171B24C6D0C700E0230A /* TintManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF2171A24C6D0C700E0230A /* TintManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,8 +73,7 @@
 		2DEFB30D1CA6E40100E4AA77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DEFB3101CA6E40100E4AA77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DEFB3121CA6E40100E4AA77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2DF0B8FC24C745A20062694B /* Announcer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcer.swift; sourceTree = "<group>"; };
-		2DF0B8FE24C8208B0062694B /* FlashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashViewController.swift; sourceTree = "<group>"; };
+		2DF0B8FE24C8208B0062694B /* AnnouncerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncerViewController.swift; sourceTree = "<group>"; };
 		2DF2171A24C6D0C700E0230A /* TintManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,7 +117,6 @@
 				2D6192F624C180A000F7DC1E /* Duration.swift */,
 				2D138E4724BA1292008A269A /* Program.swift */,
 				2D138E5024BB18E6008A269A /* ProgramManager.swift */,
-				2DF0B8FC24C745A20062694B /* Announcer.swift */,
 				2D138E4924BA1403008A269A /* ProgramRunner.swift */,
 				2D138E4E24BAFC28008A269A /* NotificationScheduler.swift */,
 				2DF2171A24C6D0C700E0230A /* TintManager.swift */,
@@ -142,12 +139,12 @@
 			isa = PBXGroup;
 			children = (
 				2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */,
+				2DF0B8FE24C8208B0062694B /* AnnouncerViewController.swift */,
 				2DD4178324C4330200981C09 /* StepsViewController.swift */,
 				2DBACDE524C1D855006F167F /* HeaderViewController.swift */,
 				2D6192F424C0BB2C00F7DC1E /* ProgressViewController.swift */,
 				2D138E5624BC3D63008A269A /* ControlsViewControler.swift */,
 				2DEFB3081CA6E40100E4AA77 /* TimerViewController.swift */,
-				2DF0B8FE24C8208B0062694B /* FlashViewController.swift */,
 				2D3BB6F91CAC36CC008320FA /* PresetTableViewController.swift */,
 				2D3BB6FB1CAC36D7008320FA /* PresetViewController.swift */,
 			);
@@ -281,7 +278,7 @@
 				2D292F2A24BCB292008B10E6 /* UIViewControllerExtension.swift in Sources */,
 				2DBACDE624C1D855006F167F /* HeaderViewController.swift in Sources */,
 				2DEFB3091CA6E40100E4AA77 /* TimerViewController.swift in Sources */,
-				2DF0B8FF24C8208B0062694B /* FlashViewController.swift in Sources */,
+				2DF0B8FF24C8208B0062694B /* AnnouncerViewController.swift in Sources */,
 				2D138E5324BB1EBF008A269A /* BlinkAnimation.swift in Sources */,
 				2D138E4C24BA20E1008A269A /* SecondsTimer.swift in Sources */,
 				2DEA8A1A1CA904FF00BDF955 /* Preset.swift in Sources */,
@@ -293,7 +290,6 @@
 				2D3BB6FA1CAC36CC008320FA /* PresetTableViewController.swift in Sources */,
 				2DEA8A231CA93C3900BDF955 /* PresetManager.swift in Sources */,
 				2D138E5724BC3D63008A269A /* ControlsViewControler.swift in Sources */,
-				2DF0B8FD24C745A20062694B /* Announcer.swift in Sources */,
 				2DD4178424C4330200981C09 /* StepsViewController.swift in Sources */,
 				2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */,
 				2D138E4824BA1292008A269A /* Program.swift in Sources */,

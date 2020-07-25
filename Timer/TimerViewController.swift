@@ -21,7 +21,7 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
   lazy var progressViewController: ProgressViewController = instantiateChild(identifier: "TimeProgress")
   lazy var stepsViewController: StepsViewController = instantiateChild(identifier: "Steps")
   lazy var controlsViewController: ControlsViewController = instantiateChild(identifier: "Controls")
-  lazy var flashViewController: FlashViewController = FlashViewController()
+  lazy var announcerViewController: AnnouncerViewController = AnnouncerViewController()
 
   // MARK: - ProgramManagerDelegate
   
@@ -40,7 +40,7 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
 	override func viewDidLoad() {
 		super.viewDidLoad()
     setupViewControllers()
-    setupEvents()
+    TintManager.shared.on(.tintChanged) { self.updateColors() }
     updateColors()
     runner.program = ProgramManager.shared.activeProgram
 	}
@@ -51,43 +51,17 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
     viewController.popoverPresentationController?.sourceRect = controlsViewController.resetButton.bounds
   }
   
+  // MARK: - Private Methods
+  
   // position child view controllers
   private func setupViewControllers() {
-    addChild(flashViewController)
-    flashViewController.embedIn(view: view)
+    addChild(announcerViewController)
+    announcerViewController.embedIn(view: view)
     headerViewController.embedIn(view: headerView)
     progressViewController.embedIn(view: progressView)
     controlsViewController.embedIn(view: controlsView)
     stepsViewController.embedIn(view: stepsView)
     controlsViewController.delegate = self
-  }
-  
-  // set up event handlers
-  private func setupEvents() {
-    
-    // runner started
-    runner.on(.started) {
-      UIApplication.shared.isIdleTimerDisabled = true
-    }
-    
-    // runner stopped
-    runner.on(.stopped) {
-      UIApplication.shared.isIdleTimerDisabled = false
-    }
-    
-    // runner step
-    runner.on(.stepChanged) {
-      if self.runner.running { self.flashViewController.blink() }
-    }
-    
-    // runner finished
-    runner.on(.finished) {
-      self.flashViewController.flash() { success in
-        UIApplication.shared.isIdleTimerDisabled = false
-      }
-    }
-
-    TintManager.shared.on(.tintChanged) { self.updateColors() }
   }
   
   private func updateColors() {

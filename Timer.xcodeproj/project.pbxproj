@@ -24,6 +24,8 @@
 		2D99B88324BF925F009BE18E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D99B87F24BF6A7F009BE18E /* ProgressView.swift */; };
 		2DB7034524CC85BB008FC7DF /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034424CC85BB008FC7DF /* ProgramCell.swift */; };
 		2DB7034724CC9087008FC7DF /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034624CC9087008FC7DF /* IntExtension.swift */; };
+		2DB7034924CE23B0008FC7DF /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034824CE23B0008FC7DF /* PanelView.swift */; };
+		2DB7034B24CE256A008FC7DF /* StepsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034A24CE256A008FC7DF /* StepsPicker.swift */; };
 		2DBACDE624C1D855006F167F /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBACDE524C1D855006F167F /* HeaderViewController.swift */; };
 		2DD4178224C42E6E00981C09 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178124C42E6E00981C09 /* StepsView.swift */; };
 		2DD4178424C4330200981C09 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178324C4330200981C09 /* StepsViewController.swift */; };
@@ -58,6 +60,8 @@
 		2DA969581CB6D85800C0171E /* Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Timer.entitlements; sourceTree = "<group>"; };
 		2DB7034424CC85BB008FC7DF /* ProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
 		2DB7034624CC9087008FC7DF /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		2DB7034824CE23B0008FC7DF /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		2DB7034A24CE256A008FC7DF /* StepsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsPicker.swift; sourceTree = "<group>"; };
 		2DBACDE524C1D855006F167F /* HeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
 		2DD4178124C42E6E00981C09 /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		2DD4178324C4330200981C09 /* StepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
@@ -126,7 +130,9 @@
 			isa = PBXGroup;
 			children = (
 				2D99B87F24BF6A7F009BE18E /* ProgressView.swift */,
+				2DB7034A24CE256A008FC7DF /* StepsPicker.swift */,
 				2DD4178124C42E6E00981C09 /* StepsView.swift */,
+				2DB7034824CE23B0008FC7DF /* PanelView.swift */,
 				2DB7034424CC85BB008FC7DF /* ProgramCell.swift */,
 			);
 			name = View;
@@ -283,10 +289,12 @@
 				2D138E4A24BA1403008A269A /* ProgramRunner.swift in Sources */,
 				2D138E4F24BAFC28008A269A /* NotificationScheduler.swift in Sources */,
 				2D99B88324BF925F009BE18E /* ProgressView.swift in Sources */,
+				2DB7034B24CE256A008FC7DF /* StepsPicker.swift in Sources */,
 				2DF2171B24C6D0C700E0230A /* TintManager.swift in Sources */,
 				2D3BB6FA1CAC36CC008320FA /* ProgramTableViewController.swift in Sources */,
 				2D138E5724BC3D63008A269A /* ControlsViewControler.swift in Sources */,
 				2DD4178424C4330200981C09 /* StepsViewController.swift in Sources */,
+				2DB7034924CE23B0008FC7DF /* PanelView.swift in Sources */,
 				2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */,
 				2D138E4824BA1292008A269A /* Program.swift in Sources */,
 				2D3BB6FC1CAC36D7008320FA /* EditProgramViewController.swift in Sources */,

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class StepsViewController: UIViewController, StepsViewDelegate {
+class StepsViewController: UIViewController, StepsPickerDelegate {
   
   @IBOutlet weak var currentTimeLabel: UILabel!
   @IBOutlet weak var totalTimeLabel: UILabel!
-  @IBOutlet weak var stepsView: StepsView!
+  @IBOutlet weak var stepsPicker: StepsPicker!
   
   private let runner = ProgramRunner.shared
   
@@ -47,12 +47,12 @@ class StepsViewController: UIViewController, StepsViewDelegate {
   private func updateSteps() {
     guard let program = runner.program else { return }
     totalTimeLabel.text = program.totalLength.toTimeString()
-    stepsView.program = program
+    stepsPicker.program = program
   }
   
   private func updateProgress() {
     currentTimeLabel.text = runner.totalTime.toTimeString()
-    stepsView.index = runner.index
+    stepsPicker.index = runner.index
   }
   
   private func updateColor() {

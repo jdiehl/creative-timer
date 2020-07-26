@@ -159,28 +159,57 @@
         <scene sceneID="O3S-4Z-83T">
             <objects>
                 <tableViewController id="Nsr-nE-eW4" customClass="ProgramTableViewController" customModule="CusTimer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nW1-qj-mGa">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="nW1-qj-mGa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="programCell" id="bt0-rI-1d5" customClass="ProgramCell" customModule="CusTimer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="programCell" rowHeight="100" id="bt0-rI-1d5" customClass="ProgramCell" customModule="CusTimer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bt0-rI-1d5" id="GKL-Hw-2Fw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYd-KA-Hn7">
-                                            <rect key="frame" x="16" y="12" width="343" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sle-W7-mcA" customClass="PanelView" customModule="CusTimer" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="4" width="359" height="92"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYd-KA-Hn7">
+                                                    <rect key="frame" x="8" y="8" width="343" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="yYo-mP-8UH"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cst-QU-gcF" customClass="StepsView" customModule="CusTimer" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="37" width="343" height="47"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstItem="Cst-QU-gcF" firstAttribute="leading" secondItem="sle-W7-mcA" secondAttribute="leading" constant="8" id="Nah-8t-9co"/>
+                                                <constraint firstItem="FYd-KA-Hn7" firstAttribute="top" secondItem="sle-W7-mcA" secondAttribute="top" constant="8" id="OcC-9m-w3d"/>
+                                                <constraint firstAttribute="bottom" secondItem="Cst-QU-gcF" secondAttribute="bottom" constant="8" id="RAr-8q-Bbu"/>
+                                                <constraint firstItem="FYd-KA-Hn7" firstAttribute="trailing" secondItem="sle-W7-mcA" secondAttribute="trailingMargin" id="UOM-jc-QGU"/>
+                                                <constraint firstItem="Cst-QU-gcF" firstAttribute="top" secondItem="FYd-KA-Hn7" secondAttribute="bottom" constant="8" id="XLN-CQ-t7k"/>
+                                                <constraint firstItem="FYd-KA-Hn7" firstAttribute="leading" secondItem="sle-W7-mcA" secondAttribute="leadingMargin" id="kG2-Dj-RYM"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cst-QU-gcF" secondAttribute="trailing" constant="8" id="uH4-Hv-ha7"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="sle-W7-mcA" secondAttribute="bottom" constant="4" id="7I5-3V-kVl"/>
+                                        <constraint firstAttribute="trailing" secondItem="sle-W7-mcA" secondAttribute="trailing" constant="8" id="ZjR-EH-EH1"/>
+                                        <constraint firstItem="sle-W7-mcA" firstAttribute="leading" secondItem="GKL-Hw-2Fw" secondAttribute="leading" constant="8" id="cfZ-ke-K1c"/>
+                                        <constraint firstItem="sle-W7-mcA" firstAttribute="top" secondItem="GKL-Hw-2Fw" secondAttribute="top" constant="4" id="zfj-kR-qcJ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="panel" destination="sle-W7-mcA" id="Ln0-Gi-3oh"/>
+                                    <outlet property="stepsView" destination="Cst-QU-gcF" id="Rny-DN-EWS"/>
                                     <outlet property="titleLabel" destination="FYd-KA-Hn7" id="9fm-xf-pWN"/>
                                 </connections>
                             </tableViewCell>
@@ -595,7 +624,7 @@ Lines</string>
                                 <color key="textColor" name="Crimson"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQF-sc-cqi" customClass="StepsView" customModule="CusTimer" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQF-sc-cqi" customClass="StepsPicker" customModule="CusTimer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24" width="375" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -622,7 +651,7 @@ Lines</string>
                     <size key="freeformSize" width="375" height="64"/>
                     <connections>
                         <outlet property="currentTimeLabel" destination="TAh-uC-Bb6" id="TAT-HJ-pIj"/>
-                        <outlet property="stepsView" destination="jQF-sc-cqi" id="g4J-IN-0FH"/>
+                        <outlet property="stepsPicker" destination="jQF-sc-cqi" id="6eX-QL-eiG"/>
                         <outlet property="totalTimeLabel" destination="c9j-vh-l02" id="x0J-9U-V1T"/>
                     </connections>
                 </viewController>

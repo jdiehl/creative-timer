@@ -30,7 +30,14 @@ class ProgramTableViewController: UITableViewController {
 		tableView.reloadData()
 	}
 
-    // MARK: - Table view data source
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "editProgram" {
+      let viewController = segue.destination as! EditProgramViewController
+      viewController.program = programManager.localPrograms[tableView.indexPathForSelectedRow!.row]
+    }
+  }
+  
+  // MARK: - Table view data source
 	
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return programManager.localPrograms.count
@@ -44,7 +51,12 @@ class ProgramTableViewController: UITableViewController {
   }
   
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    performSegue(withIdentifier: "editProgram", sender: nil)
+    if isEditing {
+      performSegue(withIdentifier:"editProgram", sender: nil)
+    } else {
+      programManager.activeProgram = programManager.localPrograms[indexPath.row]
+      cancel()
+    }
 	}
 	
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -68,15 +80,6 @@ class ProgramTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
 		return true
-  }
-
-  // MARK: - Navigation
-
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "editProgram" {
-			let viewController = segue.destination as! EditProgramViewController
-      viewController.program = programManager.localPrograms[tableView.indexPathForSelectedRow!.row]
-		}
   }
 
 }

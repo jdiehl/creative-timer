@@ -82,6 +82,10 @@ class TintManager: EventEmitter<TintEvent> {
     super.init()
   }
   
+  func set(program: Program) {
+    set(tint: program.tint, style: program.style)
+  }
+  
   func set(tint: TintColor, style: TintStyle) {
     self.tint = tint
     self.style = style

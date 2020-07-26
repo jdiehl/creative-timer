@@ -15,7 +15,7 @@ class ProgramManager {
   
   weak var delegate: ProgramManagerDelegate?
   
-  var activeProgram = Program(title: "Aquafitness", repetitions: 1, steps: [
+  var activeProgram = Program(title: "Aquafitness", tint: .crimson, style: .automatic, steps: [
     Program.Step(title: "Warmup", length: 60),
     Program.Step(title: "high knee jogging - nudel beidhaendig nach unten druecken", length: 30),
     Program.Step(title: "high knee jogging - nudelenden zu den knoecheln bringen", length: 30),
@@ -52,7 +52,7 @@ class ProgramManager {
   
   lazy var localPrograms = [
     activeProgram,
-    Program(title: "Test 1", repetitions: 1, steps: [
+    Program(title: "Test 1", tint: .sky, style: .colored, steps: [
       Program.Step(title: "1 Minute", length: 60),
     ])
   ]

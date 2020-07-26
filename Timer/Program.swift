@@ -23,7 +23,8 @@ struct Program {
   }
 
   let title: String
-  let repetitions: Int
+  let tint: TintColor
+  let style: TintStyle
   let steps: [Step]
   
   var totalLength: Int { steps.reduce(0) { $0 + $1.length } }

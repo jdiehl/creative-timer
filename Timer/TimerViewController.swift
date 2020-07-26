@@ -17,6 +17,7 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
 
   let runner = ProgramRunner.shared
   let programManager = ProgramManager.shared
+  let tintManager = TintManager.shared
   
   lazy var headerViewController: HeaderViewController = instantiateChild(identifier: "Header")
   lazy var progressViewController: ProgressViewController = instantiateChild(identifier: "TimeProgress")
@@ -27,7 +28,7 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
   // MARK: - ProgramManagerDelegate
   
   func managerChangedProgram(programManager: ProgramManager) {
-    runner.program = programManager.activeProgram
+    updateProgram()
   }
   
   // MARK: - ControlsDelegate
@@ -41,10 +42,10 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
 	override func viewDidLoad() {
 		super.viewDidLoad()
     setupViewControllers()
-    TintManager.shared.on(.tintChanged) { self.updateColors() }
+    updateProgram()
     updateColors()
-    runner.program = ProgramManager.shared.activeProgram
     programManager.delegate = self
+    tintManager.on(.tintChanged) { self.updateColors() }
 	}
 	
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,8 +67,13 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
     controlsViewController.delegate = self
   }
   
+  private func updateProgram() {
+    runner.program = programManager.activeProgram
+    tintManager.set(program: programManager.activeProgram)
+  }
+  
   private func updateColors() {
-    self.view.backgroundColor = TintManager.shared.backgroundColor
+    view.backgroundColor = TintManager.shared.backgroundColor
   }
   
 }

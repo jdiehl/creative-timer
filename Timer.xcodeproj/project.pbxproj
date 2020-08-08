@@ -27,6 +27,8 @@
 		2DB7034924CE23B0008FC7DF /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034824CE23B0008FC7DF /* PanelView.swift */; };
 		2DB7034B24CE256A008FC7DF /* StepsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034A24CE256A008FC7DF /* StepsPicker.swift */; };
 		2DBACDE624C1D855006F167F /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBACDE524C1D855006F167F /* HeaderViewController.swift */; };
+		2DBC0F6D24DED5FB00E49F98 /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = 2DBC0F6C24DED5FB00E49F98 /* Eureka */; };
+		2DBC0F6F24DEE33A00E49F98 /* EditTintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC0F6E24DEE33A00E49F98 /* EditTintViewController.swift */; };
 		2DD4178224C42E6E00981C09 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178124C42E6E00981C09 /* StepsView.swift */; };
 		2DD4178424C4330200981C09 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178324C4330200981C09 /* StepsViewController.swift */; };
 		2DD4178624C47FD400981C09 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178524C47FD400981C09 /* CALayerExtension.swift */; };
@@ -63,6 +65,7 @@
 		2DB7034824CE23B0008FC7DF /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		2DB7034A24CE256A008FC7DF /* StepsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsPicker.swift; sourceTree = "<group>"; };
 		2DBACDE524C1D855006F167F /* HeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
+		2DBC0F6E24DEE33A00E49F98 /* EditTintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTintViewController.swift; sourceTree = "<group>"; };
 		2DD4178124C42E6E00981C09 /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		2DD4178324C4330200981C09 /* StepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
 		2DD4178524C47FD400981C09 /* CALayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D71C46024C34B51003288DE /* FontAwesome in Frameworks */,
+				2DBC0F6D24DED5FB00E49F98 /* Eureka in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +154,7 @@
 				2DEFB3081CA6E40100E4AA77 /* TimerViewController.swift */,
 				2D3BB6F91CAC36CC008320FA /* ProgramTableViewController.swift */,
 				2D3BB6FB1CAC36D7008320FA /* EditProgramViewController.swift */,
+				2DBC0F6E24DEE33A00E49F98 /* EditTintViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 			name = CusTimer;
 			packageProductDependencies = (
 				2D71C45F24C34B51003288DE /* FontAwesome */,
+				2DBC0F6C24DED5FB00E49F98 /* Eureka */,
 			);
 			productName = Timer;
 			productReference = 2DEFB3031CA6E40000E4AA77 /* CusTimer.app */;
@@ -244,6 +250,7 @@
 			mainGroup = 2DEFB2FA1CA6E40000E4AA77;
 			packageReferences = (
 				2D71C45E24C34B51003288DE /* XCRemoteSwiftPackageReference "FontAwesome" */,
+				2DBC0F6B24DED5FB00E49F98 /* XCRemoteSwiftPackageReference "Eureka" */,
 			);
 			productRefGroup = 2DEFB3041CA6E40000E4AA77 /* Products */;
 			projectDirPath = "";
@@ -275,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DD4178A24C5786300981C09 /* EventEmitter.swift in Sources */,
+				2DBC0F6F24DEE33A00E49F98 /* EditTintViewController.swift in Sources */,
 				2D6192F524C0BB2C00F7DC1E /* ProgressViewController.swift in Sources */,
 				2DD4178224C42E6E00981C09 /* StepsView.swift in Sources */,
 				2DB7034724CC9087008FC7DF /* IntExtension.swift in Sources */,
@@ -512,6 +520,14 @@
 				minimumVersion = 1.9.0;
 			};
 		};
+		2DBC0F6B24DED5FB00E49F98 /* XCRemoteSwiftPackageReference "Eureka" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xmartlabs/Eureka";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -519,6 +535,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2D71C45E24C34B51003288DE /* XCRemoteSwiftPackageReference "FontAwesome" */;
 			productName = FontAwesome;
+		};
+		2DBC0F6C24DED5FB00E49F98 /* Eureka */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2DBC0F6B24DED5FB00E49F98 /* XCRemoteSwiftPackageReference "Eureka" */;
+			productName = Eureka;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

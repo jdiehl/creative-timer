@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Eureka
 
 func timeToComponents(_ time: Int) -> (Int, Int) {
   let minutes = time / 60
@@ -18,75 +19,49 @@ func timeFromComponents(_ minutes: Int, seconds: Int) -> (Int) {
   return minutes * 60 + seconds
 }
 
-class EditProgramViewController: UIViewController, UITextFieldDelegate {
-	
-	let programManager = ProgramManager.shared
-	var program: Program?
-	
-	@IBOutlet weak var titleInput: UITextField!
-	@IBOutlet weak var minInput: UITextField!
-	@IBOutlet weak var secInput: UITextField!
-	@IBOutlet weak var runsInput: UITextField!
-	
-	@objc func done() {
-		view.endEditing(true)
-		programManager.activeProgram = program!
-		dismiss(animated: true, completion: nil)
-	}
-	
-	func update() {
-    titleInput.text = program!.title
-//		let (minutes, seconds) = timeToComponents(program!.time)
-//		minInput.text = "\(minutes)"
-//		secInput.text = "\(seconds)"
-//		runsInput.text = "\(preset!.runs)"
-	}
+class EditProgramViewController: FormViewController {
+
+  var program: Program? {
+    didSet { setupForm() }
+  }
+  
+  var programChanged: ((Program) -> Void)?
+
+  @IBAction func done() {
+    let title = (form.rowBy(tag: "title") as! TextRow).value!
+    let program = Program(title: title, tint: .crimson, style: .automatic, steps: self.program!.steps)
+    programChanged?(program)
+  }
+
+  // MARK: - UIViewController
 
   override func viewDidLoad() {
     super.viewDidLoad()
-		if program == nil {
-      program = programManager.activeProgram
-		}
-		
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-		update()
-	}
-	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-//		view.endEditing(true)
-//
-//		// update presets
-//		if presetManager.presets.contains(preset!) {
-//			presetManager.savePresets()
-//		} else if preset!.title != "" {
-//			presetManager.presets.append(preset!)
-//			presetManager.savePresets()
-//		}
-	}
-	
-    // MARK: - UITextFieldDelegate
-	
-//	func textFieldDidEndEditing(_ textField: UITextField) {
-//		switch textField {
-//		case titleInput:
-//			preset!.title = titleInput.text!
-//			break
-//		case minInput:
-//			let minutes = min(max(Int(minInput.text!)!, 0), 90)
-//			preset!.time = timeFromComponents(minutes, seconds: Int(secInput.text!)!)
-//			break
-//		case secInput:
-//			let seconds = min(max(Int(secInput.text!)!, 0), 59)
-//			preset!.time = timeFromComponents(Int(minInput.text!)!, seconds: seconds)
-//			break
-//		case runsInput:
-//			preset!.runs = min(max(Int(runsInput.text!)!, 1), 16)
-//			break
-//		default:
-//			break
-//		}
-//		update()
-//	}
-	
+    setupForm()
+  }
+  
+  // MARK: - Private Methods
+
+  private func setupForm() {
+    guard isViewLoaded else { return }
+    guard let program = program else { return }
+    form.removeAll()
+    form +++ Section("Timer")
+      <<< TextRow() { row in
+        row.tag = "title"
+        row.title = "Name"
+        row.value = program.title
+      }.cellUpdate { cell, row in
+          cell.textField.clearButtonMode = .whileEditing
+      }
+      <<< LabelRow { row in
+        row.title = "Appearance"
+        row.onCellSelection { cell, row in
+          let editTintViewController = EditTintViewController()
+          self.navigationController?.pushViewController(editTintViewController, animated: true)
+        }
+      }.cellUpdate { cell, row in
+        cell.accessoryType = .disclosureIndicator
+    }
+  }
 }

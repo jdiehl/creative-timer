@@ -33,6 +33,9 @@ enum TintEvent {
 class TintManager: EventEmitter<TintEvent> {
   static let shared = TintManager()
   
+  static let allColors: [TintColor] = [.crimson, .earth, .glow, .leaf, .ocean, .pop, .royal, .sky]
+  static let allStyles: [TintStyle] = [.automatic, .light, .dark, .colored]
+
   class func color(tint: TintColor, style: TintStyle) -> UIColor {
     let color = UIColor(named: tint.rawValue)!
     switch style {

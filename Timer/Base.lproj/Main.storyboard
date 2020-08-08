@@ -238,53 +238,15 @@
                     <view key="view" contentMode="scaleToFill" id="vwW-Q5-WPr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqJ-BD-q9O">
-                                <rect key="frame" x="16" y="64" width="343" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="vIm-eQ-Vc5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yUi-YW-crc">
-                                <rect key="frame" x="16" y="88" width="343" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="Esn-L0-d0a"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
-                                <connections>
-                                    <outlet property="delegate" destination="hxa-C5-fw0" id="6oS-C1-JwD"/>
-                                </connections>
-                            </textField>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="yUi-YW-crc" firstAttribute="top" secondItem="AqJ-BD-q9O" secondAttribute="bottom" constant="3" id="3Ls-Zp-CMT"/>
-                            <constraint firstItem="AqJ-BD-q9O" firstAttribute="top" secondItem="CDk-qj-0i5" secondAttribute="bottom" constant="8" id="Cxd-jp-mEa"/>
-                            <constraint firstItem="AqJ-BD-q9O" firstAttribute="leading" secondItem="vwW-Q5-WPr" secondAttribute="leadingMargin" id="Iwd-ae-ZcY"/>
-                            <constraint firstItem="yUi-YW-crc" firstAttribute="trailing" secondItem="vwW-Q5-WPr" secondAttribute="trailingMargin" id="PCv-qB-rG7"/>
-                            <constraint firstItem="yUi-YW-crc" firstAttribute="leading" secondItem="vwW-Q5-WPr" secondAttribute="leadingMargin" id="nC7-sD-Wc4"/>
-                            <constraint firstItem="AqJ-BD-q9O" firstAttribute="trailing" secondItem="vwW-Q5-WPr" secondAttribute="trailingMargin" id="nM8-Z4-MT8"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="AqJ-BD-q9O"/>
-                                <exclude reference="yUi-YW-crc"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="AqJ-BD-q9O"/>
-                                <include reference="yUi-YW-crc"/>
-                            </mask>
-                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="rtb-Z1-O3m"/>
-                    <connections>
-                        <outlet property="titleInput" destination="yUi-YW-crc" id="U9L-oP-RuS"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="rtb-Z1-O3m">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="ABE-Vk-Isk">
+                            <connections>
+                                <action selector="done" destination="hxa-C5-fw0" id="Qiy-hL-vHY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DML-zX-xsj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -488,7 +450,7 @@ Lines</string>
     </scenes>
     <resources>
         <namedColor name="Crimson">
-            <color red="0.83499997854232788" green="0.16500000655651093" blue="0.16500000655651093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.83137254901960789" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

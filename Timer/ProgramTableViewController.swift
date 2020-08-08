@@ -33,7 +33,12 @@ class ProgramTableViewController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "editProgram" {
       let viewController = segue.destination as! EditProgramViewController
-      viewController.program = programManager.localPrograms[tableView.indexPathForSelectedRow!.row]
+      let row = tableView.indexPathForSelectedRow!.row
+      viewController.program = programManager.localPrograms[row]
+      viewController.programChanged = { program in
+        self.programManager.localPrograms[row] = program
+        self.navigationController!.popViewController(animated: true)
+      }
     }
   }
   
@@ -53,12 +58,13 @@ class ProgramTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if isEditing {
       performSegue(withIdentifier:"editProgram", sender: nil)
+      setEditing(false, animated: true)
     } else {
       programManager.activeProgram = programManager.localPrograms[indexPath.row]
       cancel()
     }
 	}
-	
+  
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       programManager.localPrograms.remove(at: indexPath.row)

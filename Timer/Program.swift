@@ -6,6 +6,8 @@
 //  Copyright © 2020 Jonathan Diehl. All rights reserved.
 //
 
+import SwiftyJSON
+
 enum ProgramError: Error {
     case overtime
 }
@@ -23,11 +25,33 @@ struct Program {
   }
 
   let title: String
-  let tint: TintColor
-  let style: TintStyle
+  let tint: Tint
   let steps: [Step]
   
   var totalLength: Int { steps.reduce(0) { $0 + $1.length } }
+  
+  init(title: String, tint: Tint, steps: [Step]) {
+    self.title = title
+    self.tint = tint
+    self.steps = steps
+  }
+  
+  init?(json: String) {
+    let obj = JSON(parseJSON: json)
+    guard let title = obj["title"].string else { return nil }
+    guard let tint = Tint(withString: obj["tint"].string ?? "") else { return nil }
+    guard let jsonSteps = obj["steps"].array else { return nil }
+    let steps = jsonSteps.map { obj in Step(title: obj["title"].string ?? "", length: obj["length"].int ?? 30) }
+    self.init(title: title, tint: tint, steps: steps)
+  }
+  
+  func toJSON() -> String {
+    var obj = JSON()
+    obj["tint"].string = tint.toString()
+    obj["title"].string = title
+    obj["steps"].arrayObject = steps.map { ["title": $0.title, "length": $0.length] }
+    return obj.rawString()!
+  }
   
   func timeForIndex(_ index: Index) -> Int {
     var time: Int = 0

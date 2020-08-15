@@ -25,7 +25,10 @@ class StepsPicker: UIView {
   
   // steps
   var program: Program? {
-    didSet { updatePaths() }
+    didSet {
+      updatePaths()
+      updateColors()
+    }
   }
   
   var index: Program.Index = Program.Index(step: 0, time: 0) {
@@ -95,7 +98,6 @@ class StepsPicker: UIView {
     setupMarker()
     updatePaths()
     updateProgress()
-    TintManager.shared.on(.tintChanged) { self.updateColors() }
     updateColors()
   }
   
@@ -130,11 +132,12 @@ class StepsPicker: UIView {
   
   // update colors (called when colors change)
   private func updateColors() {
-    backgroundColor = TintManager.shared.backgroundColor
-    backgroundLayer.fillColor = TintManager.shared.greyColor.cgColor
-    progressLayer.fillColor = TintManager.shared.color.cgColor
-    markerLayer.fillColor = TintManager.shared.color.cgColor
-    markerLabelLayer.foregroundColor = TintManager.shared.backgroundColor.cgColor
+    guard let program = program else { return }
+    backgroundColor = program.tint.backgroundColor
+    backgroundLayer.fillColor = program.tint.greyColor.cgColor
+    progressLayer.fillColor = program.tint.foregroundColor.cgColor
+    markerLayer.fillColor = program.tint.foregroundColor.cgColor
+    markerLabelLayer.foregroundColor = program.tint.backgroundColor.cgColor
   }
   
   // compute the position of the given index

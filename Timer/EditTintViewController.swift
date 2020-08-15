@@ -11,8 +11,11 @@ import Eureka
 
 class EditTintViewController: FormViewController {
 
-  var tint: TintColor? { didSet { setupForm() }}
-  var style: TintStyle? { didSet { setupForm() }}
+  let allThemes: [Tint.Theme] = [.crimson, .earth, .glow, .leaf, .ocean, .pop, .royal, .sky]
+  let allStyles: [Tint.Style] = [.automatic, .light, .dark, .colored]
+
+  var tint: Tint.Theme? { didSet { setupForm() }}
+  var style: Tint.Style? { didSet { setupForm() }}
   
   var willClose: (() -> Void)?
 
@@ -37,7 +40,7 @@ class EditTintViewController: FormViewController {
         section.header = HeaderFooterView(title: "Color")
     }
 
-    for option in TintManager.allColors {
+    for option in allThemes {
       form.last! <<< ListCheckRow<String>(option.rawValue){ lrow in
         lrow.title = option.rawValue
         lrow.selectableValue = option.rawValue

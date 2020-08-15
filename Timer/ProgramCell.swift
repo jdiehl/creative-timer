@@ -16,8 +16,8 @@ class ProgramCell: UITableViewCell {
   
   func set(program: Program) {
     titleLabel.text = program.title
-    titleLabel.textColor = TintManager.color(tint: program.tint, style: program.style)
     stepsView.program = program
-    panel.backgroundColor = TintManager.backgroundColor(tint: program.tint, style: program.style)
+    titleLabel.textColor = program.tint.foregroundColor
+    panel.backgroundColor = program.tint.backgroundColor
   }
 }

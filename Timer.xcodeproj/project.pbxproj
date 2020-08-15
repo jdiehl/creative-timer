@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D01ACB424E8046300818691 /* Tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D01ACB324E8046300818691 /* Tint.swift */; };
+		2D01ACB724E80E8200818691 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2D01ACB624E80E8200818691 /* SwiftyJSON */; };
 		2D138E4824BA1292008A269A /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D138E4724BA1292008A269A /* Program.swift */; };
 		2D138E4A24BA1403008A269A /* ProgramRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D138E4924BA1403008A269A /* ProgramRunner.swift */; };
 		2D138E4C24BA20E1008A269A /* SecondsTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D138E4B24BA20E1008A269A /* SecondsTimer.swift */; };
@@ -40,10 +42,10 @@
 		2DEFB30E1CA6E40100E4AA77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30D1CA6E40100E4AA77 /* Assets.xcassets */; };
 		2DEFB3111CA6E40100E4AA77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30F1CA6E40100E4AA77 /* LaunchScreen.storyboard */; };
 		2DF0B8FF24C8208B0062694B /* AnnouncerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B8FE24C8208B0062694B /* AnnouncerViewController.swift */; };
-		2DF2171B24C6D0C700E0230A /* TintManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF2171A24C6D0C700E0230A /* TintManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D01ACB324E8046300818691 /* Tint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tint.swift; sourceTree = "<group>"; };
 		2D138E4724BA1292008A269A /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		2D138E4924BA1403008A269A /* ProgramRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramRunner.swift; sourceTree = "<group>"; };
 		2D138E4B24BA20E1008A269A /* SecondsTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondsTimer.swift; sourceTree = "<group>"; };
@@ -79,7 +81,6 @@
 		2DEFB3101CA6E40100E4AA77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DEFB3121CA6E40100E4AA77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DF0B8FE24C8208B0062694B /* AnnouncerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncerViewController.swift; sourceTree = "<group>"; };
-		2DF2171A24C6D0C700E0230A /* TintManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D01ACB724E80E8200818691 /* SwiftyJSON in Frameworks */,
 				2D71C46024C34B51003288DE /* FontAwesome in Frameworks */,
 				2DBC0F6D24DED5FB00E49F98 /* Eureka in Frameworks */,
 			);
@@ -122,10 +124,10 @@
 			isa = PBXGroup;
 			children = (
 				2D138E4724BA1292008A269A /* Program.swift */,
+				2D01ACB324E8046300818691 /* Tint.swift */,
 				2D138E5024BB18E6008A269A /* ProgramManager.swift */,
 				2D138E4924BA1403008A269A /* ProgramRunner.swift */,
 				2D138E4E24BAFC28008A269A /* NotificationScheduler.swift */,
-				2DF2171A24C6D0C700E0230A /* TintManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -212,6 +214,7 @@
 			packageProductDependencies = (
 				2D71C45F24C34B51003288DE /* FontAwesome */,
 				2DBC0F6C24DED5FB00E49F98 /* Eureka */,
+				2D01ACB624E80E8200818691 /* SwiftyJSON */,
 			);
 			productName = Timer;
 			productReference = 2DEFB3031CA6E40000E4AA77 /* CusTimer.app */;
@@ -251,6 +254,7 @@
 			packageReferences = (
 				2D71C45E24C34B51003288DE /* XCRemoteSwiftPackageReference "FontAwesome" */,
 				2DBC0F6B24DED5FB00E49F98 /* XCRemoteSwiftPackageReference "Eureka" */,
+				2D01ACB524E80E8200818691 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 2DEFB3041CA6E40000E4AA77 /* Products */;
 			projectDirPath = "";
@@ -293,12 +297,12 @@
 				2DEFB3091CA6E40100E4AA77 /* TimerViewController.swift in Sources */,
 				2DF0B8FF24C8208B0062694B /* AnnouncerViewController.swift in Sources */,
 				2D138E5324BB1EBF008A269A /* BlinkAnimation.swift in Sources */,
+				2D01ACB424E8046300818691 /* Tint.swift in Sources */,
 				2D138E4C24BA20E1008A269A /* SecondsTimer.swift in Sources */,
 				2D138E4A24BA1403008A269A /* ProgramRunner.swift in Sources */,
 				2D138E4F24BAFC28008A269A /* NotificationScheduler.swift in Sources */,
 				2D99B88324BF925F009BE18E /* ProgressView.swift in Sources */,
 				2DB7034B24CE256A008FC7DF /* StepsPicker.swift in Sources */,
-				2DF2171B24C6D0C700E0230A /* TintManager.swift in Sources */,
 				2D3BB6FA1CAC36CC008320FA /* ProgramTableViewController.swift in Sources */,
 				2D138E5724BC3D63008A269A /* ControlsViewControler.swift in Sources */,
 				2DD4178424C4330200981C09 /* StepsViewController.swift in Sources */,
@@ -512,6 +516,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2D01ACB524E80E8200818691 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		2D71C45E24C34B51003288DE /* XCRemoteSwiftPackageReference "FontAwesome" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/thii/FontAwesome.swift";
@@ -531,6 +543,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2D01ACB624E80E8200818691 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D01ACB524E80E8200818691 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
 		2D71C45F24C34B51003288DE /* FontAwesome */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2D71C45E24C34B51003288DE /* XCRemoteSwiftPackageReference "FontAwesome" */;

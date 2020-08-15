@@ -25,18 +25,18 @@ class AnnouncerViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    runner.on(.programChanged) { self.updateColor() }
     runner.on(.started) { self.onStart() }
     runner.on(.stopped) { self.onStop() }
     runner.on(.stepChanged) { self.onStepChange() }
     runner.on(.finished) { self.onFinished() }
-    TintManager.shared.on(.tintChanged) { self.updateColor() }
     updateColor()
   }
   
   // MARK: - Private Methods
 
   private func updateColor() {
-    self.view.backgroundColor = TintManager.shared.color
+    view.backgroundColor = runner.program?.tint.backgroundColor
   }
 
   private func onStart() {

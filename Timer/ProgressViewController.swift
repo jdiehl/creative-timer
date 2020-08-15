@@ -20,8 +20,8 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
   // MARK: - UIViewController
   
   override func viewDidLoad() {
+    runner.on(.programChanged) { self.updateColor() }
     runner.on(.tick) { self.update() }
-    TintManager.shared.on(.tintChanged) { self.updateColor() }
     updateColor()
   }
   
@@ -49,8 +49,10 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
   }
  
   private func updateColor() {
-    view.backgroundColor = TintManager.shared.backgroundColor
-    progressLabel.textColor = TintManager.shared.color
+    guard let tint = runner.program?.tint else { return }
+    view.backgroundColor = tint.backgroundColor
+    progressLabel.textColor = tint.foregroundColor
+    progressView.tint = tint
   }
 
 }

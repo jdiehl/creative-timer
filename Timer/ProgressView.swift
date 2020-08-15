@@ -23,9 +23,14 @@ class ProgressView: UIView {
     didSet { updateProgress() }
   }
   
-  // the inner radius in px
+  // the ring width in px
   var width: Float = 20 {
     didSet { setNeedsLayout() }
+  }
+  
+  // the tint
+  var tint: Tint? {
+    didSet { updateColors() }
   }
   
   // the center of the ring
@@ -95,14 +100,13 @@ class ProgressView: UIView {
   private func setup() {
     layer.addSublayer(ringLayer)
     layer.addSublayer(progressLayer)
-    TintManager.shared.on(.tintChanged) { self.updateColors() }
-    updateColors()
   }
   
   private func updateColors() {
-    backgroundColor = TintManager.shared.backgroundColor
-    progressLayer.fillColor = TintManager.shared.color.cgColor
-    ringLayer.fillColor = TintManager.shared.greyColor.cgColor
+    guard let tint = tint else { return }
+    backgroundColor = tint.backgroundColor
+    progressLayer.fillColor = tint.foregroundColor.cgColor
+    ringLayer.fillColor = tint.greyColor.cgColor
   }
   
   // update the ring layer

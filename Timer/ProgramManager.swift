@@ -15,10 +15,17 @@ class ProgramManager {
   
   weak var delegate: ProgramManagerDelegate?
   
-  var activeProgram = Program(title: "Aquafitness", tint: .crimson, style: .automatic, steps: [
-    Program.Step(title: "Warmup", length: 60),
-    Program.Step(title: "high knee jogging - nudel beidhaendig nach unten druecken", length: 30),
-    Program.Step(title: "high knee jogging - nudelenden zu den knoecheln bringen", length: 30),
+  var activeProgram = Program(json: """
+  {
+    "title": "Aquafitness",
+    "tint": "Crimson:Automatic",
+    "steps": [
+      { "title": "Warmup", "length": 60 },
+      { "title": "high knee jogging - nudel beidhaendig nach unten druecken", "length": 30 },
+      { "title": "high knee jogging - nudelenden zu den knoecheln bringen", "length": 30 }
+    ]
+  }
+""")!
 //    Program.Step(title: "regular jogging - nudel im rainbow im wechsel", length: 30),
 //    Program.Step(title: "rock 'n' roll - nudel im rainbow diagonal im wechsel", length: 30),
 //    Program.Step(title: "wide jogging - nudel im rainbow diagonal beidhaendig", length: 30),
@@ -43,7 +50,7 @@ class ProgramManager {
 //    Program.Step(title: "nudel mittig mit linkem fuss rauf und runter", length: 30),
 //    Program.Step(title: "rock 'n' roll - nudel im rainbow hinterm ruecken oeffnen und schliessen", length: 30),
 //    Program.Step(title: "regular jogging - nudel als paddel im wechsel", length: 30)
-  ]) {
+  {
     didSet {
       delegate?.managerChangedProgram(programManager: self)
       
@@ -52,9 +59,17 @@ class ProgramManager {
   
   lazy var localPrograms = [
     activeProgram,
-    Program(title: "Test 1", tint: .sky, style: .colored, steps: [
-      Program.Step(title: "1 Minute", length: 60),
-    ])
+    Program(json: """
+      {
+        "title": "Test",
+        "tint": "Sky:Colored",
+        "steps": [
+          { "title": "One", "length": 60 },
+          { "title": "Two", "length": 30 },
+          { "title": "Three", "length": 60 }
+        ]
+      }
+    """)!
   ]
   
 }

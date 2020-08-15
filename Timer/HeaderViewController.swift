@@ -20,25 +20,20 @@ class HeaderViewController: UIViewController {
   override func viewDidLoad() {
     runner.on(.programChanged) { self.updateProgram() }
     runner.on(.stepChanged) { self.updateStep() }
-    TintManager.shared.on(.tintChanged) { self.updateColor() }
-    updateColor()
   }
   
   private func updateProgram() {
     guard let program = self.runner.program else { return }
-    self.programLabel.text = program.title
-    self.updateStep()
+    view.backgroundColor = program.tint.backgroundColor
+    stepLabel.textColor = program.tint.foregroundColor
+    programLabel.textColor = program.tint.foregroundColor
+    programLabel.text = program.title
+    updateStep()
   }
   
   private func updateStep() {
     guard let step = self.runner.step else { return }
     self.stepLabel.text = step.title
-  }
-  
-  private func updateColor() {
-    self.view.backgroundColor = TintManager.shared.backgroundColor
-    self.stepLabel.textColor = TintManager.shared.color
-    self.programLabel.textColor = TintManager.shared.color
   }
 
 }

@@ -40,12 +40,13 @@ class StepsViewController: UIViewController, StepsPickerDelegate {
     runner.on(.programChanged) { self.updateSteps() }
     runner.on(.stepChanged) { self.updateProgress() }
     runner.on(.tick) { self.updateProgress() }
-    TintManager.shared.on(.tintChanged) { self.updateColor() }
-    updateColor()
   }
   
   private func updateSteps() {
     guard let program = runner.program else { return }
+    view.backgroundColor = program.tint.backgroundColor
+    currentTimeLabel.textColor = program.tint.foregroundColor
+    totalTimeLabel.textColor = program.tint.foregroundColor
     totalTimeLabel.text = program.totalLength.toTimeString()
     stepsPicker.program = program
   }
@@ -53,12 +54,6 @@ class StepsViewController: UIViewController, StepsPickerDelegate {
   private func updateProgress() {
     currentTimeLabel.text = runner.totalTime.toTimeString()
     stepsPicker.index = runner.index
-  }
-  
-  private func updateColor() {
-    view.backgroundColor = TintManager.shared.backgroundColor
-    currentTimeLabel.textColor = TintManager.shared.color
-    totalTimeLabel.textColor = TintManager.shared.color
   }
 
 }

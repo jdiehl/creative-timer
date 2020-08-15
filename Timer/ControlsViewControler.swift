@@ -53,9 +53,9 @@ class ControlsViewController: UIViewController {
   // MARK: - Private Methods
   
   private func setupEvents() {
+    runner.on(.programChanged) { self.updateColor() }
     runner.on(.started) { self.updatePlayPause() }
     runner.on(.stopped) { self.updatePlayPause() }
-    TintManager.shared.on(.tintChanged) { self.updateColor() }
   }
   
   private func updatePlayPause() {
@@ -74,10 +74,11 @@ class ControlsViewController: UIViewController {
   }
   
   private func updateColor() {
-    self.view.backgroundColor = TintManager.shared.backgroundColor
-    resetButton.setTitleColor(TintManager.shared.color, for: .normal)
-    playPauseButton.setTitleColor(TintManager.shared.color, for: .normal)
-    settingsButton.setTitleColor(TintManager.shared.color, for: .normal)
+    guard let tint = ProgramRunner.shared.program?.tint else { return }
+    view.backgroundColor = tint.backgroundColor
+    resetButton.setTitleColor(tint.foregroundColor, for: .normal)
+    playPauseButton.setTitleColor(tint.foregroundColor, for: .normal)
+    settingsButton.setTitleColor(tint.foregroundColor, for: .normal)
   }
 
 }

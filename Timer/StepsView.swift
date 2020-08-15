@@ -36,8 +36,8 @@ class StepsView: UIView {
   private func update() {
     guard let program = program else { return }
     stepsLayer.path = stepsPath()
-    backgroundColor = TintManager.backgroundColor(tint: program.tint, style: program.style)
-    stepsLayer.fillColor = TintManager.color(tint: program.tint, style: program.style).cgColor
+    backgroundColor = program.tint.backgroundColor
+    stepsLayer.fillColor = program.tint.foregroundColor.cgColor
   }
 
   // create the path with dots for the line (used for the bg and the progress line / the latter with a mask)

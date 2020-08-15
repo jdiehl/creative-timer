@@ -29,7 +29,7 @@ class EditProgramViewController: FormViewController {
 
   @IBAction func done() {
     let title = (form.rowBy(tag: "title") as! TextRow).value!
-    let program = Program(title: title, tint: .crimson, style: .automatic, steps: self.program!.steps)
+    let program = Program(title: title, tint: Tint(theme: .crimson, style: .automatic), steps: self.program!.steps)
     programChanged?(program)
   }
 

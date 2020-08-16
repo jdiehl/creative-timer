@@ -11,18 +11,24 @@ import UIKit
 class ProgramTableViewController: UITableViewController {
 	
 	let programManager = ProgramManager.shared
+  
+  // MARK: - IBActions
 	
-	// on cancel
-	@objc func cancel() {
+	@IBAction func cancel() {
 		dismiss(animated: true, completion: nil)
 	}
   
+  @IBAction func edit() {
+    setEditing(!isEditing, animated: true)
+  }
+  
+  // MARK: - UIViewController
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    // navigation bar
     navigationItem.rightBarButtonItem = self.editButtonItem
     navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+    edit()
   }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -31,13 +37,12 @@ class ProgramTableViewController: UITableViewController {
 	}
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "editProgram" {
-      let viewController = segue.destination as! EditProgramViewController
+    if segue.identifier == "EditProgram" {
+      let viewController = segue.destination as! EditProgramTableViewController
       let row = tableView.indexPathForSelectedRow!.row
       viewController.program = programManager.localPrograms[row]
       viewController.programChanged = { program in
         self.programManager.localPrograms[row] = program
-        self.navigationController!.popViewController(animated: true)
       }
     }
   }
@@ -49,7 +54,7 @@ class ProgramTableViewController: UITableViewController {
   }
 	
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "programCell", for: indexPath) as! ProgramCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramCell", for: indexPath) as! ProgramCell
     let program = programManager.localPrograms[indexPath.row]
     cell.set(program: program)
     return cell
@@ -57,7 +62,7 @@ class ProgramTableViewController: UITableViewController {
   
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if isEditing {
-      performSegue(withIdentifier:"editProgram", sender: nil)
+      performSegue(withIdentifier:"EditProgram", sender: nil)
       setEditing(false, animated: true)
     } else {
       programManager.activeProgram = programManager.localPrograms[indexPath.row]

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FontAwesome
 
 protocol ControlsDelegate: AnyObject {
   func onSettings()
@@ -16,23 +15,26 @@ protocol ControlsDelegate: AnyObject {
 class ControlsViewController: UIViewController {
   
   @IBOutlet weak var resetButton: UIButton!
-  @IBOutlet weak var playPauseButton: UIButton!
+  @IBOutlet weak var playButton: UIButton!
+  @IBOutlet weak var pauseButton: UIButton!
   @IBOutlet weak var settingsButton: UIButton!
   
   weak var delegate: ControlsDelegate?
 
   private let runner = ProgramRunner.shared
   
-  private var font: UIFont { UIFont.fontAwesome(ofSize: 18, style: .solid) }
-
   // MARK: - IBActions
 
   @IBAction func onReset(_ sender: AnyObject? = nil) {
     runner.reset()
   }
   
-  @IBAction func onPlayPause(_ sender: AnyObject) {
-    runner.running ? runner.stop() : runner.start()
+  @IBAction func onPlay(_ sender: AnyObject) {
+    runner.start()
+  }
+
+  @IBAction func onPause(_ sender: AnyObject) {
+    runner.stop()
   }
 
   @IBAction func onSettings(_ sender: UIView) {
@@ -45,7 +47,6 @@ class ControlsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupEvents()
-    setupButtons()
     updatePlayPause()
     updateColor()
   }
@@ -59,26 +60,17 @@ class ControlsViewController: UIViewController {
   }
   
   private func updatePlayPause() {
-    let name: FontAwesome = runner.running ? .pause : .play
-    playPauseButton.setTitle(String.fontAwesomeIcon(name: name), for: .normal)
-  }
-  
-  private func setupButtons() {
-    resetButton.titleLabel?.font = font
-    playPauseButton.titleLabel?.font = font
-    settingsButton.titleLabel?.font = font
-    
-    playPauseButton.setTitle(String.fontAwesomeIcon(name: .undo), for: .normal)
-    playPauseButton.setTitle(String.fontAwesomeIcon(name: .play), for: .normal)
-    settingsButton.setTitle(String.fontAwesomeIcon(name: .ellipsisV), for: .normal)
+    playButton.isHidden = runner.running
+    pauseButton.isHidden = !runner.running
   }
   
   private func updateColor() {
     guard let tint = ProgramRunner.shared.program?.tint else { return }
     view.backgroundColor = tint.backgroundColor
-    resetButton.setTitleColor(tint.foregroundColor, for: .normal)
-    playPauseButton.setTitleColor(tint.foregroundColor, for: .normal)
-    settingsButton.setTitleColor(tint.foregroundColor, for: .normal)
+    resetButton.tintColor = tint.foregroundColor
+    playButton.tintColor = tint.foregroundColor
+    pauseButton.tintColor = tint.foregroundColor
+    settingsButton.tintColor = tint.foregroundColor
   }
 
 }

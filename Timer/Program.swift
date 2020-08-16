@@ -15,8 +15,8 @@ enum ProgramError: Error {
 struct Program {
   
   struct Step {
-    let title: String
-    let length: Int
+    var title: String
+    var length: Int
   }
   
   struct Index: Equatable {
@@ -24,9 +24,9 @@ struct Program {
     let time: Int
   }
 
-  let title: String
-  let tint: Tint
-  let steps: [Step]
+  var title: String
+  var tint: Tint
+  var steps: [Step]
   
   var totalLength: Int { steps.reduce(0) { $0 + $1.length } }
   

@@ -7,8 +7,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="fa-solid-900.ttf">
-            <string>FontAwesome5Free-Solid</string>
+        <array key="TimesNewRoman.ttf">
+            <string>.SFUI-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -24,18 +24,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hu2-WI-wML">
+                                <rect key="frame" x="57.5" y="0.0" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ReY-tw-ATa"/>
+                                    <constraint firstAttribute="width" constant="44" id="bua-Gw-mtZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="16"/>
+                                <color key="tintColor" name="Crimson"/>
+                                <state key="normal" image="backward.end" catalog="system">
+                                    <color key="titleColor" name="Crimson"/>
+                                </state>
+                                <connections>
+                                    <action selector="onReset:" destination="5nJ-tj-nF6" eventType="touchUpInside" id="NMf-Tf-PUb"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bE-5r-qyS">
                                 <rect key="frame" x="165.5" y="0.0" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="AG6-R5-IYk"/>
                                     <constraint firstAttribute="height" constant="44" id="rAp-S9-43t"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="18"/>
-                                <state key="normal" title="">
+                                <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="16"/>
+                                <color key="tintColor" name="Crimson"/>
+                                <state key="normal" image="play" catalog="system">
                                     <color key="titleColor" name="Crimson"/>
                                 </state>
                                 <connections>
-                                    <action selector="onPlayPause:" destination="5nJ-tj-nF6" eventType="touchUpInside" id="LB4-wa-yc9"/>
+                                    <action selector="onPlay:" destination="5nJ-tj-nF6" eventType="touchUpInside" id="H0Y-Ws-Iqb"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZq-7G-vVo">
+                                <rect key="frame" x="165.5" y="0.0" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="cZN-0w-mWE"/>
+                                    <constraint firstAttribute="height" constant="44" id="s23-hc-UqA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="16"/>
+                                <color key="tintColor" name="Crimson"/>
+                                <state key="normal" image="pause" catalog="system">
+                                    <color key="titleColor" name="Crimson"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPause:" destination="5nJ-tj-nF6" eventType="touchUpInside" id="7Xx-ME-PkY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7AU-mS-JhM">
@@ -44,27 +75,13 @@
                                     <constraint firstAttribute="height" constant="44" id="3aX-6O-IK6"/>
                                     <constraint firstAttribute="width" constant="44" id="ZKB-g7-qub"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="18"/>
-                                <state key="normal" title="">
+                                <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="16"/>
+                                <color key="tintColor" name="Crimson"/>
+                                <state key="normal" image="eject" catalog="system">
                                     <color key="titleColor" name="Crimson"/>
                                 </state>
                                 <connections>
                                     <action selector="onSettings:" destination="5nJ-tj-nF6" eventType="touchUpInside" id="kEn-SN-pZz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hu2-WI-wML">
-                                <rect key="frame" x="57.5" y="0.0" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ReY-tw-ATa"/>
-                                    <constraint firstAttribute="width" constant="44" id="bua-Gw-mtZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="18"/>
-                                <color key="tintColor" name="Crimson"/>
-                                <state key="normal" title="">
-                                    <color key="titleColor" name="Crimson"/>
-                                </state>
-                                <connections>
-                                    <action selector="onReset:" destination="5nJ-tj-nF6" eventType="touchUpInside" id="NMf-Tf-PUb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -73,14 +90,17 @@
                             <constraint firstItem="7AU-mS-JhM" firstAttribute="centerY" secondItem="GKe-PL-arj" secondAttribute="centerY" id="1GW-PO-iU7"/>
                             <constraint firstItem="9bE-5r-qyS" firstAttribute="leading" secondItem="hu2-WI-wML" secondAttribute="trailing" constant="64" id="C6u-NF-2JZ"/>
                             <constraint firstItem="9bE-5r-qyS" firstAttribute="centerX" secondItem="GKe-PL-arj" secondAttribute="centerX" id="HXa-mk-X4Y"/>
+                            <constraint firstItem="UZq-7G-vVo" firstAttribute="centerY" secondItem="GKe-PL-arj" secondAttribute="centerY" id="ISd-BT-ojT"/>
                             <constraint firstItem="9bE-5r-qyS" firstAttribute="centerY" secondItem="GKe-PL-arj" secondAttribute="centerY" id="Q5P-85-mu5"/>
                             <constraint firstItem="hu2-WI-wML" firstAttribute="centerY" secondItem="GKe-PL-arj" secondAttribute="centerY" id="QOF-OS-VxF"/>
                             <constraint firstItem="7AU-mS-JhM" firstAttribute="leading" secondItem="9bE-5r-qyS" secondAttribute="trailing" constant="64" id="fcC-oO-FqD"/>
+                            <constraint firstItem="UZq-7G-vVo" firstAttribute="centerX" secondItem="GKe-PL-arj" secondAttribute="centerX" id="tbn-AD-HJ7"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="44"/>
                     <connections>
-                        <outlet property="playPauseButton" destination="9bE-5r-qyS" id="WqZ-2Z-BXH"/>
+                        <outlet property="pauseButton" destination="UZq-7G-vVo" id="Lmb-KD-YFx"/>
+                        <outlet property="playButton" destination="9bE-5r-qyS" id="j5A-bE-Gl6"/>
                         <outlet property="resetButton" destination="hu2-WI-wML" id="szz-pT-ITx"/>
                         <outlet property="settingsButton" destination="7AU-mS-JhM" id="5yy-k2-VF2"/>
                     </connections>
@@ -163,7 +183,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="programCell" rowHeight="100" id="bt0-rI-1d5" customClass="ProgramCell" customModule="CusTimer" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProgramCell" rowHeight="100" id="bt0-rI-1d5" customClass="ProgramCell" customModule="CusTimer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bt0-rI-1d5" id="GKL-Hw-2Fw">
@@ -218,39 +238,79 @@
                             <outlet property="delegate" destination="Nsr-nE-eW4" id="AGn-SH-b36"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Timers" id="Hlg-Ie-AyM"/>
+                    <navigationItem key="navigationItem" title="Timers" id="Hlg-Ie-AyM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AB2-DM-ZpI">
+                            <connections>
+                                <action selector="cancel" destination="Nsr-nE-eW4" id="ViS-4h-m0a"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Qd4-uP-tnG">
+                            <connections>
+                                <action selector="edit" destination="Nsr-nE-eW4" id="ljj-7R-Azk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="hxa-C5-fw0" kind="show" identifier="editProgram" id="U91-kv-apD"/>
+                        <segue destination="5bq-dh-fy1" kind="show" identifier="EditProgram" id="gMh-Bg-VdI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0h-sW-gOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1620" y="408.84557721139436"/>
         </scene>
-        <!--Edit Timer-->
-        <scene sceneID="YNh-rW-dlK">
+        <!--Edit Program Table View Controller-->
+        <scene sceneID="3x9-DT-r9s">
             <objects>
-                <viewController title="Edit Timer" id="hxa-C5-fw0" customClass="EditProgramViewController" customModule="CusTimer" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CDk-qj-0i5"/>
-                        <viewControllerLayoutGuide type="bottom" id="oGH-ph-ViE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vwW-Q5-WPr">
+                <tableViewController id="5bq-dh-fy1" customClass="EditProgramTableViewController" customModule="CusTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="neM-FY-RJu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="rtb-Z1-O3m">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="ABE-Vk-Isk">
-                            <connections>
-                                <action selector="done" destination="hxa-C5-fw0" id="Qiy-hL-vHY"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DML-zX-xsj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" id="liS-L6-lOh" customClass="TextFieldCell" customModule="CusTimer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="liS-L6-lOh" id="kEA-g5-lrw">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Timer Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6Qg-hC-05N">
+                                            <rect key="frame" x="16" y="5" width="343" height="34.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="34" id="h7R-pD-lxh"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="liS-L6-lOh" id="2aw-bp-VcY"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="6Qg-hC-05N" secondAttribute="trailing" constant="16" id="IYF-xh-HuP"/>
+                                        <constraint firstItem="6Qg-hC-05N" firstAttribute="top" secondItem="kEA-g5-lrw" secondAttribute="top" constant="5" id="sgt-1I-okz"/>
+                                        <constraint firstItem="6Qg-hC-05N" firstAttribute="leading" secondItem="kEA-g5-lrw" secondAttribute="leading" constant="16" id="tz8-CM-9Jf"/>
+                                        <constraint firstAttribute="bottom" secondItem="6Qg-hC-05N" secondAttribute="bottom" constant="4.5" id="zyY-S7-5Ir"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstItem="6Qg-hC-05N" firstAttribute="leading" secondItem="liS-L6-lOh" secondAttribute="leading" constant="16" id="egy-8T-Vw2"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="textField" destination="6Qg-hC-05N" id="G5q-P2-gee"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5bq-dh-fy1" id="N5G-hi-WlT"/>
+                            <outlet property="delegate" destination="5bq-dh-fy1" id="y9W-zJ-u77"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="XM5-r2-pza"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b6o-Yt-Xgb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="408.84557721139436"/>
+            <point key="canvasLocation" x="2277.5999999999999" y="408.84557721139436"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dVR-YX-GMf">
@@ -449,6 +509,10 @@ Lines</string>
         </scene>
     </scenes>
     <resources>
+        <image name="backward.end" catalog="system" width="128" height="120"/>
+        <image name="eject" catalog="system" width="128" height="112"/>
+        <image name="pause" catalog="system" width="88" height="128"/>
+        <image name="play" catalog="system" width="120" height="128"/>
         <namedColor name="Crimson">
             <color red="0.83137254901960789" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -18,11 +18,9 @@
 		2D138E5724BC3D63008A269A /* ControlsViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D138E5624BC3D63008A269A /* ControlsViewControler.swift */; };
 		2D292F2A24BCB292008B10E6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D292F2924BCB292008B10E6 /* UIViewControllerExtension.swift */; };
 		2D3BB6FA1CAC36CC008320FA /* ProgramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BB6F91CAC36CC008320FA /* ProgramTableViewController.swift */; };
-		2D3BB6FC1CAC36D7008320FA /* EditProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BB6FB1CAC36D7008320FA /* EditProgramViewController.swift */; };
+		2D3BB6FC1CAC36D7008320FA /* EditProgramViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BB6FB1CAC36D7008320FA /* EditProgramViewControllerOld.swift */; };
 		2D6192F524C0BB2C00F7DC1E /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6192F424C0BB2C00F7DC1E /* ProgressViewController.swift */; };
 		2D71C45B24C34222003288DE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D71C45A24C34222003288DE /* Colors.xcassets */; };
-		2D71C46024C34B51003288DE /* FontAwesome in Frameworks */ = {isa = PBXBuildFile; productRef = 2D71C45F24C34B51003288DE /* FontAwesome */; };
-		2D71C47024C3762A003288DE /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D71C46B24C37576003288DE /* Font Awesome 5 Free-Solid-900.otf */; };
 		2D99B88324BF925F009BE18E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D99B87F24BF6A7F009BE18E /* ProgressView.swift */; };
 		2DB7034524CC85BB008FC7DF /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034424CC85BB008FC7DF /* ProgramCell.swift */; };
 		2DB7034724CC9087008FC7DF /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034624CC9087008FC7DF /* IntExtension.swift */; };
@@ -36,6 +34,8 @@
 		2DD4178624C47FD400981C09 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178524C47FD400981C09 /* CALayerExtension.swift */; };
 		2DD4178824C4CA2B00981C09 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178724C4CA2B00981C09 /* CGPointExtension.swift */; };
 		2DD4178A24C5786300981C09 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178924C5786300981C09 /* EventEmitter.swift */; };
+		2DD59F4C24E9A85600EDBEDA /* EditProgramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD59F4B24E9A85600EDBEDA /* EditProgramTableViewController.swift */; };
+		2DD59F4E24E9A9A700EDBEDA /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD59F4D24E9A9A700EDBEDA /* TextFieldCell.swift */; };
 		2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */; };
 		2DEFB3091CA6E40100E4AA77 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB3081CA6E40100E4AA77 /* TimerViewController.swift */; };
 		2DEFB30C1CA6E40100E4AA77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30A1CA6E40100E4AA77 /* Main.storyboard */; };
@@ -55,11 +55,9 @@
 		2D138E5624BC3D63008A269A /* ControlsViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsViewControler.swift; sourceTree = "<group>"; };
 		2D292F2924BCB292008B10E6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		2D3BB6F91CAC36CC008320FA /* ProgramTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramTableViewController.swift; sourceTree = "<group>"; };
-		2D3BB6FB1CAC36D7008320FA /* EditProgramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProgramViewController.swift; sourceTree = "<group>"; };
+		2D3BB6FB1CAC36D7008320FA /* EditProgramViewControllerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProgramViewControllerOld.swift; sourceTree = "<group>"; };
 		2D6192F424C0BB2C00F7DC1E /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		2D71C45A24C34222003288DE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		2D71C46B24C37576003288DE /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
-		2D71C46D24C37619003288DE /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Free-Regular-400.otf"; path = "../../../../Library/Developer/Xcode/DerivedData/Timer-grixyhhnuokdzjaavlzoatrbidak/SourcePackages/checkouts/FontAwesome.swift/FontAwesome/Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		2D99B87F24BF6A7F009BE18E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		2DA969581CB6D85800C0171E /* Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Timer.entitlements; sourceTree = "<group>"; };
 		2DB7034424CC85BB008FC7DF /* ProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
@@ -73,6 +71,8 @@
 		2DD4178524C47FD400981C09 /* CALayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
 		2DD4178724C4CA2B00981C09 /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		2DD4178924C5786300981C09 /* EventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitter.swift; sourceTree = "<group>"; };
+		2DD59F4B24E9A85600EDBEDA /* EditProgramTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProgramTableViewController.swift; sourceTree = "<group>"; };
+		2DD59F4D24E9A9A700EDBEDA /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		2DEFB3031CA6E40000E4AA77 /* CusTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CusTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DEFB3081CA6E40100E4AA77 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +89,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D01ACB724E80E8200818691 /* SwiftyJSON in Frameworks */,
-				2D71C46024C34B51003288DE /* FontAwesome in Frameworks */,
 				2DBC0F6D24DED5FB00E49F98 /* Eureka in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,15 +96,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D71C46924C37576003288DE /* FontAwesome */ = {
-			isa = PBXGroup;
-			children = (
-				2D71C46D24C37619003288DE /* Font Awesome 5 Free-Regular-400.otf */,
-				2D71C46B24C37576003288DE /* Font Awesome 5 Free-Solid-900.otf */,
-			);
-			name = FontAwesome;
-			sourceTree = "<group>";
-		};
 		2DA20B351E94D347000B7E45 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +130,7 @@
 				2DD4178124C42E6E00981C09 /* StepsView.swift */,
 				2DB7034824CE23B0008FC7DF /* PanelView.swift */,
 				2DB7034424CC85BB008FC7DF /* ProgramCell.swift */,
+				2DD59F4D24E9A9A700EDBEDA /* TextFieldCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -155,7 +146,8 @@
 				2D138E5624BC3D63008A269A /* ControlsViewControler.swift */,
 				2DEFB3081CA6E40100E4AA77 /* TimerViewController.swift */,
 				2D3BB6F91CAC36CC008320FA /* ProgramTableViewController.swift */,
-				2D3BB6FB1CAC36D7008320FA /* EditProgramViewController.swift */,
+				2DD59F4B24E9A85600EDBEDA /* EditProgramTableViewController.swift */,
+				2D3BB6FB1CAC36D7008320FA /* EditProgramViewControllerOld.swift */,
 				2DBC0F6E24DEE33A00E49F98 /* EditTintViewController.swift */,
 			);
 			name = Controller;
@@ -185,7 +177,6 @@
 				2DEA8A1F1CA938CA00BDF955 /* Model */,
 				2DEA8A201CA938D200BDF955 /* View */,
 				2DEA8A211CA938D700BDF955 /* Controller */,
-				2D71C46924C37576003288DE /* FontAwesome */,
 				2DEFB30A1CA6E40100E4AA77 /* Main.storyboard */,
 				2DEFB30D1CA6E40100E4AA77 /* Assets.xcassets */,
 				2D71C45A24C34222003288DE /* Colors.xcassets */,
@@ -212,7 +203,6 @@
 			);
 			name = CusTimer;
 			packageProductDependencies = (
-				2D71C45F24C34B51003288DE /* FontAwesome */,
 				2DBC0F6C24DED5FB00E49F98 /* Eureka */,
 				2D01ACB624E80E8200818691 /* SwiftyJSON */,
 			);
@@ -252,7 +242,6 @@
 			);
 			mainGroup = 2DEFB2FA1CA6E40000E4AA77;
 			packageReferences = (
-				2D71C45E24C34B51003288DE /* XCRemoteSwiftPackageReference "FontAwesome" */,
 				2DBC0F6B24DED5FB00E49F98 /* XCRemoteSwiftPackageReference "Eureka" */,
 				2D01ACB524E80E8200818691 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
@@ -274,7 +263,6 @@
 				2D71C45B24C34222003288DE /* Colors.xcassets in Resources */,
 				2DEFB30E1CA6E40100E4AA77 /* Assets.xcassets in Resources */,
 				2DEFB30C1CA6E40100E4AA77 /* Main.storyboard in Resources */,
-				2D71C47024C3762A003288DE /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +281,7 @@
 				2D138E5124BB18E6008A269A /* ProgramManager.swift in Sources */,
 				2DB7034524CC85BB008FC7DF /* ProgramCell.swift in Sources */,
 				2D292F2A24BCB292008B10E6 /* UIViewControllerExtension.swift in Sources */,
+				2DD59F4C24E9A85600EDBEDA /* EditProgramTableViewController.swift in Sources */,
 				2DBACDE624C1D855006F167F /* HeaderViewController.swift in Sources */,
 				2DEFB3091CA6E40100E4AA77 /* TimerViewController.swift in Sources */,
 				2DF0B8FF24C8208B0062694B /* AnnouncerViewController.swift in Sources */,
@@ -308,8 +297,9 @@
 				2DD4178424C4330200981C09 /* StepsViewController.swift in Sources */,
 				2DB7034924CE23B0008FC7DF /* PanelView.swift in Sources */,
 				2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */,
+				2DD59F4E24E9A9A700EDBEDA /* TextFieldCell.swift in Sources */,
 				2D138E4824BA1292008A269A /* Program.swift in Sources */,
-				2D3BB6FC1CAC36D7008320FA /* EditProgramViewController.swift in Sources */,
+				2D3BB6FC1CAC36D7008320FA /* EditProgramViewControllerOld.swift in Sources */,
 				2DD4178824C4CA2B00981C09 /* CGPointExtension.swift in Sources */,
 				2DD4178624C47FD400981C09 /* CALayerExtension.swift in Sources */,
 			);
@@ -524,14 +514,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		2D71C45E24C34B51003288DE /* XCRemoteSwiftPackageReference "FontAwesome" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/thii/FontAwesome.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.9.0;
-			};
-		};
 		2DBC0F6B24DED5FB00E49F98 /* XCRemoteSwiftPackageReference "Eureka" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/xmartlabs/Eureka";
@@ -547,11 +529,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2D01ACB524E80E8200818691 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
-		};
-		2D71C45F24C34B51003288DE /* FontAwesome */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2D71C45E24C34B51003288DE /* XCRemoteSwiftPackageReference "FontAwesome" */;
-			productName = FontAwesome;
 		};
 		2DBC0F6C24DED5FB00E49F98 /* Eureka */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -16,6 +16,9 @@ class EditProgramTableViewController: UITableViewController {
 
   var programChanged: ((Program) -> Void)?
 
+  private let allThemes: [Tint.Theme] = [.crimson, .earth, .glow, .leaf, .ocean, .pop, .royal, .sky]
+  private let allStyles: [Tint.Style] = [.automatic, .light, .dark, .colored]
+
   override func viewDidLoad() {
     super.viewDidLoad()
   }

@@ -18,7 +18,6 @@
 		2D138E5724BC3D63008A269A /* ControlsViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D138E5624BC3D63008A269A /* ControlsViewControler.swift */; };
 		2D292F2A24BCB292008B10E6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D292F2924BCB292008B10E6 /* UIViewControllerExtension.swift */; };
 		2D3BB6FA1CAC36CC008320FA /* ProgramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BB6F91CAC36CC008320FA /* ProgramTableViewController.swift */; };
-		2D3BB6FC1CAC36D7008320FA /* EditProgramViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BB6FB1CAC36D7008320FA /* EditProgramViewControllerOld.swift */; };
 		2D6192F524C0BB2C00F7DC1E /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6192F424C0BB2C00F7DC1E /* ProgressViewController.swift */; };
 		2D71C45B24C34222003288DE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D71C45A24C34222003288DE /* Colors.xcassets */; };
 		2D99B88324BF925F009BE18E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D99B87F24BF6A7F009BE18E /* ProgressView.swift */; };
@@ -27,8 +26,6 @@
 		2DB7034924CE23B0008FC7DF /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034824CE23B0008FC7DF /* PanelView.swift */; };
 		2DB7034B24CE256A008FC7DF /* StepsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7034A24CE256A008FC7DF /* StepsPicker.swift */; };
 		2DBACDE624C1D855006F167F /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBACDE524C1D855006F167F /* HeaderViewController.swift */; };
-		2DBC0F6D24DED5FB00E49F98 /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = 2DBC0F6C24DED5FB00E49F98 /* Eureka */; };
-		2DBC0F6F24DEE33A00E49F98 /* EditTintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC0F6E24DEE33A00E49F98 /* EditTintViewController.swift */; };
 		2DD4178224C42E6E00981C09 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178124C42E6E00981C09 /* StepsView.swift */; };
 		2DD4178424C4330200981C09 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178324C4330200981C09 /* StepsViewController.swift */; };
 		2DD4178624C47FD400981C09 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178524C47FD400981C09 /* CALayerExtension.swift */; };
@@ -55,7 +52,6 @@
 		2D138E5624BC3D63008A269A /* ControlsViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsViewControler.swift; sourceTree = "<group>"; };
 		2D292F2924BCB292008B10E6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		2D3BB6F91CAC36CC008320FA /* ProgramTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramTableViewController.swift; sourceTree = "<group>"; };
-		2D3BB6FB1CAC36D7008320FA /* EditProgramViewControllerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProgramViewControllerOld.swift; sourceTree = "<group>"; };
 		2D6192F424C0BB2C00F7DC1E /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		2D71C45A24C34222003288DE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		2D99B87F24BF6A7F009BE18E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -65,7 +61,6 @@
 		2DB7034824CE23B0008FC7DF /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		2DB7034A24CE256A008FC7DF /* StepsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsPicker.swift; sourceTree = "<group>"; };
 		2DBACDE524C1D855006F167F /* HeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
-		2DBC0F6E24DEE33A00E49F98 /* EditTintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTintViewController.swift; sourceTree = "<group>"; };
 		2DD4178124C42E6E00981C09 /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		2DD4178324C4330200981C09 /* StepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
 		2DD4178524C47FD400981C09 /* CALayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
@@ -89,7 +84,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D01ACB724E80E8200818691 /* SwiftyJSON in Frameworks */,
-				2DBC0F6D24DED5FB00E49F98 /* Eureka in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,8 +141,6 @@
 				2DEFB3081CA6E40100E4AA77 /* TimerViewController.swift */,
 				2D3BB6F91CAC36CC008320FA /* ProgramTableViewController.swift */,
 				2DD59F4B24E9A85600EDBEDA /* EditProgramTableViewController.swift */,
-				2D3BB6FB1CAC36D7008320FA /* EditProgramViewControllerOld.swift */,
-				2DBC0F6E24DEE33A00E49F98 /* EditTintViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -203,7 +195,6 @@
 			);
 			name = CusTimer;
 			packageProductDependencies = (
-				2DBC0F6C24DED5FB00E49F98 /* Eureka */,
 				2D01ACB624E80E8200818691 /* SwiftyJSON */,
 			);
 			productName = Timer;
@@ -242,7 +233,6 @@
 			);
 			mainGroup = 2DEFB2FA1CA6E40000E4AA77;
 			packageReferences = (
-				2DBC0F6B24DED5FB00E49F98 /* XCRemoteSwiftPackageReference "Eureka" */,
 				2D01ACB524E80E8200818691 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 2DEFB3041CA6E40000E4AA77 /* Products */;
@@ -274,7 +264,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DD4178A24C5786300981C09 /* EventEmitter.swift in Sources */,
-				2DBC0F6F24DEE33A00E49F98 /* EditTintViewController.swift in Sources */,
 				2D6192F524C0BB2C00F7DC1E /* ProgressViewController.swift in Sources */,
 				2DD4178224C42E6E00981C09 /* StepsView.swift in Sources */,
 				2DB7034724CC9087008FC7DF /* IntExtension.swift in Sources */,
@@ -299,7 +288,6 @@
 				2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */,
 				2DD59F4E24E9A9A700EDBEDA /* TextFieldCell.swift in Sources */,
 				2D138E4824BA1292008A269A /* Program.swift in Sources */,
-				2D3BB6FC1CAC36D7008320FA /* EditProgramViewControllerOld.swift in Sources */,
 				2DD4178824C4CA2B00981C09 /* CGPointExtension.swift in Sources */,
 				2DD4178624C47FD400981C09 /* CALayerExtension.swift in Sources */,
 			);
@@ -514,14 +502,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		2DBC0F6B24DED5FB00E49F98 /* XCRemoteSwiftPackageReference "Eureka" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/xmartlabs/Eureka";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.2.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -529,11 +509,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2D01ACB524E80E8200818691 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
-		};
-		2DBC0F6C24DED5FB00E49F98 /* Eureka */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2DBC0F6B24DED5FB00E49F98 /* XCRemoteSwiftPackageReference "Eureka" */;
-			productName = Eureka;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

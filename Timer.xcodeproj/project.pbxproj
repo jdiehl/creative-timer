@@ -33,6 +33,8 @@
 		2DD4178A24C5786300981C09 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4178924C5786300981C09 /* EventEmitter.swift */; };
 		2DD59F4C24E9A85600EDBEDA /* EditProgramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD59F4B24E9A85600EDBEDA /* EditProgramTableViewController.swift */; };
 		2DD59F4E24E9A9A700EDBEDA /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD59F4D24E9A9A700EDBEDA /* TextFieldCell.swift */; };
+		2DD59F5024E9B10F00EDBEDA /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD59F4F24E9B10F00EDBEDA /* ThemeCell.swift */; };
+		2DD59F5224EA5C5900EDBEDA /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD59F5124EA5C5900EDBEDA /* ThemeView.swift */; };
 		2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */; };
 		2DEFB3091CA6E40100E4AA77 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB3081CA6E40100E4AA77 /* TimerViewController.swift */; };
 		2DEFB30C1CA6E40100E4AA77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30A1CA6E40100E4AA77 /* Main.storyboard */; };
@@ -68,6 +70,8 @@
 		2DD4178924C5786300981C09 /* EventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitter.swift; sourceTree = "<group>"; };
 		2DD59F4B24E9A85600EDBEDA /* EditProgramTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProgramTableViewController.swift; sourceTree = "<group>"; };
 		2DD59F4D24E9A9A700EDBEDA /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		2DD59F4F24E9B10F00EDBEDA /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
+		2DD59F5124EA5C5900EDBEDA /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
 		2DEFB3031CA6E40000E4AA77 /* CusTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CusTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DEFB3081CA6E40100E4AA77 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -123,8 +127,10 @@
 				2DB7034A24CE256A008FC7DF /* StepsPicker.swift */,
 				2DD4178124C42E6E00981C09 /* StepsView.swift */,
 				2DB7034824CE23B0008FC7DF /* PanelView.swift */,
+				2DD59F5124EA5C5900EDBEDA /* ThemeView.swift */,
 				2DB7034424CC85BB008FC7DF /* ProgramCell.swift */,
 				2DD59F4D24E9A9A700EDBEDA /* TextFieldCell.swift */,
+				2DD59F4F24E9B10F00EDBEDA /* ThemeCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -276,6 +282,7 @@
 				2DF0B8FF24C8208B0062694B /* AnnouncerViewController.swift in Sources */,
 				2D138E5324BB1EBF008A269A /* BlinkAnimation.swift in Sources */,
 				2D01ACB424E8046300818691 /* Tint.swift in Sources */,
+				2DD59F5024E9B10F00EDBEDA /* ThemeCell.swift in Sources */,
 				2D138E4C24BA20E1008A269A /* SecondsTimer.swift in Sources */,
 				2D138E4A24BA1403008A269A /* ProgramRunner.swift in Sources */,
 				2D138E4F24BAFC28008A269A /* NotificationScheduler.swift in Sources */,
@@ -287,6 +294,7 @@
 				2DB7034924CE23B0008FC7DF /* PanelView.swift in Sources */,
 				2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */,
 				2DD59F4E24E9A9A700EDBEDA /* TextFieldCell.swift in Sources */,
+				2DD59F5224EA5C5900EDBEDA /* ThemeView.swift in Sources */,
 				2D138E4824BA1292008A269A /* Program.swift in Sources */,
 				2DD4178824C4CA2B00981C09 /* CGPointExtension.swift in Sources */,
 				2DD4178624C47FD400981C09 /* CALayerExtension.swift in Sources */,

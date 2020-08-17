@@ -10,14 +10,14 @@ import UIKit
 
 class TextFieldCell: UITableViewCell, UITextFieldDelegate {
   
-  var textDidChange: ((String) -> Void)?
+  var didChange: ((String) -> Void)?
 
   @IBOutlet weak var textField: UITextField!
   
   // MARK: - UITextFieldDelegate
   
   func textFieldDidEndEditing(_ textField: UITextField) {
-    textDidChange?(textField.text ?? "")
+    didChange?(textField.text ?? "")
   }
 
 }

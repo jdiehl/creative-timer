@@ -10,6 +10,9 @@ import UIKit
 
 struct Tint {
   
+  static let allThemes: [Tint.Theme] = [.crimson, .earth, .glow, .leaf, .ocean, .pop, .royal, .sky]
+  static let allStyles: [Tint.Style] = [.automatic, .light, .dark, .colored]
+
   enum Theme: String {
     case crimson = "Crimson"
     case earth = "Earth"
@@ -28,8 +31,8 @@ struct Tint {
     case colored = "Colored"
   }
   
-  let theme: Theme
-  let style: Style
+  var theme: Theme
+  var style: Style
     
   var foregroundColor: UIColor { return makeForegroundColor() }
   var backgroundColor: UIColor { return makeBackgroundColor() }

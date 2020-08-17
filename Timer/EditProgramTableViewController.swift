@@ -16,9 +16,6 @@ class EditProgramTableViewController: UITableViewController {
 
   var programChanged: ((Program) -> Void)?
 
-  private let allThemes: [Tint.Theme] = [.crimson, .earth, .glow, .leaf, .ocean, .pop, .royal, .sky]
-  private let allStyles: [Tint.Style] = [.automatic, .light, .dark, .colored]
-
   override func viewDidLoad() {
     super.viewDidLoad()
   }
@@ -30,25 +27,33 @@ class EditProgramTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    switch section {
-    case 0: return 1
+  switch section {
+    case 0: return 2
     default: return 0
     }
   }
   
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
-    case 0: return "Name & Appearance"
-    case 1: return "Steps"
-    default: return nil
+      case 0: return "Name & Appearance"
+      case 1: return "Steps"
+      default: return nil
+    }
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    switch (indexPath.section, indexPath.row) {
+      case (0, 1): return 60
+      default: return 44
     }
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell", for: indexPath) as! TextFieldCell
-    cell.textField.text = program?.title
-    cell.textDidChange = { self.program?.title = $0 }
-    return cell
+    switch (indexPath.section, indexPath.row) {
+      case (0, 0): return makeTitleCell(indexPath: indexPath)
+      case (0, 1): return makeThemeCell(indexPath: indexPath)
+      default: return UITableViewCell()
+    }
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -59,6 +64,22 @@ class EditProgramTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
     return false
+  }
+  
+  // MARK: - Cell Factory
+  
+  private func makeTitleCell(indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell", for: indexPath) as! TextFieldCell
+    cell.textField.text = program?.title
+    cell.didChange = { self.program?.title = $0 }
+    return cell
+  }
+
+  private func makeThemeCell(indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeCell", for: indexPath) as! ThemeCell
+    cell.theme = self.program?.tint.theme
+    cell.didChange = { self.program?.tint.theme = $0 }
+    return cell
   }
 
 }

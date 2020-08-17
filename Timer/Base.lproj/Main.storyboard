@@ -268,14 +268,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" id="liS-L6-lOh" customClass="TextFieldCell" customModule="CusTimer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="liS-L6-lOh" id="kEA-g5-lrw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Timer Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6Qg-hC-05N">
-                                            <rect key="frame" x="16" y="5" width="343" height="34.5"/>
+                                            <rect key="frame" x="16" y="5" width="343" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="34" id="h7R-pD-lxh"/>
                                             </constraints>
@@ -288,9 +288,8 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="6Qg-hC-05N" secondAttribute="trailing" constant="16" id="IYF-xh-HuP"/>
-                                        <constraint firstItem="6Qg-hC-05N" firstAttribute="top" secondItem="kEA-g5-lrw" secondAttribute="top" constant="5" id="sgt-1I-okz"/>
                                         <constraint firstItem="6Qg-hC-05N" firstAttribute="leading" secondItem="kEA-g5-lrw" secondAttribute="leading" constant="16" id="tz8-CM-9Jf"/>
-                                        <constraint firstAttribute="bottom" secondItem="6Qg-hC-05N" secondAttribute="bottom" constant="4.5" id="zyY-S7-5Ir"/>
+                                        <constraint firstItem="6Qg-hC-05N" firstAttribute="centerY" secondItem="kEA-g5-lrw" secondAttribute="centerY" id="zZ6-jw-n80"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
@@ -298,6 +297,30 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="textField" destination="6Qg-hC-05N" id="G5q-P2-gee"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ThemeCell" rowHeight="60" id="7Xv-jS-8EH" customClass="ThemeCell" customModule="CusTimer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71.5" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Xv-jS-8EH" id="Kxl-xA-hNn">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="618-J9-Nn7">
+                                            <rect key="frame" x="16" y="8" width="343" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="eEa-5K-P69"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="618-J9-Nn7" firstAttribute="centerY" secondItem="Kxl-xA-hNn" secondAttribute="centerY" id="P4Q-el-ghh"/>
+                                        <constraint firstAttribute="trailing" secondItem="618-J9-Nn7" secondAttribute="trailing" constant="16" id="dlh-Y3-qVc"/>
+                                        <constraint firstItem="618-J9-Nn7" firstAttribute="leading" secondItem="Kxl-xA-hNn" secondAttribute="leading" constant="16" id="i06-MQ-HIB"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="stackView" destination="618-J9-Nn7" id="hkv-O4-Sr1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

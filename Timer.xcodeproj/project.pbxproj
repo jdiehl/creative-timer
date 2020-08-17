@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2D01ACB424E8046300818691 /* Tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D01ACB324E8046300818691 /* Tint.swift */; };
 		2D01ACB724E80E8200818691 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2D01ACB624E80E8200818691 /* SwiftyJSON */; };
+		2D0ABDAE24EAFCB8001404D0 /* StyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0ABDAD24EAFCB8001404D0 /* StyleCell.swift */; };
+		2D0ABDB024EAFD26001404D0 /* StyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0ABDAF24EAFD26001404D0 /* StyleView.swift */; };
 		2D138E4824BA1292008A269A /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D138E4724BA1292008A269A /* Program.swift */; };
 		2D138E4A24BA1403008A269A /* ProgramRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D138E4924BA1403008A269A /* ProgramRunner.swift */; };
 		2D138E4C24BA20E1008A269A /* SecondsTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D138E4B24BA20E1008A269A /* SecondsTimer.swift */; };
@@ -45,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		2D01ACB324E8046300818691 /* Tint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tint.swift; sourceTree = "<group>"; };
+		2D0ABDAD24EAFCB8001404D0 /* StyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleCell.swift; sourceTree = "<group>"; };
+		2D0ABDAF24EAFD26001404D0 /* StyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleView.swift; sourceTree = "<group>"; };
 		2D138E4724BA1292008A269A /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		2D138E4924BA1403008A269A /* ProgramRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramRunner.swift; sourceTree = "<group>"; };
 		2D138E4B24BA20E1008A269A /* SecondsTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondsTimer.swift; sourceTree = "<group>"; };
@@ -128,9 +132,11 @@
 				2DD4178124C42E6E00981C09 /* StepsView.swift */,
 				2DB7034824CE23B0008FC7DF /* PanelView.swift */,
 				2DD59F5124EA5C5900EDBEDA /* ThemeView.swift */,
+				2D0ABDAF24EAFD26001404D0 /* StyleView.swift */,
 				2DB7034424CC85BB008FC7DF /* ProgramCell.swift */,
 				2DD59F4D24E9A9A700EDBEDA /* TextFieldCell.swift */,
 				2DD59F4F24E9B10F00EDBEDA /* ThemeCell.swift */,
+				2D0ABDAD24EAFCB8001404D0 /* StyleCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 				2D138E4C24BA20E1008A269A /* SecondsTimer.swift in Sources */,
 				2D138E4A24BA1403008A269A /* ProgramRunner.swift in Sources */,
 				2D138E4F24BAFC28008A269A /* NotificationScheduler.swift in Sources */,
+				2D0ABDB024EAFD26001404D0 /* StyleView.swift in Sources */,
 				2D99B88324BF925F009BE18E /* ProgressView.swift in Sources */,
 				2DB7034B24CE256A008FC7DF /* StepsPicker.swift in Sources */,
 				2D3BB6FA1CAC36CC008320FA /* ProgramTableViewController.swift in Sources */,
@@ -298,6 +305,7 @@
 				2D138E4824BA1292008A269A /* Program.swift in Sources */,
 				2DD4178824C4CA2B00981C09 /* CGPointExtension.swift in Sources */,
 				2DD4178624C47FD400981C09 /* CALayerExtension.swift in Sources */,
+				2D0ABDAE24EAFCB8001404D0 /* StyleCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,8 @@ class ThemeCell: UITableViewCell {
   var didChange: ((Tint.Theme) -> Void)?
 
   @IBOutlet weak var stackView: UIStackView!
-  
+  @IBOutlet weak var selectedView: UIImageView!
+
   override func awakeFromNib() {
     setup()
     update()
@@ -25,7 +26,6 @@ class ThemeCell: UITableViewCell {
       let view = makeThemeView(theme: theme)
       view.onClick = {
         self.theme = theme
-        self.update()
         self.didChange?(theme)
       }
       stackView.addArrangedSubview(view)
@@ -33,9 +33,9 @@ class ThemeCell: UITableViewCell {
   }
   
   private func update() {
-    for view in stackView.arrangedSubviews as! [ThemeView] {
-      view.selected = view.theme == theme
-    }
+    guard let theme = theme else { return }
+    let index = Tint.allThemes.firstIndex(of: theme)!
+    selectedView.frame.origin = CGPoint(x: 16 + 24 + 3 + index * 48, y: 8 + 24 + 3)
   }
   
   private func makeThemeView(theme: Tint.Theme) -> ThemeView {

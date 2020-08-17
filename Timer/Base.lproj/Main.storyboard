@@ -312,6 +312,10 @@
                                                 <constraint firstAttribute="height" constant="44" id="eEa-5K-P69"/>
                                             </constraints>
                                         </stackView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="86H-Pw-7xL">
+                                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="618-J9-Nn7" firstAttribute="centerY" secondItem="Kxl-xA-hNn" secondAttribute="centerY" id="P4Q-el-ghh"/>
@@ -320,7 +324,37 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="selectedView" destination="86H-Pw-7xL" id="yMF-Xx-pTk"/>
                                     <outlet property="stackView" destination="618-J9-Nn7" id="hkv-O4-Sr1"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="StyleCell" rowHeight="60" id="Edt-SJ-s9P" customClass="StyleCell" customModule="CusTimer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="131.5" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Edt-SJ-s9P" id="f9W-pE-9eG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7lQ-qf-nIw">
+                                            <rect key="frame" x="16" y="8" width="343" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="QGf-tT-bM4"/>
+                                            </constraints>
+                                        </stackView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="1Hb-4f-fNN">
+                                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="7lQ-qf-nIw" secondAttribute="trailing" constant="16" id="p1c-la-s1H"/>
+                                        <constraint firstItem="7lQ-qf-nIw" firstAttribute="centerY" secondItem="f9W-pE-9eG" secondAttribute="centerY" id="u7M-zi-6em"/>
+                                        <constraint firstItem="7lQ-qf-nIw" firstAttribute="leading" secondItem="f9W-pE-9eG" secondAttribute="leading" constant="16" id="zOy-Zt-f45"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="selectedView" destination="1Hb-4f-fNN" id="jrx-So-WrC"/>
+                                    <outlet property="stackView" destination="7lQ-qf-nIw" id="owT-Ir-rjO"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -532,6 +566,7 @@ Lines</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Selected" width="20" height="20"/>
         <image name="backward.end" catalog="system" width="128" height="120"/>
         <image name="eject" catalog="system" width="128" height="112"/>
         <image name="pause" catalog="system" width="88" height="128"/>

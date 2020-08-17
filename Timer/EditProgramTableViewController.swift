@@ -28,7 +28,7 @@ class EditProgramTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   switch section {
-    case 0: return 2
+    case 0: return 3
     default: return 0
     }
   }
@@ -44,6 +44,7 @@ class EditProgramTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch (indexPath.section, indexPath.row) {
       case (0, 1): return 60
+      case (0, 2): return 60
       default: return 44
     }
   }
@@ -52,6 +53,7 @@ class EditProgramTableViewController: UITableViewController {
     switch (indexPath.section, indexPath.row) {
       case (0, 0): return makeTitleCell(indexPath: indexPath)
       case (0, 1): return makeThemeCell(indexPath: indexPath)
+      case (0, 2): return makeStyleCell(indexPath: indexPath)
       default: return UITableViewCell()
     }
   }
@@ -78,7 +80,18 @@ class EditProgramTableViewController: UITableViewController {
   private func makeThemeCell(indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeCell", for: indexPath) as! ThemeCell
     cell.theme = self.program?.tint.theme
-    cell.didChange = { self.program?.tint.theme = $0 }
+    cell.didChange = {
+      self.program?.tint.theme = $0
+      self.tableView.reloadRows(at: [IndexPath(row: 2, section: 0)], with: .none)
+    }
+    return cell
+  }
+
+  private func makeStyleCell(indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "StyleCell", for: indexPath) as! StyleCell
+    cell.theme = self.program?.tint.theme
+    cell.style = self.program?.tint.style
+    cell.didChange = { self.program?.tint.style = $0 }
     return cell
   }
 

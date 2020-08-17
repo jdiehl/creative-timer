@@ -1,23 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "Selected.png",
       "idiom" : "universal",
-      "filename" : "reset.png",
       "scale" : "1x"
     },
     {
+      "filename" : "Selected@2x.png",
       "idiom" : "universal",
-      "filename" : "reset@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "Selected@3x.png",
       "idiom" : "universal",
-      "filename" : "reset@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

@@ -41,9 +41,7 @@ class ProgramTableViewController: UITableViewController {
       let viewController = segue.destination as! EditProgramTableViewController
       let row = tableView.indexPathForSelectedRow!.row
       viewController.program = programManager.localPrograms[row]
-      viewController.programChanged = { program in
-        self.programManager.localPrograms[row] = program
-      }
+      viewController.programChanged = { self.programManager.localPrograms[row] = $0 }
     }
   }
   

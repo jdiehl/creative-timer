@@ -17,63 +17,87 @@ class EditProgramTableViewController: UITableViewController {
   var programChanged: ((Program) -> Void)?
 
   override func viewDidLoad() {
+    isEditing = true
     super.viewDidLoad()
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "EditStep" {
+      let viewController = segue.destination as! EditStepTableViewController
+      let indexPath = tableView.indexPathForSelectedRow!
+      viewController.step = program!.steps[indexPath.row]
+      viewController.stepChanged = { step in
+        self.program!.steps[indexPath.row] = step
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+      }
+    }
   }
   
   // MARK: - Table view data source
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
+    return 3
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   switch section {
-    case 0: return 3
-    default: return program?.steps.count ?? 0
+    case 0: return 1
+    case 1: return 2
+    case 2: return program?.steps.count ?? 0
+    default: return 0
     }
   }
   
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
-      case 0: return "Name & Appearance"
-      case 1: return "Steps"
+      case 0: return "Name"
+      case 1: return "Appearance"
+      case 2: return "Steps"
       default: return nil
-    }
-  }
-  
-  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    switch (indexPath.section, indexPath.row) {
-      case (0, 1): return 60
-      case (0, 2): return 60
-      case (1, _): return 60
-      default: return 44
     }
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch (indexPath.section, indexPath.row) {
       case (0, 0): return makeTitleCell(indexPath: indexPath)
-      case (0, 1): return makeThemeCell(indexPath: indexPath)
-      case (0, 2): return makeStyleCell(indexPath: indexPath)
-      case (1, _): return makeStepCell(indexPath: indexPath)
+      case (1, 0): return makeThemeCell(indexPath: indexPath)
+      case (1, 1): return makeStyleCell(indexPath: indexPath)
+      case (2, _): return makeStepCell(indexPath: indexPath)
       default: return UITableViewCell()
     }
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    guard indexPath.section == 2 else { return }
+    performSegue(withIdentifier: "EditStep", sender: nil)
   }
   
+  
   override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
+    program?.steps.swapAt(fromIndexPath.row, toIndexPath.row)
+  }
+  
+  override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    return .none
   }
 
+  override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return indexPath.section == 2
+  }
+  
   override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    return indexPath.section == 2
+  }
+  
+  override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
     return false
   }
   
   // MARK: - Cell Factory
   
   private func makeTitleCell(indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell", for: indexPath) as! TextFieldCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "TitleCell", for: indexPath) as! TextFieldCell
+    cell.selectionStyle = .none
     cell.textField.text = program?.title
     cell.didChange = { self.program?.title = $0 }
     return cell
@@ -81,16 +105,18 @@ class EditProgramTableViewController: UITableViewController {
 
   private func makeThemeCell(indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeCell", for: indexPath) as! ThemeCell
+    cell.selectionStyle = .none
     cell.theme = self.program?.tint.theme
     cell.didChange = {
       self.program?.tint.theme = $0
-      self.tableView.reloadRows(at: [IndexPath(row: 2, section: 0)], with: .none)
+      self.tableView.reloadRows(at: [IndexPath(row: 1, section: 1)], with: .none)
     }
     return cell
   }
 
   private func makeStyleCell(indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "StyleCell", for: indexPath) as! StyleCell
+    cell.selectionStyle = .none
     cell.theme = self.program?.tint.theme
     cell.style = self.program?.tint.style
     cell.didChange = { self.program?.tint.style = $0 }

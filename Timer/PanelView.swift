@@ -23,10 +23,10 @@ class PanelView: UIView {
   private func setup() {
     layer.cornerRadius = 5
 //    layer.masksToBounds = true
-    layer.shadowColor = UIColor.black.cgColor
-    layer.shadowOpacity = 0.3
-    layer.shadowOffset = CGSize(width: 1, height: 1)
-    layer.shadowRadius = 2
+//    layer.shadowColor = UIColor.black.cgColor
+//    layer.shadowOpacity = 0.3
+//    layer.shadowOffset = CGSize(width: 1, height: 1)
+//    layer.shadowRadius = 2
   }
 
 }

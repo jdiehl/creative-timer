@@ -11,19 +11,21 @@ import UIKit
 class EditStepTableViewController: UITableViewController {
   
   var step: Program.Step? {
-    didSet { stepChanged?(step!) }
+    didSet { stepChanged?(step) }
   }
 
-  var stepChanged: ((Program.Step) -> Void)?
+  var stepChanged: ((Program.Step?) -> Void)?
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    tableView.tableFooterView = UIView()
+    
   }
   
   // MARK: - Table view data source
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
+    return 3
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,28 +36,16 @@ class EditStepTableViewController: UITableViewController {
     switch section {
       case 0: return "Title"
       case 1: return "Length"
+      case 2: return "Actions"
       default: return nil
     }
-  }
-  
-  override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    guard section == 1 else { return nil }
-    let view = UIView()
-    view.backgroundColor = UIColor.systemGroupedBackground
-    return view
-  }
-  
-  override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    guard section == 1 else { return 0 }
-    let tableHeight = tableView.frame.height - tableView.adjustedContentInset.top - tableView.adjustedContentInset.bottom
-    let fitHeight = tableHeight - 2 * (60 + 28)
-    return max(fitHeight, 28)
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch (indexPath.section, indexPath.row) {
       case (0, 0): return makeTitleCell(indexPath: indexPath)
       case (1, 0): return makeLengthCell(indexPath: indexPath)
+      case (2, 0): return makeRemoveCell(indexPath: indexPath)
       default: return UITableViewCell()
     }
   }
@@ -73,6 +63,15 @@ class EditStepTableViewController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "TitleCell", for: indexPath) as! TextFieldCell
     cell.textField.text = String(step?.length ?? 0)
     cell.didChange = { self.step?.length = Int($0) ?? 0 }
+    return cell
+  }
+
+  private func makeRemoveCell(indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "RemoveCell", for: indexPath) as! ButtonCell
+    cell.onTap = {
+      self.step = nil
+      self.navigationController?.popViewController(animated: true)
+    }
     return cell
   }
 

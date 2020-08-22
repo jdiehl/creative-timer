@@ -28,7 +28,6 @@ class ProgramTableViewController: UITableViewController {
     super.viewDidLoad()
     navigationItem.rightBarButtonItem = self.editButtonItem
     navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-    edit()
   }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -40,20 +39,20 @@ class ProgramTableViewController: UITableViewController {
     if segue.identifier == "EditProgram" {
       let viewController = segue.destination as! EditProgramTableViewController
       let row = tableView.indexPathForSelectedRow!.row
-      viewController.program = programManager.localPrograms[row]
-      viewController.programChanged = { self.programManager.localPrograms[row] = $0 }
+      viewController.program = programManager.programs[row]
+      viewController.programChanged = { self.programManager.set(program: $0, at: row) }
     }
   }
   
   // MARK: - Table view data source
 	
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return programManager.localPrograms.count
+    return programManager.programs.count
   }
 	
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramCell", for: indexPath) as! ProgramCell
-    let program = programManager.localPrograms[indexPath.row]
+    let program = programManager.programs[indexPath.row]
     cell.set(program: program)
     return cell
   }
@@ -63,24 +62,26 @@ class ProgramTableViewController: UITableViewController {
       performSegue(withIdentifier:"EditProgram", sender: nil)
       setEditing(false, animated: true)
     } else {
-      programManager.activeProgram = programManager.localPrograms[indexPath.row]
+      programManager.set(active: indexPath.row)
       cancel()
     }
 	}
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      programManager.localPrograms.remove(at: indexPath.row)
+      programManager.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
 	
 	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-		return .delete
+    return programManager.programs.count > 1 ? .delete : .none
 	}
 
   override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
-		programManager.localPrograms.insert(programManager.localPrograms.remove(at: fromIndexPath.row), at:toIndexPath.row)
+    let program = programManager.programs[fromIndexPath.row]
+    programManager.remove(at: fromIndexPath.row)
+    programManager.insert(program: program, at:toIndexPath.row)
   }
 
   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

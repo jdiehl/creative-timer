@@ -6,6 +6,7 @@
 //  Copyright © 2020 Jonathan Diehl. All rights reserved.
 //
 
+import Foundation
 import SwiftyJSON
 
 enum ProgramError: Error {
@@ -36,21 +37,20 @@ struct Program {
     self.steps = steps
   }
   
-  init?(json: String) {
-    let obj = JSON(parseJSON: json)
-    guard let title = obj["title"].string else { return nil }
-    guard let tint = Tint(withString: obj["tint"].string ?? "") else { return nil }
-    guard let jsonSteps = obj["steps"].array else { return nil }
+  init?(json: JSON) {
+    guard let title = json["title"].string else { return nil }
+    guard let tint = Tint(withString: json["tint"].string ?? "") else { return nil }
+    guard let jsonSteps = json["steps"].array else { return nil }
     let steps = jsonSteps.map { obj in Step(title: obj["title"].string ?? "", length: obj["length"].int ?? 30) }
     self.init(title: title, tint: tint, steps: steps)
   }
   
-  func toJSON() -> String {
+  func toJSON() -> JSON {
     var obj = JSON()
     obj["tint"].string = tint.toString()
     obj["title"].string = title
     obj["steps"].arrayObject = steps.map { ["title": $0.title, "length": $0.length] }
-    return obj.rawString()!
+    return obj
   }
   
   func timeForIndex(_ index: Index) -> Int {

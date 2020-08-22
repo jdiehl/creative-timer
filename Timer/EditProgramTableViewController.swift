@@ -13,22 +13,32 @@ class EditProgramTableViewController: UITableViewController {
   var program: Program? {
     didSet { programChanged?(program!) }
   }
+  
+  var stepsCount: Int { program?.steps.count ?? 0 }
 
   var programChanged: ((Program) -> Void)?
 
   override func viewDidLoad() {
-    isEditing = true
     super.viewDidLoad()
+    isEditing = true
+    tableView.tableFooterView = UIView()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    tableView.reloadData()
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "EditStep" {
       let viewController = segue.destination as! EditStepTableViewController
-      let indexPath = tableView.indexPathForSelectedRow!
+      let indexPath = indexPathForSelectedStep()
       viewController.step = program!.steps[indexPath.row]
       viewController.stepChanged = { step in
-        self.program!.steps[indexPath.row] = step
-        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        if let step = step {
+          self.program!.steps[indexPath.row] = step
+        } else {
+          self.program!.steps.remove(at: indexPath.row)
+        }
       }
     }
   }
@@ -43,7 +53,7 @@ class EditProgramTableViewController: UITableViewController {
   switch section {
     case 0: return 1
     case 1: return 2
-    case 2: return program?.steps.count ?? 0
+    case 2: return stepsCount + 1
     default: return 0
     }
   }
@@ -62,7 +72,8 @@ class EditProgramTableViewController: UITableViewController {
       case (0, 0): return makeTitleCell(indexPath: indexPath)
       case (1, 0): return makeThemeCell(indexPath: indexPath)
       case (1, 1): return makeStyleCell(indexPath: indexPath)
-      case (2, _): return makeStepCell(indexPath: indexPath)
+      case (2, 0..<stepsCount): return makeStepCell(indexPath: indexPath)
+      case (2, stepsCount): return makeAddCell(indexPath: indexPath)
       default: return UITableViewCell()
     }
   }
@@ -82,15 +93,24 @@ class EditProgramTableViewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    return indexPath.section == 2
+    return indexPath.section == 2 && indexPath.row < stepsCount
   }
   
   override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-    return indexPath.section == 2
+    return indexPath.section == 2 && indexPath.row < stepsCount
   }
   
   override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
     return false
+  }
+  
+  // MARK: - Private Methods
+  
+  private func indexPathForSelectedStep() -> IndexPath {
+    if tableView.indexPathForSelectedRow != nil { return tableView.indexPathForSelectedRow! }
+    let indexPath = IndexPath(row: stepsCount, section: 2)
+    program!.steps.append(Program.Step(title: "", length: 30))
+    return indexPath
   }
   
   // MARK: - Cell Factory
@@ -128,6 +148,12 @@ class EditProgramTableViewController: UITableViewController {
     let step = program!.steps[indexPath.row]
     cell.textLabel?.text = step.title
     cell.detailTextLabel?.text = step.length.toTimeString()
+    return cell
+  }
+
+  private func makeAddCell(indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath) as! ButtonCell
+    cell.onTap = { self.performSegue(withIdentifier: "EditStep", sender: nil) }
     return cell
   }
 

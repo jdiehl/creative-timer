@@ -14,7 +14,7 @@ class AnnouncerViewController: UIViewController {
   private let runner = ProgramRunner.shared
   private lazy var synthesizer = AVSpeechSynthesizer()
   
-  private var language: String { "de" }
+  private var language: String { "en" }
 
   // MARK: - UIViewController
   
@@ -48,13 +48,18 @@ class AnnouncerViewController: UIViewController {
   }
   
   private func onStepChange() {
-    if runner.running { flash() }
+    guard runner.running else { return }
+    flash()
+    if let step = runner.step {
+      announce(step.title)
+    }
   }
   
   private func onFinished() {
     flash(times: 5) { success in
       UIApplication.shared.isIdleTimerDisabled = false
     }
+    announce("All done")
   }
   
   private func announce(_ string: String) {

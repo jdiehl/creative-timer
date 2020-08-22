@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2D01ACB424E8046300818691 /* Tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D01ACB324E8046300818691 /* Tint.swift */; };
 		2D01ACB724E80E8200818691 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2D01ACB624E80E8200818691 /* SwiftyJSON */; };
+		2D02FC3A24ED946300837D13 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D02FC3924ED946300837D13 /* ButtonCell.swift */; };
+		2D03DD1A24F176D200AE1A82 /* defaultPrograms.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D03DD1924F176D200AE1A82 /* defaultPrograms.json */; };
 		2D0ABDAE24EAFCB8001404D0 /* StyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0ABDAD24EAFCB8001404D0 /* StyleCell.swift */; };
 		2D0ABDB024EAFD26001404D0 /* StyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0ABDAF24EAFD26001404D0 /* StyleView.swift */; };
 		2D138E4824BA1292008A269A /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D138E4724BA1292008A269A /* Program.swift */; };
@@ -48,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		2D01ACB324E8046300818691 /* Tint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tint.swift; sourceTree = "<group>"; };
+		2D02FC3924ED946300837D13 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		2D03DD1924F176D200AE1A82 /* defaultPrograms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = defaultPrograms.json; sourceTree = "<group>"; };
 		2D0ABDAD24EAFCB8001404D0 /* StyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleCell.swift; sourceTree = "<group>"; };
 		2D0ABDAF24EAFD26001404D0 /* StyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleView.swift; sourceTree = "<group>"; };
 		2D138E4724BA1292008A269A /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				2DD59F4D24E9A9A700EDBEDA /* TextFieldCell.swift */,
 				2DD59F4F24E9B10F00EDBEDA /* ThemeCell.swift */,
 				2D0ABDAD24EAFCB8001404D0 /* StyleCell.swift */,
+				2D02FC3924ED946300837D13 /* ButtonCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 				2D71C45A24C34222003288DE /* Colors.xcassets */,
 				2DEFB30F1CA6E40100E4AA77 /* LaunchScreen.storyboard */,
 				2DEFB3121CA6E40100E4AA77 /* Info.plist */,
+				2D03DD1924F176D200AE1A82 /* defaultPrograms.json */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -266,6 +272,7 @@
 			files = (
 				2DEFB3111CA6E40100E4AA77 /* LaunchScreen.storyboard in Resources */,
 				2D71C45B24C34222003288DE /* Colors.xcassets in Resources */,
+				2D03DD1A24F176D200AE1A82 /* defaultPrograms.json in Resources */,
 				2DEFB30E1CA6E40100E4AA77 /* Assets.xcassets in Resources */,
 				2DEFB30C1CA6E40100E4AA77 /* Main.storyboard in Resources */,
 			);
@@ -286,6 +293,7 @@
 				2DB7034524CC85BB008FC7DF /* ProgramCell.swift in Sources */,
 				2D292F2A24BCB292008B10E6 /* UIViewControllerExtension.swift in Sources */,
 				2DD59F4C24E9A85600EDBEDA /* EditProgramTableViewController.swift in Sources */,
+				2D02FC3A24ED946300837D13 /* ButtonCell.swift in Sources */,
 				2DBACDE624C1D855006F167F /* HeaderViewController.swift in Sources */,
 				2DEFB3091CA6E40100E4AA77 /* TimerViewController.swift in Sources */,
 				2DF0B8FF24C8208B0062694B /* AnnouncerViewController.swift in Sources */,

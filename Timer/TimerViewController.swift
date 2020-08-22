@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDelegate {
+class TimerViewController: UIViewController, ControlsDelegate {
 
 	@IBOutlet weak var headerView: UIView!
 	@IBOutlet weak var progressView: UIView!
@@ -26,10 +26,6 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
 
   // MARK: - ProgramManagerDelegate
   
-  func managerChangedProgram(programManager: ProgramManager) {
-    updateProgram()
-  }
-  
   // MARK: - ControlsDelegate
 
   func onSettings() {
@@ -42,7 +38,7 @@ class TimerViewController: UIViewController, ProgramManagerDelegate, ControlsDel
 		super.viewDidLoad()
     setupViewControllers()
     updateProgram()
-    programManager.delegate = self
+    programManager.on(.activeProgramChanged) { self.updateProgram() }
 	}
 	
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

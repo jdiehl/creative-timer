@@ -58,6 +58,7 @@ class ProgramManager: EventEmitter<ProgramManagerEvents> {
   func remove(at: Int) {
     programs.remove(at: at)
     save(url: programsURL)
+    if at <= active { set(active: active - 1) }
   }
   
   private func load(url: URL) -> Bool {

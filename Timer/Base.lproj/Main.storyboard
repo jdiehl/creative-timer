@@ -178,7 +178,7 @@
         <scene sceneID="O3S-4Z-83T">
             <objects>
                 <tableViewController id="Nsr-nE-eW4" customClass="ProgramTableViewController" customModule="CusTimer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="nW1-qj-mGa">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nW1-qj-mGa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -232,6 +232,28 @@
                                     <outlet property="titleLabel" destination="FYd-KA-Hn7" id="9fm-xf-pWN"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddCell" rowHeight="60" id="XpK-QD-ljG" customClass="ButtonCell" customModule="CusTimer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="128" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XpK-QD-ljG" id="fqA-MG-YHc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0D5-GP-daY">
+                                            <rect key="frame" x="16" y="11" width="343" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                            <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title=" Add Program" image="plus.circle.fill" catalog="system">
+                                                <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="button" destination="0D5-GP-daY" id="fRy-SG-aOw"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Nsr-nE-eW4" id="Ig7-c7-R3I"/>
@@ -241,12 +263,12 @@
                     <navigationItem key="navigationItem" title="Timers" id="Hlg-Ie-AyM">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AB2-DM-ZpI">
                             <connections>
-                                <action selector="cancel" destination="Nsr-nE-eW4" id="ViS-4h-m0a"/>
+                                <action selector="cancel" destination="Nsr-nE-eW4" id="nfh-jK-yB6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Qd4-uP-tnG">
                             <connections>
-                                <action selector="edit" destination="Nsr-nE-eW4" id="ljj-7R-Azk"/>
+                                <action selector="edit" destination="Nsr-nE-eW4" id="EVP-0J-ipI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

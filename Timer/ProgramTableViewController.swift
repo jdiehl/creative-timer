@@ -11,6 +11,7 @@ import UIKit
 class ProgramTableViewController: UITableViewController {
 	
 	let programManager = ProgramManager.shared
+  var programsCount: Int { programManager.programs.count }
   
   // MARK: - IBActions
 	
@@ -26,8 +27,6 @@ class ProgramTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    navigationItem.rightBarButtonItem = self.editButtonItem
-    navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
   }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +37,7 @@ class ProgramTableViewController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "EditProgram" {
       let viewController = segue.destination as! EditProgramTableViewController
-      let row = tableView.indexPathForSelectedRow!.row
+      let row = tableView.indexPathForSelectedRow?.row ?? programsCount - 1
       viewController.program = programManager.programs[row]
       viewController.programChanged = { self.programManager.set(program: $0, at: row) }
     }
@@ -47,14 +46,19 @@ class ProgramTableViewController: UITableViewController {
   // MARK: - Table view data source
 	
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return programManager.programs.count
+    return programsCount + 1
   }
 	
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramCell", for: indexPath) as! ProgramCell
-    let program = programManager.programs[indexPath.row]
-    cell.set(program: program)
-    return cell
+    switch indexPath.row {
+      case programsCount: return makeInsertCell(indexPath: indexPath)
+      default: return makeProgramCell(indexPath: indexPath)
+    }
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    if indexPath.row == programsCount { return 60 }
+    return 100
   }
   
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -75,7 +79,8 @@ class ProgramTableViewController: UITableViewController {
   }
 	
 	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-    return programManager.programs.count > 1 ? .delete : .none
+    if indexPath.row >= programsCount || programsCount <= 1 { return .none }
+    return .delete
 	}
 
   override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
@@ -85,11 +90,30 @@ class ProgramTableViewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    return true
+    return indexPath.row < programsCount
   }
   
   override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-		return true
+		return indexPath.row < programsCount
+  }
+  
+  // MARK: - Cell Factory
+  
+  func makeProgramCell(indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramCell", for: indexPath) as! ProgramCell
+    let program = programManager.programs[indexPath.row]
+    cell.set(program: program)
+    return cell
+  }
+
+  func makeInsertCell(indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath) as! ButtonCell
+    cell.onTap = {
+      self.programManager.add()
+      self.tableView.insertRows(at: [indexPath], with: .automatic)
+      self.performSegue(withIdentifier: "EditProgram", sender: nil)
+    }
+    return cell
   }
 
 }

@@ -46,32 +46,36 @@ class ProgramManager: EventEmitter<ProgramManagerEvents> {
   
   func set(program: Program, at: Int) {
     programs[at] = program
-    save(url: programsURL)
+    save()
     if at == active { emit(.activeProgramChanged) }
+  }
+  
+  func add() {
+    programs.append(Program())
+    save()
   }
   
   func insert(program: Program, at: Int) {
     programs.insert(program, at: at)
-    save(url: programsURL)
+    save()
+    if at <= active { set(active: active + 1) }
   }
   
   func remove(at: Int) {
     programs.remove(at: at)
-    save(url: programsURL)
+    save()
     if at <= active { set(active: active - 1) }
   }
   
   private func load(url: URL) -> Bool {
     guard let json = try? JSON(data: Data(contentsOf: url)) else { return false }
-    for obj in json.array! {
-      insert(program: Program(json: obj)!, at: programs.count)
-    }
+    programs = json.array!.map { Program(json: $0)! }
     return true
   }
   
-  private func save(url: URL) {
+  private func save(url: URL? = nil) {
     let jsonPrograms = programs.map { $0.toJSON() }
-    try! JSON(jsonPrograms).rawData().write(to: url)
+    try! JSON(jsonPrograms).rawData().write(to: url ?? programsURL)
   }
   
 }

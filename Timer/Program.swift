@@ -37,6 +37,12 @@ struct Program {
     self.steps = steps
   }
   
+  init() {
+    let tint = Tint(theme: .crimson, style: .automatic)
+    let step = Program.Step(title: "1", length: 30)
+    self.init(title: "New Timer", tint: tint, steps: [step])
+  }
+  
   init?(json: JSON) {
     guard let title = json["title"].string else { return nil }
     guard let tint = Tint(withString: json["tint"].string ?? "") else { return nil }

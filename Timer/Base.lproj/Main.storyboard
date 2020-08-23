@@ -436,6 +436,43 @@
                                     <outlet property="button" destination="QRy-i6-h5p" id="YEl-32-7xe"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" id="qVn-pE-wib" customClass="SwitchCell" customModule="CusTimer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="328" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qVn-pE-wib" id="GQf-kc-vfr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kGn-Sp-IpW">
+                                            <rect key="frame" x="310" y="14.5" width="51" height="31"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="31" id="1c6-Vx-TGL"/>
+                                                <constraint firstAttribute="width" constant="49" id="Z6X-Pw-0DE"/>
+                                            </constraints>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxf-o4-gLp">
+                                            <rect key="frame" x="16" y="19.5" width="286" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="WuF-pV-5WE"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Oxf-o4-gLp" firstAttribute="centerY" secondItem="GQf-kc-vfr" secondAttribute="centerY" id="KIS-FN-uz3"/>
+                                        <constraint firstItem="kGn-Sp-IpW" firstAttribute="centerY" secondItem="GQf-kc-vfr" secondAttribute="centerY" id="T1q-kO-76T"/>
+                                        <constraint firstItem="kGn-Sp-IpW" firstAttribute="leading" secondItem="Oxf-o4-gLp" secondAttribute="trailing" constant="8" id="X3x-zx-1yT"/>
+                                        <constraint firstItem="Oxf-o4-gLp" firstAttribute="leading" secondItem="GQf-kc-vfr" secondAttribute="leadingMargin" id="cAN-4Z-ZLf"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="kGn-Sp-IpW" secondAttribute="trailing" id="qCj-FF-7Xe"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="Oxf-o4-gLp" id="HsU-h5-FBV"/>
+                                    <outlet property="switchView" destination="kGn-Sp-IpW" id="cIC-ha-oeX"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="5bq-dh-fy1" id="N5G-hi-WlT"/>

@@ -2,6 +2,7 @@
   {
     "title": "Aquafitness",
     "tint": "Ocean:Colored",
+    "direction": "down",
     "steps": [
       { "title": "Warmup", "length": 60 },
       { "title": "high knee jogging - nudel beidhaendig nach unten druecken", "length": 30 },
@@ -35,6 +36,7 @@
   {
     "title": "Sieben",
     "tint": "Earth:Automatic",
+    "direction": "down",
     "steps": [
       { "title": "Jumping jacks", "length": 30 },
       { "title": "Next: Wall sit", "length": 10 },
@@ -64,6 +66,7 @@
   {
     "title": "Crazy 8",
     "tint": "Crimson:Automatic",
+    "direction": "down",
     "steps": [
       { "title": "1", "length": 60 },
       { "title": "2", "length": 60 },
@@ -78,6 +81,7 @@
   {
     "title": "5 Minutes",
     "tint": "Leaf:Colored",
+    "direction": "down",
     "steps": [
       { "title": "", "length": 300 }
     ]
@@ -85,6 +89,7 @@
   {
     "title": "10 Minutes",
     "tint": "Leaf:Colored",
+    "direction": "down",
     "steps": [
       { "title": "", "length": 600 }
     ]
@@ -92,6 +97,7 @@
   {
     "title": "15 Minutes",
     "tint": "Leaf:Colored",
+    "direction": "down",
     "steps": [
       { "title": "", "length": 900 }
     ]
@@ -99,6 +105,7 @@
   {
     "title": "30 Minutes",
     "tint": "Leaf:Colored",
+    "direction": "down",
     "steps": [
       { "title": "", "length": 1800 }
     ]

@@ -8,6 +8,11 @@
 
 import UIKit
 
+fileprivate let SectionName = 0
+fileprivate let SectionAppearance = 1
+fileprivate let SectionConfig = 2
+fileprivate let SectionSteps = 3
+
 class EditProgramTableViewController: UITableViewController {
   
   var program: Program? {
@@ -43,40 +48,43 @@ class EditProgramTableViewController: UITableViewController {
   // MARK: - Table view data source
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 3
+    return 4
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   switch section {
-    case 0: return 1
-    case 1: return 2
-    case 2: return stepsCount + 1
+    case SectionName: return 1
+    case SectionAppearance: return 2
+    case SectionConfig: return 1
+    case SectionSteps: return stepsCount + 1
     default: return 0
     }
   }
   
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
-      case 0: return "Name"
-      case 1: return "Appearance"
-      case 2: return "Steps"
+      case SectionName: return "Name"
+      case SectionAppearance: return "Appearance"
+      case SectionConfig: return "Configuration"
+      case SectionSteps: return "Steps"
       default: return nil
     }
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch (indexPath.section, indexPath.row) {
-      case (0, 0): return makeTitleCell(indexPath: indexPath)
-      case (1, 0): return makeThemeCell(indexPath: indexPath)
-      case (1, 1): return makeStyleCell(indexPath: indexPath)
-      case (2, 0..<stepsCount): return makeStepCell(indexPath: indexPath)
-      case (2, stepsCount): return makeAddCell(indexPath: indexPath)
+      case (SectionName, 0): return makeTitleCell(indexPath: indexPath)
+      case (SectionAppearance, 0): return makeThemeCell(indexPath: indexPath)
+      case (SectionAppearance, 1): return makeStyleCell(indexPath: indexPath)
+      case (SectionConfig, 0): return makeDirectionCell(indexPath: indexPath)
+      case (SectionSteps, 0..<stepsCount): return makeStepCell(indexPath: indexPath)
+      case (SectionSteps, stepsCount): return makeAddCell(indexPath: indexPath)
       default: return UITableViewCell()
     }
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard indexPath.section == 2 else { return }
+    guard indexPath.section == SectionSteps else { return }
     performSegue(withIdentifier: "EditStep", sender: nil)
   }
   
@@ -108,13 +116,13 @@ class EditProgramTableViewController: UITableViewController {
   
   private func indexPathForSelectedStep() -> IndexPath {
     if tableView.indexPathForSelectedRow != nil { return tableView.indexPathForSelectedRow! }
-    let indexPath = IndexPath(row: stepsCount, section: 2)
+    let indexPath = IndexPath(row: stepsCount, section: SectionSteps)
     program!.steps.append(Program.Step(title: "", length: 30))
     return indexPath
   }
   
   private func indexPathIsEditable(_ indexPath: IndexPath) -> Bool {
-    return indexPath.section == 2 && indexPath.row < stepsCount
+    return indexPath.section == SectionSteps && indexPath.row < stepsCount
   }
   
   // MARK: - Cell Factory
@@ -158,6 +166,14 @@ class EditProgramTableViewController: UITableViewController {
   private func makeAddCell(indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath) as! ButtonCell
     cell.onTap = { self.performSegue(withIdentifier: "EditStep", sender: nil) }
+    return cell
+  }
+
+  private func makeDirectionCell(indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
+    cell.set(on: program!.direction == .down)
+    cell.set(label: "Count downwards")
+    cell.didChange = { on in self.program!.direction = on ? .down : .up }
     return cell
   }
 

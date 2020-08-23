@@ -29,14 +29,27 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
   // MARK: - Private Methods
   
   private func update() {
-    progressView.progress = runner.index.stepProgress
-    progressLabel.text = runner.index.stepTime.toTimeString()
+    if runner.program.direction == .up {
+      progressView.progress = runner.index.stepProgress
+      progressLabel.text = runner.index.stepTime.toTimeString()
+    } else {
+      progressView.progress = 1 - runner.index.stepProgress
+      progressLabel.text = (runner.step.length - runner.index.stepTime).toTimeString()
+    }
   }
   
   private func updateColor() {
     view.backgroundColor = runner.program.tint.backgroundColor
     progressLabel.textColor = runner.program.tint.foregroundColor
     progressView.tint = runner.program.tint
+  }
+  
+  private func setProgress(to: Float) {
+    if runner.program.direction == .up {
+      runner.set(progress: to)
+    } else {
+      runner.set(progress: 1 - to)
+    }
   }
 
   // MARK: - ProgressViewDelegate
@@ -47,12 +60,12 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
   }
   
   func updateProgress(to: Float) {
-    runner.set(progress: to)
+    setProgress(to: to)
   }
   
   func didChangeProgress(to: Float) {
-    runner.set(progress: to)
-    if wasRunning == true { runner.start() }    
+    setProgress(to: to)
+    if wasRunning == true { runner.start() }
   }
  
 }

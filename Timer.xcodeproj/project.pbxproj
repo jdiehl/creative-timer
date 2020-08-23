@@ -40,6 +40,7 @@
 		2DD59F4E24E9A9A700EDBEDA /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD59F4D24E9A9A700EDBEDA /* TextFieldCell.swift */; };
 		2DD59F5024E9B10F00EDBEDA /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD59F4F24E9B10F00EDBEDA /* ThemeCell.swift */; };
 		2DD59F5224EA5C5900EDBEDA /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD59F5124EA5C5900EDBEDA /* ThemeView.swift */; };
+		2DE4E3D324F29CB800E3A6C2 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE4E3D224F29CB800E3A6C2 /* SwitchCell.swift */; };
 		2DEFB3071CA6E40100E4AA77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */; };
 		2DEFB3091CA6E40100E4AA77 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEFB3081CA6E40100E4AA77 /* TimerViewController.swift */; };
 		2DEFB30C1CA6E40100E4AA77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30A1CA6E40100E4AA77 /* Main.storyboard */; };
@@ -82,6 +83,7 @@
 		2DD59F4D24E9A9A700EDBEDA /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		2DD59F4F24E9B10F00EDBEDA /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		2DD59F5124EA5C5900EDBEDA /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
+		2DE4E3D224F29CB800E3A6C2 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		2DEFB3031CA6E40000E4AA77 /* CusTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CusTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DEFB3061CA6E40100E4AA77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DEFB3081CA6E40100E4AA77 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				2DD59F4F24E9B10F00EDBEDA /* ThemeCell.swift */,
 				2D0ABDAD24EAFCB8001404D0 /* StyleCell.swift */,
 				2D02FC3924ED946300837D13 /* ButtonCell.swift */,
+				2DE4E3D224F29CB800E3A6C2 /* SwitchCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				2DD59F5224EA5C5900EDBEDA /* ThemeView.swift in Sources */,
 				2D138E4824BA1292008A269A /* Program.swift in Sources */,
 				2DD4178824C4CA2B00981C09 /* CGPointExtension.swift in Sources */,
+				2DE4E3D324F29CB800E3A6C2 /* SwitchCell.swift in Sources */,
 				2DD4178624C47FD400981C09 /* CALayerExtension.swift in Sources */,
 				2D0ABDAE24EAFCB8001404D0 /* StyleCell.swift in Sources */,
 			);

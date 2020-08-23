@@ -261,7 +261,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Timers" id="Hlg-Ie-AyM">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AB2-DM-ZpI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="AB2-DM-ZpI">
                             <connections>
                                 <action selector="cancel" destination="Nsr-nE-eW4" id="nfh-jK-yB6"/>
                             </connections>
@@ -379,11 +379,11 @@
                                     <outlet property="stackView" destination="7lQ-qf-nIw" id="owT-Ir-rjO"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="StepCell" editingAccessoryType="disclosureIndicator" textLabel="LMY-Bb-meU" detailTextLabel="t8H-WG-Ro2" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="0lK-qg-9xq">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="StepCell" textLabel="LMY-Bb-meU" detailTextLabel="t8H-WG-Ro2" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="0lK-qg-9xq">
                                 <rect key="frame" x="0.0" y="208" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0lK-qg-9xq" id="DHt-Sw-tVC">
-                                    <rect key="frame" x="0.0" y="0.0" width="348" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LMY-Bb-meU">
@@ -511,28 +511,6 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="textField" destination="QkA-d5-Er6" id="5dN-vg-631"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RemoveCell" rowHeight="60" id="3nM-Kw-0AX" customClass="ButtonCell" customModule="CusTimer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="148" width="375" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3nM-Kw-0AX" id="HKg-HB-FBy">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tf5-ic-0Fq">
-                                            <rect key="frame" x="16" y="11" width="343" height="38"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
-                                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal" title=" Remove Step" image="minus.circle.fill" catalog="system">
-                                                <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="button" destination="tf5-ic-0Fq" id="z17-E4-0c6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -747,7 +725,6 @@ Lines</string>
         <image name="Selected" width="20" height="20"/>
         <image name="backward.end" catalog="system" width="128" height="120"/>
         <image name="eject" catalog="system" width="128" height="112"/>
-        <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pause" catalog="system" width="88" height="128"/>
         <image name="play" catalog="system" width="120" height="128"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>

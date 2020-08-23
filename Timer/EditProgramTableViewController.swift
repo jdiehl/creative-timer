@@ -34,11 +34,8 @@ class EditProgramTableViewController: UITableViewController {
       let indexPath = indexPathForSelectedStep()
       viewController.step = program!.steps[indexPath.row]
       viewController.stepChanged = { step in
-        if let step = step {
-          self.program!.steps[indexPath.row] = step
-        } else {
-          self.program!.steps.remove(at: indexPath.row)
-        }
+        guard let step = step else { return }
+        self.program!.steps[indexPath.row] = step
       }
     }
   }
@@ -89,19 +86,22 @@ class EditProgramTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-    return .none
+    return indexPathIsEditable(indexPath) ? .delete : .none
   }
 
   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    return indexPath.section == 2 && indexPath.row < stepsCount
+    return indexPathIsEditable(indexPath)
   }
   
   override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-    return indexPath.section == 2 && indexPath.row < stepsCount
+    return indexPathIsEditable(indexPath)
   }
   
-  override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-    return false
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      program!.steps.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
   }
   
   // MARK: - Private Methods
@@ -111,6 +111,10 @@ class EditProgramTableViewController: UITableViewController {
     let indexPath = IndexPath(row: stepsCount, section: 2)
     program!.steps.append(Program.Step(title: "", length: 30))
     return indexPath
+  }
+  
+  private func indexPathIsEditable(_ indexPath: IndexPath) -> Bool {
+    return indexPath.section == 2 && indexPath.row < stepsCount
   }
   
   // MARK: - Cell Factory

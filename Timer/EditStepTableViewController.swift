@@ -25,7 +25,7 @@ class EditStepTableViewController: UITableViewController {
   // MARK: - Table view data source
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 3
+    return 2
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,7 +36,6 @@ class EditStepTableViewController: UITableViewController {
     switch section {
       case 0: return "Title"
       case 1: return "Length"
-      case 2: return "Actions"
       default: return nil
     }
   }
@@ -45,7 +44,6 @@ class EditStepTableViewController: UITableViewController {
     switch (indexPath.section, indexPath.row) {
       case (0, 0): return makeTitleCell(indexPath: indexPath)
       case (1, 0): return makeLengthCell(indexPath: indexPath)
-      case (2, 0): return makeRemoveCell(indexPath: indexPath)
       default: return UITableViewCell()
     }
   }
@@ -63,15 +61,6 @@ class EditStepTableViewController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "TitleCell", for: indexPath) as! TextFieldCell
     cell.textField.text = String(step?.length ?? 0)
     cell.didChange = { self.step?.length = Int($0) ?? 0 }
-    return cell
-  }
-
-  private func makeRemoveCell(indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "RemoveCell", for: indexPath) as! ButtonCell
-    cell.onTap = {
-      self.step = nil
-      self.navigationController?.popViewController(animated: true)
-    }
     return cell
   }
 

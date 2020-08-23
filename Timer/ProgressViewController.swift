@@ -23,6 +23,7 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
     runner.on(.programChanged) { self.updateColor() }
     runner.on(.tick) { self.update() }
     updateColor()
+    update()
   }
   
   // MARK: - Private Methods
@@ -32,6 +33,12 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
     progressLabel.text = runner.stepTime.toTimeString()
   }
   
+  private func updateColor() {
+    view.backgroundColor = runner.program.tint.backgroundColor
+    progressLabel.textColor = runner.program.tint.foregroundColor
+    progressView.tint = runner.program.tint
+  }
+
   // MARK: - ProgressViewDelegate
   
   func willChangeProgress() {
@@ -48,11 +55,4 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
     if wasRunning == true { runner.start() }    
   }
  
-  private func updateColor() {
-    guard let tint = runner.program?.tint else { return }
-    view.backgroundColor = tint.backgroundColor
-    progressLabel.textColor = tint.foregroundColor
-    progressView.tint = tint
-  }
-
 }

@@ -36,7 +36,7 @@ class AnnouncerViewController: UIViewController {
   // MARK: - Private Methods
 
   private func updateColor() {
-    view.backgroundColor = runner.program?.tint.backgroundColor
+    view.backgroundColor = runner.program.tint.backgroundColor
   }
 
   private func onStart() {
@@ -50,9 +50,7 @@ class AnnouncerViewController: UIViewController {
   private func onStepChange() {
     guard runner.running else { return }
     flash()
-    if let step = runner.step {
-      announce(step.title)
-    }
+    announce(runner.step.title)
   }
   
   private func onFinished() {

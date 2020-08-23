@@ -40,15 +40,15 @@ class StepsViewController: UIViewController, StepsPickerDelegate {
     runner.on(.programChanged) { self.updateSteps() }
     runner.on(.stepChanged) { self.updateProgress() }
     runner.on(.tick) { self.updateProgress() }
+    updateSteps()
   }
   
   private func updateSteps() {
-    guard let program = runner.program else { return }
-    view.backgroundColor = program.tint.backgroundColor
-    currentTimeLabel.textColor = program.tint.foregroundColor
-    totalTimeLabel.textColor = program.tint.foregroundColor
-    totalTimeLabel.text = program.totalLength.toTimeString()
-    stepsPicker.program = program
+    view.backgroundColor = runner.program.tint.backgroundColor
+    currentTimeLabel.textColor = runner.program.tint.foregroundColor
+    totalTimeLabel.textColor = runner.program.tint.foregroundColor
+    totalTimeLabel.text = runner.program.totalLength.toTimeString()
+    stepsPicker.program = runner.program
   }
   
   private func updateProgress() {

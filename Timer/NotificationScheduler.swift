@@ -20,10 +20,9 @@ class NotificationScheduler {
   func schedule() {
     guard identifiers.count == 0 else { return }
     guard runner.running else { return }
-    guard let program = runner.program else { return }
 
     // the current and all future steps
-    let steps = program.steps[runner.index.step..<program.steps.count]
+    let steps = runner.program.steps[runner.index.step..<runner.program.steps.count]
 
     // start with the negative index time (step length will be added)
     var time = -runner.index.time
@@ -43,7 +42,6 @@ class NotificationScheduler {
   
   private func scheduleOne(time: Int, i: Int, step: Program.Step, next: Program.Step?) {
     guard time > 0 else { return }
-    guard let program = runner.program else { return }
 
     // define the trigger
     let date = Date(timeIntervalSinceNow: TimeInterval(time))
@@ -53,10 +51,10 @@ class NotificationScheduler {
     // define the body
     let content = UNMutableNotificationContent()
     if let next = next {
-      content.title = "\(program.title) \(i + 2)/\(program.steps.count)"
+      content.title = "\(runner.program.title) \(i + 2)/\(runner.program.steps.count)"
       content.body = next.title
     } else {
-      content.title = program.title
+      content.title = runner.program.title
       content.body = NSLocalizedString("Fertig", comment: "Notification body for a finished program")
     }
     content.sound = .default

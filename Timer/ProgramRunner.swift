@@ -22,12 +22,7 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   static let shared = ProgramRunner()
   
   // the program to run
-  var program: Program? {
-    didSet {
-      reset()
-      emit(.programChanged)
-    }
-  }
+  private(set) var program: Program
   
   // the index (step, time))
   private(set) var index = Program.Index(step: 0, time: 0) {
@@ -43,22 +38,38 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   private(set) var running = false
 
   // the step
-  var step: Program.Step? { program?.steps[index.step] }
+  var step: Program.Step { program.steps[index.step] }
 
   // step progress
   var stepProgress: Float { Float(index.time) / Float(stepLength) }
   var stepTime: Int { index.time }
   var stepTimeRemaining: Int { stepLength - index.time }
-  var stepLength: Int { step?.length ?? 1 }
+  var stepLength: Int { step.length }
   
   // total progress
   var totalProgress: Float { Float(totalTime) / Float(totalLength) }
-  var totalTime: Int { program?.timeForIndex(index) ?? 0 }
+  var totalTime: Int { program.timeForIndex(index) }
   var totalTimeRemaining: Int { totalLength - totalTime }
-  var totalLength: Int { program?.totalLength ?? 1 }
+  var totalLength: Int { program.totalLength }
   
   // private timer instance
   private var timer: SecondsTimer?
+  
+  private let programManager = ProgramManager.shared
+  
+  override init() {
+    self.program = programManager.activeProgram
+    super.init()
+    programManager.on(.activeProgramChanged) {
+      self.set(program: self.programManager.activeProgram)
+    }
+  }
+  
+  func set(program: Program) {
+    self.program = program
+    reset()
+    emit(.programChanged)
+  }
   
   // set the index
   func set(index: Program.Index) {
@@ -90,7 +101,6 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   // start the runner
   func start() {
     guard !running else { return }
-    guard program != nil else { return }
     running = true
     timer = SecondsTimer(startTime: totalTime) { self.onTick($0) }
     emit(.started)
@@ -106,7 +116,7 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   }
   
   private func onTick(_ passedTime: Int) {
-    if let index = program!.indexForTime(passedTime) {
+    if let index = program.indexForTime(passedTime) {
       self.index = index
       emit(.tick)
     } else {

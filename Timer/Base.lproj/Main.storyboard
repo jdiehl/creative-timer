@@ -240,9 +240,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0D5-GP-daY">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0D5-GP-daY">
                                             <rect key="frame" x="16" y="11" width="343" height="38"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                             <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title=" Add Program" image="plus.circle.fill" catalog="system">
@@ -250,6 +249,12 @@
                                             </state>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="0D5-GP-daY" firstAttribute="leading" secondItem="fqA-MG-YHc" secondAttribute="leadingMargin" id="ZGi-k7-QOo"/>
+                                        <constraint firstItem="0D5-GP-daY" firstAttribute="top" secondItem="fqA-MG-YHc" secondAttribute="topMargin" id="iKl-DX-VHO"/>
+                                        <constraint firstItem="0D5-GP-daY" firstAttribute="bottom" secondItem="fqA-MG-YHc" secondAttribute="bottomMargin" id="rpi-cs-KTE"/>
+                                        <constraint firstItem="0D5-GP-daY" firstAttribute="trailing" secondItem="fqA-MG-YHc" secondAttribute="trailingMargin" id="uqN-Gr-jXv"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="button" destination="0D5-GP-daY" id="fRy-SG-aOw"/>
@@ -411,9 +416,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRy-i6-h5p">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRy-i6-h5p">
                                             <rect key="frame" x="16" y="11" width="343" height="38"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                             <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title=" Add Step" image="plus.circle.fill" catalog="system">
@@ -421,6 +425,12 @@
                                             </state>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="QRy-i6-h5p" firstAttribute="trailing" secondItem="00E-MC-tKr" secondAttribute="trailingMargin" id="0Pw-9p-cTU"/>
+                                        <constraint firstItem="QRy-i6-h5p" firstAttribute="top" secondItem="00E-MC-tKr" secondAttribute="topMargin" id="LoS-rl-L7R"/>
+                                        <constraint firstItem="QRy-i6-h5p" firstAttribute="bottom" secondItem="00E-MC-tKr" secondAttribute="bottomMargin" id="ZUz-mm-oSz"/>
+                                        <constraint firstItem="QRy-i6-h5p" firstAttribute="leading" secondItem="00E-MC-tKr" secondAttribute="leadingMargin" id="zUQ-Gr-kfE"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="button" destination="QRy-i6-h5p" id="YEl-32-7xe"/>

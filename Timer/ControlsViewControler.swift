@@ -46,18 +46,14 @@ class ControlsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupEvents()
+    runner.on(.programChanged) { self.updateColor() }
+    runner.on(.started) { self.updatePlayPause() }
+    runner.on(.stopped) { self.updatePlayPause() }
     updatePlayPause()
     updateColor()
   }
   
   // MARK: - Private Methods
-  
-  private func setupEvents() {
-    runner.on(.programChanged) { self.updateColor() }
-    runner.on(.started) { self.updatePlayPause() }
-    runner.on(.stopped) { self.updatePlayPause() }
-  }
   
   private func updatePlayPause() {
     playButton.isHidden = runner.running
@@ -65,12 +61,11 @@ class ControlsViewController: UIViewController {
   }
   
   private func updateColor() {
-    guard let tint = ProgramRunner.shared.program?.tint else { return }
-    view.backgroundColor = tint.backgroundColor
-    resetButton.tintColor = tint.foregroundColor
-    playButton.tintColor = tint.foregroundColor
-    pauseButton.tintColor = tint.foregroundColor
-    settingsButton.tintColor = tint.foregroundColor
+    view.backgroundColor = runner.program.tint.backgroundColor
+    resetButton.tintColor = runner.program.tint.foregroundColor
+    playButton.tintColor = runner.program.tint.foregroundColor
+    pauseButton.tintColor = runner.program.tint.foregroundColor
+    settingsButton.tintColor = runner.program.tint.foregroundColor
   }
 
 }

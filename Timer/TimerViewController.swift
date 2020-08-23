@@ -16,7 +16,6 @@ class TimerViewController: UIViewController, ControlsDelegate {
   @IBOutlet weak var controlsView: UIView!
 
   let runner = ProgramRunner.shared
-  let programManager = ProgramManager.shared
   
   lazy var headerViewController: HeaderViewController = instantiateChild(identifier: "Header")
   lazy var progressViewController: ProgressViewController = instantiateChild(identifier: "TimeProgress")
@@ -37,8 +36,8 @@ class TimerViewController: UIViewController, ControlsDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
     setupViewControllers()
+    runner.on(.programChanged) { self.updateProgram() }
     updateProgram()
-    programManager.on(.activeProgramChanged) { self.updateProgram() }
 	}
 	
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,9 +64,7 @@ class TimerViewController: UIViewController, ControlsDelegate {
   }
   
   private func updateProgram() {
-    let program = programManager.activeProgram
-    runner.program = program
-    view.backgroundColor = program.tint.backgroundColor
+    view.backgroundColor = runner.program.tint.backgroundColor
   }
   
 }

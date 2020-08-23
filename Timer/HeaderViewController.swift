@@ -20,20 +20,19 @@ class HeaderViewController: UIViewController {
   override func viewDidLoad() {
     runner.on(.programChanged) { self.updateProgram() }
     runner.on(.stepChanged) { self.updateStep() }
+    updateProgram()
   }
   
   private func updateProgram() {
-    guard let program = self.runner.program else { return }
-    view.backgroundColor = program.tint.backgroundColor
-    stepLabel.textColor = program.tint.foregroundColor
-    programLabel.textColor = program.tint.foregroundColor
-    programLabel.text = program.title
+    view.backgroundColor = runner.program.tint.backgroundColor
+    stepLabel.textColor = runner.program.tint.foregroundColor
+    programLabel.textColor = runner.program.tint.foregroundColor
+    programLabel.text = runner.program.title
     updateStep()
   }
   
   private func updateStep() {
-    guard let step = self.runner.step else { return }
-    self.stepLabel.text = step.title
+    self.stepLabel.text = runner.step.title
   }
 
 }

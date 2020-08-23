@@ -20,9 +20,13 @@ struct Program {
     var length: Int
   }
   
-  struct Index: Equatable {
-    let step: Int
+  struct Index {
     let time: Int
+    let progress: Float
+    let step: Int
+    let stepTime: Int
+    let stepProgress: Float
+    let finished: Bool
   }
 
   var title: String
@@ -59,22 +63,25 @@ struct Program {
     return obj
   }
   
-  func timeForIndex(_ index: Index) -> Int {
-    var time: Int = 0
-    for (i, step) in steps.enumerated() {
-      if i >= index.step { break }
-      time += step.length
-    }
-    return time + index.time
-  }
-  
-  func indexForTime(_ time: Int) -> Index? {
+  func indexFor(time: Int) -> Index {
+    let progress = Float(time) / Float(totalLength)
     var t = time
     for (i, step) in steps.enumerated() {
-      if t < step.length { return Index(step: i, time: t) }
+      if t < step.length {
+        let stepProgress = Float(t) / Float(step.length)
+        return Index(time: time, progress: progress, step: i, stepTime: t, stepProgress: stepProgress, finished: false)
+      }
       t -= step.length
     }
-    return nil
+    return Index(time: totalLength, progress: 1, step: steps.count - 1, stepTime: steps.last!.length, stepProgress: 1, finished: true)
+  }
+  
+  func indexFor(step: Int, stepTime: Int) -> Index {
+    var time = stepTime
+    for i in 0..<step {
+      time += steps[i].length
+    }
+    return indexFor(time: time)
   }
   
 }

@@ -31,7 +31,7 @@ class StepsPicker: UIView {
     }
   }
   
-  var index: Program.Index = Program.Index(step: 0, time: 0) {
+  var index: Program.Index? {
     didSet { updateProgress() }
   }
   
@@ -68,25 +68,21 @@ class StepsPicker: UIView {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     guard touches.count == 1 else { return }
     delegate?.willChangeStep()
-    set(point: touches.first!.location(in: self))
-    delegate?.updateStep(to: index.step)
+    let step = stepFor(touch: touches.first!)
+    delegate?.updateStep(to: step)
   }
   
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     guard touches.count == 1 else { return }
-    set(point: touches.first!.location(in: self))
-    delegate?.updateStep(to: index.step)
+    let step = stepFor(touch: touches.first!)
+    delegate?.updateStep(to: step)
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    delegate?.didChangeStep(to: index.step)
+    let step = stepFor(touch: touches.first!)
+    delegate?.updateStep(to: step)
   }
   // MARK: - Private Functions
-  
-  private func set(point: CGPoint) {
-    let step = stepFor(position: point.x)
-    index = Program.Index(step: step, time: 0)
-  }
   
   // set up all layers once after initializing
   private func setup() {
@@ -118,6 +114,7 @@ class StepsPicker: UIView {
   
   // update progress (called also from changing progress
   private func updateProgress() {
+    guard let index = index else { return }
     let x = positionFor(index: index)
     let rect = CGRect(x: bounds.minX, y: bounds.minY, width: x, height: bounds.height)
     maskLayer.path = CGPath(rect: rect, transform: nil)
@@ -142,25 +139,23 @@ class StepsPicker: UIView {
   
   // compute the position of the given index
   // used for drawing
-  func positionFor(index: Program.Index) -> CGFloat {
-    guard let program = program else { return 0 }
-    let time = program.timeForIndex(index)
-    let timeToPosition = (bounds.width - 40) / CGFloat(program.totalLength)
-    return bounds.minX + 20 + CGFloat(time) * timeToPosition
+  private func positionFor(index: Program.Index) -> CGFloat {
+    return bounds.minX + 20 + CGFloat(index.progress) * (bounds.width - 40)
   }
   
   // compute the step for the given position
   // used for identifying which step to switch to on touch
-  func stepFor(position: CGFloat) -> Int {
+  private func stepFor(position: CGFloat) -> Int {
     guard let program = program else { return 0 }
     let timeToPosition = (bounds.width - 40) / CGFloat(program.totalLength)
     let time = Int((position - 20 - bounds.minX) / timeToPosition)
-    if let index = program.indexForTime(time) {
-      let step = index.time > program.steps[index.step].length / 2 ? index.step + 1 : index.step
-      return min(program.steps.count - 1, step)
-    } else {
-      return program.steps.count - 1
-    }
+    let index = program.indexFor(time: time)
+    let step = index.time > program.steps[index.step].length / 2 ? index.step + 1 : index.step
+    return min(program.steps.count - 1, step)
+  }
+  
+  private func stepFor(touch: UITouch) -> Int {
+    return stepFor(position: touch.location(in: self).x)
   }
   
   // create the path with dots for the line (used for the bg and the progress line / the latter with a mask)

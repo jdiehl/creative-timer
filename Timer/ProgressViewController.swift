@@ -29,8 +29,8 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
   // MARK: - Private Methods
   
   private func update() {
-    progressView.progress = runner.stepProgress
-    progressLabel.text = runner.stepTime.toTimeString()
+    progressView.progress = runner.index.stepProgress
+    progressLabel.text = runner.index.stepTime.toTimeString()
   }
   
   private func updateColor() {

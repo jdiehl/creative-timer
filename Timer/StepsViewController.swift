@@ -41,6 +41,7 @@ class StepsViewController: UIViewController, StepsPickerDelegate {
     runner.on(.stepChanged) { self.updateProgress() }
     runner.on(.tick) { self.updateProgress() }
     updateSteps()
+    updateProgress()
   }
   
   private func updateSteps() {
@@ -52,7 +53,7 @@ class StepsViewController: UIViewController, StepsPickerDelegate {
   }
   
   private func updateProgress() {
-    currentTimeLabel.text = runner.totalTime.toTimeString()
+    currentTimeLabel.text = runner.index.time.toTimeString()
     stepsPicker.index = runner.index
   }
 

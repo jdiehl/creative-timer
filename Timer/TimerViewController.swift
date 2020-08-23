@@ -46,10 +46,6 @@ class TimerViewController: UIViewController, ControlsDelegate {
     viewController.popoverPresentationController?.sourceRect = controlsViewController.resetButton.bounds
   }
   
-  override var shouldAutorotate: Bool {
-    return UIDevice.current.userInterfaceIdiom == .pad
-  }
-  
   // MARK: - Private Methods
   
   // position child view controllers

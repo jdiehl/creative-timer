@@ -21,11 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			// Parse errors and track state
 		}
     
-//    // Configure Mac catalyst window
-//    UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.forEach { windowScene in
-//      windowScene.sizeRestrictions?.minimumSize = CGSize(width: 300, height: 300)
-//    }
-//
 		return true
 	}
 

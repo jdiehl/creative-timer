@@ -35,10 +35,11 @@ class ProgramManager: EventEmitter<ProgramManagerEvents> {
       assert(load(url: defaultProgramsURL))
     }
     UserDefaults.standard.register(defaults: ["activeProgram": 0])
-    active = UserDefaults.standard.integer(forKey: "activeProgram")
+    set(active: UserDefaults.standard.integer(forKey: "activeProgram"))
   }
   
   func set(active: Int) {
+    guard active < programs.count else { return }
     self.active = active
     UserDefaults.standard.set(active, forKey: "activeProgram")
     emit(.activeProgramChanged)
@@ -70,6 +71,7 @@ class ProgramManager: EventEmitter<ProgramManagerEvents> {
   private func load(url: URL) -> Bool {
     guard let json = try? JSON(data: Data(contentsOf: url)) else { return false }
     programs = json.array!.map { Program(json: $0)! }
+    active = 0
     return true
   }
   

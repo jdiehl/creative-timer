@@ -83,6 +83,7 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   // start the runner
   func start() {
     guard !running else { return }
+    if index.finished { reset() }
     running = true
     timer = SecondsTimer(startTime: index.time) { self.onTick($0) }
     emit(.started)

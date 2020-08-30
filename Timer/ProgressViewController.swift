@@ -11,6 +11,7 @@ import UIKit
 class ProgressViewController: UIViewController, ProgressViewDelegate {
   
   @IBOutlet weak var progressLabel: UILabel!
+  @IBOutlet weak var pauseView: UIImageView!
   @IBOutlet weak var progressView: ProgressView!
 
   private let runner = ProgramRunner.shared
@@ -22,7 +23,9 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
   override func viewDidLoad() {
     runner.on(.programChanged) { self.updateColor() }
     runner.on(.tick) { self.update() }
+    runner.on(.stepChanged) { self.updateStep() }
     updateColor()
+    updateStep()
     update()
   }
   
@@ -39,9 +42,22 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
     }
   }
   
+  private func updateStep() {
+    if runner.index.state == .pause {
+      pauseView.alpha = 1
+      UIView.animateKeyframes(withDuration: 1, delay: 0, options: [.autoreverse, .repeat], animations: {
+        self.pauseView.alpha = 0.5
+      })
+    } else {
+      pauseView.layer.removeAllAnimations()
+      pauseView.alpha = 0
+    }
+  }
+  
   private func updateColor() {
     view.backgroundColor = runner.program.tint.backgroundColor
     progressLabel.textColor = runner.program.tint.foregroundColor
+    pauseView.tintColor = runner.program.tint.foregroundColor
     progressView.tint = runner.program.tint
   }
   

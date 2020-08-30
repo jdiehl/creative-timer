@@ -608,7 +608,15 @@
                                     <outlet property="delegate" destination="J2U-zO-y6V" id="9xX-Hw-nZa"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtz-vB-dYL">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zzz" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="03U-mA-MEO">
+                                <rect key="frame" x="167.5" y="79.5" width="40" height="39.5"/>
+                                <color key="tintColor" name="Crimson"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="CAf-HA-27d"/>
+                                    <constraint firstAttribute="height" constant="40" id="fcA-95-deY"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtz-vB-dYL">
                                 <rect key="frame" x="0.0" y="127.5" width="375" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="NO9-df-E9i"/>
@@ -624,20 +632,23 @@
                             <constraint firstAttribute="trailing" secondItem="iqZ-mZ-m7G" secondAttribute="trailing" id="7m9-Jn-Byv"/>
                             <constraint firstItem="mFC-df-HBz" firstAttribute="top" secondItem="iqZ-mZ-m7G" secondAttribute="bottom" id="EaB-OX-Flu"/>
                             <constraint firstItem="iqZ-mZ-m7G" firstAttribute="leading" secondItem="Xji-QG-AHx" secondAttribute="leading" id="Gln-vc-w6g"/>
+                            <constraint firstItem="03U-mA-MEO" firstAttribute="centerX" secondItem="Xji-QG-AHx" secondAttribute="centerX" id="MFf-Sg-qfQ"/>
                             <constraint firstAttribute="trailing" secondItem="mtz-vB-dYL" secondAttribute="trailing" id="ZHu-ad-mOb"/>
                             <constraint firstItem="mtz-vB-dYL" firstAttribute="leading" secondItem="Xji-QG-AHx" secondAttribute="leading" id="hEB-0a-sxV"/>
                             <constraint firstItem="mtz-vB-dYL" firstAttribute="centerY" secondItem="Xji-QG-AHx" secondAttribute="centerY" id="hYE-De-eeO"/>
+                            <constraint firstItem="mtz-vB-dYL" firstAttribute="top" secondItem="03U-mA-MEO" secondAttribute="bottom" constant="8" id="qda-2A-JIT"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="375"/>
                     <connections>
+                        <outlet property="pauseView" destination="03U-mA-MEO" id="6si-fb-YR1"/>
                         <outlet property="progressLabel" destination="mtz-vB-dYL" id="Zxw-i8-tA2"/>
                         <outlet property="progressView" destination="iqZ-mZ-m7G" id="GI8-g1-gzM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TkI-Mu-BoX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="254" y="1134"/>
+            <point key="canvasLocation" x="253.59999999999999" y="1133.8830584707648"/>
         </scene>
         <!--Header View Controller-->
         <scene sceneID="efS-w7-dz9">
@@ -776,6 +787,7 @@ Lines</string>
         <image name="pause" catalog="system" width="88" height="128"/>
         <image name="play" catalog="system" width="120" height="128"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="zzz" catalog="system" width="121" height="128"/>
         <namedColor name="Crimson">
             <color red="0.83137254901960789" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

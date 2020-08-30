@@ -55,7 +55,7 @@ class EditProgramTableViewController: UITableViewController {
   switch section {
     case SectionName: return 1
     case SectionAppearance: return 2
-    case SectionConfig: return 1
+    case SectionConfig: return program!.pause > 0 ? 3 : 2
     case SectionSteps: return stepsCount + 1
     default: return 0
     }
@@ -77,6 +77,8 @@ class EditProgramTableViewController: UITableViewController {
       case (SectionAppearance, 0): return makeThemeCell(indexPath: indexPath)
       case (SectionAppearance, 1): return makeStyleCell(indexPath: indexPath)
       case (SectionConfig, 0): return makeDirectionCell(indexPath: indexPath)
+      case (SectionConfig, 1): return makePauseSwitchCell(indexPath: indexPath)
+      case (SectionConfig, 2): return makePauseLengthCell(indexPath: indexPath)
       case (SectionSteps, 0..<stepsCount): return makeStepCell(indexPath: indexPath)
       case (SectionSteps, stepsCount): return makeAddCell(indexPath: indexPath)
       default: return UITableViewCell()
@@ -174,6 +176,32 @@ class EditProgramTableViewController: UITableViewController {
     cell.set(on: program!.direction == .down)
     cell.set(label: "Count downwards")
     cell.didChange = { on in self.program!.direction = on ? .down : .up }
+    return cell
+  }
+
+  private func makePauseSwitchCell(indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
+    cell.set(on: program!.pause > 0)
+    cell.set(label: "Pause between steps")
+    cell.didChange = { on in
+      let pauseLengthIndexPath = IndexPath(row: 2, section: SectionConfig)
+      if on {
+        self.program!.pause = 10
+        self.tableView.insertRows(at: [pauseLengthIndexPath], with: .automatic)
+      } else {
+        self.program!.pause = 0
+        self.tableView.deleteRows(at: [pauseLengthIndexPath], with: .automatic)
+      }
+    }
+    return cell
+  }
+  private func makePauseLengthCell(indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "LengthCell", for: indexPath) as! TextFieldCell
+    cell.textField.text = String(program!.pause)
+    cell.didChange = { text in
+      self.program!.pause = Int(text)!
+      if self.program!.pause == 0 { self.tableView.deleteRows(at: [indexPath], with: .automatic) }
+    }
     return cell
   }
 

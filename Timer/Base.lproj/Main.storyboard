@@ -473,6 +473,38 @@
                                     <outlet property="switchView" destination="kGn-Sp-IpW" id="cIC-ha-oeX"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LengthCell" id="GBa-jR-Hta" customClass="TextFieldCell" customModule="CusTimer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="388" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GBa-jR-Hta" id="de7-aE-OjR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pause Length" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1NV-W7-Qze">
+                                            <rect key="frame" x="16" y="13" width="343" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="34" id="yKO-a7-dtg"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="GBa-jR-Hta" id="Waa-ea-zL0"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1NV-W7-Qze" firstAttribute="leading" secondItem="de7-aE-OjR" secondAttribute="leading" constant="16" id="ApI-n0-Paf"/>
+                                        <constraint firstItem="1NV-W7-Qze" firstAttribute="centerY" secondItem="de7-aE-OjR" secondAttribute="centerY" id="YG1-3v-1rB"/>
+                                        <constraint firstAttribute="trailing" secondItem="1NV-W7-Qze" secondAttribute="trailing" constant="16" id="tmb-W6-8n2"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstItem="1NV-W7-Qze" firstAttribute="leading" secondItem="GBa-jR-Hta" secondAttribute="leading" constant="16" id="Zg8-xv-mpV"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="textField" destination="1NV-W7-Qze" id="eKG-UI-OFN"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="5bq-dh-fy1" id="N5G-hi-WlT"/>

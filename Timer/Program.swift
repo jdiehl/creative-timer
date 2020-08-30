@@ -48,7 +48,9 @@ struct Program {
   var pause: Int
 
   // computed
-  var totalLength: Int
+  var totalLength: Int {
+    pause * (steps.count - 1) + steps.reduce(0) { $0 + $1.length }
+  }
   
   // designated initializer
   init(title: String, tint: Tint, steps: [Step], direction: Direction, pause: Int) {
@@ -57,7 +59,6 @@ struct Program {
     self.steps = steps
     self.direction = direction
     self.pause = pause
-    totalLength = pause * (steps.count - 1) + steps.reduce(0) { $0 + $1.length }
   }
   
   // convenience init: use defaults

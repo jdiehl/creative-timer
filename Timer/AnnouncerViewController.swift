@@ -50,7 +50,7 @@ class AnnouncerViewController: UIViewController {
   private func onStepChange() {
     guard runner.running else { return }
     flash()
-    announce(runner.step.title)
+    announce(runner.stepTitle)
   }
   
   private func onFinished() {

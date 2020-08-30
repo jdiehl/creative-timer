@@ -34,7 +34,8 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
       progressLabel.text = runner.index.stepTime.toTimeString()
     } else {
       progressView.progress = 1 - runner.index.stepProgress
-      progressLabel.text = (runner.step.length - runner.index.stepTime).toTimeString()
+      let length = runner.index.state == .pause ? runner.program.pause : runner.step.length
+      progressLabel.text = (length - runner.index.stepTime).toTimeString()
     }
   }
   

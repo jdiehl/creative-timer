@@ -27,7 +27,7 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   // the index (step, time))
   private(set) var index: Program.Index {
     didSet {
-      if index.step != oldValue.step { emit(.stepChanged) }
+      if index.step != oldValue.step || index.state != oldValue.state { emit(.stepChanged) }
       emit(.tick)
     }
   }
@@ -37,6 +37,15 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
 
   // the step
   var step: Program.Step { program.steps[index.step] }
+
+  // the title of the step (adjusted for pause)
+  var stepTitle: String {
+    if index.state == .pause {
+      let step = program.steps[index.step + 1]
+      return "Next: \(step.title)"
+    }
+    return step.title
+  }
 
   // private timer instance
   private var timer: SecondsTimer?
@@ -72,7 +81,11 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   
   // set the progress
   func set(progress: Float) {
-    set(step: index.step, time: Int(progress * Float(step.length)))
+    if index.state == .pause {
+      set(step: index.step, time: step.length + Int(progress * Float(program.pause)))
+    } else {
+      set(step: index.step, time: Int(progress * Float(step.length)))
+    }
   }
   
   // reset the runner
@@ -83,7 +96,7 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   // start the runner
   func start() {
     guard !running else { return }
-    if index.finished { reset() }
+    if index.state == .finished { reset() }
     running = true
     timer = SecondsTimer(startTime: index.time) { self.onTick($0) }
     emit(.started)
@@ -101,7 +114,7 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   private func onTick(_ passedTime: Int) {
     index = program.indexFor(time: passedTime)
     emit(.tick)
-    if index.finished {
+    if index.state == .finished {
       stop()
       emit(.finished)
     }

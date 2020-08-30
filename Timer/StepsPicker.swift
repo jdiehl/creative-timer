@@ -173,7 +173,7 @@ class StepsPicker: UIView {
     for step in program.steps {
       let stepRect = CGRect(x: x, y: bounds.midY - 8, width: 16, height: 16)
       path.addEllipse(in: stepRect)
-      x += timeToPosition * CGFloat(step.length)
+      x += timeToPosition * CGFloat(step.length + program.pause)
     }
     return path
   }

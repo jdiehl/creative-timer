@@ -32,7 +32,7 @@ class HeaderViewController: UIViewController {
   }
   
   private func updateStep() {
-    self.stepLabel.text = runner.step.title
+    self.stepLabel.text = runner.stepTitle
   }
-
+  
 }

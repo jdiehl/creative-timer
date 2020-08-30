@@ -128,11 +128,21 @@ class StepsPicker: UIView {
   // used for identifying which step to switch to on touch
   private func stepFor(position: CGFloat) -> Int {
     guard let program = program else { return 0 }
+    
+    // get the index for the position
     let timeToPosition = (bounds.width - 40) / CGFloat(program.totalLength)
     let time = Int((position - 20 - bounds.minX) / timeToPosition)
     let index = program.indexFor(time: time)
-    let step = index.stepTime > (program.steps[index.step].length + program.pause) / 2 ? index.step + 1 : index.step
-    return min(program.steps.count - 1, step)
+    
+    // if this is the last step, return it
+    if index.step == program.steps.count - 1 { return index.step }
+    
+    // determine the index for this and the next step
+    let a = positionFor(index: program.indexFor(step: index.step, stepTime: 0))
+    let b = positionFor(index: program.indexFor(step: index.step + 1, stepTime: 0))
+    
+    // return the step closer to the position
+    return abs(position - a) < abs(position - b) ? index.step : index.step + 1
   }
   
   private func stepFor(touch: UITouch) -> Int {

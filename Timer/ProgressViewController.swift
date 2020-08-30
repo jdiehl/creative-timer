@@ -22,21 +22,21 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
   
   override func viewDidLoad() {
     runner.on(.programChanged) { self.updateColor() }
-    runner.on(.tick) { self.update() }
+    runner.on(.tick) { self.update(animated: self.runner.running) }
     runner.on(.stepChanged) { self.updateStep() }
     updateColor()
     updateStep()
-    update()
+    update(animated: false)
   }
   
   // MARK: - Private Methods
   
-  private func update() {
+  private func update(animated: Bool) {
     if runner.program.direction == .up {
-      progressView.progress = runner.index.stepProgress
+      progressView.set(progress: runner.index.stepProgress, animated: animated)
       progressLabel.text = runner.index.stepTime.toTimeString()
     } else {
-      progressView.progress = 1 - runner.index.stepProgress
+      progressView.set(progress: 1 - runner.index.stepProgress, animated: animated)
       let length = runner.index.state == .pause ? runner.program.pause : runner.step.length
       progressLabel.text = (length - runner.index.stepTime).toTimeString()
     }
@@ -52,6 +52,7 @@ class ProgressViewController: UIViewController, ProgressViewDelegate {
       pauseView.layer.removeAllAnimations()
       pauseView.alpha = 0
     }
+    update(animated: false)
   }
   
   private func updateColor() {

@@ -113,7 +113,6 @@ class ProgramRunner: EventEmitter<ProgramRunnerEvents> {
   
   private func onTick(_ passedTime: Int) {
     index = program.indexFor(time: passedTime)
-    emit(.tick)
     if index.state == .finished {
       stop()
       emit(.finished)

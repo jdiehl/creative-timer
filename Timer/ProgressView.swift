@@ -18,11 +18,6 @@ class ProgressView: UIView {
   
   @IBOutlet weak var delegate: ProgressViewDelegate?
   
-  // the progress (0...1)
-  var progress: Float = 0 {
-    didSet { updateProgress() }
-  }
-  
   // the ring width in px
   var width: Float = 20 {
     didSet { setNeedsLayout() }
@@ -32,6 +27,9 @@ class ProgressView: UIView {
   var tint: Tint? {
     didSet { updateColors() }
   }
+  
+  // the progress (0...1)
+  private var progress: Float = 0
   
   // the center of the ring
   private var ringCenter: CGPoint { CGPoint(x: self.bounds.midX, y: self.bounds.midY ) }
@@ -61,7 +59,7 @@ class ProgressView: UIView {
   
   override func layoutSubviews() {
     updateRing()
-    updateProgress()
+    updateProgress(animated: false)
   }
   
   override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -71,28 +69,21 @@ class ProgressView: UIView {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     guard touches.count == 1 else { return }
     delegate?.willChangeProgress()
-    let point = touches.first!.location(in: self)
-    progress = Float(bounds.center.angle(target: point))
+    delegate?.updateProgress(to: progressFor(touch: touches.first!, snap: false))
   }
   
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     guard touches.count == 1 else { return }
-    let point = touches.first!.location(in: self)
-    let newProgress = Float(bounds.center.angle(target: point))
-    
-    // let the progress stick to the 0% / 100% mark
-    if progress > 0.75 && newProgress < 0.25 {
-      progress = 1
-    } else if progress < 0.25 && newProgress > 0.75 {
-      progress = 0
-    } else {
-      progress = newProgress
-    }
-    delegate?.updateProgress(to: progress)
+    delegate?.updateProgress(to: progressFor(touch: touches.first!, snap: true))
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    delegate?.didChangeProgress(to: progress)
+    delegate?.didChangeProgress(to: progressFor(touch: touches.first!, snap: true))
+  }
+  
+  func set(progress: Float, animated: Bool) {
+    self.progress = progress
+    updateProgress(animated: animated)
   }
 
   // MARK: - Private Methods
@@ -114,16 +105,34 @@ class ProgressView: UIView {
     ringLayer.path = self.ringPath(startAngle: 0, endAngle: 2.0 * Float.pi)
   }
   
+  private func progressFor(touch: UITouch, snap: Bool) -> Float {
+    let point = touch.location(in: self)
+    let newProgress = Float(bounds.center.angle(target: point))
+    if snap {
+      if progress > 0.75 && newProgress < 0.25 { return 1 }
+      else if progress < 0.25 && newProgress > 0.75 { return 0 }
+    }
+    return newProgress
+  }
+  
   // update the progress layer
-  private func updateProgress() {
-    progressLayer.path = self.ringPath(startAngle: -Float.pi / 2, endAngle: 2 * Float.pi * (progress - 1 / 4))
+  private func updateProgress(animated: Bool) {
+    progressLayer.removeAllAnimations()
+    let originalPath = progressLayer.path
+    
+    // update path
+    progressLayer.path = ringPath(startAngle: -Float.pi / 2, endAngle: 2 * Float.pi * (progress - 1 / 4))
 
-    // animate (not working)
-//    let morph = CABasicAnimation(keyPath:"path")
-//    morph.duration = 0.1
-//    morph.fromValue = self.progressLayer.path
-//    morph.toValue = path.CGPath
-//    progressLayer.addAnimation(morph, forKey: "morph")
+    // stop if not animated
+    guard animated else { return }
+
+    // animate
+    let animation = CABasicAnimation(keyPath:"path")
+    animation.duration = 0.2
+    animation.fromValue = originalPath
+    animation.toValue = progressLayer.path!
+    animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+    progressLayer.add(animation, forKey: animation.keyPath)
   }
   
   private func ringPath(startAngle: Float, endAngle: Float) -> CGPath {

@@ -36,13 +36,12 @@ class StepsPicker: UIView {
   }
   
   // the line layers
-  lazy private var maskLayer = CAShapeLayer(fillColor: UIColor.black)
-  lazy private var progressLayer = CAShapeLayer()
-  lazy private var backgroundLayer = CAShapeLayer()
+  lazy private var maskLayer = CAShapeLayer(fillColor: UIColor.black).addTo(layer)
+  lazy private var progressLayer = StepsLayer().addTo(layer)
+  lazy private var backgroundLayer = StepsLayer().addTo(layer)
   
   // the marker layer
-  lazy private var markerLayer = CAShapeLayer()
-  lazy private var markerLabelLayer = CATextLayer(font: UIFont.systemFont(ofSize: 24, weight: .medium))
+  lazy private var markerView = MarkerView().addTo(self)
   
   // MARK: - UIView
   
@@ -86,30 +85,16 @@ class StepsPicker: UIView {
   
   // set up all layers once after initializing
   private func setup() {
-    progressLayer.mask = maskLayer
-    layer.addSublayer(backgroundLayer)
-    layer.addSublayer(progressLayer)
-    layer.addSublayer(markerLayer)
-    layer.addSublayer(markerLabelLayer)
-    setupMarker()
     updatePaths()
     updateProgress()
     updateColors()
-  }
-  
-  // set up the marker (called from setupLayers)
-  private func setupMarker() {
-    markerLayer.path = CGPath(ellipseIn: CGRect(x: -20, y: -20, width: 40, height: 40), transform: nil)
-    let lineHeight = markerLabelLayer.font!.lineHeight!
-    markerLabelLayer.alignmentMode = .center
-    markerLabelLayer.frame = CGRect(x: -20, y: lineHeight / 2, width: 40, height: lineHeight)
+    progressLayer.mask = maskLayer
   }
   
   // update paths (called from setup and layout)
   private func updatePaths() {
-    let path = linePath()
-    backgroundLayer.path = path
-    progressLayer.path = path
+    backgroundLayer.set(program: program, bounds: bounds)
+    progressLayer.set(program: program, bounds: bounds)
   }
   
   // update progress (called also from changing progress
@@ -120,11 +105,8 @@ class StepsPicker: UIView {
     maskLayer.path = CGPath(rect: rect, transform: nil)
     
     let point = CGPoint(x: x, y: bounds.midY)
-    CALayer.performWithoutAnimation {
-      markerLayer.position = point
-      markerLabelLayer.position = point
-      markerLabelLayer.string = String(index.step + 1)
-    }
+    markerView.center = point
+    markerView.set(label: String(index.step + 1))
   }
   
   // update colors (called when colors change)
@@ -133,8 +115,7 @@ class StepsPicker: UIView {
     backgroundColor = program.tint.backgroundColor
     backgroundLayer.fillColor = program.tint.greyColor.cgColor
     progressLayer.fillColor = program.tint.foregroundColor.cgColor
-    markerLayer.fillColor = program.tint.foregroundColor.cgColor
-    markerLabelLayer.foregroundColor = program.tint.backgroundColor.cgColor
+    markerView.set(tint: program.tint)
   }
   
   // compute the position of the given index
@@ -150,32 +131,12 @@ class StepsPicker: UIView {
     let timeToPosition = (bounds.width - 40) / CGFloat(program.totalLength)
     let time = Int((position - 20 - bounds.minX) / timeToPosition)
     let index = program.indexFor(time: time)
-    let step = index.time > program.steps[index.step].length / 2 ? index.step + 1 : index.step
+    let step = index.stepTime > (program.steps[index.step].length + program.pause) / 2 ? index.step + 1 : index.step
     return min(program.steps.count - 1, step)
   }
   
   private func stepFor(touch: UITouch) -> Int {
     return stepFor(position: touch.location(in: self).x)
   }
-  
-  // create the path with dots for the line (used for the bg and the progress line / the latter with a mask)
-  private func linePath() -> CGPath {
-    let path = CGMutablePath()
-    
-    // base line
-    let rect = CGRect(x: bounds.minX + 20, y: bounds.midY - 4, width: bounds.width - 40, height: 8)
-    path.addRoundedRect(in: rect, cornerWidth: 4, cornerHeight: 4)
-    guard let program = program else { return path }
 
-    // steps
-    let timeToPosition = (bounds.width - 40) / CGFloat(program.totalLength)
-    var x = bounds.minX + 20 - 8
-    for step in program.steps {
-      let stepRect = CGRect(x: x, y: bounds.midY - 8, width: 16, height: 16)
-      path.addEllipse(in: stepRect)
-      x += timeToPosition * CGFloat(step.length + program.pause)
-    }
-    return path
-  }
-  
 }

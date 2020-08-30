@@ -16,6 +16,11 @@ extension CALayer {
     actionsWithoutAnimation()
     CATransaction.commit()
   }
+  
+  func addTo(_ layer: CALayer) -> Self {
+    layer.addSublayer(self)
+    return self
+  }
 
 }
 
@@ -25,7 +30,7 @@ extension CAShapeLayer {
     self.init()
     self.fillColor = fillColor.cgColor
   }
-
+  
 }
 
 extension CATextLayer {

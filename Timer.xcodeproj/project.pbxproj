@@ -48,6 +48,9 @@
 		2DEFB30E1CA6E40100E4AA77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30D1CA6E40100E4AA77 /* Assets.xcassets */; };
 		2DEFB3111CA6E40100E4AA77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DEFB30F1CA6E40100E4AA77 /* LaunchScreen.storyboard */; };
 		2DF0B8FF24C8208B0062694B /* AnnouncerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B8FE24C8208B0062694B /* AnnouncerViewController.swift */; };
+		2DFFFE2624FBCA26000E6B9A /* StepsLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFFFE2524FBCA26000E6B9A /* StepsLayer.swift */; };
+		2DFFFE2824FBCD93000E6B9A /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFFFE2724FBCD93000E6B9A /* MarkerView.swift */; };
+		2DFFFE2A24FBDC84000E6B9A /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFFFE2924FBDC84000E6B9A /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +97,9 @@
 		2DEFB3101CA6E40100E4AA77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DEFB3121CA6E40100E4AA77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DF0B8FE24C8208B0062694B /* AnnouncerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncerViewController.swift; sourceTree = "<group>"; };
+		2DFFFE2524FBCA26000E6B9A /* StepsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsLayer.swift; sourceTree = "<group>"; };
+		2DFFFE2724FBCD93000E6B9A /* MarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
+		2DFFFE2924FBDC84000E6B9A /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,7 @@
 				2DD4178924C5786300981C09 /* EventEmitter.swift */,
 				2D138E4B24BA20E1008A269A /* SecondsTimer.swift */,
 				2D292F2924BCB292008B10E6 /* UIViewControllerExtension.swift */,
+				2DFFFE2924FBDC84000E6B9A /* UIViewExtension.swift */,
 				2DD4178524C47FD400981C09 /* CALayerExtension.swift */,
 				2DD4178724C4CA2B00981C09 /* CGPointExtension.swift */,
 				2DB7034624CC9087008FC7DF /* IntExtension.swift */,
@@ -137,6 +144,8 @@
 		2DEA8A201CA938D200BDF955 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2DFFFE2524FBCA26000E6B9A /* StepsLayer.swift */,
+				2DFFFE2724FBCD93000E6B9A /* MarkerView.swift */,
 				2D99B87F24BF6A7F009BE18E /* ProgressView.swift */,
 				2DB7034A24CE256A008FC7DF /* StepsPicker.swift */,
 				2DD4178124C42E6E00981C09 /* StepsView.swift */,
@@ -305,6 +314,7 @@
 				2DF0B8FF24C8208B0062694B /* AnnouncerViewController.swift in Sources */,
 				2D138E5324BB1EBF008A269A /* BlinkAnimation.swift in Sources */,
 				2D01ACB424E8046300818691 /* Tint.swift in Sources */,
+				2DFFFE2824FBCD93000E6B9A /* MarkerView.swift in Sources */,
 				2DD59F5024E9B10F00EDBEDA /* ThemeCell.swift in Sources */,
 				2DE4E3FA24F2C4BB00E3A6C2 /* SceneDelegate.swift in Sources */,
 				2D138E4C24BA20E1008A269A /* SecondsTimer.swift in Sources */,
@@ -322,6 +332,8 @@
 				2DD59F4E24E9A9A700EDBEDA /* TextFieldCell.swift in Sources */,
 				2DD59F5224EA5C5900EDBEDA /* ThemeView.swift in Sources */,
 				2D138E4824BA1292008A269A /* Program.swift in Sources */,
+				2DFFFE2A24FBDC84000E6B9A /* UIViewExtension.swift in Sources */,
+				2DFFFE2624FBCA26000E6B9A /* StepsLayer.swift in Sources */,
 				2DD4178824C4CA2B00981C09 /* CGPointExtension.swift in Sources */,
 				2DE4E3D324F29CB800E3A6C2 /* SwitchCell.swift in Sources */,
 				2DD4178624C47FD400981C09 /* CALayerExtension.swift in Sources */,

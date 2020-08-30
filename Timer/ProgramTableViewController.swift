@@ -84,9 +84,8 @@ class ProgramTableViewController: UITableViewController {
 	}
 
   override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
-    let program = programManager.programs[fromIndexPath.row]
-    programManager.remove(at: fromIndexPath.row)
-    programManager.insert(program: program, at:toIndexPath.row)
+    programManager.move(from: fromIndexPath.row, to: toIndexPath.row)
+    tableView.reloadData()
   }
 
   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

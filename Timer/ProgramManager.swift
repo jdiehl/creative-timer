@@ -65,7 +65,15 @@ class ProgramManager: EventEmitter<ProgramManagerEvents> {
   func remove(at: Int) {
     programs.remove(at: at)
     save()
-    if at <= active { set(active: active - 1) }
+    if at <= active { set(active: max(0, active - 1)) }
+  }
+  
+  func move(from: Int, to: Int) {
+    let program = programs[from]
+    programs.remove(at: from)
+    programs.insert(program, at: to)
+    if active == from { set(active: to) }
+    else if active > from && active <= to { set(active: active - 1) }
   }
   
   private func load(url: URL) -> Bool {

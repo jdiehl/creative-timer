@@ -16,18 +16,18 @@ class StepsView: UIView {
   }
   
   // the line layers
-  lazy private var stepsLayer = setupStepsLayer()
+  lazy private var stepsLayer = makeStepsLayer()
 
   // MARK: - UIView
   
   override func layoutSubviews() {
-    update()
+    stepsLayer.path = makeStepsPath()
   }
   
   // MARK: - Private Functions
   
   // set up all layers once after initializing
-  private func setupStepsLayer() -> CAShapeLayer {
+  private func makeStepsLayer() -> CAShapeLayer {
     let layer = CAShapeLayer()
     self.layer.addSublayer(layer)
     return layer
@@ -35,13 +35,13 @@ class StepsView: UIView {
   
   private func update() {
     guard let program = program else { return }
-    stepsLayer.path = stepsPath()
     backgroundColor = program.tint.backgroundColor
     stepsLayer.fillColor = program.tint.foregroundColor.cgColor
+    setNeedsLayout()
   }
 
   // create the path with dots for the line (used for the bg and the progress line / the latter with a mask)
-  private func stepsPath() -> CGPath {
+  private func makeStepsPath() -> CGPath {
     let path = CGMutablePath()
     
     // base line

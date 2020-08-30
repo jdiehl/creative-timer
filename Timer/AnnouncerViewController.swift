@@ -36,7 +36,7 @@ class AnnouncerViewController: UIViewController {
   // MARK: - Private Methods
 
   private func updateColor() {
-    view.backgroundColor = runner.program.tint.backgroundColor
+    view.backgroundColor = runner.program.tint.foregroundColor
   }
 
   private func onStart() {
@@ -54,7 +54,7 @@ class AnnouncerViewController: UIViewController {
   }
   
   private func onFinished() {
-    flash(times: 5) { success in
+    flash(times: 7) {
       UIApplication.shared.isIdleTimerDisabled = false
     }
     announce("All done")
@@ -72,15 +72,18 @@ class AnnouncerViewController: UIViewController {
     view.alpha = 0
   }
   
-  private func flash(times: Int = 1, then: ((Bool) -> Void)? = nil) {
-    UIView.animateKeyframes(withDuration: TimeInterval(times) * 0.3, delay: 0, options: .calculationModeCubic, animations: {
-      let length = 1 / Double(2 * times)
-      for i in 0..<times {
-        let t = Double(i) / Double(times)
-        UIView.addKeyframe(withRelativeStartTime: t, relativeDuration: length) { self.view.alpha = 1 }
-        UIView.addKeyframe(withRelativeStartTime: t + length, relativeDuration: length) { self.view.alpha = 0 }
-      }
-    }, completion: then)
+  private func flash(times: Int = 1, then: (() -> Void)? = nil) {
+    guard times > 0 else { return }
+    self.view.alpha = 1
+    if times == 1 {
+      UIView.animate(withDuration: 0.3, animations: {
+        self.view.alpha = 0
+      }) { success in then?() }
+    } else {
+      UIView.animate(withDuration: 0.1, animations: {
+        self.view.alpha = 0.5
+      }) { success in self.flash(times: times - 1, then: then) }
+    }
   }
   
 }

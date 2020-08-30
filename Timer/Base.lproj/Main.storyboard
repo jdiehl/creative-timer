@@ -124,17 +124,24 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPh-94-pGm">
                                 <rect key="frame" x="16" y="8" width="343" height="146"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="140" id="EfO-Rk-N4A"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kn2-8D-1IX">
                                 <rect key="frame" x="16" y="162" width="343" height="343"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kn2-8D-1IX" secondAttribute="height" multiplier="1:1" id="8V3-hi-wT8"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="Mye-s9-HfX"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="600" id="jDp-4F-Ecd"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nva-V0-OoA">
                                 <rect key="frame" x="16" y="513" width="343" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="vWf-2d-fTu"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbX-BU-pCa">
                                 <rect key="frame" x="16" y="603" width="343" height="44"/>
@@ -733,7 +740,7 @@ Lines</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGO-X5-wV5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="255" y="849"/>
+            <point key="canvasLocation" x="253.59999999999999" y="848.27586206896558"/>
         </scene>
         <!--Steps View Controller-->
         <scene sceneID="ARo-v9-72Z">

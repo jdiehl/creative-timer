@@ -12,12 +12,18 @@ class ThemeCell: UITableViewCell {
   
   var theme: Tint.Theme? { didSet { update() }}
   var didChange: ((Tint.Theme) -> Void)?
+  
+  private let size = CGSize(width: 44, height: 44)
 
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var selectedView: UIImageView!
 
   override func awakeFromNib() {
     setup()
+    setNeedsLayout()
+  }
+  
+  override func layoutSubviews() {
     update()
   }
   
@@ -35,14 +41,17 @@ class ThemeCell: UITableViewCell {
   private func update() {
     guard let theme = theme else { return }
     let index = Tint.allThemes.firstIndex(of: theme)!
-    selectedView.frame.origin = CGPoint(x: 16 + 24 + 3 + index * 48, y: 8 + 24 + 3)
+    let gap = (frame.size.width - 32 - size.width * CGFloat(Tint.allThemes.count)) / CGFloat(Tint.allThemes.count - 1)
+    let x = 16 + CGFloat(index) * (size.width + gap) + size.width - 23
+    let y = CGFloat(8 + size.height - 23)
+    selectedView.frame.origin = CGPoint(x: x, y: y)
   }
   
   private func makeThemeView(theme: Tint.Theme) -> ThemeView {
     let view = ThemeView()
     view.theme = theme
-    view.heightAnchor.constraint(equalToConstant: 44).isActive = true
-    view.widthAnchor.constraint(equalToConstant: 44).isActive = true
+    view.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+    view.heightAnchor.constraint(equalToConstant: size.height).isActive = true
     return view
   }
 

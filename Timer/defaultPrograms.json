@@ -1,8 +1,10 @@
 [
   {
     "title": "Aquafitness",
-    "tint": "Ocean:Colored",
+    "theme": "Ocean",
+    "style": "Colored",
     "direction": "down",
+    "pause": 0,
     "steps": [
       { "title": "Warmup", "length": 60 },
       { "title": "high knee jogging - nudel beidhaendig nach unten druecken", "length": 30 },
@@ -35,7 +37,8 @@
   },
   {
     "title": "Sieben",
-    "tint": "Earth:Automatic",
+    "theme": "Earth",
+    "style": "Automatic",
     "direction": "down",
     "pause": 10,
     "steps": [
@@ -55,8 +58,10 @@
   },
   {
     "title": "Crazy 8",
-    "tint": "Crimson:Automatic",
+    "theme": "Crimson",
+    "style": "Automatic",
     "direction": "down",
+    "pause": 0,
     "steps": [
       { "title": "1", "length": 60 },
       { "title": "2", "length": 60 },
@@ -70,32 +75,40 @@
   },
   {
     "title": "5 Minutes",
-    "tint": "Leaf:Colored",
+    "theme": "Leaf",
+    "style": "Colored",
     "direction": "down",
+    "pause": 0,
     "steps": [
       { "title": "", "length": 300 }
     ]
   },
   {
     "title": "10 Minutes",
-    "tint": "Leaf:Colored",
+    "theme": "Leaf",
+    "style": "Colored",
     "direction": "down",
+    "pause": 0,
     "steps": [
       { "title": "", "length": 600 }
     ]
   },
   {
     "title": "15 Minutes",
-    "tint": "Leaf:Colored",
+    "theme": "Leaf",
+    "style": "Colored",
     "direction": "down",
+    "pause": 0,
     "steps": [
       { "title": "", "length": 900 }
     ]
   },
   {
     "title": "30 Minutes",
-    "tint": "Leaf:Colored",
+    "theme": "Leaf",
+    "style": "Colored",
     "direction": "down",
+    "pause": 0,
     "steps": [
       { "title": "", "length": 1800 }
     ]

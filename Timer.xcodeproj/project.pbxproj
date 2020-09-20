@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2D01ACB424E8046300818691 /* Tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D01ACB324E8046300818691 /* Tint.swift */; };
-		2D01ACB724E80E8200818691 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2D01ACB624E80E8200818691 /* SwiftyJSON */; };
 		2D02FC3A24ED946300837D13 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D02FC3924ED946300837D13 /* ButtonCell.swift */; };
 		2D03DD1A24F176D200AE1A82 /* defaultPrograms.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D03DD1924F176D200AE1A82 /* defaultPrograms.json */; };
 		2D0ABDAE24EAFCB8001404D0 /* StyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0ABDAD24EAFCB8001404D0 /* StyleCell.swift */; };
@@ -107,7 +106,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D01ACB724E80E8200818691 /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +237,6 @@
 			);
 			name = Custimer;
 			packageProductDependencies = (
-				2D01ACB624E80E8200818691 /* SwiftyJSON */,
 			);
 			productName = Timer;
 			productReference = 2DEFB3031CA6E40000E4AA77 /* Custimer.app */;
@@ -277,7 +274,6 @@
 			);
 			mainGroup = 2DEFB2FA1CA6E40000E4AA77;
 			packageReferences = (
-				2D01ACB524E80E8200818691 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 2DEFB3041CA6E40000E4AA77 /* Products */;
 			projectDirPath = "";
@@ -473,8 +469,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -490,10 +485,7 @@
 				DEVELOPMENT_TEAM = K8AJZV2G24;
 				INFOPLIST_FILE = Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "jdiehl.creative-timer";
 				PRODUCT_NAME = Custimer;
@@ -513,10 +505,7 @@
 				DEVELOPMENT_TEAM = K8AJZV2G24;
 				INFOPLIST_FILE = Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "jdiehl.creative-timer";
 				PRODUCT_NAME = Custimer;
@@ -548,25 +537,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		2D01ACB524E80E8200818691 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		2D01ACB624E80E8200818691 /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2D01ACB524E80E8200818691 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2DEFB2FB1CA6E40000E4AA77 /* Project object */;
 }

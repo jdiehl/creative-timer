@@ -6,7 +6,6 @@
 //  Copyright © 2020 Jonathan Diehl. All rights reserved.
 //
 
-import SwiftyJSON
 import Foundation
 
 enum ProgramManagerEvents {
@@ -77,15 +76,16 @@ class ProgramManager: EventEmitter<ProgramManagerEvents> {
   }
   
   private func load(url: URL) -> Bool {
-    guard let json = try? JSON(data: Data(contentsOf: url)) else { return false }
-    programs = json.array!.map { Program(json: $0)! }
+    guard let data = try? Data(contentsOf: url) else { return false }
+    let programs = try! JSONDecoder().decode([Program].self, from: data)
+    self.programs = programs
     active = 0
     return true
   }
   
   private func save(url: URL? = nil) {
-    let jsonPrograms = programs.map { $0.toJSON() }
-    try! JSON(jsonPrograms).rawData().write(to: url ?? programsURL)
+    let data = try! JSONEncoder().encode(programs)
+    try! data.write(to: url ?? programsURL)
   }
   
 }

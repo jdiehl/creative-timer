@@ -142,7 +142,7 @@ class EditProgramTableViewController: UITableViewController {
     cell.selectionStyle = .none
     cell.theme = self.program?.tint.theme
     cell.didChange = {
-      self.program?.tint.theme = $0
+      self.program?.theme = $0
       self.tableView.reloadRows(at: [IndexPath(row: 1, section: 1)], with: .none)
     }
     return cell
@@ -153,7 +153,7 @@ class EditProgramTableViewController: UITableViewController {
     cell.selectionStyle = .none
     cell.theme = self.program?.tint.theme
     cell.style = self.program?.tint.style
-    cell.didChange = { self.program?.tint.style = $0 }
+    cell.didChange = { self.program?.style = $0 }
     return cell
   }
 

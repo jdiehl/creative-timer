@@ -13,7 +13,7 @@ struct Tint {
   static let allThemes: [Tint.Theme] = [.crimson, .earth, .glow, .leaf, .ocean, .pop, .royal, .sky]
   static let allStyles: [Tint.Style] = [.automatic, .light, .dark, .colored]
 
-  enum Theme: String {
+  enum Theme: String, Codable {
     case crimson = "Crimson"
     case earth = "Earth"
     case glow = "Glow"
@@ -24,7 +24,7 @@ struct Tint {
     case sky = "Sky"
   }
 
-  enum Style: String {
+  enum Style: String, Codable {
     case automatic = "Automatic"
     case light = "Light"
     case dark = "Dark"

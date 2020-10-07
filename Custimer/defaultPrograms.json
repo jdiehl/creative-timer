@@ -1,0 +1,130 @@
+[
+  {
+    "title": "Aquafitness",
+    "appearance": {
+      "theme": "Ocean",
+      "style": "Colored"
+    },
+    "direction": "down",
+    "pause": 0,
+    "steps": [
+      { "title": "Warmup", "length": 60 },
+      { "title": "high knee jogging - nudel beidhaendig nach unten druecken", "length": 30 },
+      { "title": "high knee jogging - nudelenden zu den knoecheln bringen", "length": 30 },
+      { "title": "regular jogging - nudel im rainbow im wechsel", "length": 30 },
+      { "title": "rock 'n' roll - nudel im rainbow diagonal im wechsel", "length": 30 },
+      { "title": "wide jogging - nudel im rainbow diagonal beidhaendig", "length": 30 },
+      { "title": "wide jogging - nudel im rainbow seitlich im wechsel oeffnen", "length": 30 },
+      { "title": "huepfen und twisten - nudel flach von seite zu seite ", "length": 30 },
+      { "title": "wide jogging - nudel seitlich einhaendig nach unten (rechts)", "length": 30 },
+      { "title": "wide jogging - nudel seitlich einhaendig nach unten (links)", "length": 30 },
+      { "title": "wide jogging - nudel seitlich einhaendig zur seite (rechts)", "length": 30 },
+      { "title": "wide jogging - nudel seitlich einhaendig zur seite (links)", "length": 30 },
+      { "title": "rechts stehen links hochstrecken - nudel einhaendig zum knoechel (rechts)", "length": 30 },
+      { "title": "links stehen rechts hochstrecken - nudel einhaendig zum knoechel (links)", "length": 30 },
+      { "title": "ass kick jogging - nudel im rainbow im wechsel", "length": 30 },
+      { "title": "ass kick jogging - nudel im rainbow oeffnen und schliessen", "length": 30 },
+      { "title": "ass kick jogging - nudel im rainbow beidhaendig vor und zurueck schieben", "length": 30 },
+      { "title": "nudel hinten - beine anziehen und nach unten strecken - haende zu knoecheln", "length": 30 },
+      { "title": "nudel hinten - beine abwechselnd anziehen und grade rausstrecken ", "length": 30 },
+      { "title": "nudel hinten - beine anziehen und im wechsel zur seite strecken", "length": 30 },
+      { "title": "rock 'n' roll - nudel hinter sich nach unten gedrueckt halten", "length": 30 },
+      { "title": "fahrrad fahren - linkes bein - rechter arm (vor- und rueckwaerts)", "length": 30 },
+      { "title": "fahrrad fahren - rechtes bein - linker arm (vor- und rueckwaerts)", "length": 30 },
+      { "title": "nudel mittig mit rechtem fuss rauf und runter", "length": 30 },
+      { "title": "nudel mittig mit linkem fuss rauf und runter", "length": 30 },
+      { "title": "rock 'n' roll - nudel im rainbow hinterm ruecken oeffnen und schliessen", "length": 30 },
+      { "title": "regular jogging - nudel als paddel im wechsel", "length": 30 }
+    ]
+  },
+  {
+    "title": "Sieben",
+    "appearance": {
+      "theme": "Earth",
+      "style": "Automatic"
+    },
+    "direction": "down",
+    "pause": 10,
+    "steps": [
+      { "title": "Jumping jacks", "length": 30 },
+      { "title": "Wall sit", "length": 30 },
+      { "title": "Push-up", "length": 30 },
+      { "title": "Abdominal crunch", "length": 30 },
+      { "title": "Step-up onto chair", "length": 30 },
+      { "title": "Squat", "length": 30 },
+      { "title": "Triceps dip on chair", "length": 30 },
+      { "title": "Plank ", "length": 30 },
+      { "title": "High knees/running in place", "length": 30 },
+      { "title": "Lunge", "length": 30 },
+      { "title": "Push-up and rotation", "length": 30 },
+      { "title": "Side plank", "length": 30 }
+    ]
+  },
+  {
+    "title": "Crazy 8",
+    "appearance": {
+      "theme": "Crimson",
+      "style": "Automatic"
+    },
+    "direction": "down",
+    "pause": 0,
+    "steps": [
+      { "title": "1", "length": 60 },
+      { "title": "2", "length": 60 },
+      { "title": "3", "length": 60 },
+      { "title": "4", "length": 60 },
+      { "title": "5", "length": 60 },
+      { "title": "6", "length": 60 },
+      { "title": "7", "length": 60 },
+      { "title": "8", "length": 60 }
+    ]
+  },
+  {
+    "title": "5 Minutes",
+    "appearance": {
+      "theme": "Leaf",
+      "style": "Colored"
+    },
+    "direction": "down",
+    "pause": 0,
+    "steps": [
+      { "title": "", "length": 300 }
+    ]
+  },
+  {
+    "title": "10 Minutes",
+    "appearance": {
+      "theme": "Leaf",
+      "style": "Colored"
+    },
+    "direction": "down",
+    "pause": 0,
+    "steps": [
+      { "title": "", "length": 600 }
+    ]
+  },
+  {
+    "title": "15 Minutes",
+    "appearance": {
+      "theme": "Leaf",
+      "style": "Colored"
+    },
+    "direction": "down",
+    "pause": 0,
+    "steps": [
+      { "title": "", "length": 900 }
+    ]
+  },
+  {
+    "title": "30 Minutes",
+    "appearance": {
+      "theme": "Leaf",
+      "style": "Colored"
+    },
+    "direction": "down",
+    "pause": 0,
+    "steps": [
+      { "title": "", "length": 1800 }
+    ]
+  }
+]

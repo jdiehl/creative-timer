@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D684702252E0E36000228BD /* defaultPrograms.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D684701252E0E36000228BD /* defaultPrograms.json */; };
 		2D76A24E251BE7E60078B74E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D76A24D251BE7E60078B74E /* AppDelegate.swift */; };
 		2D76A250251BE7E60078B74E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D76A24F251BE7E60078B74E /* SceneDelegate.swift */; };
 		2D76A252251BE7E60078B74E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D76A251251BE7E60078B74E /* ContentView.swift */; };
@@ -29,9 +30,6 @@
 		2D9FE8812520874500FF7783 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE85F2520855100FF7783 /* NotificationService.swift */; };
 		2D9FE8832520874500FF7783 /* ProgramService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE85D2520855100FF7783 /* ProgramService.swift */; };
 		2D9FE8852520874500FF7783 /* ProgramIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE861252085A500FF7783 /* ProgramIndex.swift */; };
-		2D9FE88A2520896800FF7783 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8892520896800FF7783 /* EventEmitter.swift */; };
-		2D9FE88B2520896800FF7783 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8892520896800FF7783 /* EventEmitter.swift */; };
-		2D9FE88C2520896800FF7783 /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8892520896800FF7783 /* EventEmitter.swift */; };
 		2D9FE8B325208CA000FF7783 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8B225208CA000FF7783 /* Appearance.swift */; };
 		2D9FE8B425208CA000FF7783 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8B225208CA000FF7783 /* Appearance.swift */; };
 		2D9FE8B525208CA000FF7783 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8B225208CA000FF7783 /* Appearance.swift */; };
@@ -44,7 +42,6 @@
 		2D9FE8DA2520936400FF7783 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8D92520936400FF7783 /* TimerView.swift */; };
 		2D9FE8DB2520936400FF7783 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8D92520936400FF7783 /* TimerView.swift */; };
 		2D9FE8DC2520936400FF7783 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8D92520936400FF7783 /* TimerView.swift */; };
-		2DB0703225210DFF00D50D5F /* defaultPrograms.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DB0703125210DFF00D50D5F /* defaultPrograms.json */; };
 		2DB070452521278700D50D5F /* DefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB070442521278700D50D5F /* DefaultsService.swift */; };
 		2DEAB31E2520A5A700D32B2A /* TimerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB31D2520A5A700D32B2A /* TimerState.swift */; };
 		2DEAB3242520AB5900D32B2A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB3232520AB5900D32B2A /* String.swift */; };
@@ -77,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D684701252E0E36000228BD /* defaultPrograms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaultPrograms.json; sourceTree = "<group>"; };
 		2D76A24A251BE7E60078B74E /* Custimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Custimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D76A24D251BE7E60078B74E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D76A24F251BE7E60078B74E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,12 +95,10 @@
 		2D9FE85E2520855100FF7783 /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		2D9FE85F2520855100FF7783 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		2D9FE861252085A500FF7783 /* ProgramIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramIndex.swift; sourceTree = "<group>"; };
-		2D9FE8892520896800FF7783 /* EventEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventEmitter.swift; path = ../../../../Documents/Projects/custimer/Timer/EventEmitter.swift; sourceTree = "<group>"; };
 		2D9FE8B225208CA000FF7783 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		2D9FE8BF2520907900FF7783 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		2D9FE8CC2520925000FF7783 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2D9FE8D92520936400FF7783 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		2DB0703125210DFF00D50D5F /* defaultPrograms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = defaultPrograms.json; path = ../../../Documents/Projects/custimer/Timer/defaultPrograms.json; sourceTree = "<group>"; };
 		2DB070442521278700D50D5F /* DefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsService.swift; sourceTree = "<group>"; };
 		2DEAB31D2520A5A700D32B2A /* TimerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerState.swift; sourceTree = "<group>"; };
 		2DEAB3232520AB5900D32B2A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -171,7 +167,7 @@
 				2D76A24F251BE7E60078B74E /* SceneDelegate.swift */,
 				2D76A253251BE7E70078B74E /* Assets.xcassets */,
 				2DEAB3332520BA4A00D32B2A /* Colors.xcassets */,
-				2DB0703125210DFF00D50D5F /* defaultPrograms.json */,
+				2D684701252E0E36000228BD /* defaultPrograms.json */,
 				2D76A258251BE7E70078B74E /* LaunchScreen.storyboard */,
 				2D76A25B251BE7E70078B74E /* Info.plist */,
 				2D76A255251BE7E70078B74E /* Preview Content */,
@@ -228,7 +224,6 @@
 				2DEAB3402520BEC500D32B2A /* View.swift */,
 				2D9FE8BF2520907900FF7783 /* UIColor.swift */,
 				2D76A28D251BEBD00078B74E /* CGHelpers.swift */,
-				2D9FE8892520896800FF7783 /* EventEmitter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -359,7 +354,7 @@
 			files = (
 				2D76A25A251BE7E70078B74E /* LaunchScreen.storyboard in Resources */,
 				2DEAB3342520BA4D00D32B2A /* Colors.xcassets in Resources */,
-				2DB0703225210DFF00D50D5F /* defaultPrograms.json in Resources */,
+				2D684702252E0E36000228BD /* defaultPrograms.json in Resources */,
 				2D76A257251BE7E70078B74E /* Preview Assets.xcassets in Resources */,
 				2D76A254251BE7E70078B74E /* Assets.xcassets in Resources */,
 			);
@@ -391,7 +386,6 @@
 				2D9FE8DA2520936400FF7783 /* TimerView.swift in Sources */,
 				2DEAB3532520C6AA00D32B2A /* TimerControlsView.swift in Sources */,
 				2D9FE8772520874400FF7783 /* ProgramService.swift in Sources */,
-				2D9FE88A2520896800FF7783 /* EventEmitter.swift in Sources */,
 				2D9FE8B325208CA000FF7783 /* Appearance.swift in Sources */,
 				2D76A24E251BE7E60078B74E /* AppDelegate.swift in Sources */,
 				2D76A250251BE7E60078B74E /* SceneDelegate.swift in Sources */,
@@ -418,7 +412,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D9FE88B2520896800FF7783 /* EventEmitter.swift in Sources */,
 				2D9FE8CE2520925000FF7783 /* Color.swift in Sources */,
 				2D9FE87E2520874400FF7783 /* ProgramService.swift in Sources */,
 				2D9FE8C12520907900FF7783 /* UIColor.swift in Sources */,
@@ -435,7 +428,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D9FE88C2520896800FF7783 /* EventEmitter.swift in Sources */,
 				2D9FE8CF2520925000FF7783 /* Color.swift in Sources */,
 				2D9FE8832520874500FF7783 /* ProgramService.swift in Sources */,
 				2D9FE8C22520907900FF7783 /* UIColor.swift in Sources */,

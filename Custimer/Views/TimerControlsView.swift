@@ -32,7 +32,7 @@ struct TimerControlsView: View {
 
       Button(action: {
         state.pause()
-        // TODO: open settings
+        state.showPrograms = true
       }) {
         Image(systemName: "eject.fill")
       }

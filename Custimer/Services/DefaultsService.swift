@@ -16,5 +16,8 @@ class DefaultsService {
     defaults.register(defaults: ["activeProgram": 0])
   }
   
-  var activeProgram: Int { defaults.integer(forKey: "activeProgram") }
+  var activeProgram: Int {
+    get { defaults.integer(forKey: "activeProgram") }
+    set { defaults.set(newValue, forKey: "activeProgram") }
+  }
 }

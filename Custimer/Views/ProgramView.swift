@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProgramView: View {
   var program: Program
-  var index: ProgramIndex
+  var index: ProgramIndex?
   
   var body: some View {
     GeometryReader { geometry in
@@ -40,16 +40,18 @@ struct ProgramView: View {
         .padding(10)
         
         // active step
-        ZStack {
-          Circle()
-            .fill(Color.foreground(appearance: program.appearance))
-            .frame(width: 40, height: 40)
-          
-          Text("\(index.step + 1)")
-            .font(.system(size: 20, weight: .bold))
-            .foregroundColor(Color.background(appearance: program.appearance))
+        if index != nil {
+          ZStack {
+            Circle()
+              .fill(Color.foreground(appearance: program.appearance))
+              .frame(width: 40, height: 40)
+            
+            Text("\(index!.step + 1)")
+              .font(.system(size: 20, weight: .bold))
+              .foregroundColor(Color.background(appearance: program.appearance))
+          }
+          .padding(.leading, progressWidth(geometry: geometry))
         }
-        .padding(.leading, progressWidth(geometry: geometry))
         
       }
       .frame(height: 40)
@@ -58,7 +60,8 @@ struct ProgramView: View {
   }
   
   private func progressWidth(geometry: GeometryProxy, index: ProgramIndex? = nil) -> CGFloat {
-    (geometry.size.width - 40) * CGFloat((index ?? self.index).progress)
+    let progress = (index ?? self.index)?.progress ?? 1.0
+    return (geometry.size.width - 40) * CGFloat(progress)
   }
   
   private func progressWidth(geometry: GeometryProxy, step: Int) -> CGFloat {
@@ -67,7 +70,7 @@ struct ProgramView: View {
   }
   
   private func stepColor(step: Int) -> Color {
-    let isActive = index.step >= step
+    let isActive = index != nil ? index!.step >= step : true
     return isActive ? Color.foreground(appearance: program.appearance) : Color.gray(appearance: program.appearance)
   }
   
@@ -82,6 +85,7 @@ struct ProgramView_Previews: PreviewProvider {
       ProgramView(program: program, index: ProgramIndex.at(program: program, time: 75))
       ProgramView(program: program, index: ProgramIndex.at(program: program, time: 90))
       ProgramView(program: program, index: ProgramIndex.at(program: program, time: 120))
+      ProgramView(program: program)
     }
     .previewLayout(.fixed(width: 375, height: 40))
   }

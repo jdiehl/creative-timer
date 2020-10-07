@@ -13,22 +13,14 @@ class TimerState: ObservableObject {
   @Published var program: Program
   @Published var index: ProgramIndex!
   @Published var running = false
+  @Published var showPrograms = false
 
   private var timer: Timer?
 
-  #if DEBUG
-  class func mock() -> TimerState {
-    let appearance = Appearance()
-    let steps = [Program.Step(title: "1", length: 3), Program.Step(title: "2", length: 60), Program.Step(title: "3", length: 30)]
-    let program = Program(title: "Timer Test", appearance: appearance, direction: .down, pause: 10, steps: steps)
-    let index = ProgramIndex.at(program: program, time: 39)
-    return TimerState(programs: [program], program: program, index: index)
-  }
-  #endif
-  
   convenience init() {
     let programs = try! ProgramService.shared.load()
-    let program = programs[DefaultsService.shared.activeProgram]
+    let programIndex = DefaultsService.shared.activeProgram
+    let program = programIndex < programs.count ? programs[programIndex] : programs[0]
     let index = ProgramIndex.at(program: program, time: 0)
     self.init(programs: programs, program: program, index: index)
   }
@@ -37,6 +29,12 @@ class TimerState: ObservableObject {
     self.programs = programs
     self.program = program
     self.index = index
+  }
+  
+  func set(programIndex: Int) {
+    program = programs[programIndex]
+    DefaultsService.shared.activeProgram = programIndex
+    reset()
   }
   
   // MARK: - Convenience Accessors
@@ -67,4 +65,18 @@ class TimerState: ObservableObject {
     index = ProgramIndex.at(program: program, time: 0)
   }
 
+}
+
+extension TimerState {
+  
+  #if DEBUG
+  class func mock() -> TimerState {
+    let appearance = Appearance()
+    let steps = [Program.Step(title: "1", length: 3), Program.Step(title: "2", length: 60), Program.Step(title: "3", length: 30)]
+    let program = Program(title: "Timer Test", appearance: appearance, direction: .down, pause: 10, steps: steps)
+    let index = ProgramIndex.at(program: program, time: 39)
+    return TimerState(programs: [program], program: program, index: index)
+  }
+  #endif
+  
 }

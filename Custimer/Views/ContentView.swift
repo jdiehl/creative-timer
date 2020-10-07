@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+  @EnvironmentObject var state: TimerState
+
   var body: some View {
     TimerView()
+      .sheet(isPresented: $state.showPrograms) {
+        ProgramModal()
+          .environmentObject(state)
+      }
   }
 }
 

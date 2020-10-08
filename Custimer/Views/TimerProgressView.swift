@@ -25,6 +25,13 @@ struct TimerProgressView: View {
           .minimumScaleFactor(0.01)
           .foregroundColor(Color.foreground(appearance: state.appearance))
           .padding(width * 1.5)
+        
+        if state.index.state == .pause {
+          SleepView()
+            .font(.system(size: width * 2, weight: .medium))
+            .foregroundColor(Color.foreground(appearance: state.appearance))
+            .position(x: geometry.size.width / 2, y: geometry.size.height * 3 / 4)
+        }
       }
       .gesture(dragGesture(geometry: geometry))
     }
@@ -54,7 +61,7 @@ struct TimerProgressView_Previews: PreviewProvider {
       TimerProgressView()
         .previewLayout(.fixed(width: 100.0, height: 100.0))
       TimerProgressView()
-        .previewLayout(.fixed(width: 375.0, height: 375.0))
+        .previewLayout(.fixed(width: 300, height: 300.0))
     }.environmentObject(TimerState.mock())
   }
 }

@@ -15,16 +15,24 @@ struct TimerProgressView: View {
   
   var body: some View {
     GeometryReader { geometry in
+      let width = lineWidth(with: geometry)
       ZStack {
-        ProgressView(progress: state.index.stepProgress, foregroundColor: Color.foreground(appearance: state.appearance), backgroundColor: Color.gray(appearance: state.appearance))
+        ProgressView(progress: state.index.stepProgress, width: Double(width), foregroundColor: Color.foreground(appearance: state.appearance), backgroundColor: Color.gray(appearance: state.appearance))
 
         Text(String.time(state.index.stepTime))
           .font(.system(size: 100, weight: .thin))
+          .lineLimit(1)
+          .minimumScaleFactor(0.01)
           .foregroundColor(Color.foreground(appearance: state.appearance))
+          .padding(width * 1.5)
       }
       .gesture(dragGesture(geometry: geometry))
     }
     .aspectRatio(1, contentMode: .fit)
+  }
+  
+  private func lineWidth(with geometry: GeometryProxy) -> CGFloat {
+    return max(min(geometry.size.width / 10, 20), 5)
   }
   
   private func dragGesture(geometry: GeometryProxy) -> some Gesture {
@@ -40,8 +48,13 @@ struct TimerProgressView: View {
 
 struct TimerProgressView_Previews: PreviewProvider {
   static var previews: some View {
-    TimerProgressView()
-      .previewLayout(.fixed(width: 375, height: 375 ))
-      .environmentObject(TimerState.mock())
+    Group() {
+      TimerProgressView()
+        .previewLayout(.fixed(width: 50, height: 50))
+      TimerProgressView()
+        .previewLayout(.fixed(width: 100.0, height: 100.0))
+      TimerProgressView()
+        .previewLayout(.fixed(width: 375.0, height: 375.0))
+    }.environmentObject(TimerState.mock())
   }
 }

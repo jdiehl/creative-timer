@@ -71,7 +71,7 @@ extension TimerState {
   
   #if DEBUG
   class func mock() -> TimerState {
-    let appearance = Appearance()
+    let appearance = Appearance(theme: .crimson, style: .automatic)
     let steps = [Program.Step(title: "1", length: 3), Program.Step(title: "2", length: 60), Program.Step(title: "3", length: 30)]
     let program = Program(title: "Timer Test", appearance: appearance, direction: .down, pause: 10, steps: steps)
     let index = ProgramIndex.at(program: program, time: 39)

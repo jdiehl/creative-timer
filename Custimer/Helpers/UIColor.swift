@@ -64,10 +64,10 @@ extension UIColor {
   
   class func gray(appearance: Appearance) -> UIColor {
     switch appearance.style {
-    case .light: return UIColor.systemGray2.light
-    case .dark: return UIColor.systemGray2.dark
+    case .light: return UIColor.systemGray5.light
+    case .dark: return UIColor.systemGray5.dark
     case .colored: return UIColor(appearance.theme).overlay(color: UIColor(white: 1, alpha: 0.3))
-    default: return UIColor.systemGray2
+    default: return UIColor.systemGray5
     }
   }
   

@@ -9,26 +9,25 @@ import SwiftUI
 
 struct ProgressView: View {
   var progress: Double
-  var width = 20.0
+  var width: CGFloat = 20.0
   var up: Bool = true
   var foregroundColor: Color = .red
   var backgroundColor: Color = Color.black.opacity(0.1)
   
   var body: some View {
-    let cgWidth = CGFloat(width)
     ZStack {
       Circle()
-        .stroke(lineWidth: cgWidth)
+        .stroke(lineWidth: width)
         .foregroundColor(backgroundColor)
       
       Circle()
         .trim(from: 0.0, to: CGFloat(min(self.progress, 1.0)))
-        .stroke(style: StrokeStyle(lineWidth: cgWidth, lineCap: .round, lineJoin: .round))
+        .stroke(style: StrokeStyle(lineWidth: width, lineCap: .round, lineJoin: .round))
         .foregroundColor(foregroundColor)
         .rotationEffect(Angle(degrees: 270.0))
         .animation(.easeOut(duration: 0.2))
     }
-    .padding(cgWidth / 2)
+    .padding(width / 2)
     .aspectRatio(1, contentMode: .fit)
   }
 }

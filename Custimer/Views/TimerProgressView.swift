@@ -15,7 +15,7 @@ struct TimerProgressView: View {
   
   var body: some View {
     GeometryReader { geometry in
-      let width = lineWidth(with: geometry)
+      let width = max(min(geometry.size.width / 10, 20), 5)
       ZStack {
         ProgressView(progress: state.index.stepProgress, width: Double(width), foregroundColor: Color.foreground(appearance: state.appearance), backgroundColor: Color.gray(appearance: state.appearance))
 
@@ -30,18 +30,14 @@ struct TimerProgressView: View {
           SleepView()
             .font(.system(size: width * 2, weight: .medium))
             .foregroundColor(Color.foreground(appearance: state.appearance))
-            .position(x: geometry.size.width / 2, y: geometry.size.height * 3 / 4)
+            .position(x: geometry.size.width / 2, y: geometry.size.height / 4)
         }
       }
       .gesture(dragGesture(geometry: geometry))
     }
     .aspectRatio(1, contentMode: .fit)
   }
-  
-  private func lineWidth(with geometry: GeometryProxy) -> CGFloat {
-    return max(min(geometry.size.width / 10, 20), 5)
-  }
-  
+    
   private func dragGesture(geometry: GeometryProxy) -> some Gesture {
     return DragGesture(minimumDistance: 0)
       .onChanged { value in

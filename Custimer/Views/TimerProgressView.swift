@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TimerProgressView: View {
   @EnvironmentObject private var state: TimerState
+  @State private var wasRunning: Bool?
+  @State private var prevProgress: Double?
   
   var body: some View {
     GeometryReader { geometry in
@@ -38,17 +40,35 @@ struct TimerProgressView: View {
   private func dragGesture(geometry: GeometryProxy) -> some Gesture {
     return DragGesture(minimumDistance: 0)
       .onChanged { value in
+        if wasRunning == nil {
+          wasRunning = state.running
+          state.stop()
+        }
         let stepProgress = geometry.size.center.progress(target: value.location)
         let time = stepTime(for: stepProgress)
         state.index = ProgramIndex.at(program: state.program, step: state.index.step, stepTime: time)
       }
+      .onEnded { _ in
+        if wasRunning == true { state.start() }
+        wasRunning = nil
+        prevProgress = nil
+      }
   }
   
   private func stepTime(for progress: Double) -> Int {
+    // adjust progress to stick to the edges
+    var adjustedProgress = progress
+    if prevProgress != nil {
+      if adjustedProgress > 0.9 && prevProgress! < 0.1 { adjustedProgress = 0 }
+      else if adjustedProgress < 0.1 && prevProgress! > 0.9 { adjustedProgress = 1 }
+    }
+    prevProgress = adjustedProgress
+    
+    // compute step time for progress
     if state.index.state == .pause {
-      return state.step.length + Int(Double(state.program.pause) * progress)
+      return state.step.length + min(Int(Double(state.program.pause) * adjustedProgress), state.program.pause - 1)
     } else {
-      return Int(Double(state.step.length) * progress)
+      return min(Int(Double(state.step.length) * adjustedProgress), state.step.length - 1)
     }
   }
 }

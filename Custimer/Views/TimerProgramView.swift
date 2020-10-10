@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TimerProgramView: View {
   @EnvironmentObject private var state: TimerState
+  @State private var wasRunning: Bool?
 
   var body: some View {
     VStack(alignment: .center, spacing: 0) {
@@ -29,9 +30,17 @@ struct TimerProgramView: View {
   private func dragGesture(geometry: GeometryProxy) -> some Gesture {
     return DragGesture(minimumDistance: 0)
       .onChanged { value in
+        if wasRunning == nil {
+          wasRunning = state.running
+          state.stop()
+        }
         let progress = Double((value.location.x - 20) / (geometry.size.width - 40))
         let index = ProgramIndex.at(program: state.program, progress: progress)
         state.index = ProgramIndex.at(program: state.program, step: index.step, stepTime: 0)
+      }
+      .onEnded { _ in
+        if wasRunning == true { state.start() }
+        wasRunning = nil
       }
   }
 }

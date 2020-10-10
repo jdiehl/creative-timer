@@ -20,14 +20,14 @@ struct ProgramView: View {
           .fill(Color.gray(appearance: program.appearance))
           .frame(height: 10)
           .padding(20)
-        
+
         // progress line
         RoundedRectangle(cornerRadius: 5)
           .fill(Color.foreground(appearance: program.appearance))
           .frame(width: progressWidth(geometry: geometry), height: 10)
-          .animation(.easeOut(duration: 0.2))
           .padding(20)
-        
+          .animation(.easeOut(duration: 0.2))
+
         // steps
         ZStack(alignment: .leading) {
           ForEach((0..<program.steps.count), id: \.self) { step in
@@ -35,6 +35,7 @@ struct ProgramView: View {
               .fill(stepColor(step: step))
               .frame(width: 20, height: 20)
               .padding(.leading, progressWidth(geometry: geometry, step: step))
+              .animation(.easeOut(duration: 0.2))
           }
         }
         .padding(10)
@@ -42,7 +43,8 @@ struct ProgramView: View {
         // active step
         if index != nil {
           MarkerView(label: "\(index!.step + 1)", appearance: program.appearance)
-          .padding(.leading, progressWidth(geometry: geometry))
+            .padding(.leading, progressWidth(geometry: geometry))
+            .animation(.easeOut(duration: 0.2))
         }
         
       }

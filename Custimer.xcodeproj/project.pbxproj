@@ -10,6 +10,7 @@
 		2D21EBB3252E4C0100A922FC /* ProgramModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D21EBB2252E4C0100A922FC /* ProgramModal.swift */; };
 		2D21EBB8252E4C3C00A922FC /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D21EBB7252E4C3C00A922FC /* ProgramCell.swift */; };
 		2D48425E252F77E500A34CC3 /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D48425D252F77E500A34CC3 /* SleepView.swift */; };
+		2D4842662531A31800A34CC3 /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4842652531A31800A34CC3 /* MarkerView.swift */; };
 		2D684702252E0E36000228BD /* defaultPrograms.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D684701252E0E36000228BD /* defaultPrograms.json */; };
 		2D76A24E251BE7E60078B74E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D76A24D251BE7E60078B74E /* AppDelegate.swift */; };
 		2D76A250251BE7E60078B74E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D76A24F251BE7E60078B74E /* SceneDelegate.swift */; };
@@ -80,6 +81,7 @@
 		2D21EBB2252E4C0100A922FC /* ProgramModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramModal.swift; sourceTree = "<group>"; };
 		2D21EBB7252E4C3C00A922FC /* ProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
 		2D48425D252F77E500A34CC3 /* SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
+		2D4842652531A31800A34CC3 /* MarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
 		2D684701252E0E36000228BD /* defaultPrograms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaultPrograms.json; sourceTree = "<group>"; };
 		2D76A24A251BE7E60078B74E /* Custimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Custimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D76A24D251BE7E60078B74E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			children = (
 				2D76A251251BE7E60078B74E /* ContentView.swift */,
 				2D48425D252F77E500A34CC3 /* SleepView.swift */,
+				2D4842652531A31800A34CC3 /* MarkerView.swift */,
 				2D76A299251BF01B0078B74E /* ProgressView.swift */,
 				2DEAB32B2520AC7800D32B2A /* ProgramView.swift */,
 				2D9FE8D92520936400FF7783 /* TimerView.swift */,
@@ -402,6 +405,7 @@
 				2D76A252251BE7E60078B74E /* ContentView.swift in Sources */,
 				2D9FE862252085A500FF7783 /* ProgramIndex.swift in Sources */,
 				2D9FE8CD2520925000FF7783 /* Color.swift in Sources */,
+				2D4842662531A31800A34CC3 /* MarkerView.swift in Sources */,
 				2D9FE8752520874400FF7783 /* NotificationService.swift in Sources */,
 				2D9FE8C02520907900FF7783 /* UIColor.swift in Sources */,
 				2DEAB34E2520C4E000D32B2A /* TimerProgressView.swift in Sources */,

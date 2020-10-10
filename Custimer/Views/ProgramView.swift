@@ -41,15 +41,7 @@ struct ProgramView: View {
         
         // active step
         if index != nil {
-          ZStack {
-            Circle()
-              .fill(Color.foreground(appearance: program.appearance))
-              .frame(width: 40, height: 40)
-            
-            Text("\(index!.step + 1)")
-              .font(.system(size: 20, weight: .bold))
-              .foregroundColor(Color.background(appearance: program.appearance))
-          }
+          MarkerView(label: "\(index!.step + 1)", appearance: program.appearance)
           .padding(.leading, progressWidth(geometry: geometry))
         }
         

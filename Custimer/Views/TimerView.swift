@@ -9,10 +9,13 @@ import SwiftUI
 
 struct TimerView: View {
   @EnvironmentObject private var state: TimerState
+  @State private var flashing = false
   
   var body: some View {
     ZStack {
-      Color.background(appearance: state.program.appearance).ignoresSafeArea()
+      backgroundColor
+        .ignoresSafeArea()
+        .animation(.easeOut)
 
       VStack {
         TimerHeaderView()
@@ -35,6 +38,10 @@ struct TimerView: View {
           .padding()
       }
     }
+  }
+  
+  var backgroundColor: Color {
+    state.index.state == .finished ? Color.foreground(appearance: state.program.appearance) : Color.background(appearance: state.program.appearance)
   }
 }
 

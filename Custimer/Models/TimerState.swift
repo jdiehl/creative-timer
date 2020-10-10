@@ -14,7 +14,7 @@ class TimerState: ObservableObject {
   @Published var index: ProgramIndex!
   @Published var running = false
   @Published var showPrograms = false
-
+  
   private var timer: Timer?
 
   convenience init() {
@@ -43,17 +43,17 @@ class TimerState: ObservableObject {
 
   // MARK: - Controls
   
-  func play() {
+  func start() {
     guard !running else { return }
     if self.index.state == .finished { self.reset() }
     running = true
     timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
       self.index = ProgramIndex.at(program: self.program, time: self.index.time + 1)
-      if self.index.state == .finished { self.pause() }
+      if self.index.state == .finished { self.stop() }
     }
   }
   
-  func pause() {
+  func stop() {
     guard running else { return }
     running = false
     timer!.invalidate()
@@ -61,7 +61,7 @@ class TimerState: ObservableObject {
   }
   
   func reset() {
-    pause()
+    stop()
     index = ProgramIndex.at(program: program, time: 0)
   }
 

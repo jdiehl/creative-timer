@@ -11,11 +11,19 @@ struct TimerProgramView: View {
   @EnvironmentObject private var state: TimerState
 
   var body: some View {
-    GeometryReader { geometry in
-      ProgramView(program: state.program, index: state.index)
-        .gesture(dragGesture(geometry: geometry))
+    VStack(alignment: .center, spacing: 0) {
+      HStack {
+        Text(String.time(state.index.time))
+        Spacer()
+        Text("-" + String.time(state.program.totalLength - state.index.time))
+      }
+      
+      GeometryReader { geometry in
+        ProgramView(program: state.program, index: state.index)
+          .gesture(dragGesture(geometry: geometry))
+      }
+      .frame(height: 40)
     }
-    .frame(height: 40)
   }
 
   private func dragGesture(geometry: GeometryProxy) -> some Gesture {
@@ -31,7 +39,7 @@ struct TimerProgramView: View {
 struct TimerProgramView_Previews: PreviewProvider {
   static var previews: some View {
     TimerProgramView()
-      .previewLayout(.fixed(width: 375, height: 100 ))
+      .previewLayout(.fixed(width: 375, height: 60 ))
       .environmentObject(TimerState.mock())
   }
 }

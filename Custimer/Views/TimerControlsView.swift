@@ -19,11 +19,11 @@ struct TimerControlsView: View {
       Spacer()
 
       if state.running {
-        Button(action: { state.pause() }) {
+        Button(action: { state.stop() }) {
           Image(systemName: "pause.fill")
         }
       } else {
-        Button(action: { state.play() }) {
+        Button(action: { state.start() }) {
           Image(systemName: "play.fill")
         }
       }
@@ -31,7 +31,7 @@ struct TimerControlsView: View {
       Spacer()
 
       Button(action: {
-        state.pause()
+        state.stop()
         state.showPrograms = true
       }) {
         Image(systemName: "eject.fill")

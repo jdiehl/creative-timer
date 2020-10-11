@@ -16,7 +16,7 @@
 		2D48427E2532277C00A34CC3 /* AppearanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D48427D2532277C00A34CC3 /* AppearanceCell.swift */; };
 		2D4842832532586000A34CC3 /* EditProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4842822532586000A34CC3 /* EditProgramView.swift */; };
 		2D4842882532598500A34CC3 /* StepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4842872532598500A34CC3 /* StepCell.swift */; };
-		2D48429825325C5700A34CC3 /* ShowProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D48429725325C5700A34CC3 /* ShowProgramView.swift */; };
+		2D48429825325C5700A34CC3 /* EditStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D48429725325C5700A34CC3 /* EditStepView.swift */; };
 		2D4842B42532657100A34CC3 /* StyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4842B32532657100A34CC3 /* StyleView.swift */; };
 		2D684702252E0E36000228BD /* defaultPrograms.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D684701252E0E36000228BD /* defaultPrograms.json */; };
 		2D76A24E251BE7E60078B74E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D76A24D251BE7E60078B74E /* AppDelegate.swift */; };
@@ -94,7 +94,7 @@
 		2D48427D2532277C00A34CC3 /* AppearanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceCell.swift; sourceTree = "<group>"; };
 		2D4842822532586000A34CC3 /* EditProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProgramView.swift; sourceTree = "<group>"; };
 		2D4842872532598500A34CC3 /* StepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCell.swift; sourceTree = "<group>"; };
-		2D48429725325C5700A34CC3 /* ShowProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProgramView.swift; sourceTree = "<group>"; };
+		2D48429725325C5700A34CC3 /* EditStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStepView.swift; sourceTree = "<group>"; };
 		2D4842B32532657100A34CC3 /* StyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleView.swift; sourceTree = "<group>"; };
 		2D684701252E0E36000228BD /* defaultPrograms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaultPrograms.json; sourceTree = "<group>"; };
 		2D76A24A251BE7E60078B74E /* Custimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Custimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,7 +238,7 @@
 				2DEAB35F2520C86000D32B2A /* TimerProgramView.swift */,
 				2DEAB3522520C6AA00D32B2A /* TimerControlsView.swift */,
 				2D21EBB2252E4C0100A922FC /* ProgramModal.swift */,
-				2D48429725325C5700A34CC3 /* ShowProgramView.swift */,
+				2D48429725325C5700A34CC3 /* EditStepView.swift */,
 				2D4842822532586000A34CC3 /* EditProgramView.swift */,
 				2D4842872532598500A34CC3 /* StepCell.swift */,
 				2D21EBB7252E4C3C00A922FC /* ProgramCell.swift */,
@@ -436,7 +436,7 @@
 				2D48426B2531E1BF00A34CC3 /* FlashView.swift in Sources */,
 				2D4842732532134C00A34CC3 /* ThemeView.swift in Sources */,
 				2D9FE8692520873D00FF7783 /* Program.swift in Sources */,
-				2D48429825325C5700A34CC3 /* ShowProgramView.swift in Sources */,
+				2D48429825325C5700A34CC3 /* EditStepView.swift in Sources */,
 				2D76A28E251BEBD00078B74E /* CGHelpers.swift in Sources */,
 				2D4842B42532657100A34CC3 /* StyleView.swift in Sources */,
 				2DEAB32C2520AC7800D32B2A /* ProgramView.swift in Sources */,

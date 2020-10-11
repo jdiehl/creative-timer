@@ -16,15 +16,8 @@ struct TimerProgressView: View {
     GeometryReader { geometry in
       let width = max(min(geometry.size.width / 10, 20), 5)
       ZStack {
-        ProgressView(progress: state.index.stepProgress, width: width, foregroundColor: Color.foreground(appearance: state.appearance), backgroundColor: Color.gray(appearance: state.appearance))
+        ProgressView(progress: state.index.stepProgress, label: String.time(state.index.stepTime), width: width, appearance: state.appearance)
 
-        Text(String.time(state.index.stepTime))
-          .font(.system(size: 100, weight: .thin))
-          .lineLimit(1)
-          .minimumScaleFactor(0.01)
-          .foregroundColor(Color.foreground(appearance: state.appearance))
-          .padding(width * 1.5)
-        
         if state.index.state == .pause {
           SleepView()
             .font(.system(size: width * 2, weight: .medium))

@@ -9,50 +9,47 @@ import SwiftUI
 
 struct EditProgramView: View {
   @State var program: Program
+  @Environment(\.editMode) var editMode
 
   var body: some View {
-    VStack {
-      List {
-        Section(header: Text("Title")) {
+    List {
+      Section(header: Text("Title")) {
+        if editMode?.wrappedValue == .active {
           TextField("Title", text: $program.title)
+        } else {
+          Text(program.title)
         }
-        
-        Section(header: Text("Apperance")) {
+      }
+      
+      Section(header: Text("Apperance")) {
+        if editMode?.wrappedValue == .active {
           AppearanceCell(appearance: $program.appearance)
-        }
-
-        Section(header: Text("Steps")) {
-          ForEach(0..<program.steps.count, id: \.self) { i in
-            let step = program.steps[i]
-            StepCell(index: i, step: step)
-          }
-          .onDelete { program.steps.remove(atOffsets: $0) }
-          .onMove { program.steps.move(fromOffsets: $0, toOffset: $1) }
-          .onTapGesture {
-            print("Tap")
-          }
+        } else {
+          ProgressView(progress: 1, label: "00:00", width: 5, appearance: program.appearance)
+            .frame(height: 80)
         }
       }
-      .environment(\.editMode, .constant(EditMode.active))
-      
-      Spacer()
-      
-      Button(action: {
-        let step = Program.Step()
-        program.steps.append(step)
-      }) {
-        Image(systemName: "plus.circle.fill")
-          .foregroundColor(.green)
-        Text("Add Step")
-      }
 
+      Section(header: Text("Steps")) {
+        ForEach(0..<program.steps.count, id: \.self) { i in
+          NavigationLink(destination: EditStepView(step: $program.steps[i])) {
+            StepCell(index: i, step: program.steps[i])
+          }
+        }
+        .onDelete { program.steps.remove(atOffsets: $0) }
+        .onMove { program.steps.move(fromOffsets: $0, toOffset: $1) }
+      }
     }
+    .listStyle(PlainListStyle())
     .navigationTitle(program.title)
+    .navigationBarItems(trailing: EditButton())
   }
 }
 
 struct EditProgramView_Previews: PreviewProvider {
   static var previews: some View {
-    EditProgramView(program: Program())
+    NavigationView {
+      EditProgramView(program: Program())
+    }
   }
 }

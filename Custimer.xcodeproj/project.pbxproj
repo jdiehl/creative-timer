@@ -55,6 +55,7 @@
 		2D9FE8DC2520936400FF7783 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8D92520936400FF7783 /* TimerView.swift */; };
 		2DB070452521278700D50D5F /* DefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB070442521278700D50D5F /* DefaultsService.swift */; };
 		2DCF94262590D92C00F96136 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF94252590D92C00F96136 /* IconButton.swift */; };
+		2DCF94432590DBE100F96136 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF94422590DBE100F96136 /* ProgressCell.swift */; };
 		2DEAB31E2520A5A700D32B2A /* TimerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB31D2520A5A700D32B2A /* TimerState.swift */; };
 		2DEAB3242520AB5900D32B2A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB3232520AB5900D32B2A /* String.swift */; };
 		2DEAB32C2520AC7800D32B2A /* ProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB32B2520AC7800D32B2A /* ProgramView.swift */; };
@@ -124,6 +125,7 @@
 		2D9FE8D92520936400FF7783 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		2DB070442521278700D50D5F /* DefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsService.swift; sourceTree = "<group>"; };
 		2DCF94252590D92C00F96136 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		2DCF94422590DBE100F96136 /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		2DEAB31D2520A5A700D32B2A /* TimerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerState.swift; sourceTree = "<group>"; };
 		2DEAB3232520AB5900D32B2A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2DEAB32B2520AC7800D32B2A /* ProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramView.swift; sourceTree = "<group>"; };
@@ -298,11 +300,12 @@
 			isa = PBXGroup;
 			children = (
 				2D21EBB2252E4C0100A922FC /* ProgramModal.swift */,
-				2D48429725325C5700A34CC3 /* EditStepView.swift */,
 				2D4842822532586000A34CC3 /* EditProgramView.swift */,
+				2D48429725325C5700A34CC3 /* EditStepView.swift */,
 				2D4842872532598500A34CC3 /* StepCell.swift */,
 				2D21EBB7252E4C3C00A922FC /* ProgramCell.swift */,
 				2D48427D2532277C00A34CC3 /* AppearanceCell.swift */,
+				2DCF94422590DBE100F96136 /* ProgressCell.swift */,
 				2D4842722532134B00A34CC3 /* ThemeView.swift */,
 				2D4842B32532657100A34CC3 /* StyleView.swift */,
 			);
@@ -454,6 +457,7 @@
 				2D9FE862252085A500FF7783 /* ProgramIndex.swift in Sources */,
 				2D9FE8CD2520925000FF7783 /* Color.swift in Sources */,
 				2D4842662531A31800A34CC3 /* MarkerView.swift in Sources */,
+				2DCF94432590DBE100F96136 /* ProgressCell.swift in Sources */,
 				2D4842882532598500A34CC3 /* StepCell.swift in Sources */,
 				2D9FE8752520874400FF7783 /* NotificationService.swift in Sources */,
 				2D9FE8C02520907900FF7783 /* UIColor.swift in Sources */,

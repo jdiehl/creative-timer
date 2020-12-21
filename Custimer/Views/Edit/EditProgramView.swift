@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct EditProgramView: View {
-  @State var program: Program
   @Environment(\.editMode) var editMode
+  @State var program: Program
+  var selectProgram: () -> Void
 
   var body: some View {
     List {
@@ -24,9 +25,10 @@ struct EditProgramView: View {
       Section(header: Text("Apperance")) {
         if editMode?.wrappedValue == .active {
           AppearanceCell(appearance: $program.appearance)
+            .frame(height: 70.0)
         } else {
-          ProgressView(progress: 1, label: "00:00", width: 5, appearance: program.appearance)
-            .frame(height: 80)
+          ProgressCell(appearance: program.appearance)
+            .frame(maxHeight: 70.0)
         }
       }
 
@@ -42,14 +44,26 @@ struct EditProgramView: View {
     }
     .listStyle(PlainListStyle())
     .navigationTitle(program.title)
-    .navigationBarItems(trailing: EditButton())
+    .navigationBarItems(trailing: HStack {
+      if editMode?.wrappedValue != .active {
+        Button(action: { selectProgram() }) { Text("Select") }
+          .padding(.trailing, 10.0)
+      }
+      EditButton()
+    })
   }
 }
 
 struct EditProgramView_Previews: PreviewProvider {
   static var previews: some View {
-    NavigationView {
-      EditProgramView(program: Program())
+    Group {
+      NavigationView {
+        EditProgramView(program: Program()) {}
+      }
+      NavigationView {
+        EditProgramView(program: Program()) {}
+          .environment(\.editMode, Binding.constant(EditMode.active))
+      }
     }
   }
 }

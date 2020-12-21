@@ -14,13 +14,9 @@ struct ProgramModal: View {
     NavigationView {
       List((0..<state.programs.count), id: \.self) { i in
         let program = state.programs[i]
-        NavigationLink(destination: EditProgramView(program: program)) {
+        NavigationLink(destination: EditProgramView(program: program, selectProgram: { select(i) })) {
           ProgramCell(program: program)
         }
-//          .onTapGesture {
-//            state.set(programIndex: i)
-//            dismiss()
-//          }
       }
       .listStyle(PlainListStyle())
       .navigationTitle("Timers")
@@ -30,6 +26,11 @@ struct ProgramModal: View {
   
   private func dismiss() {
     state.showPrograms = false
+  }
+  
+  private func select(_ i: Int) {
+    state.set(programIndex: i)
+    dismiss()
   }
 }
 

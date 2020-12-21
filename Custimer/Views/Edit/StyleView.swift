@@ -25,6 +25,7 @@ struct StyleView: View {
         .animation(.easeInOut)
         .overlay(overlay)
       Text(appearance.style.rawValue)
+        .font(.caption)
         .foregroundColor(Color.foreground(appearance: appearance))
     }
   }

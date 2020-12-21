@@ -12,24 +12,26 @@ struct StepCell: View {
   var step: Program.Step
   
   var body: some View {
-    VStack(alignment: .leading) {
-      HStack {
-        Text("Step \(index)")
-        Spacer()
+    HStack {
+      MarkerView(label: "\(index+1)", appearance: Appearance())
+      VStack(alignment: .leading) {
         Text(String.time(step.length))
-      }
-      .font(.subheadline)
+          .font(.subheadline)
 
-      if step.title != "" {
-        Text(step.title)
-          .font(.headline)
+        if step.title != "" {
+          Text(step.title)
+            .font(.headline)
+        }
       }
+      Spacer()
     }
+    .background(Color(UIColor.systemBackground))
   }
 }
 
 struct StepCell_Previews: PreviewProvider {
   static var previews: some View {
     StepCell(index: 1, step: Program.Step())
+      .previewLayout(.fixed(width: 375.0, height: 44.0  ))
   }
 }

@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+// TODO: changes are not saved
 struct EditProgramView: View {
   @Environment(\.editMode) var editMode
   @State var program: Program
   var selectProgram: () -> Void
+  @State var stepSelection: Int? = nil
 
   var body: some View {
     List {
@@ -34,9 +36,10 @@ struct EditProgramView: View {
 
       Section(header: Text("Steps")) {
         ForEach(0..<program.steps.count, id: \.self) { i in
-          NavigationLink(destination: EditStepView(step: $program.steps[i])) {
+          NavigationLink(destination: EditStepView(step: $program.steps[i]), tag: i, selection: $stepSelection) {
             StepCell(index: i, step: program.steps[i])
           }
+          .onTapGesture { stepSelection = i }
         }
         .onDelete { program.steps.remove(atOffsets: $0) }
         .onMove { program.steps.move(fromOffsets: $0, toOffset: $1) }
@@ -45,10 +48,9 @@ struct EditProgramView: View {
     .listStyle(PlainListStyle())
     .navigationTitle(program.title)
     .navigationBarItems(trailing: HStack {
-      if editMode?.wrappedValue != .active {
-        Button(action: { selectProgram() }) { Text("Select") }
-          .padding(.trailing, 10.0)
-      }
+      TextButton(text: "Select") { selectProgram() }
+        .padding(.trailing, 10.0)
+        .disabled(editMode?.wrappedValue == .active)
       EditButton()
     })
   }

@@ -13,18 +13,10 @@ struct EditStepView: View {
 
   var body: some View {
     List {
-      if editMode?.wrappedValue == .active {
-        TextField("Title", text: $step.title)
-      } else {
-        Text(step.title)
-      }
-
-      if editMode?.wrappedValue == .active {
-        Text(String.time(step.length))
-//        TextField(text: $step.length)
-      } else {
-        Text(String.time(step.length))
-      }
+      TextField("Title", text: $step.title)
+      // TODO: length is not updated
+      TextField("Length", value: $step.length, formatter: NumberFormatter())
+        .keyboardType(.numberPad)
     }
     .listStyle(PlainListStyle())
     .navigationTitle(step.title)

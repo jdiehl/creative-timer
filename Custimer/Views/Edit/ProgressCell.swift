@@ -13,6 +13,7 @@ struct ProgressCell: View {
   var body: some View {
     HStack {
       ProgressView(progress: 1, label: "00:00", width: 5, appearance: appearance)
+        .background(Color.background(appearance: appearance))
       Spacer()
     }
   }

@@ -54,6 +54,7 @@
 		2D9FE8DB2520936400FF7783 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8D92520936400FF7783 /* TimerView.swift */; };
 		2D9FE8DC2520936400FF7783 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8D92520936400FF7783 /* TimerView.swift */; };
 		2DB070452521278700D50D5F /* DefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB070442521278700D50D5F /* DefaultsService.swift */; };
+		2DCF94262590D92C00F96136 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF94252590D92C00F96136 /* IconButton.swift */; };
 		2DEAB31E2520A5A700D32B2A /* TimerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB31D2520A5A700D32B2A /* TimerState.swift */; };
 		2DEAB3242520AB5900D32B2A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB3232520AB5900D32B2A /* String.swift */; };
 		2DEAB32C2520AC7800D32B2A /* ProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB32B2520AC7800D32B2A /* ProgramView.swift */; };
@@ -122,6 +123,7 @@
 		2D9FE8CC2520925000FF7783 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2D9FE8D92520936400FF7783 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		2DB070442521278700D50D5F /* DefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsService.swift; sourceTree = "<group>"; };
+		2DCF94252590D92C00F96136 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		2DEAB31D2520A5A700D32B2A /* TimerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerState.swift; sourceTree = "<group>"; };
 		2DEAB3232520AB5900D32B2A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2DEAB32B2520AC7800D32B2A /* ProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramView.swift; sourceTree = "<group>"; };
@@ -226,25 +228,10 @@
 		2D76A285251BE83F0078B74E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2DCF942A2590DA7300F96136 /* Generic */,
+				2DCF94342590DAB700F96136 /* Timer */,
+				2DCF943B2590DADB00F96136 /* Edit */,
 				2D76A251251BE7E60078B74E /* ContentView.swift */,
-				2D48425D252F77E500A34CC3 /* SleepView.swift */,
-				2D48426A2531E1BF00A34CC3 /* FlashView.swift */,
-				2D4842652531A31800A34CC3 /* MarkerView.swift */,
-				2D76A299251BF01B0078B74E /* ProgressView.swift */,
-				2DEAB32B2520AC7800D32B2A /* ProgramView.swift */,
-				2D9FE8D92520936400FF7783 /* TimerView.swift */,
-				2DEAB3482520C3EB00D32B2A /* TimerHeaderView.swift */,
-				2DEAB34D2520C4E000D32B2A /* TimerProgressView.swift */,
-				2DEAB35F2520C86000D32B2A /* TimerProgramView.swift */,
-				2DEAB3522520C6AA00D32B2A /* TimerControlsView.swift */,
-				2D21EBB2252E4C0100A922FC /* ProgramModal.swift */,
-				2D48429725325C5700A34CC3 /* EditStepView.swift */,
-				2D4842822532586000A34CC3 /* EditProgramView.swift */,
-				2D4842872532598500A34CC3 /* StepCell.swift */,
-				2D21EBB7252E4C3C00A922FC /* ProgramCell.swift */,
-				2D48427D2532277C00A34CC3 /* AppearanceCell.swift */,
-				2D4842722532134B00A34CC3 /* ThemeView.swift */,
-				2D4842B32532657100A34CC3 /* StyleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,6 +267,46 @@
 				2DB070442521278700D50D5F /* DefaultsService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		2DCF942A2590DA7300F96136 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				2DEAB32B2520AC7800D32B2A /* ProgramView.swift */,
+				2D48425D252F77E500A34CC3 /* SleepView.swift */,
+				2D48426A2531E1BF00A34CC3 /* FlashView.swift */,
+				2D4842652531A31800A34CC3 /* MarkerView.swift */,
+				2D76A299251BF01B0078B74E /* ProgressView.swift */,
+				2DCF94252590D92C00F96136 /* IconButton.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
+		2DCF94342590DAB700F96136 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				2D9FE8D92520936400FF7783 /* TimerView.swift */,
+				2DEAB3482520C3EB00D32B2A /* TimerHeaderView.swift */,
+				2DEAB34D2520C4E000D32B2A /* TimerProgressView.swift */,
+				2DEAB35F2520C86000D32B2A /* TimerProgramView.swift */,
+				2DEAB3522520C6AA00D32B2A /* TimerControlsView.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		2DCF943B2590DADB00F96136 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				2D21EBB2252E4C0100A922FC /* ProgramModal.swift */,
+				2D48429725325C5700A34CC3 /* EditStepView.swift */,
+				2D4842822532586000A34CC3 /* EditProgramView.swift */,
+				2D4842872532598500A34CC3 /* StepCell.swift */,
+				2D21EBB7252E4C3C00A922FC /* ProgramCell.swift */,
+				2D48427D2532277C00A34CC3 /* AppearanceCell.swift */,
+				2D4842722532134B00A34CC3 /* ThemeView.swift */,
+				2D4842B32532657100A34CC3 /* StyleView.swift */,
+			);
+			path = Edit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +457,7 @@
 				2D4842882532598500A34CC3 /* StepCell.swift in Sources */,
 				2D9FE8752520874400FF7783 /* NotificationService.swift in Sources */,
 				2D9FE8C02520907900FF7783 /* UIColor.swift in Sources */,
+				2DCF94262590D92C00F96136 /* IconButton.swift in Sources */,
 				2DEAB34E2520C4E000D32B2A /* TimerProgressView.swift in Sources */,
 				2DB070452521278700D50D5F /* DefaultsService.swift in Sources */,
 				2D48427E2532277C00A34CC3 /* AppearanceCell.swift in Sources */,

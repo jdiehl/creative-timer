@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProgramModal: View {
   @EnvironmentObject var state: TimerState
-
+  
   var body: some View {
     NavigationView {
       List((0..<state.programs.count), id: \.self) { i in
@@ -24,9 +24,7 @@ struct ProgramModal: View {
       }
       .listStyle(PlainListStyle())
       .navigationTitle("Timers")
-      .navigationBarItems(leading: Button(action: { dismiss() }) {
-        Image(systemName: "multiply")
-      })
+      .navigationBarItems(leading: IconButton(systemName: "multiply") { dismiss() }, trailing: EditButton())
     }
   }
   

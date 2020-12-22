@@ -15,8 +15,10 @@ struct TimerProgramView: View {
     VStack(alignment: .center, spacing: 0) {
       HStack {
         Text(String.time(state.index.time))
+          .foregroundColor(Color.foreground(appearance: state.program.appearance))
         Spacer()
         Text("-" + String.time(state.program.totalLength - state.index.time))
+          .foregroundColor(Color.foreground(appearance: state.program.appearance))
       }
       
       GeometryReader { geometry in

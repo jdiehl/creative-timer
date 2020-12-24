@@ -29,7 +29,6 @@ class AppState: ObservableObject {
   // MARK: - Program Management
 
   func select(program: Program) {
-    print("select \(program.id)")
     DefaultsService.shared.activeProgram = program.id
     self.program = program
     reset()
@@ -106,7 +105,6 @@ class AppState: ObservableObject {
     let programs = try! ProgramService.shared.load()
     self.programs = programs
     let id = DefaultsService.shared.activeProgram
-    print("INIT \(id)")
     program = (id != nil ? programs.first { $0.id == id } : nil) ?? programs[0]
   }
 

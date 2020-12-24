@@ -6,16 +6,27 @@
 //
 
 import SwiftUI
+import Combine
 
 struct EditStepView: View {
   @Binding var step: Program.Step
   
+  // necessary since TextField with value/formatter does not update
+  // https://stackoverflow.com/questions/56799456/swiftui-textfield-with-formatter-not-working
+  var lengthProxy: Binding<String> {
+    Binding<String>(
+      get: { String(self.step.length) },
+      set: {
+        guard let value = Int($0) else { return }
+        self.step.length = value
+      }
+    )
+  }
+  
   var body: some View {
     List {
       TextField("Title", text: $step.title)
-      // TODO: length is not updated
-      TextField("Length", value: $step.length, formatter: NumberFormatter())
-        .keyboardType(.numberPad)
+      TextField("Length", text: lengthProxy)
     }
     .listStyle(PlainListStyle())
     .navigationTitle(step.title)

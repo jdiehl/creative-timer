@@ -28,15 +28,6 @@ struct ProgramModal: View {
   private func dismiss() {
     state.showPrograms = false
   }
-  
-  private func select(_ i: Int? = nil) {
-    if i != nil {
-      state.select(programIndex: i!)
-    } else {
-      state.select(programIndex: state.programs.count - 1)
-    }
-    dismiss()
-  }
 }
 
 struct ProgramModal_Previews: PreviewProvider {

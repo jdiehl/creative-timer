@@ -9,6 +9,7 @@ import SwiftUI
 
 // TODO: changes are not saved
 struct EditProgramView: View {
+  @EnvironmentObject var state: AppState
   @Environment(\.editMode) var editMode
   @Binding var program: Program
   @State var stepSelection: Int? = nil
@@ -35,7 +36,7 @@ struct EditProgramView: View {
 
       Section(header: Text("Steps")) {
         ForEach(0..<program.steps.count, id: \.self) { i in
-          NavigationLink(destination: EditStepView(step: $program.steps[i]), tag: i, selection: $stepSelection) {
+          NavigationLink(destination: EditStepView(step: $program.steps[i]).onDisappear { save() }, tag: i, selection: $stepSelection) {
             StepCell(index: i, step: program.steps[i])
           }
           .onTapGesture { stepSelection = i }
@@ -58,13 +59,18 @@ struct EditProgramView: View {
   }
   
   private func select() {
-    // TODO
+    state.select(program: program)
+    state.showPrograms = false
   }
   
   private func onEditModeWillChange() {
     if editMode?.wrappedValue == .active {
-//      state.save()
+      save()
     }
+  }
+  
+  private func save() {
+    state.save(program: program)
   }
 }
 
@@ -73,6 +79,7 @@ struct EditProgramView_Previews: PreviewProvider {
     Group {
       NavigationView {
         EditProgramView(program: .constant(Program()))
+          .environmentObject(AppState.mock())
       }
     }
   }

@@ -15,12 +15,6 @@ class AppState: ObservableObject {
   @Published var showPrograms = false
   @Published var programs: [Program] = []
   
-  func save(program: Program) {
-    // TODO
-//    try! ProgramService.shared.save(programs: programs)
-  }
-
-
   // MARK: - Timer
   
   @Published var program: Program
@@ -32,12 +26,23 @@ class AppState: ObservableObject {
 
   private var timer: Timer?
 
-  func select(programIndex: Int) {
-    DefaultsService.shared.activeProgram = programIndex
-    self.program = programs[programIndex]
+  func select(program: Program) {
+    let index = programs.firstIndex(of: program)!
+    DefaultsService.shared.activeProgram = index
+    self.program = program
     reset()
   }
   
+  func save(program: Program) {
+    if let index = programs.firstIndex(of: program) {
+      programs[index] = program
+    } else {
+      programs.append(program)
+    }
+    try! ProgramService.shared.save(programs: programs)
+  }
+
+
   func start() {
     guard !running else { return }
     if self.index.state == .finished { self.reset() }

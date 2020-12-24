@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TimerHeaderView: View {
   @EnvironmentObject private var state: AppState
-
+  
   var stepTitle: String {
     if state.index.state == .pause {
       let next = state.program.steps[state.index.step + 1]

@@ -12,12 +12,17 @@ struct ProgramModal: View {
   
   var body: some View {
     NavigationView {
-      List((0..<state.programs.count), id: \.self) { i in
-        let program = state.programs[i]
+      List(0..<state.programs.count, id: \.self) { i in
         NavigationLink(destination: EditProgramView(program: $state.programs[i])) {
-          ProgramCell(program: program)
+          ProgramCell(program: state.programs[i])
         }
       }
+      .listStyle(PlainListStyle())
+      .navigationTitle("Timers")
+      .navigationBarItems(
+        leading: IconButton(systemName: "multiply") { dismiss() },
+        trailing: EditButton()
+      )
     }
   }
   

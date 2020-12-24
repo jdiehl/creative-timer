@@ -27,26 +27,23 @@ class AppState: ObservableObject {
   private var timer: Timer?
 
   func select(program: Program) {
-    var index = programs.firstIndex { $0.id == program.id }
-    if index == nil {
-      programs.append(program)
-      index = programs.count - 1
-    }
-    DefaultsService.shared.activeProgram = index!
+    guard let index = programs.firstIndex(where: { $0.id == program.id }) else { return }
+    DefaultsService.shared.activeProgram = index
     self.program = program
     reset()
   }
   
   func save(program: Program) {
-    if let index = programs.firstIndex(where: { $0.id == program.id }) {
-      programs[index] = program
-    } else {
-      programs.append(program)
-    }
+    guard let index = programs.firstIndex(where: { $0.id == program.id }) else { return }
+    programs[index] = program
     try! ProgramService.shared.save(programs: programs)
+    
+    // update selected program if needed
+    if self.program.id == program.id {
+      select(program: program)
+    }
   }
-
-
+  
   func start() {
     guard !running else { return }
     if self.index.state == .finished { self.reset() }

@@ -9,8 +9,7 @@ import SwiftUI
 
 struct EditStepView: View {
   @Binding var step: Program.Step
-  @Environment(\.editMode) var editMode
-
+  
   var body: some View {
     List {
       TextField("Title", text: $step.title)
@@ -20,14 +19,13 @@ struct EditStepView: View {
     }
     .listStyle(PlainListStyle())
     .navigationTitle(step.title)
-    .navigationBarItems(trailing: EditButton())
   }
 }
 
 struct EditStepView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      EditStepView(step: .constant(Program.Step()))
+      EditStepView(step: .constant(Program.Step(title: "Step", length: 30)))
     }
   }
 }

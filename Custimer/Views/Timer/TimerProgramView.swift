@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct TimerProgramView: View {
-  @EnvironmentObject private var state: TimerState
+  @EnvironmentObject private var state: AppState
   @State private var wasRunning: Bool?
 
   var body: some View {
     VStack(alignment: .center, spacing: 0) {
       HStack {
         Text(String.time(state.index.time))
-          .foregroundColor(Color.foreground(appearance: state.program.appearance))
+          .foregroundColor(Color.foreground(appearance: state.appearance))
         Spacer()
         Text("-" + String.time(state.program.totalLength - state.index.time))
-          .foregroundColor(Color.foreground(appearance: state.program.appearance))
+          .foregroundColor(Color.foreground(appearance: state.appearance))
       }
       
       GeometryReader { geometry in
@@ -51,6 +51,6 @@ struct TimerProgramView_Previews: PreviewProvider {
   static var previews: some View {
     TimerProgramView()
       .previewLayout(.fixed(width: 375, height: 60 ))
-      .environmentObject(TimerState.mock())
+      .environmentObject(AppState.mock())
   }
 }

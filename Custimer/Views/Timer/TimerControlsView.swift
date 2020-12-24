@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimerControlsView: View {
-  @EnvironmentObject private var state: TimerState
+  @EnvironmentObject private var state: AppState
   
   var body: some View {
     HStack {
@@ -38,6 +38,6 @@ struct TimerControlsView_Previews: PreviewProvider {
   static var previews: some View {
     TimerControlsView()
       .previewLayout(.fixed(width: 375, height: 100 ))
-      .environmentObject(TimerState.mock())
+      .environmentObject(AppState.mock())
   }
 }

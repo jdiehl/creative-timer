@@ -10,10 +10,9 @@ import SwiftUI
 // TODO: changes are not saved
 struct EditProgramView: View {
   @Environment(\.editMode) var editMode
-  @State var program: Program
-  var selectProgram: () -> Void
+  @Binding var program: Program
   @State var stepSelection: Int? = nil
-
+  
   var body: some View {
     List {
       Section(header: Text("Title")) {
@@ -48,11 +47,24 @@ struct EditProgramView: View {
     .listStyle(PlainListStyle())
     .navigationTitle(program.title)
     .navigationBarItems(trailing: HStack {
-      TextButton(text: "Select") { selectProgram() }
+      TextButton(text: "Select") { select() }
         .padding(.trailing, 10.0)
         .disabled(editMode?.wrappedValue == .active)
       EditButton()
+        .simultaneousGesture(TapGesture().onEnded {
+          onEditModeWillChange()
+        })
     })
+  }
+  
+  private func select() {
+    // TODO
+  }
+  
+  private func onEditModeWillChange() {
+    if editMode?.wrappedValue == .active {
+//      state.save()
+    }
   }
 }
 
@@ -60,11 +72,7 @@ struct EditProgramView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
       NavigationView {
-        EditProgramView(program: Program()) {}
-      }
-      NavigationView {
-        EditProgramView(program: Program()) {}
-          .environment(\.editMode, Binding.constant(EditMode.active))
+        EditProgramView(program: .constant(Program()))
       }
     }
   }

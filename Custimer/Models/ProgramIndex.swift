@@ -30,6 +30,10 @@ extension ProgramIndex {
 // MARK: - Convenience Methods
 extension ProgramIndex {
   
+  static func atStart() -> ProgramIndex {
+    return ProgramIndex(time: 0, progress: 0, step: 0, stepTime: 0, stepProgress: 0, state: .step)
+  }
+  
   // return the finished index
   static func endOf(program: Program) -> ProgramIndex {
     return ProgramIndex(time: program.totalLength, progress: 1, step: program.steps.count - 1, stepTime: program.steps.last!.length, stepProgress: 1, state: .finished)

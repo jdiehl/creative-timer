@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TimerView: View {
-  @EnvironmentObject private var state: TimerState
+  @EnvironmentObject private var state: AppState
   
   var body: some View {
     ZStack {
-      Color.background(appearance: state.program.appearance)
+      Color.background(appearance: state.appearance)
         .ignoresSafeArea()
 
       VStack {
@@ -44,6 +44,6 @@ struct TimerView: View {
 struct TimerView_Previews: PreviewProvider {
   static var previews: some View {
     TimerView()
-      .environmentObject(TimerState.mock())
+      .environmentObject(AppState.mock())
   }
 }

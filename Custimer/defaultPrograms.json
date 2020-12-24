@@ -1,5 +1,6 @@
 [
   {
+    "id": "B0F094E1-E38F-4FBA-B49D-0C847A362A5D",
     "title": "Aquafitness",
     "appearance": {
       "theme": "Ocean",
@@ -38,6 +39,7 @@
     ]
   },
   {
+    "id": "0DCC3933-34D3-4704-B495-807B14A91470",
     "title": "Sieben",
     "appearance": {
       "theme": "Earth",
@@ -61,6 +63,7 @@
     ]
   },
   {
+    "id": "1FAFB48E-990E-411E-B818-7F857D400E0D",
     "title": "Crazy 8",
     "appearance": {
       "theme": "Crimson",
@@ -80,6 +83,7 @@
     ]
   },
   {
+    "id": "E4AD90B5-928A-4453-87E4-DF7647409EEE",
     "title": "5 Minutes",
     "appearance": {
       "theme": "Leaf",
@@ -92,6 +96,7 @@
     ]
   },
   {
+    "id": "87A15E55-D7C1-4D48-AA1C-30082FB0F90D",
     "title": "10 Minutes",
     "appearance": {
       "theme": "Leaf",
@@ -104,6 +109,7 @@
     ]
   },
   {
+    "id": "51835E4E-521C-4B23-9F14-24F44A6B95AC",
     "title": "15 Minutes",
     "appearance": {
       "theme": "Leaf",
@@ -116,6 +122,7 @@
     ]
   },
   {
+    "id": "78887544-1E74-416B-8731-473CE56B4E72",
     "title": "30 Minutes",
     "appearance": {
       "theme": "Leaf",

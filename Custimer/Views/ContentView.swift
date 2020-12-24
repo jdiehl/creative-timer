@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-  @EnvironmentObject var state: TimerState
+  @EnvironmentObject var state: AppState
 
   var body: some View {
     TimerView()
@@ -22,6 +22,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
-      .environmentObject(TimerState.mock())
+      .environmentObject(AppState.mock())
   }
 }

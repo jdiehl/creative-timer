@@ -9,14 +9,14 @@ import SwiftUI
 import Combine
 
 struct FlashView: View {
-  @EnvironmentObject var state: TimerState
+  @EnvironmentObject var state: AppState
   var duration = 0.2
   
   @State private var opacity = 0.0
   @State private var cancellable: AnyCancellable?
   
   var body: some View {
-    Color.foreground(appearance: state.program.appearance)
+    Color.foreground(appearance: state.appearance)
       .opacity(opacity)
       .ignoresSafeArea()
       .onAppear { onAppear() }
@@ -25,8 +25,8 @@ struct FlashView: View {
   private func onAppear() {
     cancellable = state.$index.sink { index in
       guard state.running else { return }
-      if index!.state == .finished { flash(count: 5) }
-      else if state.index.step != index!.step && index!.stepTime == 0 { flash() }
+      if index.state == .finished { flash(count: 5) }
+      else if state.index.step != index.step && index.stepTime == 0 { flash() }
     }
   }
   
@@ -46,6 +46,6 @@ struct FlashView: View {
 struct FlashView_Previews: PreviewProvider {
   static var previews: some View {
     FlashView()
-      .environmentObject(TimerState.mock())
+      .environmentObject(AppState.mock())
   }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimerProgressView: View {
-  @EnvironmentObject private var state: TimerState
+  @EnvironmentObject private var state: AppState
   @State private var wasRunning: Bool?
   @State private var prevProgress: Double?
   
@@ -59,9 +59,9 @@ struct TimerProgressView: View {
     
     // compute step time for progress
     if state.index.state == .pause {
-      return state.step.length + min(Int(Double(state.program.pause) * adjustedProgress), state.program.pause - 1)
+      return state.step!.length + min(Int(Double(state.program.pause) * adjustedProgress), state.program.pause - 1)
     } else {
-      return min(Int(Double(state.step.length) * adjustedProgress), state.step.length - 1)
+      return min(Int(Double(state.step!.length) * adjustedProgress), state.step!.length - 1)
     }
   }
 }
@@ -75,6 +75,6 @@ struct TimerProgressView_Previews: PreviewProvider {
         .previewLayout(.fixed(width: 100.0, height: 100.0))
       TimerProgressView()
         .previewLayout(.fixed(width: 300, height: 300.0))
-    }.environmentObject(TimerState.mock())
+    }.environmentObject(AppState.mock())
   }
 }

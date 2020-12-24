@@ -36,7 +36,7 @@ struct EditProgramView: View {
 
       Section(header: Text("Steps")) {
         ForEach(0..<program.steps.count, id: \.self) { i in
-          NavigationLink(destination: EditStepView(step: $program.steps[i]).onDisappear { save() }, tag: i, selection: $stepSelection) {
+          NavigationLink(destination: EditStepView(step: $program.steps[i]), tag: i, selection: $stepSelection) {
             StepCell(index: i, step: program.steps[i])
           }
           .onTapGesture { stepSelection = i }
@@ -52,21 +52,15 @@ struct EditProgramView: View {
         .padding(.trailing, 10.0)
         .disabled(editMode?.wrappedValue == .active)
       EditButton()
-        .simultaneousGesture(TapGesture().onEnded {
-          onEditModeWillChange()
-        })
     })
+    .onDisappear {
+      save()
+    }
   }
   
   private func select() {
     state.select(program: program)
     state.showPrograms = false
-  }
-  
-  private func onEditModeWillChange() {
-    if editMode?.wrappedValue == .active {
-      save()
-    }
   }
   
   private func save() {

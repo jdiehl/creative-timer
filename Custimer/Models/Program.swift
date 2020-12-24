@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Program : Codable, Equatable, Identifiable {
+struct Program : Codable, Identifiable {
   var id: UUID = UUID()
   var title: String = "New Timer"
   var appearance: Appearance = Appearance()
@@ -34,10 +34,6 @@ extension Program {
 
 // MARK: - Convenience Methods
 extension Program {
-
-  static func == (lhs: Self, rhs: Self) -> Bool {
-    return lhs.id == rhs.id
-  }
 
   var totalLength: Int {
     pause * (steps.count - 1) + steps.reduce(0) { $0 + $1.length }

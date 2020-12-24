@@ -13,11 +13,10 @@ class DefaultsService {
   private let defaults = UserDefaults.standard
   
   init() {
-    defaults.register(defaults: ["activeProgram": 0])
   }
   
-  var activeProgram: Int {
-    get { defaults.integer(forKey: "activeProgram") }
+  var activeProgram: String? {
+    get { defaults.string(forKey: "activeProgram") }
     set { defaults.set(newValue, forKey: "activeProgram") }
   }
 }

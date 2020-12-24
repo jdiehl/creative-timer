@@ -53,9 +53,7 @@ struct EditProgramView: View {
         .disabled(editMode?.wrappedValue == .active)
       EditButton()
     })
-    .onDisappear {
-      save()
-    }
+    .onDisappear { update() }
   }
   
   private func select() {
@@ -63,8 +61,8 @@ struct EditProgramView: View {
     state.showPrograms = false
   }
   
-  private func save() {
-    state.save(program: program)
+  private func update() {
+    state.update(program: program)
   }
 }
 

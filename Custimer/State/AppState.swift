@@ -25,25 +25,58 @@ class AppState: ObservableObject {
   var step: Program.Step? { return self.program.step(at: self.index) }
 
   private var timer: Timer?
+  
+  // MARK: - Program Management
 
   func select(program: Program) {
-    guard let index = programs.firstIndex(where: { $0.id == program.id }) else { return }
-    DefaultsService.shared.activeProgram = index
+    print("select \(program.id)")
+    DefaultsService.shared.activeProgram = program.id
     self.program = program
     reset()
   }
   
-  func save(program: Program) {
+  func save() {
+    try! ProgramService.shared.save(programs: programs)
+  }
+  
+  func update(program: Program) {
     guard let index = programs.firstIndex(where: { $0.id == program.id }) else { return }
     programs[index] = program
-    try! ProgramService.shared.save(programs: programs)
     
     // update selected program if needed
     if self.program.id == program.id {
       select(program: program)
     }
+    
+    // save
+    save()
   }
   
+  func remove(atOffsets: IndexSet) {
+    guard programs.count > atOffsets.count else { return }
+    programs.remove(atOffsets: atOffsets)
+    save()
+
+    // update selected program if needed
+    if !programs.contains(where: { $0.id == program.id }) {
+      select(program: programs[0])
+    }
+  }
+  
+  func move(fromOffsets: IndexSet, toOffset: Int) {
+    programs.move(fromOffsets: fromOffsets, toOffset: toOffset)
+    save()
+  }
+  
+  func insert() -> Program {
+    let program = Program()
+    programs.append(program)
+    // save happens later
+    return program
+  }
+  
+  // MARK: - Timer Management
+
   func start() {
     guard !running else { return }
     if self.index.state == .finished { self.reset() }
@@ -71,9 +104,10 @@ class AppState: ObservableObject {
 
   init() {
     let programs = try! ProgramService.shared.load()
-    let i = DefaultsService.shared.activeProgram
     self.programs = programs
-    program = programs[i]
+    let id = DefaultsService.shared.activeProgram
+    print("INIT \(id)")
+    program = (id != nil ? programs.first { $0.id == id } : nil) ?? programs[0]
   }
 
 

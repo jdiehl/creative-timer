@@ -9,13 +9,18 @@ import SwiftUI
 
 struct ProgramModal: View {
   @EnvironmentObject var state: AppState
-  
+  @Environment(\.editMode) var editMode
+
   var body: some View {
     NavigationView {
-      List(0..<state.programs.count, id: \.self) { i in
-        NavigationLink(destination: EditProgramView(program: $state.programs[i])) {
-          ProgramCell(program: state.programs[i])
+      List {
+        ForEach(0..<state.programs.count, id: \.self) { i in
+          NavigationLink(destination: EditProgramView(program: $state.programs[i])) {
+            ProgramCell(program: state.programs[i])
+          }
         }
+        .onDelete { state.remove(atOffsets: $0) }
+        .onMove { state.move(fromOffsets: $0, toOffset: $1) }
       }
       .listStyle(PlainListStyle())
       .navigationTitle("Timers")
@@ -24,10 +29,6 @@ struct ProgramModal: View {
         trailing: EditButton()
       )
     }
-  }
-  
-  private func insert() {
-    
   }
   
   private func dismiss() {

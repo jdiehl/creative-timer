@@ -9,7 +9,7 @@
 import Foundation
 
 struct Program : Codable, Identifiable {
-  var id: UUID = UUID()
+  var id: String = UUID().uuidString
   var title: String = "New Timer"
   var appearance: Appearance = Appearance()
   var direction: Direction = .down

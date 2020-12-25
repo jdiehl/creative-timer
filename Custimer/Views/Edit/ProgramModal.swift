@@ -9,17 +9,16 @@ import SwiftUI
 
 struct ProgramModal: View {
   @EnvironmentObject var state: AppState
-  @State var program: Program = Program()
   @State var editMode = EditMode.inactive
 
   @State private var programSelection: Int? = nil
   @State private var showInsert = false
-  
+
   var body: some View {
     ScrollViewReader { scrollView in
       NavigationView {
         VStack {
-          NavigationLink(destination: EditProgramView(program: $program, editMode: .active).onAppear(perform: { onInserted(scrollView: scrollView) }), isActive: $showInsert) {
+          NavigationLink(destination: EditProgramView(program: $state.programs[state.programs.count - 1], editMode: .active).onAppear(perform: { onInserted(scrollView: scrollView) }), isActive: $showInsert) {
             EmptyView()
           }
           List {
@@ -56,7 +55,7 @@ struct ProgramModal: View {
   }
   
   private func insert() {
-    program = state.insert()
+    state.insert()
     showInsert = true
   }
   

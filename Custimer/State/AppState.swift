@@ -67,11 +67,9 @@ class AppState: ObservableObject {
     save()
   }
   
-  func insert() -> Program {
+  func insert() {
     let program = Program()
     programs.append(program)
-    // save happens later
-    return program
   }
   
   // MARK: - Timer Management

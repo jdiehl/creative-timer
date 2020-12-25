@@ -26,7 +26,7 @@ extension Program {
   }
   
   struct Step: Codable, Hashable {
-    var title: String = "1"
+    var title: String = ""
     var length: Int = 30
   }
 
@@ -41,6 +41,12 @@ extension Program {
   
   func step(at: ProgramIndex) -> Step {
     return steps[at.step]
+  }
+  
+  mutating func addStep() {
+    let length = steps.last?.length ?? 30
+    let step = Step(title: "", length: length)
+    steps.append(step)
   }
 
 }

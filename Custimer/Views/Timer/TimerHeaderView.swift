@@ -15,6 +15,10 @@ struct TimerHeaderView: View {
       let next = state.program.steps[state.index.step + 1]
       return "Next: \(next.title)"
     } else {
+      // ensure that the title label is always rendered
+      if state.step!.title == "" {
+        return " "
+      }
       return state.step!.title
     }
   }

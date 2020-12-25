@@ -9,30 +9,59 @@ import SwiftUI
 
 struct ProgramModal: View {
   @EnvironmentObject var state: AppState
-  @Environment(\.editMode) var editMode
+  @State var program: Program = Program()
+  @State var editMode = EditMode.inactive
 
+  @State private var programSelection: Int? = nil
+  @State private var showInsert = false
+  
   var body: some View {
-    NavigationView {
-      List {
-        ForEach(0..<state.programs.count, id: \.self) { i in
-          NavigationLink(destination: EditProgramView(program: $state.programs[i])) {
-            ProgramCell(program: state.programs[i])
+    ScrollViewReader { scrollView in
+      NavigationView {
+        VStack {
+          NavigationLink(destination: EditProgramView(program: $program, editMode: .active).onAppear(perform: { onInserted(scrollView: scrollView) }), isActive: $showInsert) {
+            EmptyView()
+          }
+          List {
+            ForEach(0..<state.programs.count, id: \.self) { i in
+              NavigationLink(destination: EditProgramView(program: $state.programs[i]), tag: i, selection: $programSelection) {
+                ProgramCell(program: state.programs[i])
+                  .id(i)
+              }
+              .onTapGesture { programSelection = i }
+            }
+            .onDelete { state.remove(atOffsets: $0) }
+            .onMove { state.move(fromOffsets: $0, toOffset: $1) }
+          }
+          .listStyle(PlainListStyle())
+        }
+        .navigationTitle("Timers")
+        .navigationBarItems(
+          leading: IconButton(systemName: "multiply") { dismiss() },
+          trailing: EditButton()
+        )
+        .toolbar {
+          ToolbarItemGroup(placement: .bottomBar) {
+            Spacer()
+            IconButton(systemName: "plus") { insert() }
           }
         }
-        .onDelete { state.remove(atOffsets: $0) }
-        .onMove { state.move(fromOffsets: $0, toOffset: $1) }
+        .environment(\.editMode, $editMode)
       }
-      .listStyle(PlainListStyle())
-      .navigationTitle("Timers")
-      .navigationBarItems(
-        leading: IconButton(systemName: "multiply") { dismiss() },
-        trailing: EditButton()
-      )
     }
   }
   
   private func dismiss() {
     state.showPrograms = false
+  }
+  
+  private func insert() {
+    program = state.insert()
+    showInsert = true
+  }
+  
+  private func onInserted(scrollView: ScrollViewProxy) {
+    scrollView.scrollTo(state.programs.count - 1)
   }
 }
 

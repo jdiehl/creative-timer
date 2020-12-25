@@ -10,14 +10,15 @@ import SwiftUI
 // TODO: changes are not saved
 struct EditProgramView: View {
   @EnvironmentObject var state: AppState
-  @Environment(\.editMode) var editMode
   @Binding var program: Program
-  @State var stepSelection: Int? = nil
+  @State var editMode = EditMode.inactive
+
+  @State private var stepSelection: Int? = nil
   
   var body: some View {
     List {
       Section(header: Text("Title")) {
-        if editMode?.wrappedValue == .active {
+        if editMode == .active {
           TextField("Title", text: $program.title)
         } else {
           Text(program.title)
@@ -25,7 +26,7 @@ struct EditProgramView: View {
       }
       
       Section(header: Text("Apperance")) {
-        if editMode?.wrappedValue == .active {
+        if editMode == .active {
           AppearanceCell(appearance: $program.appearance)
             .frame(height: 70.0)
         } else {
@@ -47,13 +48,16 @@ struct EditProgramView: View {
     }
     .listStyle(PlainListStyle())
     .navigationTitle(program.title)
-    .navigationBarItems(trailing: HStack {
-      TextButton(text: "Select") { select() }
-        .padding(.trailing, 10.0)
-        .disabled(editMode?.wrappedValue == .active)
-      EditButton()
-    })
+    .navigationBarItems(trailing: EditButton())
+    .toolbar {
+      ToolbarItemGroup(placement: .bottomBar) {
+        Spacer()
+        TextButton(text: "Select") { select() }
+          .disabled(editMode == .active)
+      }
+    }
     .onDisappear { update() }
+    .environment(\.editMode, $editMode)
   }
   
   private func select() {

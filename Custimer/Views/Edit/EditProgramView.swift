@@ -44,7 +44,7 @@ struct EditProgramView: View {
         Section(header: Text("Steps")) {
           ForEach(0..<program.steps.count, id: \.self) { i in
             NavigationLink(destination: EditStepView(step: $program.steps[i]), tag: i, selection: $stepSelection) {
-              StepCell(index: i, step: program.steps[i])
+              StepCell(index: i, step: program.steps[i], appearance: program.appearance)
                 .id(i)
             }
             .onTapGesture { stepSelection = i }

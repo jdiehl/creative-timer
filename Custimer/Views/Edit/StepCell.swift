@@ -10,10 +10,11 @@ import SwiftUI
 struct StepCell: View {
   var index: Int
   var step: Program.Step
+  var appearance: Appearance
   
   var body: some View {
     HStack {
-      MarkerView(label: "\(index+1)", appearance: Appearance())
+      MarkerView(label: "\(index+1)", appearance: Appearance(theme: appearance.theme, style: .automatic))
       VStack(alignment: .leading) {
         Text(String.time(step.length))
           .font(.subheadline)
@@ -31,7 +32,7 @@ struct StepCell: View {
 
 struct StepCell_Previews: PreviewProvider {
   static var previews: some View {
-    StepCell(index: 1, step: Program.Step())
+    StepCell(index: 1, step: Program.Step(), appearance: Appearance())
       .previewLayout(.fixed(width: 375.0, height: 44.0  ))
   }
 }

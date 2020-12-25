@@ -15,58 +15,58 @@ struct EditProgramView: View {
   
   @State private var stepSelection: Int? = nil
   @State private var showInsert = false
-
+  
   var body: some View {
     ScrollViewReader { scrollView in
-    VStack {
-      NavigationLink(destination: EditStepView(step: $program.steps[program.steps.count - 1]).onAppear(perform: { onInserted(scrollView: scrollView) }), isActive: $showInsert) {
-        EmptyView()
-      }
-      List {
-        Section(header: Text("Title")) {
-          if editMode == .active {
-            TextField("Title", text: $program.title)
-          } else {
-            Text(program.title)
-          }
+      VStack {
+        NavigationLink(destination: EditStepView(step: $program.steps[program.steps.count - 1]).onAppear(perform: { onInserted(scrollView: scrollView) }), isActive: $showInsert) {
+          EmptyView()
         }
-        
-        Section(header: Text("Apperance")) {
-          if editMode == .active {
-            AppearanceCell(appearance: $program.appearance)
-              .frame(height: 70.0)
-          } else {
-            ProgressCell(appearance: program.appearance)
-              .frame(maxHeight: 70.0)
-          }
-        }
-        
-        Section(header: Text("Steps")) {
-          ForEach(0..<program.steps.count, id: \.self) { i in
-            NavigationLink(destination: EditStepView(step: $program.steps[i]), tag: i, selection: $stepSelection) {
-              StepCell(index: i, step: program.steps[i], appearance: program.appearance)
-                .id(i)
+        List {
+          Section(header: Text("Title")) {
+            if editMode == .active {
+              TextField("Title", text: $program.title)
+            } else {
+              Text(program.title)
             }
-            .onTapGesture { stepSelection = i }
           }
-          .onDelete { program.steps.remove(atOffsets: $0) }
-          .onMove { program.steps.move(fromOffsets: $0, toOffset: $1) }
+          
+          Section(header: Text("Apperance")) {
+            if editMode == .active {
+              AppearanceCell(appearance: $program.appearance)
+                .frame(height: 70.0)
+            } else {
+              ProgressCell(appearance: program.appearance)
+                .frame(maxHeight: 70.0)
+            }
+          }
+          
+          Section(header: Text("Steps")) {
+            ForEach(0..<program.steps.count, id: \.self) { i in
+              NavigationLink(destination: EditStepView(step: $program.steps[i]), tag: i, selection: $stepSelection) {
+                StepCell(index: i, step: program.steps[i], appearance: program.appearance)
+                  .id(i)
+              }
+              .onTapGesture { stepSelection = i }
+            }
+            .onDelete { program.steps.remove(atOffsets: $0) }
+            .onMove { program.steps.move(fromOffsets: $0, toOffset: $1) }
+          }
+        }
+        .listStyle(PlainListStyle())
+      }
+      .navigationTitle(program.title)
+      .navigationBarItems(trailing: EditButton())
+      .toolbar {
+        ToolbarItemGroup(placement: .bottomBar) {
+          TextButton(text: "Select") { select() }
+            .disabled(editMode == .active)
+          Spacer()
+          TextButton(text: "Add Step") { addStep() }
         }
       }
-      .listStyle(PlainListStyle())
     }
     .environment(\.editMode, $editMode)
-    .navigationTitle(program.title)
-    .navigationBarItems(trailing: EditButton())
-    .toolbar {
-      ToolbarItemGroup(placement: .bottomBar) {
-        TextButton(text: "Select") { select() }
-          .disabled(editMode == .active)
-        Spacer()
-        TextButton(text: "Add Step") { addStep() }
-      }
-    }
-    }
     .onDisappear { update() }
   }
   
@@ -83,7 +83,7 @@ struct EditProgramView: View {
     program.addStep()
     showInsert = true
   }
-
+  
   private func onInserted(scrollView: ScrollViewProxy) {
     scrollView.scrollTo(program.steps.count - 1)
   }

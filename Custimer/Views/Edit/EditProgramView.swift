@@ -16,6 +16,16 @@ struct EditProgramView: View {
   @State private var stepSelection: Int? = nil
   @State private var showInsert = false
   
+  var pauseProxy: Binding<String> {
+    Binding<String>(
+      get: { String(self.program.pause) },
+      set: {
+        guard let value = Int($0) else { return }
+        self.program.pause = value
+      }
+    )
+  }
+
   var body: some View {
     ScrollViewReader { scrollView in
       VStack {
@@ -38,6 +48,14 @@ struct EditProgramView: View {
             } else {
               ProgressCell(appearance: program.appearance)
                 .frame(maxHeight: 70.0)
+            }
+          }
+          
+          Section(header: Text("Timing")) {
+            if editMode == .active {
+              TextField("Pause", text: pauseProxy)
+            } else {
+              Text("Pause: \(String.time(program.pause))")
             }
           }
           

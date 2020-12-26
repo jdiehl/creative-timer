@@ -54,11 +54,13 @@
 		2D9FE8DB2520936400FF7783 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8D92520936400FF7783 /* TimerView.swift */; };
 		2D9FE8DC2520936400FF7783 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8D92520936400FF7783 /* TimerView.swift */; };
 		2DB070452521278700D50D5F /* DefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB070442521278700D50D5F /* DefaultsService.swift */; };
+		2DB355BB25975AFC00819164 /* Sounds.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DB355BA25975AFC00819164 /* Sounds.xcassets */; };
 		2DCF94262590D92C00F96136 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF94252590D92C00F96136 /* IconButton.swift */; };
 		2DCF94432590DBE100F96136 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF94422590DBE100F96136 /* ProgressCell.swift */; };
 		2DCF944B2590E30800F96136 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF944A2590E30800F96136 /* TextButton.swift */; };
 		2DCF945925934A9100F96136 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF945825934A9100F96136 /* AppState.swift */; };
 		2DCF945E25934F2700F96136 /* mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF945D25934F2700F96136 /* mocks.swift */; };
+		2DCF9486259753CD00F96136 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF9485259753CD00F96136 /* SoundService.swift */; };
 		2DEAB3242520AB5900D32B2A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB3232520AB5900D32B2A /* String.swift */; };
 		2DEAB32C2520AC7800D32B2A /* ProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB32B2520AC7800D32B2A /* ProgramView.swift */; };
 		2DEAB3342520BA4D00D32B2A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DEAB3332520BA4A00D32B2A /* Colors.xcassets */; };
@@ -126,11 +128,13 @@
 		2D9FE8CC2520925000FF7783 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2D9FE8D92520936400FF7783 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		2DB070442521278700D50D5F /* DefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsService.swift; sourceTree = "<group>"; };
+		2DB355BA25975AFC00819164 /* Sounds.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sounds.xcassets; sourceTree = "<group>"; };
 		2DCF94252590D92C00F96136 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		2DCF94422590DBE100F96136 /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		2DCF944A2590E30800F96136 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		2DCF945825934A9100F96136 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		2DCF945D25934F2700F96136 /* mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mocks.swift; sourceTree = "<group>"; };
+		2DCF9485259753CD00F96136 /* SoundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundService.swift; sourceTree = "<group>"; };
 		2DEAB3232520AB5900D32B2A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2DEAB32B2520AC7800D32B2A /* ProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramView.swift; sourceTree = "<group>"; };
 		2DEAB3332520BA4A00D32B2A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 				2D76A24F251BE7E60078B74E /* SceneDelegate.swift */,
 				2D76A253251BE7E70078B74E /* Assets.xcassets */,
 				2DEAB3332520BA4A00D32B2A /* Colors.xcassets */,
+				2DB355BA25975AFC00819164 /* Sounds.xcassets */,
 				2D684701252E0E36000228BD /* defaultPrograms.json */,
 				2D76A258251BE7E70078B74E /* LaunchScreen.storyboard */,
 				2D76A25B251BE7E70078B74E /* Info.plist */,
@@ -271,6 +276,7 @@
 				2D9FE85F2520855100FF7783 /* NotificationService.swift */,
 				2D9FE85D2520855100FF7783 /* ProgramService.swift */,
 				2DB070442521278700D50D5F /* DefaultsService.swift */,
+				2DCF9485259753CD00F96136 /* SoundService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -430,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D76A25A251BE7E70078B74E /* LaunchScreen.storyboard in Resources */,
+				2DB355BB25975AFC00819164 /* Sounds.xcassets in Resources */,
 				2DEAB3342520BA4D00D32B2A /* Colors.xcassets in Resources */,
 				2D684702252E0E36000228BD /* defaultPrograms.json in Resources */,
 				2D76A257251BE7E70078B74E /* Preview Assets.xcassets in Resources */,
@@ -461,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D9FE8DA2520936400FF7783 /* TimerView.swift in Sources */,
+				2DCF9486259753CD00F96136 /* SoundService.swift in Sources */,
 				2DEAB3532520C6AA00D32B2A /* TimerControlsView.swift in Sources */,
 				2D9FE8772520874400FF7783 /* ProgramService.swift in Sources */,
 				2D9FE8B325208CA000FF7783 /* Appearance.swift in Sources */,

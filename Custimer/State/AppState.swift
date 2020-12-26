@@ -25,6 +25,7 @@ class AppState: ObservableObject {
   var step: Program.Step? { return self.program.step(at: self.index) }
 
   private var timer: Timer?
+  private let soundService = SoundService.shared
   
   // MARK: - Program Management
 
@@ -81,6 +82,7 @@ class AppState: ObservableObject {
     timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
       self.index = ProgramIndex.at(program: self.program, time: self.index.time + 1)
       if self.index.state == .finished { self.stop() }
+      if let sound = self.program.sound(at: self.index) { self.soundService.play(sound: sound) }
     }
   }
   

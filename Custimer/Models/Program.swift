@@ -57,6 +57,7 @@ extension Program {
   
   func sound(at: ProgramIndex) -> SoundService.Sound? {
     if at.stepTime == 0 { return .finish }
+    if at.state == .finished { return .finish }
     if at.state != .pause {
       if at.stepTime > steps[at.step].length - 4 { return .tick }
     }

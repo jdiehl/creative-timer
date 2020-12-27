@@ -13,12 +13,16 @@ struct ProgramModal: View {
 
   @State private var programSelection: Int? = nil
   @State private var showInsert = false
+  @State private var showAbout = false
 
   var body: some View {
     ScrollViewReader { scrollView in
       NavigationView {
         VStack {
           NavigationLink(destination: EditProgramView(program: $state.programs[state.programs.count - 1], editMode: .active).onAppear(perform: { onInserted(scrollView: scrollView) }), isActive: $showInsert) {
+            EmptyView()
+          }
+          NavigationLink(destination: AboutView(), isActive: $showAbout) {
             EmptyView()
           }
           List {
@@ -41,6 +45,7 @@ struct ProgramModal: View {
         )
         .toolbar {
           ToolbarItemGroup(placement: .bottomBar) {
+            IconButton(systemName: "info.circle") { showAbout = true }
             Spacer()
             IconButton(systemName: "plus") { insert() }
           }

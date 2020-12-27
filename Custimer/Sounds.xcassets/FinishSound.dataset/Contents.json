@@ -1,9 +1,9 @@
 {
   "data" : [
     {
-      "filename" : "finish.m4a",
+      "filename" : "finish-whistle.mp3",
       "idiom" : "universal",
-      "universal-type-identifier" : "com.apple.m4a-audio"
+      "universal-type-identifier" : "public.mp3"
     }
   ],
   "info" : {

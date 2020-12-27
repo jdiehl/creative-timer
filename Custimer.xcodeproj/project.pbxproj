@@ -55,6 +55,7 @@
 		2D9FE8DC2520936400FF7783 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE8D92520936400FF7783 /* TimerView.swift */; };
 		2DB070452521278700D50D5F /* DefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB070442521278700D50D5F /* DefaultsService.swift */; };
 		2DB355BB25975AFC00819164 /* Sounds.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DB355BA25975AFC00819164 /* Sounds.xcassets */; };
+		2DB355C4259895F700819164 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB355C3259895F700819164 /* AboutView.swift */; };
 		2DCF94262590D92C00F96136 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF94252590D92C00F96136 /* IconButton.swift */; };
 		2DCF94432590DBE100F96136 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF94422590DBE100F96136 /* ProgressCell.swift */; };
 		2DCF944B2590E30800F96136 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF944A2590E30800F96136 /* TextButton.swift */; };
@@ -129,6 +130,7 @@
 		2D9FE8D92520936400FF7783 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		2DB070442521278700D50D5F /* DefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsService.swift; sourceTree = "<group>"; };
 		2DB355BA25975AFC00819164 /* Sounds.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sounds.xcassets; sourceTree = "<group>"; };
+		2DB355C3259895F700819164 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		2DCF94252590D92C00F96136 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		2DCF94422590DBE100F96136 /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		2DCF944A2590E30800F96136 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				2DCF942A2590DA7300F96136 /* Generic */,
 				2DCF94342590DAB700F96136 /* Timer */,
 				2DCF943B2590DADB00F96136 /* Edit */,
+				2DB355C22598958400819164 /* About */,
 				2D76A251251BE7E60078B74E /* ContentView.swift */,
 			);
 			path = Views;
@@ -279,6 +282,14 @@
 				2DCF9485259753CD00F96136 /* SoundService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		2DB355C22598958400819164 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				2DB355C3259895F700819164 /* AboutView.swift */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		2DCF942A2590DA7300F96136 /* Generic */ = {
@@ -348,6 +359,8 @@
 			dependencies = (
 			);
 			name = Custimer;
+			packageProductDependencies = (
+			);
 			productName = Custimer;
 			productReference = 2D76A24A251BE7E60078B74E /* Custimer.app */;
 			productType = "com.apple.product-type.application";
@@ -419,6 +432,8 @@
 				Base,
 			);
 			mainGroup = 2D76A241251BE7E60078B74E;
+			packageReferences = (
+			);
 			productRefGroup = 2D76A24B251BE7E60078B74E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -471,6 +486,7 @@
 				2DCF9486259753CD00F96136 /* SoundService.swift in Sources */,
 				2DEAB3532520C6AA00D32B2A /* TimerControlsView.swift in Sources */,
 				2D9FE8772520874400FF7783 /* ProgramService.swift in Sources */,
+				2DB355C4259895F700819164 /* AboutView.swift in Sources */,
 				2D9FE8B325208CA000FF7783 /* Appearance.swift in Sources */,
 				2D21EBB8252E4C3C00A922FC /* ProgramCell.swift in Sources */,
 				2D76A24E251BE7E60078B74E /* AppDelegate.swift in Sources */,

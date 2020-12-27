@@ -63,4 +63,10 @@ extension Program {
     }
     return nil
   }
+
+  func announce(at: ProgramIndex) -> String? {
+    guard at.stepTime == 0 else { return nil }
+    if at.state == .pause { return "Next: \(self.steps[at.step + 1].title)" }
+    return self.step(at: at).title
+  }
 }

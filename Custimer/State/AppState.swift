@@ -82,7 +82,11 @@ class AppState: ObservableObject {
     timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
       self.index = ProgramIndex.at(program: self.program, time: self.index.time + 1)
       if self.index.state == .finished { self.stop() }
-      if let sound = self.program.sound(at: self.index) { self.soundService.play(sound: sound) }
+      if let sound = self.program.sound(at: self.index) {
+        self.soundService.play(sound: sound) {
+          if let announce = self.program.announce(at: self.index) { self.soundService.announce(text: announce) }
+        }
+      }
     }
   }
   

@@ -79,6 +79,7 @@ class AppState: ObservableObject {
     guard !running else { return }
     if self.index.state == .finished { self.reset() }
     running = true
+    IdleTimerService.shared.disable()
     timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
       self.index = ProgramIndex.at(program: self.program, time: self.index.time + 1)
       if self.index.state == .finished { self.stop() }
@@ -93,6 +94,7 @@ class AppState: ObservableObject {
   func stop() {
     guard running else { return }
     running = false
+    IdleTimerService.shared.enable()
     timer!.invalidate()
     timer = nil
   }

@@ -21,7 +21,13 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
   
   var soundEnabled = true
   var speechEnabled = true
-  var isPlaying: Bool { return synth.isSpeaking || players[.tick]!.isPlaying || players[.finish]!.isPlaying }
+  var isPlaying: Bool {
+    if synth.isSpeaking { return true }
+    for (_, player) in players {
+      if player.isPlaying { return true }
+    }
+    return false
+  }
 
   private let session = AVAudioSession.sharedInstance()
   private let synth = AVSpeechSynthesizer()
@@ -31,18 +37,19 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
 
   enum Sound: String {
     case tick = "TickSound"
+    case halftime = "HalftimeSound"
     case finish = "FinishSound"
   }
   
   private var players: [Sound: AVAudioPlayer] = [
     .tick: loadPlayer(sound: .tick),
+    .halftime: loadPlayer(sound: .halftime),
     .finish: loadPlayer(sound: .finish)
   ]
 
   override init() {
     super.init()
-    players[.tick]!.delegate = self
-    players[.finish]!.delegate = self
+    for (_, player) in players { player.delegate = self }
     synth.delegate = self
   }
   

@@ -36,7 +36,7 @@ struct TimerView: View {
           .padding()
       }
 
-      FlashView()
+      FlashView(timer: state.timer)
     }
   }
 }

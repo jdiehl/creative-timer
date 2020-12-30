@@ -14,6 +14,7 @@ struct Program : Codable, Identifiable {
   var appearance: Appearance = Appearance()
   var direction: Direction = .down
   var pause: Int = 0
+  var halftime: Bool = false
   var sound: Bool = true
   var speech: Bool = true
   var steps: [Step] = [Program.Step()]
@@ -62,6 +63,9 @@ extension Program {
     if at.stepTime <= 1 { return true }
     if at.state == .pause {
       return at.stepTime >= pause - 1
+    } else if halftime {
+      let half = steps[at.step].length / 2
+      if at.stepTime >= half - 1 && at.stepTime <= half { return true }
     }
     return at.stepTime >= steps[at.step].length - 5
   }
@@ -71,6 +75,7 @@ extension Program {
     if at.state == .finished { return .finish }
     if at.state != .pause {
       if at.stepTime > steps[at.step].length - 4 { return .tick }
+      if halftime && at.stepTime == steps[at.step].length / 2 { return .halftime }
     }
     return nil
   }

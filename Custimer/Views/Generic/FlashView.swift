@@ -9,24 +9,24 @@ import SwiftUI
 import Combine
 
 struct FlashView: View {
-  @EnvironmentObject var state: AppState
-  var duration = 0.2
+  @ObservedObject var timer: TimerState
+  var duration = 0.15
   
   @State private var opacity = 0.0
   @State private var cancellable: AnyCancellable?
   
   var body: some View {
-    Color.foreground(appearance: state.appearance)
+    Color.foreground(appearance: timer.appearance)
       .opacity(opacity)
       .ignoresSafeArea()
       .onAppear { onAppear() }
   }
   
   private func onAppear() {
-    cancellable = state.timer.$index.sink { index in
-      guard state.timer.running else { return }
-      if index.state == .finished { flash(count: 5) }
-      else if state.timer.index.step != index.step && index.stepTime == 0 { flash() }
+    cancellable = timer.$index.sink { index in
+      guard timer.running else { return }
+      if index.state == .finished { flash(count: 4) }
+      else if timer.index.step != index.step && index.stepTime == 0 { flash() }
     }
   }
   
@@ -34,10 +34,10 @@ struct FlashView: View {
     for i in 0..<count {
       let time = DispatchTime.now() + Double(i) * duration
       DispatchQueue.main.asyncAfter(deadline: time) {
-        withAnimation(.easeOut(duration: duration / 2)) { self.opacity = 1 }
+        self.opacity = 1
       }
-      DispatchQueue.main.asyncAfter(deadline: time + duration / 2) {
-        withAnimation(.easeIn(duration: duration / 2)) { self.opacity = 0 }
+      DispatchQueue.main.asyncAfter(deadline: time + duration / 10) {
+        withAnimation(.easeIn(duration: duration * 8 / 10)) { self.opacity = 0 }
       }
     }
   }
@@ -45,7 +45,7 @@ struct FlashView: View {
 
 struct FlashView_Previews: PreviewProvider {
   static var previews: some View {
-    FlashView()
+    FlashView(timer: TimerState.mock())
       .environmentObject(AppState.mock())
   }
 }

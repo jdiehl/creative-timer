@@ -71,6 +71,16 @@ struct EditProgramView: View {
                 Image(systemName: program.speech ? "checkmark" : "multiply")
               }
             }
+
+            if editMode == .active {
+              Toggle(isOn: $program.halftime) { Text("Halftime Warning") }
+            } else {
+              HStack {
+                Text("Halftime Warning")
+                Spacer()
+                Image(systemName: program.halftime ? "checkmark" : "multiply")
+              }
+            }
           }
           
           Section(header: Text("Timing")) {

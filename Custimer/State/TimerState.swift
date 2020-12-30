@@ -35,6 +35,9 @@ class TimerState: ObservableObject {
     // disable idle timer
     IdleTimerService.shared.disable()
     
+    // schedule notifications
+    NotificationService.shared.schedule(program: program, after: index)
+    
     // setup timer
     timer = SecondsTimer(startSeconds: index.time) { seconds in self.onTick(seconds: seconds) }
 
@@ -52,6 +55,9 @@ class TimerState: ObservableObject {
 
     // enable idle timer
     IdleTimerService.shared.enable()
+    
+    // cancel notifications
+    NotificationService.shared.cancel()
     
     // disable sounds
     SoundService.shared.set(active: false)

@@ -41,11 +41,14 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
 
   override init() {
     super.init()
-    try? session.setCategory(.playback, options: [.duckOthers, .mixWithOthers])
-    try? session.setActive(false)
     players[.tick]!.delegate = self
     players[.finish]!.delegate = self
     synth.delegate = self
+  }
+  
+  func setup() {
+    try? session.setCategory(.playback, options: [.duckOthers, .mixWithOthers])
+    try? session.setActive(false)
   }
   
   func set(active: Bool?) {

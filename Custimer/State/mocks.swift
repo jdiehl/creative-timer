@@ -18,11 +18,15 @@ extension Program {
 extension AppState {
   class func mock() -> AppState {
     let program = Program.mock()
-    let state = AppState()
-    state.programs = [program]
-    state.program = program
-    state.index = ProgramIndex.at(program: program, time: 39)
+    let state = AppState(programs: [program], program: program, index: ProgramIndex.at(program: program, time: 39))
     return state
+  }
+}
+
+extension TimerState {
+  class func mock() -> TimerState {
+    let program = Program.mock()
+    return TimerState(program: program, index: ProgramIndex.at(program: program, time: 39))
   }
 }
 #endif

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimerView: View {
-  @EnvironmentObject private var state: AppState
+  @EnvironmentObject var state: AppState
   
   var body: some View {
     ZStack {
@@ -16,23 +16,23 @@ struct TimerView: View {
         .ignoresSafeArea()
 
       VStack {
-        TimerHeaderView()
+        TimerHeaderView(timer: state.timer)
           .padding()
         
         Spacer()
                                                          
-        TimerProgressView()
+        TimerProgressView(timer: state.timer)
           .frame(maxWidth: 600)
           .padding()
         
         Spacer()
         
-        TimerProgramView()
+        TimerProgramView(timer: state.timer)
           .padding()
         
         Spacer()
         
-        TimerControlsView()
+        TimerControlsView(timer: state.timer)
           .padding()
       }
 

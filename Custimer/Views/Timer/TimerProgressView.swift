@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimerProgressView: View {
-  @EnvironmentObject private var state: AppState
+  @ObservedObject var timer: TimerState
   @State private var wasRunning: Bool?
   @State private var prevProgress: Double?
   
@@ -16,12 +16,12 @@ struct TimerProgressView: View {
     GeometryReader { geometry in
       let width = max(min(geometry.size.width / 10, 20), 5)
       ZStack {
-        ProgressView(progress: state.index.stepProgress, label: String.time(state.index.stepTime), width: width, appearance: state.appearance)
+        ProgressView(progress: timer.index.stepProgress, label: String.time(timer.index.stepTime), width: width, appearance: timer.appearance)
 
-        if state.index.state == .pause {
-          SleepView()
+        if timer.index.state == .pause {
+          BreathingIconView()
             .font(.system(size: width * 2, weight: .medium))
-            .foregroundColor(Color.foreground(appearance: state.appearance))
+            .foregroundColor(Color.foreground(appearance: timer.appearance))
             .position(x: geometry.size.width / 2, y: geometry.size.height / 4)
         }
       }
@@ -34,15 +34,15 @@ struct TimerProgressView: View {
     return DragGesture(minimumDistance: 0)
       .onChanged { value in
         if wasRunning == nil {
-          wasRunning = state.running
-          state.stop()
+          wasRunning = timer.running
+          timer.stop()
         }
         let stepProgress = geometry.size.center.progress(target: value.location)
         let time = stepTime(for: stepProgress)
-        state.index = ProgramIndex.at(program: state.program, step: state.index.step, stepTime: time)
+        timer.set(index: ProgramIndex.at(program: timer.program, step: timer.index.step, stepTime: time))
       }
       .onEnded { _ in
-        if wasRunning == true { state.start() }
+        if wasRunning == true { timer.start() }
         wasRunning = nil
         prevProgress = nil
       }
@@ -58,10 +58,10 @@ struct TimerProgressView: View {
     prevProgress = adjustedProgress
     
     // compute step time for progress
-    if state.index.state == .pause {
-      return state.step!.length + min(Int(Double(state.program.pause) * adjustedProgress), state.program.pause - 1)
+    if timer.index.state == .pause {
+      return timer.step!.length + min(Int(Double(timer.program.pause) * adjustedProgress), timer.program.pause - 1)
     } else {
-      return min(Int(Double(state.step!.length) * adjustedProgress), state.step!.length - 1)
+      return min(Int(Double(timer.step!.length) * adjustedProgress), timer.step!.length - 1)
     }
   }
 }
@@ -69,12 +69,12 @@ struct TimerProgressView: View {
 struct TimerProgressView_Previews: PreviewProvider {
   static var previews: some View {
     Group() {
-      TimerProgressView()
+      TimerProgressView(timer: TimerState.mock())
         .previewLayout(.fixed(width: 50, height: 50))
-      TimerProgressView()
+      TimerProgressView(timer: TimerState.mock())
         .previewLayout(.fixed(width: 100.0, height: 100.0))
-      TimerProgressView()
+      TimerProgressView(timer: TimerState.mock())
         .previewLayout(.fixed(width: 300, height: 300.0))
-    }.environmentObject(AppState.mock())
+    }
   }
 }

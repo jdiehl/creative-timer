@@ -8,35 +8,36 @@
 import SwiftUI
 
 struct TimerControlsView: View {
-  @EnvironmentObject private var state: AppState
+  @EnvironmentObject var state: AppState
+  @ObservedObject var timer: TimerState
   
   var body: some View {
     HStack {
-      IconButton(systemName: "backward.end.fill") { state.reset() }
+      IconButton(systemName: "backward.end.fill") { timer.reset() }
 
       Spacer()
 
-      if state.running {
-        IconButton(systemName: "pause.fill") { state.stop() }
+      if timer.running {
+        IconButton(systemName: "pause.fill") { timer.stop() }
       } else {
-        IconButton(systemName: "play.fill") { state.start() }
+        IconButton(systemName: "play.fill") { timer.start() }
       }
       
       Spacer()
 
       IconButton(systemName: "eject.fill") {
-        state.stop()
+        timer.stop()
         state.showPrograms = true
       }
     }
-    .foregroundColor(Color.foreground(appearance: state.appearance))
+    .foregroundColor(Color.foreground(appearance: timer.appearance))
     .frame(width: 250)
 }
 }
 
 struct TimerControlsView_Previews: PreviewProvider {
   static var previews: some View {
-    TimerControlsView()
+    TimerControlsView(timer: TimerState.mock())
       .previewLayout(.fixed(width: 375, height: 100 ))
       .environmentObject(AppState.mock())
   }

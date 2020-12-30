@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct SleepView: View {
+struct BreathingIconView: View {
+  let systemName = "zzz"
   @State private var opacity = 1.0
 
   var body: some View {
-    Image(systemName: "zzz")
+    Image(systemName: systemName)
       .opacity(opacity)
       .onAppear {
         withAnimation(Animation.easeInOut(duration: 1).repeatForever()) {
@@ -21,8 +22,8 @@ struct SleepView: View {
   }
 }
 
-struct SleepView_Previews: PreviewProvider {
+struct BreathingIconView_Previews: PreviewProvider {
   static var previews: some View {
-    SleepView()
+    BreathingIconView()
   }
 }

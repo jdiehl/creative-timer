@@ -30,6 +30,10 @@ extension ProgramIndex {
 // MARK: - Convenience Methods
 extension ProgramIndex {
   
+  func timeDifference(to: ProgramIndex) -> Int {
+    return to.time - time
+  }
+  
   static func atStart() -> ProgramIndex {
     return ProgramIndex(time: 0, progress: 0, step: 0, stepTime: 0, stepProgress: 0, state: .step)
   }

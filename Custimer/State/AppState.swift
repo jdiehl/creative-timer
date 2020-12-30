@@ -17,22 +17,15 @@ class AppState: ObservableObject {
   
   // MARK: - Timer
   
-  @Published var program: Program
-  @Published var index = ProgramIndex.atStart()
-  @Published var running = false
-
-  var appearance: Appearance { return self.program.appearance }
-  var step: Program.Step? { return self.program.step(at: self.index) }
-
-  private var timer: Timer?
-  private let soundService = SoundService.shared
+  let timer: TimerState
+  
+  var appearance: Appearance { return self.timer.program.appearance }
   
   // MARK: - Program Management
 
   func select(program: Program) {
     DefaultsService.shared.activeProgram = program.id
-    self.program = program
-    reset()
+    timer.program = program
   }
   
   func save() {
@@ -44,7 +37,7 @@ class AppState: ObservableObject {
     programs[index] = program
     
     // update selected program if needed
-    if self.program.id == program.id {
+    if timer.program.id == program.id {
       select(program: program)
     }
     
@@ -58,7 +51,7 @@ class AppState: ObservableObject {
     save()
 
     // update selected program if needed
-    if !programs.contains(where: { $0.id == program.id }) {
+    if !programs.contains(where: { $0.id == timer.program.id }) {
       select(program: programs[0])
     }
   }
@@ -73,45 +66,18 @@ class AppState: ObservableObject {
     programs.append(program)
   }
   
-  // MARK: - Timer Management
-
-  func start() {
-    guard !running else { return }
-    if self.index.state == .finished { self.reset() }
-    running = true
-    IdleTimerService.shared.disable()
-    timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-      self.index = ProgramIndex.at(program: self.program, time: self.index.time + 1)
-      if self.index.state == .finished { self.stop() }
-      if let sound = self.program.sound(at: self.index) {
-        self.soundService.play(sound: sound) {
-          if let announce = self.program.announce(at: self.index) { self.soundService.announce(text: announce) }
-        }
-      }
-    }
-  }
-  
-  func stop() {
-    guard running else { return }
-    running = false
-    IdleTimerService.shared.enable()
-    timer!.invalidate()
-    timer = nil
-  }
-  
-  func reset() {
-    stop()
-    index = ProgramIndex.atStart()
-  }
-  
-  
   // MARK: - Init
-
-  init() {
-    let programs = try! ProgramService.shared.load()
+  
+  init(programs: [Program], program: Program, index: ProgramIndex = ProgramIndex.atStart()) {
     self.programs = programs
+    timer = TimerState(program: program, index: index)
+  }
+
+  convenience init() {
+    let programs = try! ProgramService.shared.load()
     let id = DefaultsService.shared.activeProgram
-    program = (id != nil ? programs.first { $0.id == id } : nil) ?? programs[0]
+    let program = (id != nil ? programs.first { $0.id == id } : nil) ?? programs[0]
+    self.init(programs: programs, program: program)
   }
 
 

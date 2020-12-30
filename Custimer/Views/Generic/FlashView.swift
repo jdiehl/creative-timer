@@ -23,10 +23,10 @@ struct FlashView: View {
   }
   
   private func onAppear() {
-    cancellable = state.$index.sink { index in
-      guard state.running else { return }
+    cancellable = state.timer.$index.sink { index in
+      guard state.timer.running else { return }
       if index.state == .finished { flash(count: 5) }
-      else if state.index.step != index.step && index.stepTime == 0 { flash() }
+      else if state.timer.index.step != index.step && index.stepTime == 0 { flash() }
     }
   }
   

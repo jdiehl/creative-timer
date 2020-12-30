@@ -16,16 +16,6 @@ struct EditProgramView: View {
   @State private var stepSelection: Int? = nil
   @State private var showInsert = false
   
-  var pauseProxy: Binding<String> {
-    Binding<String>(
-      get: { String(self.program.pause) },
-      set: {
-        guard let value = Int($0) else { return }
-        self.program.pause = value
-      }
-    )
-  }
-
   var body: some View {
     ScrollViewReader { scrollView in
       VStack {
@@ -34,61 +24,21 @@ struct EditProgramView: View {
         }
         List {
           Section(header: Text("Title")) {
-            if editMode == .active {
-              TextField("Title", text: $program.title)
-            } else {
-              Text(program.title)
-            }
+            EditableText(label: "Title", text: $program.title)
           }
           
           Section(header: Text("Apperance")) {
-            if editMode == .active {
-              AppearanceCell(appearance: $program.appearance)
-                .frame(height: 70.0)
-            } else {
-              ProgressCell(appearance: program.appearance)
-                .frame(maxHeight: 70.0)
-            }
+            EditableAppearance(appearance: $program.appearance)
           }
           
           Section(header: Text("Notifications")) {
-            if editMode == .active {
-              Toggle(isOn: $program.sound) { Text("Sounds") }
-            } else {
-              HStack {
-                Text("Sounds")
-                Spacer()
-                Image(systemName: program.sound ? "checkmark" : "multiply")
-              }
-            }
-
-            if editMode == .active {
-              Toggle(isOn: $program.speech) { Text("Speech") }
-            } else {
-              HStack {
-                Text("Speech")
-                Spacer()
-                Image(systemName: program.speech ? "checkmark" : "multiply")
-              }
-            }
-
-            if editMode == .active {
-              Toggle(isOn: $program.halftime) { Text("Halftime Warning") }
-            } else {
-              HStack {
-                Text("Halftime Warning")
-                Spacer()
-                Image(systemName: program.halftime ? "checkmark" : "multiply")
-              }
-            }
+            EditableBool(label: "Sounds", isOn: $program.sound)
+            EditableBool(label: "Speech", isOn: $program.speech)
+            EditableBool(label: "Halftime Warning", isOn: $program.halftime)
           }
           
           Section(header: Text("Timing")) {
-            if editMode == .active {
-              TextField("Pause", text: pauseProxy)
-            } else {
-              Text("Pause: \(String.time(program.pause))")
-            }
+            EditableTime(label: "Pause", time: $program.pause)
           }
           
           Section(header: Text("Steps")) {

@@ -59,6 +59,10 @@
 		2DB355D5259A002A00819164 /* IdleTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB355D4259A002900819164 /* IdleTimerService.swift */; };
 		2DB355F4259B336B00819164 /* TimerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB355F3259B336B00819164 /* TimerState.swift */; };
 		2DB355F9259B377300819164 /* SecondsTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB355F8259B377300819164 /* SecondsTimer.swift */; };
+		2DB35614259D436400819164 /* EditableBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB35613259D436300819164 /* EditableBool.swift */; };
+		2DB3561C259D457300819164 /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3561B259D457300819164 /* EditableText.swift */; };
+		2DB35624259D45FE00819164 /* EditableAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB35623259D45FE00819164 /* EditableAppearance.swift */; };
+		2DB35629259D468D00819164 /* EditableTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB35628259D468D00819164 /* EditableTime.swift */; };
 		2DCF94262590D92C00F96136 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF94252590D92C00F96136 /* IconButton.swift */; };
 		2DCF94432590DBE100F96136 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF94422590DBE100F96136 /* ProgressCell.swift */; };
 		2DCF944B2590E30800F96136 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF944A2590E30800F96136 /* TextButton.swift */; };
@@ -137,6 +141,10 @@
 		2DB355D4259A002900819164 /* IdleTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleTimerService.swift; sourceTree = "<group>"; };
 		2DB355F3259B336B00819164 /* TimerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerState.swift; sourceTree = "<group>"; };
 		2DB355F8259B377300819164 /* SecondsTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondsTimer.swift; sourceTree = "<group>"; };
+		2DB35613259D436300819164 /* EditableBool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableBool.swift; sourceTree = "<group>"; };
+		2DB3561B259D457300819164 /* EditableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
+		2DB35623259D45FE00819164 /* EditableAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableAppearance.swift; sourceTree = "<group>"; };
+		2DB35628259D468D00819164 /* EditableTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTime.swift; sourceTree = "<group>"; };
 		2DCF94252590D92C00F96136 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		2DCF94422590DBE100F96136 /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		2DCF944A2590E30800F96136 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
@@ -250,6 +258,7 @@
 			children = (
 				2DCF942A2590DA7300F96136 /* Generic */,
 				2DCF94342590DAB700F96136 /* Timer */,
+				2DB3562D259D472100819164 /* Editables */,
 				2DCF943B2590DADB00F96136 /* Edit */,
 				2DB355C22598958400819164 /* About */,
 				2D76A251251BE7E60078B74E /* ContentView.swift */,
@@ -298,6 +307,17 @@
 				2DB355C3259895F700819164 /* AboutView.swift */,
 			);
 			path = About;
+			sourceTree = "<group>";
+		};
+		2DB3562D259D472100819164 /* Editables */ = {
+			isa = PBXGroup;
+			children = (
+				2DB3561B259D457300819164 /* EditableText.swift */,
+				2DB35613259D436300819164 /* EditableBool.swift */,
+				2DB35623259D45FE00819164 /* EditableAppearance.swift */,
+				2DB35628259D468D00819164 /* EditableTime.swift */,
+			);
+			path = Editables;
 			sourceTree = "<group>";
 		};
 		2DCF942A2590DA7300F96136 /* Generic */ = {
@@ -499,14 +519,17 @@
 				2D9FE8B325208CA000FF7783 /* Appearance.swift in Sources */,
 				2D21EBB8252E4C3C00A922FC /* ProgramCell.swift in Sources */,
 				2D76A24E251BE7E60078B74E /* AppDelegate.swift in Sources */,
+				2DB35629259D468D00819164 /* EditableTime.swift in Sources */,
 				2D76A250251BE7E60078B74E /* SceneDelegate.swift in Sources */,
 				2D76A252251BE7E60078B74E /* ContentView.swift in Sources */,
 				2D9FE862252085A500FF7783 /* ProgramIndex.swift in Sources */,
+				2DB35614259D436400819164 /* EditableBool.swift in Sources */,
 				2D9FE8CD2520925000FF7783 /* Color.swift in Sources */,
 				2D4842662531A31800A34CC3 /* MarkerView.swift in Sources */,
 				2DCF94432590DBE100F96136 /* ProgressCell.swift in Sources */,
 				2D4842882532598500A34CC3 /* StepCell.swift in Sources */,
 				2D9FE8752520874400FF7783 /* NotificationService.swift in Sources */,
+				2DB35624259D45FE00819164 /* EditableAppearance.swift in Sources */,
 				2D9FE8C02520907900FF7783 /* UIColor.swift in Sources */,
 				2DB355D5259A002A00819164 /* IdleTimerService.swift in Sources */,
 				2DCF94262590D92C00F96136 /* IconButton.swift in Sources */,
@@ -521,6 +544,7 @@
 				2D48429825325C5700A34CC3 /* EditStepView.swift in Sources */,
 				2D76A28E251BEBD00078B74E /* CGHelpers.swift in Sources */,
 				2D4842B42532657100A34CC3 /* StyleView.swift in Sources */,
+				2DB3561C259D457300819164 /* EditableText.swift in Sources */,
 				2DEAB32C2520AC7800D32B2A /* ProgramView.swift in Sources */,
 				2DEAB3412520BEC500D32B2A /* View.swift in Sources */,
 				2D21EBB3252E4C0100A922FC /* ProgramModal.swift in Sources */,

@@ -15,6 +15,7 @@ struct Program : Codable, Identifiable {
   var direction: Direction = .down
   var pause: Int = 0
   var sound: Bool = true
+  var speech: Bool = true
   var steps: [Step] = [Program.Step()]
 }
 

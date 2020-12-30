@@ -16,7 +16,6 @@ class TimerState: ObservableObject {
   var step: Program.Step? { return self.program.step(at: self.index) }
   var appearance: Appearance { return self.program.appearance }
 
-  private let soundService = SoundService.shared
   private var timer: SecondsTimer? = nil
   
   init(program: Program, index: ProgramIndex? = nil) {
@@ -73,6 +72,7 @@ class TimerState: ObservableObject {
     
     // set sound service
     SoundService.shared.soundEnabled = program.sound
+    SoundService.shared.speechEnabled = program.speech
   }
   
   // update the timer
@@ -93,16 +93,16 @@ class TimerState: ObservableObject {
     }
     
     // manage sound session
-    self.soundService.set(active: self.program.shouldPrepareForSounds(at: self.index))
+    SoundService.shared.set(active: self.program.shouldPrepareForSounds(at: self.index))
     
     // play sounds
     let announce = self.program.announce(at: self.index)
     if let sound = self.program.sound(at: self.index) {
-      self.soundService.play(sound: sound) {
-        if announce != nil { self.soundService.announce(text: announce!) }
+      SoundService.shared.play(sound: sound) {
+        if announce != nil { SoundService.shared.announce(text: announce!) }
       }
     } else {
-      if announce != nil { self.soundService.announce(text: announce!) }
+      if announce != nil { SoundService.shared.announce(text: announce!) }
     }
   }
   

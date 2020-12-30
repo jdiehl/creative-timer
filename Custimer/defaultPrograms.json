@@ -9,6 +9,7 @@
     "direction": "down",
     "pause": 0,
     "sound": true,
+    "speech": true,
     "steps": [
       { "title": "Warmup", "length": 60 },
       { "title": "high knee jogging - nudel beidhaendig nach unten druecken", "length": 30 },
@@ -49,6 +50,7 @@
     "direction": "down",
     "pause": 10,
     "sound": true,
+    "speech": true,
     "steps": [
       { "title": "Jumping jacks", "length": 30 },
       { "title": "Wall sit", "length": 30 },
@@ -74,6 +76,7 @@
     "direction": "down",
     "pause": 0,
     "sound": true,
+    "speech": true,
     "steps": [
       { "title": "1", "length": 60 },
       { "title": "2", "length": 60 },
@@ -95,6 +98,7 @@
     "direction": "down",
     "pause": 0,
     "sound": true,
+    "speech": true,
     "steps": [
       { "title": "", "length": 300 }
     ]
@@ -109,6 +113,7 @@
     "direction": "down",
     "pause": 0,
     "sound": true,
+    "speech": true,
     "steps": [
       { "title": "", "length": 600 }
     ]
@@ -123,6 +128,7 @@
     "direction": "down",
     "pause": 0,
     "sound": true,
+    "speech": true,
     "steps": [
       { "title": "", "length": 900 }
     ]
@@ -137,6 +143,7 @@
     "direction": "down",
     "pause": 0,
     "sound": true,
+    "speech": true,
     "steps": [
       { "title": "", "length": 1800 }
     ]

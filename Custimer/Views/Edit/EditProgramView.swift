@@ -61,6 +61,16 @@ struct EditProgramView: View {
                 Image(systemName: program.sound ? "checkmark" : "multiply")
               }
             }
+
+            if editMode == .active {
+              Toggle(isOn: $program.speech) { Text("Speech") }
+            } else {
+              HStack {
+                Text("Speech")
+                Spacer()
+                Image(systemName: program.speech ? "checkmark" : "multiply")
+              }
+            }
           }
           
           Section(header: Text("Timing")) {

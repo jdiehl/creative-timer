@@ -19,6 +19,8 @@ fileprivate func loadPlayer(sound: SoundService.Sound) -> AVAudioPlayer {
 class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
   static let shared = SoundService()
   
+  var soundEnabled = true
+  var speechEnabled = true
   var isPlaying: Bool { return synth.isSpeaking || players[.tick]!.isPlaying || players[.finish]!.isPlaying }
 
   private let session = AVAudioSession.sharedInstance()
@@ -47,6 +49,7 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
   }
   
   func set(active: Bool?) {
+    guard soundEnabled || speechEnabled else { return }
     guard let active = active else { return }
     guard self.active != active else { return }
     
@@ -67,6 +70,10 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
   }
 
   func play(sound: Sound, onComplete: (() -> Void)? = nil) {
+    guard soundEnabled else {
+      onComplete?()
+      return
+    }
     abort()
     self.onComplete = onComplete
     let player = players[sound]!
@@ -74,6 +81,7 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
   }
   
   func announce(text: String) {
+    guard speechEnabled else { return }
     abort()
     let utterance = AVSpeechUtterance(string: text)
     synth.speak(utterance)

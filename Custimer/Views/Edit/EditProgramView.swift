@@ -51,6 +51,18 @@ struct EditProgramView: View {
             }
           }
           
+          Section(header: Text("Notifications")) {
+            if editMode == .active {
+              Toggle(isOn: $program.sound) { Text("Sounds") }
+            } else {
+              HStack {
+                Text("Sounds")
+                Spacer()
+                Image(systemName: program.sound ? "checkmark" : "multiply")
+              }
+            }
+          }
+          
           Section(header: Text("Timing")) {
             if editMode == .active {
               TextField("Pause", text: pauseProxy)
@@ -112,8 +124,11 @@ struct EditProgramView_Previews: PreviewProvider {
     Group {
       NavigationView {
         EditProgramView(program: .constant(Program()))
-          .environmentObject(AppState.mock())
+      }
+      NavigationView {
+        EditProgramView(program: .constant(Program()), editMode: EditMode.active)
       }
     }
+    .environmentObject(AppState.mock())
   }
 }

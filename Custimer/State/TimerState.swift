@@ -10,7 +10,7 @@ import Foundation
 class TimerState: ObservableObject {
   
   @Published var program: Program { didSet { reset() } }
-  @Published private(set) var index: ProgramIndex
+  @Published private(set) var index = ProgramIndex.atStart()
   @Published private(set) var running = false
 
   var step: Program.Step? { return self.program.step(at: self.index) }
@@ -19,9 +19,10 @@ class TimerState: ObservableObject {
   private let soundService = SoundService.shared
   private var timer: SecondsTimer? = nil
   
-  init(program: Program, index: ProgramIndex = ProgramIndex.atStart()) {
+  init(program: Program, index: ProgramIndex? = nil) {
     self.program = program
-    self.index = index
+    reset()
+    if let index = index { set(index: index) }
   }
   
   // start the timer
@@ -63,6 +64,9 @@ class TimerState: ObservableObject {
   func reset() {
     stop()
     index = ProgramIndex.atStart()
+    
+    // set sound service
+    SoundService.shared.soundEnabled = program.sound
   }
   
   // update the timer

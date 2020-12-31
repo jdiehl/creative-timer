@@ -9,12 +9,23 @@ import SwiftUI
 
 // TODO: changes are not saved
 struct EditProgramView: View {
+  enum SheetType {
+    case importProgram
+    case exportProgram
+  }
+  
   @EnvironmentObject var state: AppState
   @Binding var program: Program
   @State var editMode = EditMode.inactive
   
   @State private var stepSelection: Int? = nil
   @State private var showInsert = false
+  @State private var showSheet = false
+  @State private var sheetType: SheetType? = nil
+  @State private var importString = ""
+  @State private var importError: String? = nil
+
+  var exportString: String { ProgramService.shared.exportProgram(program) }
   
   var body: some View {
     ScrollViewReader { scrollView in
@@ -62,7 +73,33 @@ struct EditProgramView: View {
           TextButton(text: "Select") { select() }
             .disabled(editMode == .active)
           Spacer()
+          IconButton(systemName: "square.and.arrow.up") { show(sheet: .exportProgram) }
+          Spacer()
+          IconButton(systemName: "square.and.arrow.down") { show(sheet: .importProgram) }
+          Spacer()
           TextButton(text: "Add Step") { addStep() }
+        }
+      }
+    }
+    .sheet(isPresented: $showSheet) {
+      if sheetType == .exportProgram {
+        ShareSheet(sharing: [exportString])
+      } else {
+        NavigationView {
+          VStack {
+            TextField("Import String", text: $importString)
+              .textFieldStyle(RoundedBorderTextFieldStyle())
+              .padding()
+            if importError != nil {
+              Text(importError!)
+                .foregroundColor(Color.red)
+            }
+            Spacer()
+            Button("Import") { importProgram() }
+              .padding()
+          }
+          .navigationTitle("Import Program")
+          .navigationBarItems(leading: IconButton(systemName: "multiply") { showSheet = false })
         }
       }
     }
@@ -77,6 +114,22 @@ struct EditProgramView: View {
   
   private func update() {
     state.update(program: program)
+  }
+  
+  private func show(sheet: SheetType) {
+    importString = ""
+    importError = nil
+    sheetType = sheet
+    showSheet = true
+  }
+  
+  private func importProgram() {
+    if let program = ProgramService.shared.importProgram(from: importString) {
+      self.program = program
+      showSheet = false
+    } else {
+      importError = "Invalid Import String"
+    }
   }
   
   private func addStep() {

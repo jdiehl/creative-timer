@@ -32,6 +32,21 @@ class ProgramService {
     try data.write(to: programsURL)
   }
   
+  func importProgram(from: String) -> Program? {
+    guard let data = Data(base64Encoded: from) else { return nil }
+    do {
+      let program = try JSONDecoder().decode(Program.self, from: data)
+      return program
+    } catch {
+      return nil
+    }
+  }
+  
+  func exportProgram(_ program: Program) -> String {
+    let data = try! JSONEncoder().encode(program)
+    return data.base64EncodedString()
+  }
+  
   private func load(url: URL) throws -> [Program] {
     let data = try Data(contentsOf: url)
     return try JSONDecoder().decode([Program].self, from: data)

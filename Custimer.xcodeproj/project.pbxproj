@@ -63,6 +63,7 @@
 		2DB3561C259D457300819164 /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3561B259D457300819164 /* EditableText.swift */; };
 		2DB35624259D45FE00819164 /* EditableAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB35623259D45FE00819164 /* EditableAppearance.swift */; };
 		2DB35629259D468D00819164 /* EditableTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB35628259D468D00819164 /* EditableTime.swift */; };
+		2DB35638259E0A8100819164 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB35637259E0A8100819164 /* ShareSheet.swift */; };
 		2DCF94262590D92C00F96136 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF94252590D92C00F96136 /* IconButton.swift */; };
 		2DCF94432590DBE100F96136 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF94422590DBE100F96136 /* ProgressCell.swift */; };
 		2DCF944B2590E30800F96136 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF944A2590E30800F96136 /* TextButton.swift */; };
@@ -145,6 +146,7 @@
 		2DB3561B259D457300819164 /* EditableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
 		2DB35623259D45FE00819164 /* EditableAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableAppearance.swift; sourceTree = "<group>"; };
 		2DB35628259D468D00819164 /* EditableTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTime.swift; sourceTree = "<group>"; };
+		2DB35637259E0A8100819164 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		2DCF94252590D92C00F96136 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		2DCF94422590DBE100F96136 /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		2DCF944A2590E30800F96136 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				2D76A299251BF01B0078B74E /* ProgressView.swift */,
 				2DCF944A2590E30800F96136 /* TextButton.swift */,
 				2DCF94252590D92C00F96136 /* IconButton.swift */,
+				2DB35637259E0A8100819164 /* ShareSheet.swift */,
 			);
 			path = Generic;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				2D9FE8C02520907900FF7783 /* UIColor.swift in Sources */,
 				2DB355D5259A002A00819164 /* IdleTimerService.swift in Sources */,
 				2DCF94262590D92C00F96136 /* IconButton.swift in Sources */,
+				2DB35638259E0A8100819164 /* ShareSheet.swift in Sources */,
 				2DEAB34E2520C4E000D32B2A /* TimerProgressView.swift in Sources */,
 				2DB070452521278700D50D5F /* DefaultsService.swift in Sources */,
 				2DB355F9259B377300819164 /* SecondsTimer.swift in Sources */,

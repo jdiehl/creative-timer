@@ -61,20 +61,22 @@ extension Program {
   func shouldPrepareForSounds(at: ProgramIndex) -> Bool {
     if at.time <= 1 { return false }
     if at.stepTime <= 1 { return true }
-    if at.state == .pause {
+    
+    if at.state == .pause || steps[at.step].length < 10 {
+      // only play finish sound during a pause or short steps
       return at.stepTime >= pause - 1
     } else if halftime {
       let half = steps[at.step].length / 2
       if at.stepTime >= half - 1 && at.stepTime <= half { return true }
     }
-    return at.stepTime >= steps[at.step].length - 5
+    return at.stepTime >= steps[at.step].length - 4
   }
   
   func sound(at: ProgramIndex) -> SoundService.Sound? {
     if at.stepTime == 0 { return .finish }
     if at.state == .finished { return .finish }
-    if at.state != .pause {
-      if at.stepTime > steps[at.step].length - 4 { return .tick }
+    if at.state != .pause && steps[at.step].length >= 10 {
+      if at.stepTime >= steps[at.step].length - 3 { return .tick }
       if halftime && at.stepTime == steps[at.step].length / 2 { return .halftime }
     }
     return nil

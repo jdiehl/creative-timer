@@ -20,7 +20,7 @@ struct EditStepView: View {
     .listStyle(PlainListStyle())
     .navigationTitle(step.title)
   }
-} 
+}
 
 struct EditStepView_Previews: PreviewProvider {
   static var previews: some View {

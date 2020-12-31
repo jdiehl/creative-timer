@@ -89,7 +89,8 @@ class TimerState: ObservableObject {
   private func onTick(seconds: Int) {
     index = ProgramIndex.at(program: program, time: seconds)
     if self.index.state == .finished {
-      self.stop()
+      onFinish()
+      return
     }
     
     // manage sound session
@@ -104,6 +105,13 @@ class TimerState: ObservableObject {
     } else {
       if announce != nil { SoundService.shared.announce(text: announce!) }
     }
+  }
+  
+  private func onFinish() {
+    SoundService.shared.play(sound: .finish) {
+      SoundService.shared.announce(text: "All done")
+    }
+    stop()
   }
   
 }

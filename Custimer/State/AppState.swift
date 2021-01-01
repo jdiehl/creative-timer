@@ -80,5 +80,4 @@ class AppState: ObservableObject {
     self.init(programs: programs, program: program)
   }
 
-
 }

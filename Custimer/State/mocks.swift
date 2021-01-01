@@ -7,7 +7,6 @@
 
 import Foundation
 
-#if DEBUG
 extension Program {
   static func mock() -> Program {
     let steps = [Program.Step(title: "1", length: 3), Program.Step(title: "2", length: 60), Program.Step(title: "3", length: 30)]
@@ -29,4 +28,3 @@ extension TimerState {
     return TimerState(program: program, index: ProgramIndex.at(program: program, time: 39))
   }
 }
-#endif

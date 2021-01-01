@@ -112,6 +112,7 @@ class TimerState: ObservableObject {
       SoundService.shared.announce(text: "All done")
     }
     stop()
+    RatingService.shared.request()
   }
   
 }

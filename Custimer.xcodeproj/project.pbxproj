@@ -113,7 +113,7 @@
 		2D48429725325C5700A34CC3 /* EditStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStepView.swift; sourceTree = "<group>"; };
 		2D4842B32532657100A34CC3 /* StyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleView.swift; sourceTree = "<group>"; };
 		2D684701252E0E36000228BD /* defaultPrograms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaultPrograms.json; sourceTree = "<group>"; };
-		2D76A24A251BE7E60078B74E /* Custimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Custimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D76A24A251BE7E60078B74E /* Creative Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Creative Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D76A24D251BE7E60078B74E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D76A24F251BE7E60078B74E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2D76A251251BE7E60078B74E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,10 +121,10 @@
 		2D76A256251BE7E70078B74E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2D76A259251BE7E70078B74E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D76A25B251BE7E70078B74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2D76A260251BE7E70078B74E /* CustimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D76A260251BE7E70078B74E /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D76A264251BE7E70078B74E /* CustimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustimerTests.swift; sourceTree = "<group>"; };
 		2D76A266251BE7E70078B74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2D76A26B251BE7E70078B74E /* CustimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D76A26B251BE7E70078B74E /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D76A26F251BE7E70078B74E /* CustimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustimerUITests.swift; sourceTree = "<group>"; };
 		2D76A271251BE7E70078B74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D76A28D251BEBD00078B74E /* CGHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGHelpers.swift; sourceTree = "<group>"; };
@@ -203,9 +203,9 @@
 		2D76A24B251BE7E60078B74E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D76A24A251BE7E60078B74E /* Custimer.app */,
-				2D76A260251BE7E70078B74E /* CustimerTests.xctest */,
-				2D76A26B251BE7E70078B74E /* CustimerUITests.xctest */,
+				2D76A24A251BE7E60078B74E /* Creative Timer.app */,
+				2D76A260251BE7E70078B74E /* Tests.xctest */,
+				2D76A26B251BE7E70078B74E /* UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -381,9 +381,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2D76A249251BE7E60078B74E /* Custimer */ = {
+		2D76A249251BE7E60078B74E /* Creative Timer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D76A274251BE7E70078B74E /* Build configuration list for PBXNativeTarget "Custimer" */;
+			buildConfigurationList = 2D76A274251BE7E70078B74E /* Build configuration list for PBXNativeTarget "Creative Timer" */;
 			buildPhases = (
 				2D76A246251BE7E60078B74E /* Sources */,
 				2D76A247251BE7E60078B74E /* Frameworks */,
@@ -393,16 +393,16 @@
 			);
 			dependencies = (
 			);
-			name = Custimer;
+			name = "Creative Timer";
 			packageProductDependencies = (
 			);
 			productName = Custimer;
-			productReference = 2D76A24A251BE7E60078B74E /* Custimer.app */;
+			productReference = 2D76A24A251BE7E60078B74E /* Creative Timer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D76A25F251BE7E70078B74E /* CustimerTests */ = {
+		2D76A25F251BE7E70078B74E /* Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D76A277251BE7E70078B74E /* Build configuration list for PBXNativeTarget "CustimerTests" */;
+			buildConfigurationList = 2D76A277251BE7E70078B74E /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
 				2D76A25C251BE7E70078B74E /* Sources */,
 				2D76A25D251BE7E70078B74E /* Frameworks */,
@@ -413,14 +413,14 @@
 			dependencies = (
 				2D76A262251BE7E70078B74E /* PBXTargetDependency */,
 			);
-			name = CustimerTests;
+			name = Tests;
 			productName = CustimerTests;
-			productReference = 2D76A260251BE7E70078B74E /* CustimerTests.xctest */;
+			productReference = 2D76A260251BE7E70078B74E /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		2D76A26A251BE7E70078B74E /* CustimerUITests */ = {
+		2D76A26A251BE7E70078B74E /* UITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D76A27A251BE7E70078B74E /* Build configuration list for PBXNativeTarget "CustimerUITests" */;
+			buildConfigurationList = 2D76A27A251BE7E70078B74E /* Build configuration list for PBXNativeTarget "UITests" */;
 			buildPhases = (
 				2D76A267251BE7E70078B74E /* Sources */,
 				2D76A268251BE7E70078B74E /* Frameworks */,
@@ -431,9 +431,9 @@
 			dependencies = (
 				2D76A26D251BE7E70078B74E /* PBXTargetDependency */,
 			);
-			name = CustimerUITests;
+			name = UITests;
 			productName = CustimerUITests;
-			productReference = 2D76A26B251BE7E70078B74E /* CustimerUITests.xctest */;
+			productReference = 2D76A26B251BE7E70078B74E /* UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -473,9 +473,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2D76A249251BE7E60078B74E /* Custimer */,
-				2D76A25F251BE7E70078B74E /* CustimerTests */,
-				2D76A26A251BE7E70078B74E /* CustimerUITests */,
+				2D76A249251BE7E60078B74E /* Creative Timer */,
+				2D76A25F251BE7E70078B74E /* Tests */,
+				2D76A26A251BE7E70078B74E /* UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -605,12 +605,12 @@
 /* Begin PBXTargetDependency section */
 		2D76A262251BE7E70078B74E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D76A249251BE7E60078B74E /* Custimer */;
+			target = 2D76A249251BE7E60078B74E /* Creative Timer */;
 			targetProxy = 2D76A261251BE7E70078B74E /* PBXContainerItemProxy */;
 		};
 		2D76A26D251BE7E70078B74E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D76A249251BE7E60078B74E /* Custimer */;
+			target = 2D76A249251BE7E60078B74E /* Creative Timer */;
 			targetProxy = 2D76A26C251BE7E70078B74E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -749,7 +749,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Custimer/Preview Content\"";
 				DEVELOPMENT_TEAM = K8AJZV2G24;
 				ENABLE_PREVIEWS = YES;
@@ -772,7 +772,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Custimer/Preview Content\"";
 				DEVELOPMENT_TEAM = K8AJZV2G24;
 				ENABLE_PREVIEWS = YES;
@@ -885,7 +885,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D76A274251BE7E70078B74E /* Build configuration list for PBXNativeTarget "Custimer" */ = {
+		2D76A274251BE7E70078B74E /* Build configuration list for PBXNativeTarget "Creative Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D76A275251BE7E70078B74E /* Debug */,
@@ -894,7 +894,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D76A277251BE7E70078B74E /* Build configuration list for PBXNativeTarget "CustimerTests" */ = {
+		2D76A277251BE7E70078B74E /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D76A278251BE7E70078B74E /* Debug */,
@@ -903,7 +903,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D76A27A251BE7E70078B74E /* Build configuration list for PBXNativeTarget "CustimerUITests" */ = {
+		2D76A27A251BE7E70078B74E /* Build configuration list for PBXNativeTarget "UITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D76A27B251BE7E70078B74E /* Debug */,

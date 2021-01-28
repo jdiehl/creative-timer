@@ -101,6 +101,7 @@ struct EditProgramView: View {
           .navigationTitle("Import Program")
           .navigationBarItems(leading: IconButton(systemName: "multiply") { showSheet = false })
         }
+        .environment(\.horizontalSizeClass, .compact)
       }
     }
     .environment(\.editMode, $editMode)

@@ -70,14 +70,14 @@ struct EditProgramView: View {
       .navigationBarItems(trailing: EditButton())
       .toolbar {
         ToolbarItemGroup(placement: .bottomBar) {
-          TextButton(text: "Select") { select() }
-            .disabled(editMode == .active)
+          TextButton(text: "Add Step") { addStep() }
           Spacer()
           IconButton(systemName: "square.and.arrow.up") { show(sheet: .exportProgram) }
           Spacer()
           IconButton(systemName: "square.and.arrow.down") { show(sheet: .importProgram) }
           Spacer()
-          TextButton(text: "Add Step") { addStep() }
+          TextButton(text: "Select") { select() }
+            .disabled(editMode == .active)
         }
       }
     }

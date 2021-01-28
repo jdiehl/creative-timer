@@ -18,6 +18,7 @@ class SecondsTimer {
     self.block = block
     startDate = Date()
     timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in self.onTick() }
+    self.onTick()
   }
   
   func invalidate() {

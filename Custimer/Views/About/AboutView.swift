@@ -10,7 +10,7 @@ import SwiftUI
 struct AboutView: View {
   var body: some View {
     VStack(alignment: .leading) {
-      Text("Customer is an App from Jonathan Diehl.")
+      Text("Creative Timer was developed by Jonathan Diehl.")
         .padding(.vertical)
       
       HStack {
@@ -20,12 +20,12 @@ struct AboutView: View {
       
       Spacer()
     }
-    .navigationTitle("About Custimer")
+    .navigationTitle("About")
     .toolbar {
       ToolbarItemGroup(placement: .bottomBar) {
         Link("Privacy Policy", destination: URL(string: "https://didie.space/timer/privacy.html")!)
         Spacer()
-        Link("Report Bug", destination: URL(string: "mailto:jonathan.diehl@gmail.com?subject=Custimer%20Bug%20Report")!)
+        Link("Report Bug", destination: URL(string: "mailto:jonathan.diehl@gmail.com?subject=Creative%20Timer%20Bug%20Report")!)
       }
     }
   }

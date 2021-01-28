@@ -13,12 +13,8 @@ struct TimerHeaderView: View {
   var stepTitle: String {
     if timer.index.state == .pause {
       let next = timer.program.steps[timer.index.step + 1]
-      return "Next: \(next.title)"
+      return next.title == "" ? "" : "Next: \(next.title)"
     } else {
-      // ensure that the title label is always rendered
-      if timer.step!.title == "" {
-        return " "
-      }
       return timer.step!.title
     }
   }
@@ -28,17 +24,25 @@ struct TimerHeaderView: View {
   }
 
   var body: some View {
-    VStack {
-      Text(stepTitle)
+    if stepTitle != "" {
+      VStack {
+        Text(stepTitle)
+          .lineLimit(1)
+          .font(.title)
+          .foregroundColor(Color.foreground(appearance: timer.appearance))
+          .padding(.bottom, 4)
+        
+        Text(programTitle)
+          .lineLimit(1)
+          .font(.subheadline)
+          .foregroundColor(Color.foreground(appearance: timer.appearance))
+      }
+    } else {
+      Text(programTitle)
         .lineLimit(1)
         .font(.title)
         .foregroundColor(Color.foreground(appearance: timer.appearance))
-        .padding(.bottom, 4)
-      
-      Text(programTitle)
-        .lineLimit(1)
-        .font(.subheadline)
-        .foregroundColor(Color.foreground(appearance: timer.appearance))
+        .padding()
     }
   }
   

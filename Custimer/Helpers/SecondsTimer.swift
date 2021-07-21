@@ -17,7 +17,8 @@ class SecondsTimer {
     self.addSeconds = startSeconds
     self.block = block
     startDate = Date()
-    timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in self.onTick() }
+    timer = Timer(timeInterval: 1, repeats: true) { _ in self.onTick() }
+    RunLoop.current.add(timer!, forMode: .common)
     self.onTick()
   }
   

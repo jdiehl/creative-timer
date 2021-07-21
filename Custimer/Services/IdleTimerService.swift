@@ -14,14 +14,23 @@ class IdleTimerService {
   private var timer: Timer? = nil
   
   func disable() {
+    resetTimer()
     UIApplication.shared.isIdleTimerDisabled = true
+    print("DISABLED")
   }
   
   func enable() {
-    if timer != nil { timer!.invalidate() }
+    resetTimer()
     timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
       UIApplication.shared.isIdleTimerDisabled = false
+      print("NOT DISABLED")
       self.timer = nil
     }
+  }
+  
+  func resetTimer() {
+    guard let timer = timer else { return }
+    timer.invalidate()
+    self.timer = nil
   }
 }

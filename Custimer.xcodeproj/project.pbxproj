@@ -29,6 +29,7 @@
 		2D76A270251BE7E70078B74E /* CustimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D76A26F251BE7E70078B74E /* CustimerUITests.swift */; };
 		2D76A28E251BEBD00078B74E /* CGHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D76A28D251BEBD00078B74E /* CGHelpers.swift */; };
 		2D76A29A251BF01B0078B74E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D76A299251BF01B0078B74E /* ProgressView.swift */; };
+		2D9A842626A8BF9C00BFAA35 /* EditableDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9A842526A8BF9C00BFAA35 /* EditableDirection.swift */; };
 		2D9FE862252085A500FF7783 /* ProgramIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE861252085A500FF7783 /* ProgramIndex.swift */; };
 		2D9FE8692520873D00FF7783 /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE85E2520855100FF7783 /* Program.swift */; };
 		2D9FE86D2520873E00FF7783 /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FE85E2520855100FF7783 /* Program.swift */; };
@@ -129,6 +130,7 @@
 		2D76A271251BE7E70078B74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D76A28D251BEBD00078B74E /* CGHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGHelpers.swift; sourceTree = "<group>"; };
 		2D76A299251BF01B0078B74E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		2D9A842526A8BF9C00BFAA35 /* EditableDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableDirection.swift; sourceTree = "<group>"; };
 		2D9FE85D2520855100FF7783 /* ProgramService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramService.swift; sourceTree = "<group>"; };
 		2D9FE85E2520855100FF7783 /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		2D9FE85F2520855100FF7783 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				2DB35613259D436300819164 /* EditableBool.swift */,
 				2DB35623259D45FE00819164 /* EditableAppearance.swift */,
 				2DB35628259D468D00819164 /* EditableTime.swift */,
+				2D9A842526A8BF9C00BFAA35 /* EditableDirection.swift */,
 			);
 			path = Editables;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				2D9FE8B325208CA000FF7783 /* Appearance.swift in Sources */,
 				2D21EBB8252E4C3C00A922FC /* ProgramCell.swift in Sources */,
 				2D76A24E251BE7E60078B74E /* AppDelegate.swift in Sources */,
+				2D9A842626A8BF9C00BFAA35 /* EditableDirection.swift in Sources */,
 				2DB35629259D468D00819164 /* EditableTime.swift in Sources */,
 				2D76A250251BE7E60078B74E /* SceneDelegate.swift in Sources */,
 				2D76A252251BE7E60078B74E /* ContentView.swift in Sources */,

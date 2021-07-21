@@ -25,5 +25,6 @@ struct EditableAppearance: View {
 struct EditableAppearance_Previews: PreviewProvider {
   static var previews: some View {
     EditableAppearance(appearance: .constant(Appearance()))
+    
   }
 }

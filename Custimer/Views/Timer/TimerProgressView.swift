@@ -16,7 +16,7 @@ struct TimerProgressView: View {
     GeometryReader { geometry in
       let width = max(min(geometry.size.width / 10, 20), 5)
       ZStack {
-        ProgressView(progress: timer.index.stepProgress, label: String.time(timer.index.stepTime), width: width, appearance: timer.appearance)
+        ProgressView(progress: timer.index.stepProgress, label: timer.program.displayTime(at: timer.index), width: width, appearance: timer.appearance)
 
         if timer.index.state == .pause {
           BreathingIconView()

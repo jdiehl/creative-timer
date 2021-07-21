@@ -45,10 +45,11 @@ struct EditProgramView: View {
           Section(header: Text("Notifications")) {
             EditableBool(label: "Sounds", isOn: $program.sound)
             EditableBool(label: "Speech", isOn: $program.speech)
-            EditableBool(label: "Halftime Warning", isOn: $program.halftime)
+            EditableBool(label: "Halftime", isOn: $program.halftime)
           }
           
           Section(header: Text("Timing")) {
+            EditableDirection(direction: $program.direction)
             EditableTime(label: "Pause", time: $program.pause)
           }
           

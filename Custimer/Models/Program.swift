@@ -51,6 +51,12 @@ extension Program {
     let step = Step(title: "", length: length)
     steps.append(step)
   }
+  
+  func displayTime(at: ProgramIndex) -> String {
+    let length = at.state == .pause ? pause : steps[at.step].length
+    let time = direction == .down ? length - at.stepTime : at.stepTime
+    return String.time(time)
+  }
 
 }
 

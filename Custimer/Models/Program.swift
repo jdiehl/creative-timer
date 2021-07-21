@@ -84,8 +84,18 @@ extension Program {
   }
 
   func announce(at: ProgramIndex) -> String? {
+    
+    // announcements only happen at the beginning
     guard at.stepTime == 0 else { return nil }
+    
+    // announce the next step (if pause is present)
     if at.state == .pause { return "Next: \(self.steps[at.step + 1].title)" }
+    
+    // do not announce the step if it was already announced in the pause
+    // does not apply for the first announcement
+    guard at.time == 0 || pause == 0 else { return  nil }
+    
+    // regular announce of next step
     return self.step(at: at).title
   }
 }

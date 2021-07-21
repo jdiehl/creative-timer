@@ -12,7 +12,6 @@ import AVFoundation
 fileprivate func loadPlayer(sound: SoundService.Sound) -> AVAudioPlayer {
   let asset = NSDataAsset(name: sound.rawValue)!
   let player = try! AVAudioPlayer(data: asset.data, fileTypeHint: "m4a")
-  player.prepareToPlay()
   return player
 }
 
@@ -69,13 +68,18 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
       return
     }
 
-    // disable sound session
+    // setup sound session
     do {
       try session.setActive(active)
       self.active = active
       self.activeShouldBe = nil
     } catch {
       // nothing
+    }
+    
+    // prepare sounds
+    for (_, player) in players {
+      player.prepareToPlay()
     }
   }
 

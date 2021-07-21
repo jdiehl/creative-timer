@@ -59,7 +59,7 @@ extension Program {
 extension Program {
   
   func shouldPrepareForSounds(at: ProgramIndex) -> Bool {
-    if at.time <= 1 { return false }
+//    if at.time <= 1 { return false }
     if at.stepTime <= 1 { return true }
     
     if at.state == .pause || steps[at.step].length < 10 {

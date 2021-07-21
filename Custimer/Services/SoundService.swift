@@ -53,33 +53,36 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
   }
   
   func setup() {
-    try? session.setCategory(.playback, options: [.duckOthers, .mixWithOthers])
+    try? session.setCategory(.ambient, options: [.duckOthers, .mixWithOthers, .interruptSpokenAudioAndMixWithOthers])
     try? session.setActive(false)
   }
   
-  func set(active: Bool?) {
+  func set(active: Bool) {
     guard soundEnabled || speechEnabled else { return }
-    guard let active = active else { return }
-    guard self.active != active else { return }
     
-    // ensure that no sound output is active
-    if !active && isPlaying {
+    // if we are playing, delay setting active until we are done
+    guard !isPlaying else {
       activeShouldBe = active
       return
     }
 
+    // ensure that a change happens
+    guard self.active != active else { return }
+
     // setup sound session
     do {
-      try session.setActive(active)
+      print(active ? "ACTIVE" : "NOT ACTIVE")
+      try session.setActive(active, options: .notifyOthersOnDeactivation)
       self.active = active
-      self.activeShouldBe = nil
     } catch {
       // nothing
     }
     
     // prepare sounds
-    for (_, player) in players {
-      player.prepareToPlay()
+    if (active) {
+      for (_, player) in self.players {
+        player.prepareToPlay()
+      }
     }
   }
 
@@ -107,10 +110,16 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
     if synth.isSpeaking { synth.stopSpeaking(at: .immediate) }
   }
   
+  private func setActiveToShouldBe() {
+    guard let activeShouldBe = activeShouldBe else { return }
+    set(active: activeShouldBe)
+    self.activeShouldBe = nil
+  }
+  
   // MARK: - AVAudioPlayerDelegate
   
   func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-    set(active: activeShouldBe)
+    setActiveToShouldBe()
     onComplete?()
     onComplete = nil
   }
@@ -118,7 +127,7 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
   // MARK: - AVSpeechSynthesizerDelegate
 
   func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-    set(active: activeShouldBe)
+    setActiveToShouldBe()
   }
   
 }

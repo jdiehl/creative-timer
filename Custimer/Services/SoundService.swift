@@ -71,7 +71,6 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
 
     // setup sound session
     do {
-      print(active ? "ACTIVE" : "NOT ACTIVE")
       try session.setActive(active, options: .notifyOthersOnDeactivation)
       self.active = active
     } catch {
@@ -101,6 +100,7 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
     guard speechEnabled else { return }
     abort()
     let utterance = AVSpeechUtterance(string: text)
+    utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
     synth.speak(utterance)
   }
     

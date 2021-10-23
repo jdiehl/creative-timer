@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Custimer
+@testable import Creative_Timer
 
 class CustimerTests: XCTestCase {
   

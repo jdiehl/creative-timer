@@ -13,7 +13,7 @@ struct Appearance : Codable {
 }
 
 // MARK: - Types
-extension Appearance {
+extension Appearance: Equatable {
   
   enum Theme: String, Codable {
     case crimson = "Crimson"

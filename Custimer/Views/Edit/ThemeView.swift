@@ -18,7 +18,7 @@ struct ThemeView: View {
     RoundedRectangle(cornerRadius: 5)
       .fill(Color.foreground(appearance: appearance))
       .frame(width: size, height: size, alignment: .center)
-      .animation(.easeInOut)
+      .animation(.easeInOut, value: selected)
   }
 }
 

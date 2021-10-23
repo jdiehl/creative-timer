@@ -25,7 +25,7 @@ struct ProgressView: View {
         .stroke(style: StrokeStyle(lineWidth: width, lineCap: .round, lineJoin: .round))
         .fill(Color.foreground(appearance: appearance))
         .rotationEffect(Angle(degrees: 270.0))
-        .animation(.easeOut(duration: 0.2))
+        .animation(.easeOut(duration: 0.2), value: progress)
       
       if label != nil {
         Text(label!)

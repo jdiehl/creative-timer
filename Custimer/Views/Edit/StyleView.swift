@@ -15,14 +15,14 @@ struct StyleView: View {
     RoundedRectangle(cornerRadius: 5)
       .stroke(lineWidth: selected ? 5 : 1)
       .foregroundColor(appearance.style == .colored ? Color.black : Color.foreground(appearance: appearance))
-      .animation(.easeInOut)
+      .animation(.easeInOut, value: selected)
   }
 
   var body: some View {
     ZStack {
       RoundedRectangle(cornerRadius: 5)
         .fill(Color.background(appearance: appearance))
-        .animation(.easeInOut)
+        .animation(.easeInOut, value: selected)
         .overlay(overlay)
       Text(appearance.style.rawValue)
         .font(.caption)

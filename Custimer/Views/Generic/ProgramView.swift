@@ -26,7 +26,7 @@ struct ProgramView: View {
           .fill(Color.foreground(appearance: program.appearance))
           .frame(width: progressWidth(geometry: geometry), height: 10)
           .padding(20)
-          .animation(.easeOut(duration: 0.2))
+          .animation(.easeOut(duration: 0.2), value: index?.progress)
 
         // steps
         ZStack(alignment: .leading) {
@@ -35,7 +35,7 @@ struct ProgramView: View {
               .fill(stepColor(step: step))
               .frame(width: 20, height: 20)
               .padding(.leading, progressWidth(geometry: geometry, step: step))
-              .animation(.easeOut(duration: 0.2))
+              .animation(.easeOut(duration: 0.2), value: index?.progress)
           }
         }
         .padding(10)
@@ -44,7 +44,7 @@ struct ProgramView: View {
         if index != nil {
           MarkerView(label: "\(index!.step + 1)", appearance: program.appearance)
             .padding(.leading, progressWidth(geometry: geometry))
-            .animation(.easeOut(duration: 0.2))
+            .animation(.easeOut(duration: 0.2), value: index?.progress)
         }
         
       }

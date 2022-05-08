@@ -25,7 +25,7 @@ struct AboutView: View {
       ToolbarItemGroup(placement: .bottomBar) {
         Link("Privacy Policy", destination: URL(string: "https://didie.space/timer/privacy.html")!)
         Spacer()
-        Link("Report Bug", destination: URL(string: "mailto:jonathan.diehl@gmail.com?subject=Creative%20Timer%20Bug%20Report")!)
+        Link("Report Bug", destination: URL(string: "https://github.com/jdiehl/creative-timer/issues")!)
       }
     }
   }

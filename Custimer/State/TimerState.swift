@@ -99,18 +99,14 @@ class TimerState: ObservableObject {
     // play sounds
     let announce = self.program.announce(at: self.index)
     if let sound = self.program.sound(at: self.index) {
-      SoundService.shared.play(sound: sound) {
-        if announce != nil { SoundService.shared.announce(text: announce!) }
-      }
+      SoundService.shared.play(sound: sound, followedByText: announce)
     } else {
       if announce != nil { SoundService.shared.announce(text: announce!) }
     }
   }
   
   private func onFinish() {
-    SoundService.shared.play(sound: .finish) {
-      SoundService.shared.announce(text: "All done")
-    }
+    SoundService.shared.play(sound: .finish, followedByText: "All done")
     stop()
     RatingService.shared.request()
   }

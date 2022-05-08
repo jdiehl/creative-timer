@@ -85,13 +85,19 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
     }
   }
 
-  func play(sound: Sound, onComplete: (() -> Void)? = nil) {
+  func play(sound: Sound, followedByText text: String?) {
     guard soundEnabled else {
-      onComplete?()
+      if let text = text {
+        announce(text: text)
+      }
       return
     }
     abort()
-    self.onComplete = onComplete
+    if speechEnabled {
+      if let text = text {
+        self.onComplete = { self.announce(text: text) }
+      }
+    }
     let player = players[sound]!
     player.play()
   }
@@ -119,9 +125,13 @@ class SoundService: NSObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate
   // MARK: - AVAudioPlayerDelegate
   
   func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-    setActiveToShouldBe()
-    onComplete?()
-    onComplete = nil
+    if let onComplete = onComplete {
+      onComplete()
+      self.onComplete = nil
+    } else {
+      // only update active status if no additional sound is played
+      setActiveToShouldBe()
+    }
   }
   
   // MARK: - AVSpeechSynthesizerDelegate

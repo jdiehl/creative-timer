@@ -31,7 +31,14 @@ struct ProgramModal: View {
                 ProgramCell(program: state.programs[i])
                   .id(i)
               }
-              .onTapGesture { programSelection = i }
+              .onTapGesture {
+                if editMode == .active {
+                  programSelection = i
+                } else {
+                  state.select(program: state.programs[i])
+                  state.showPrograms = false
+                }
+              }
             }
             .onDelete { state.remove(atOffsets: $0) }
             .onMove { state.move(fromOffsets: $0, toOffset: $1) }

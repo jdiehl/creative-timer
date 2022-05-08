@@ -14,7 +14,6 @@ struct EditableDirection: View {
   var body: some View {
     if self.editMode?.wrappedValue == .active {
       HStack {
-        Text("Count Direction:")
         Spacer()
 
         Text("Up")

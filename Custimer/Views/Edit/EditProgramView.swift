@@ -16,7 +16,7 @@ struct EditProgramView: View {
   
   @EnvironmentObject var state: AppState
   @Binding var program: Program
-  @State var editMode = EditMode.inactive
+  @State var editMode = EditMode.active
   
   @State private var stepSelection: Int? = nil
   @State private var showInsert = false
@@ -48,11 +48,14 @@ struct EditProgramView: View {
             EditableBool(label: "Halftime", isOn: $program.halftime)
           }
           
-          Section(header: Text("Timing")) {
+          Section(header: Text("Direction")) {
             EditableDirection(direction: $program.direction)
-            EditableTime(label: "Pause", time: $program.pause)
           }
           
+          Section(header: Text("Pause")) {
+            EditableTime(label: "Pause", time: $program.pause)
+          }
+
           Section(header: Text("Steps")) {
             ForEach(0..<program.steps.count, id: \.self) { i in
               NavigationLink(destination: EditStepView(step: $program.steps[i]), tag: i, selection: $stepSelection) {

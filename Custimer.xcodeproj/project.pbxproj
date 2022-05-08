@@ -18,6 +18,7 @@
 		2D4842882532598500A34CC3 /* StepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4842872532598500A34CC3 /* StepCell.swift */; };
 		2D48429825325C5700A34CC3 /* EditStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D48429725325C5700A34CC3 /* EditStepView.swift */; };
 		2D4842B42532657100A34CC3 /* StyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4842B32532657100A34CC3 /* StyleView.swift */; };
+		2D5B2E012827D19B00F4DA63 /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B2E002827D19B00F4DA63 /* ControlButton.swift */; };
 		2D684702252E0E36000228BD /* defaultPrograms.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D684701252E0E36000228BD /* defaultPrograms.json */; };
 		2D76A24E251BE7E60078B74E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D76A24D251BE7E60078B74E /* AppDelegate.swift */; };
 		2D76A250251BE7E60078B74E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D76A24F251BE7E60078B74E /* SceneDelegate.swift */; };
@@ -113,6 +114,7 @@
 		2D4842872532598500A34CC3 /* StepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCell.swift; sourceTree = "<group>"; };
 		2D48429725325C5700A34CC3 /* EditStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStepView.swift; sourceTree = "<group>"; };
 		2D4842B32532657100A34CC3 /* StyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleView.swift; sourceTree = "<group>"; };
+		2D5B2E002827D19B00F4DA63 /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 		2D684701252E0E36000228BD /* defaultPrograms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaultPrograms.json; sourceTree = "<group>"; };
 		2D76A24A251BE7E60078B74E /* Creative Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Creative Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D76A24D251BE7E60078B74E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				2DCF944A2590E30800F96136 /* TextButton.swift */,
 				2DCF94252590D92C00F96136 /* IconButton.swift */,
 				2DB35637259E0A8100819164 /* ShareSheet.swift */,
+				2D5B2E002827D19B00F4DA63 /* ControlButton.swift */,
 			);
 			path = Generic;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				2DB54754259F75F300388261 /* RatingService.swift in Sources */,
 				2DB355C4259895F700819164 /* AboutView.swift in Sources */,
 				2D9FE8B325208CA000FF7783 /* Appearance.swift in Sources */,
+				2D5B2E012827D19B00F4DA63 /* ControlButton.swift in Sources */,
 				2D21EBB8252E4C3C00A922FC /* ProgramCell.swift in Sources */,
 				2D76A24E251BE7E60078B74E /* AppDelegate.swift in Sources */,
 				2D9A842626A8BF9C00BFAA35 /* EditableDirection.swift in Sources */,

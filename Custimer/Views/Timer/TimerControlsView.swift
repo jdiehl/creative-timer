@@ -13,19 +13,19 @@ struct TimerControlsView: View {
   
   var body: some View {
     HStack {
-      IconButton(systemName: "backward.end.fill") { timer.reset() }
+      ControlButton(systemName: "backward.end.fill", appearance: state.appearance) { timer.reset() }
 
       Spacer()
 
       if timer.running {
-        IconButton(systemName: "pause.fill") { timer.stop() }
+        ControlButton(systemName: "pause.fill", appearance: state.appearance) { timer.stop() }
       } else {
-        IconButton(systemName: "play.fill") { timer.start() }
+        ControlButton(systemName: "play.fill", appearance: state.appearance) { timer.start() }
       }
       
       Spacer()
 
-      IconButton(systemName: "eject.fill") {
+      ControlButton(systemName: "eject.fill", appearance: state.appearance) {
         timer.stop()
         state.showPrograms = true
       }

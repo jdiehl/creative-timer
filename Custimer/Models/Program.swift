@@ -18,6 +18,10 @@ struct Program : Codable, Identifiable {
   var sound: Bool = true
   var speech: Bool = true
   var steps: [Step] = [Program.Step()]
+  
+  private enum CodingKeys: String, CodingKey {
+    case title, appearance, direction, pause, halftime, sound, speech, steps
+  }
 }
 
 // MARK: - Types
